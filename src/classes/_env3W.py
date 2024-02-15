@@ -4,9 +4,9 @@ from tf_agents.environments import py_environment
 from tf_agents.specs import array_spec
 from tf_agents.trajectories import time_step as ts
 
-class ThreeWEnvironment(py_environment.PyEnvironment):
+class env3W(py_environment.PyEnvironment):
     def __init__(self, dataframe):
-        super(ThreeWEnvironment, self).__init__()
+        super(env3W, self).__init__()
         self._dataframe = dataframe
         self._index = 0
         self._action_spec = array_spec.BoundedArraySpec(shape=(), dtype=np.int32, minimum=0, maximum=1, name='action')
@@ -61,16 +61,5 @@ class ThreeWEnvironment(py_environment.PyEnvironment):
             return 0
 
 
-df = pd.read_csv('reinforcement learning\\analyses data\\real_instances_594.csv')
-# Cria uma instância do ambiente com o seu DataFrame
-env = ThreeWEnvironment(df)
 
-# Testa o método reset para iniciar o ambiente
-time_step = env.reset()
-print("Estado Inicial:", time_step)
 
-# Executa algumas ações para testar a resposta do ambiente
-for _ in range(5):
-    action = np.random.randint(0, 2)  # Escolhe uma ação aleatória, 0 ou 1
-    time_step = env.step(action)
-    print("Após a ação:", action, "Time Step:", time_step)
