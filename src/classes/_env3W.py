@@ -1,12 +1,12 @@
 import numpy as np
-import pandas as pd
 from tf_agents.environments import py_environment
 from tf_agents.specs import array_spec
 from tf_agents.trajectories import time_step as ts
 
 class env3W(py_environment.PyEnvironment):
     '''
-    Essa classe é um Modelo-Baseado em Ambiente para o problema de detecção de falhas em poços de petróleo.
+    Essa classe é um Modelo-Livre do Ambiente em python para o problema de detecção de falhas em poços de petróleo.
+    O dataframe é fornecido como entrada para o ambiente com mais de 10 milhões de registros.
 
      1. O ambiente é um repositório di github https://github.com/petrobras/3W
      2. O ambiente é composto por dados de seis poços de petróleo, com cinco variáveis (observações) de entrada ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'] e um rótulo indentificador de falha [class]
@@ -29,10 +29,12 @@ class env3W(py_environment.PyEnvironment):
         self._dataframe = dataframe
         self._index = 0
         # Ação: 0 - Não Deectado ou 1 - Detectado
-        self._action_spec = array_spec.BoundedArraySpec(shape=(), dtype=np.int32, minimum=0, maximum=1, name='action')                  
-        num_features = len(['P-PDG', 'P-TPTP', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'])
+        self._action_spec = array_spec.BoundedArraySpec(shape=(), dtype=np.int32, minimum=0, maximum=1, name='action') 
+        self.columns_needed = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']               
+        num_features = len(self.columns_needed)
         self._observation_spec = array_spec.BoundedArraySpec(shape=(num_features,), dtype=np.float32, name='observation')
-        self._state = None
+        row = self._dataframe.iloc[self._index][self.columns_needed]
+        self._state = row.values
         self._episode_ended = False
 
     def action_spec(self):
@@ -40,55 +42,49 @@ class env3W(py_environment.PyEnvironment):
 
     def observation_spec(self):
         return self._observation_spec
-
+    
+   
     def _update_state(self):
-        # Seleciona diretamente as colunas necessárias do dataframe
-        columns_needed = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
-        row = self._dataframe.iloc[self._index][columns_needed]
+        # Seleciona diretamente as colunas necessárias do dataframe       
+        row = self._dataframe.iloc[self._index][self.columns_needed]
         self._state = row.values
 
+   
     def _reset(self):
         self._index = 0
         self._update_state()
         self._episode_ended = False
         return ts.restart(np.array(self._state, dtype=np.float32))
-
+    
+    
     def _step(self, action):
-        if self._episode_ended:
-            # Isso deve retornar uma chamada para reset(), não a terminação diretamente
-            return self.reset()
+
+        # Verifica se a ação é válida
+        if not 0 <= action <= 1:
+            return ts.termination(np.array(self._state, dtype=np.float32), reward=0)             
         
-        if self._index >= len(self._dataframe) - 1:
-            # Quando chegar na última linha, marque o episódio como terminado e pare.
-            self._episode_ended = True
-            reward = self._calculate_reward(action)
-            return ts.termination(np.array(self._state, dtype=np.float32), reward=reward)
-        
-        # Lógica para processar a ação e atualizar o estado aqui
-        self._index += 1
         self._update_state()
         reward = self._calculate_reward(action)
-        if self._episode_ended:
+
+        if self._episode_ended or self._index >= len(self._dataframe) - 1:
+            # Quando chegar na última linha, marque o episódio como terminado e pare.
+            self._episode_ended = True            
             return ts.termination(np.array(self._state, dtype=np.float32), reward=reward)
         else:
+            self._index += 1
             return ts.transition(np.array(self._state, dtype=np.float32), reward=reward, discount=1.0)
-
-
-    
-
-
+               
+          
     def _calculate_reward(self, action):
         class_value = self._dataframe.iloc[self._index]['class']
         if class_value == 0:
-            return 1 if action == 0 else -100
+            return 0.01 if action == 0 else -1
         elif class_value in range(1, 9):
-            return -100 if action == 0 else 100
+            return -1 if action == 0 else 1
         elif class_value in range(101, 109):
-            return -10 if action == 0 else 10
+            return -0.1 if action == 0 else 0.1
         else:
             # Define uma recompensa padrão para qualquer outro valor de class não especificado
             return 0
-
-
-
-
+       
+      
