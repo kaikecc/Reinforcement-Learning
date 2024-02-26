@@ -1,138 +1,658 @@
-[DEBUG]	25/02/2024 05:00:16 PM - Loaded backend module://matplotlib_inline.backend_inline version unknown.
-[DEBUG]	25/02/2024 05:00:16 PM - Loaded backend module://matplotlib_inline.backend_inline version unknown.
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-Th.ttf', name='Ubuntu', style='normal', variant='normal', weight=250, stretch='normal', size='scalable')) = 10.1925
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf', name='Ubuntu Condensed', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-BI.ttf', name='Ubuntu', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-BI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-L.ttf', name='Ubuntu', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf', name='Ubuntu', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-RI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-M.ttf', name='Ubuntu', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-LI.ttf', name='Ubuntu', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf', name='Ubuntu', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf', name='Ubuntu', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', name='Ubuntu', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:16 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0.
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-Th.ttf', name='Ubuntu', style='normal', variant='normal', weight=250, stretch='normal', size='scalable')) = 10.1925
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf', name='Ubuntu Condensed', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-BI.ttf', name='Ubuntu', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-BI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-L.ttf', name='Ubuntu', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf', name='Ubuntu', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-RI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-M.ttf', name='Ubuntu', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-LI.ttf', name='Ubuntu', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf', name='Ubuntu', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf', name='Ubuntu', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', name='Ubuntu', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
-[DEBUG]	25/02/2024 05:00:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
-[DEBUG]	25/02/2024 05:00:23 PM - Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
-[DEBUG]	25/02/2024 05:00:23 PM - Creating converter from 7 to 5
-[DEBUG]	25/02/2024 05:00:23 PM - Creating converter from 5 to 7
-[DEBUG]	25/02/2024 05:00:23 PM - Creating converter from 7 to 5
-[DEBUG]	25/02/2024 05:00:23 PM - Creating converter from 5 to 7
-[INFO]	25/02/2024 05:00:38 PM - Spawning all processes.
-[INFO]	25/02/2024 05:00:39 PM - All processes started.
-[WARNING]	25/02/2024 05:05:59 PM - 5 out of the last 5 calls to <bound method TFPolicy.action of <tf_agents.policies.random_tf_policy.RandomTFPolicy object at 0x7f1a4be8cf10>> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-[WARNING]	25/02/2024 05:10:12 PM - 6 out of the last 6 calls to <bound method TFPolicy.action of <tf_agents.policies.random_tf_policy.RandomTFPolicy object at 0x7f1a4be8d3c0>> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.
-[INFO]	25/02/2024 05:21:41 PM - Iniciando o ambiente de treinamento
-[INFO]	25/02/2024 05:21:41 PM - Spawning all processes.
-[INFO]	25/02/2024 05:21:42 PM - All processes started.
-[INFO]	25/02/2024 05:21:42 PM - Criando 5 ambientes env3W em paralelo
-[INFO]	25/02/2024 05:21:42 PM - Otimizando agent.train com TF function
-[INFO]	25/02/2024 05:21:42 PM - Resetando o contador de passos de treinamento
-[INFO]	25/02/2024 05:21:42 PM - Iniciando a avaliação da política do agente antes do treinamento
+[DEBUG]	26/02/2024 02:38:17 PM - Loaded backend module://matplotlib_inline.backend_inline version unknown.
+[DEBUG]	26/02/2024 02:38:17 PM - Loaded backend module://matplotlib_inline.backend_inline version unknown.
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0.
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-Th.ttf', name='Ubuntu', style='normal', variant='normal', weight=250, stretch='normal', size='scalable')) = 10.1925
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf', name='Ubuntu Condensed', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-BI.ttf', name='Ubuntu', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-BI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-L.ttf', name='Ubuntu', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf', name='Ubuntu', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-RI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-M.ttf', name='Ubuntu', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-LI.ttf', name='Ubuntu', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf', name='Ubuntu', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf', name='Ubuntu', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', name='Ubuntu', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0.
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-BoldItalic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymBol.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf', name='cmmi10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymBol.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf', name='STIXGeneral', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymBol.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Italic.ttf', name='DejaVu Serif', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf', name='cmsy10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-BoldOblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 1.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf', name='cmtt10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf', name='cmb10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf', name='DejaVu Sans Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-Oblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBolIta.ttf', name='STIXGeneral', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf', name='STIXGeneral', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf', name='STIXSizeThreeSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymBol.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf', name='cmr10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf', name='DejaVu Sans', style='oblique', variant='normal', weight=400, stretch='normal', size='scalable')) = 1.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf', name='STIXNonUnicode', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf', name='cmss10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf', name='STIXSizeTwoSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono-BoldOblique.ttf', name='DejaVu Sans Mono', style='oblique', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf', name='STIXSizeFiveSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf', name='STIXGeneral', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf', name='cmex10', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf', name='STIXSizeOneSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSerifDisplay.ttf', name='DejaVu Serif Display', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBolIta.ttf', name='STIXNonUnicode', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf', name='STIXSizeFourSym', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-Th.ttf', name='Ubuntu', style='normal', variant='normal', weight=250, stretch='normal', size='scalable')) = 10.1925
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 0.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf', name='Ubuntu Condensed', style='normal', variant='normal', weight=400, stretch='condensed', size='scalable')) = 10.25
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-BI.ttf', name='Ubuntu', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-BI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=700, stretch='normal', size='scalable')) = 11.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-L.ttf', name='Ubuntu', style='normal', variant='normal', weight=300, stretch='normal', size='scalable')) = 10.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-MI.ttf', name='Ubuntu', style='italic', variant='normal', weight=500, stretch='normal', size='scalable')) = 11.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-RI.ttf', name='Ubuntu Mono', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-B.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf', name='DejaVu Sans Mono', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/UbuntuMono-R.ttf', name='Ubuntu Mono', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-M.ttf', name='Ubuntu', style='normal', variant='normal', weight=500, stretch='normal', size='scalable')) = 10.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', name='DejaVu Sans', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 0.33499999999999996
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-LI.ttf', name='Ubuntu', style='italic', variant='normal', weight=300, stretch='normal', size='scalable')) = 11.145
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-RI.ttf', name='Ubuntu', style='italic', variant='normal', weight=400, stretch='normal', size='scalable')) = 11.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-R.ttf', name='Ubuntu', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf', name='Ubuntu', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=400, stretch='normal', size='scalable')) = 10.05
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: score(FontEntry(fname='/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf', name='DejaVu Serif', style='normal', variant='normal', weight=700, stretch='normal', size='scalable')) = 10.335
+[DEBUG]	26/02/2024 02:38:17 PM - findfont: Matching sans\-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=12.0 to DejaVu Sans ('/usr/local/lib/python3.10/dist-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+[DEBUG]	26/02/2024 02:38:22 PM - Falling back to TensorFlow client; we recommended you install the Cloud TPU client directly with pip install cloud-tpu-client.
+[DEBUG]	26/02/2024 02:38:22 PM - Creating converter from 7 to 5
+[DEBUG]	26/02/2024 02:38:22 PM - Creating converter from 5 to 7
+[DEBUG]	26/02/2024 02:38:22 PM - Creating converter from 7 to 5
+[DEBUG]	26/02/2024 02:38:22 PM - Creating converter from 5 to 7
+[INFO]	26/02/2024 02:38:33 PM - Spawning all processes.
+[INFO]	26/02/2024 02:38:33 PM - All processes started.
+[INFO]	26/02/2024 02:39:45 PM - Iniciando o ambiente de treinamento
+[INFO]	26/02/2024 02:39:45 PM - Spawning all processes.
+[INFO]	26/02/2024 02:39:45 PM - All processes started.
+[INFO]	26/02/2024 02:39:45 PM - Criando 5 ambientes env3W em paralelo
+[INFO]	26/02/2024 02:39:45 PM - Otimizando agent.train com TF function
+[INFO]	26/02/2024 02:39:45 PM - Resetando o contador de passos de treinamento
+[INFO]	26/02/2024 02:39:45 PM - Iniciando a avaliação da política do agente antes do treinamento
+[INFO]	26/02/2024 02:39:45 PM - Número de Episódios por Ambiente: 4
+[INFO]	26/02/2024 02:51:14 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 02:51:14 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 02:51:14 PM - Iniciando o treinamento do agente
+[INFO]	26/02/2024 02:51:46 PM - Iniciando o ambiente de treinamento
+[INFO]	26/02/2024 02:51:46 PM - Spawning all processes.
+[INFO]	26/02/2024 02:51:46 PM - All processes started.
+[INFO]	26/02/2024 02:51:46 PM - Criando 5 ambientes env3W em paralelo
+[INFO]	26/02/2024 02:51:46 PM - Otimizando agent.train com TF function
+[INFO]	26/02/2024 02:51:46 PM - Resetando o contador de passos de treinamento
+[INFO]	26/02/2024 02:51:46 PM - Iniciando a avaliação da política do agente antes do treinamento
+[INFO]	26/02/2024 02:51:46 PM - Número de Episódios por Ambiente: 4
+[INFO]	26/02/2024 03:03:49 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 03:03:49 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 03:03:49 PM - Iniciando o treinamento do agente
+[INFO]	26/02/2024 03:03:49 PM - Iniciando a coleta de experiências
+[DEBUG]	26/02/2024 03:03:49 PM - Iteração 0
+[WARNING]	26/02/2024 03:04:16 PM - From /usr/local/lib/python3.10/dist-packages/tensorflow/python/autograph/impl/api.py:377: ReplayBuffer.get_next (from tf_agents.replay_buffers.replay_buffer) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `as_dataset(..., single_deterministic_pass=False) instead.
+[INFO]	26/02/2024 03:04:23 PM - Iniciando o ambiente de treinamento
+[INFO]	26/02/2024 03:04:23 PM - Spawning all processes.
+[INFO]	26/02/2024 03:04:24 PM - All processes started.
+[INFO]	26/02/2024 03:04:24 PM - Criando 5 ambientes env3W em paralelo
+[INFO]	26/02/2024 03:04:24 PM - Otimizando agent.train com TF function
+[INFO]	26/02/2024 03:04:24 PM - Resetando o contador de passos de treinamento
+[INFO]	26/02/2024 03:04:24 PM - Iniciando a avaliação da política do agente antes do treinamento
+[INFO]	26/02/2024 03:04:24 PM - Número de Episódios por Ambiente: 4
+[INFO]	26/02/2024 03:18:11 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 03:18:11 PM - Recompensa Média: -5409.00048828125
+[INFO]	26/02/2024 03:18:11 PM - Iniciando o treinamento do agente
+[INFO]	26/02/2024 03:18:11 PM - Iniciando a coleta de experiências
+[DEBUG]	26/02/2024 03:18:11 PM - Iteração 0
+[WARNING]	26/02/2024 03:18:13 PM - From /usr/local/lib/python3.10/dist-packages/tensorflow/python/util/dispatch.py:1260: calling foldr_v2 (from tensorflow.python.ops.functional_ops) with back_prop=False is deprecated and will be removed in a future version.
+Instructions for updating:
+back_prop=False is deprecated. Consider using tf.stop_gradient instead.
+Instead of:
+results = tf.foldr(fn, elems, back_prop=False)
+Use:
+results = tf.nest.map_structure(tf.stop_gradient, tf.foldr(fn, elems))
+[DEBUG]	26/02/2024 03:18:14 PM - Iteração 1
+[DEBUG]	26/02/2024 03:18:16 PM - Iteração 2
+[DEBUG]	26/02/2024 03:18:18 PM - Iteração 3
+[DEBUG]	26/02/2024 03:18:21 PM - Iteração 4
+[DEBUG]	26/02/2024 03:18:23 PM - Iteração 5
+[DEBUG]	26/02/2024 03:18:26 PM - Iteração 6
+[DEBUG]	26/02/2024 03:18:28 PM - Iteração 7
+[DEBUG]	26/02/2024 03:18:30 PM - Iteração 8
+[DEBUG]	26/02/2024 03:18:32 PM - Iteração 9
+[DEBUG]	26/02/2024 03:18:35 PM - Iteração 10
+[DEBUG]	26/02/2024 03:18:37 PM - Iteração 11
+[DEBUG]	26/02/2024 03:18:40 PM - Iteração 12
+[DEBUG]	26/02/2024 03:18:42 PM - Iteração 13
+[DEBUG]	26/02/2024 03:18:44 PM - Iteração 14
+[DEBUG]	26/02/2024 03:18:47 PM - Iteração 15
+[DEBUG]	26/02/2024 03:18:49 PM - Iteração 16
+[DEBUG]	26/02/2024 03:18:51 PM - Iteração 17
+[DEBUG]	26/02/2024 03:18:53 PM - Iteração 18
+[DEBUG]	26/02/2024 03:18:56 PM - Iteração 19
+[DEBUG]	26/02/2024 03:18:58 PM - Iteração 20
+[DEBUG]	26/02/2024 03:19:00 PM - Iteração 21
+[DEBUG]	26/02/2024 03:19:02 PM - Iteração 22
+[DEBUG]	26/02/2024 03:19:04 PM - Iteração 23
+[DEBUG]	26/02/2024 03:19:07 PM - Iteração 24
+[DEBUG]	26/02/2024 03:19:09 PM - Iteração 25
+[DEBUG]	26/02/2024 03:19:11 PM - Iteração 26
+[DEBUG]	26/02/2024 03:19:13 PM - Iteração 27
+[DEBUG]	26/02/2024 03:19:15 PM - Iteração 28
+[DEBUG]	26/02/2024 03:19:18 PM - Iteração 29
+[DEBUG]	26/02/2024 03:19:20 PM - Iteração 30
+[DEBUG]	26/02/2024 03:19:22 PM - Iteração 31
+[DEBUG]	26/02/2024 03:19:24 PM - Iteração 32
+[DEBUG]	26/02/2024 03:19:26 PM - Iteração 33
+[DEBUG]	26/02/2024 03:19:29 PM - Iteração 34
+[DEBUG]	26/02/2024 03:19:31 PM - Iteração 35
+[DEBUG]	26/02/2024 03:19:33 PM - Iteração 36
+[DEBUG]	26/02/2024 03:19:35 PM - Iteração 37
+[DEBUG]	26/02/2024 03:19:37 PM - Iteração 38
+[DEBUG]	26/02/2024 03:19:40 PM - Iteração 39
+[DEBUG]	26/02/2024 03:19:42 PM - Iteração 40
+[DEBUG]	26/02/2024 03:19:44 PM - Iteração 41
+[DEBUG]	26/02/2024 03:19:46 PM - Iteração 42
+[DEBUG]	26/02/2024 03:19:49 PM - Iteração 43
+[DEBUG]	26/02/2024 03:19:51 PM - Iteração 44
+[DEBUG]	26/02/2024 03:19:53 PM - Iteração 45
+[DEBUG]	26/02/2024 03:19:55 PM - Iteração 46
+[DEBUG]	26/02/2024 03:19:58 PM - Iteração 47
+[DEBUG]	26/02/2024 03:20:00 PM - Iteração 48
+[DEBUG]	26/02/2024 03:20:02 PM - Iteração 49
+[DEBUG]	26/02/2024 03:20:04 PM - Iteração 50
+[DEBUG]	26/02/2024 03:20:06 PM - Iteração 51
+[DEBUG]	26/02/2024 03:20:09 PM - Iteração 52
+[DEBUG]	26/02/2024 03:20:11 PM - Iteração 53
+[DEBUG]	26/02/2024 03:20:13 PM - Iteração 54
+[DEBUG]	26/02/2024 03:20:15 PM - Iteração 55
+[DEBUG]	26/02/2024 03:20:17 PM - Iteração 56
+[DEBUG]	26/02/2024 03:20:20 PM - Iteração 57
+[DEBUG]	26/02/2024 03:20:22 PM - Iteração 58
+[DEBUG]	26/02/2024 03:20:24 PM - Iteração 59
+[DEBUG]	26/02/2024 03:20:26 PM - Iteração 60
+[DEBUG]	26/02/2024 03:20:28 PM - Iteração 61
+[DEBUG]	26/02/2024 03:20:31 PM - Iteração 62
+[DEBUG]	26/02/2024 03:20:33 PM - Iteração 63
+[DEBUG]	26/02/2024 03:20:35 PM - Iteração 64
+[DEBUG]	26/02/2024 03:20:38 PM - Iteração 65
+[DEBUG]	26/02/2024 03:20:40 PM - Iteração 66
+[DEBUG]	26/02/2024 03:20:42 PM - Iteração 67
+[DEBUG]	26/02/2024 03:20:44 PM - Iteração 68
+[DEBUG]	26/02/2024 03:20:46 PM - Iteração 69
+[DEBUG]	26/02/2024 03:20:49 PM - Iteração 70
+[DEBUG]	26/02/2024 03:20:51 PM - Iteração 71
+[DEBUG]	26/02/2024 03:20:53 PM - Iteração 72
+[DEBUG]	26/02/2024 03:20:55 PM - Iteração 73
+[DEBUG]	26/02/2024 03:20:58 PM - Iteração 74
+[DEBUG]	26/02/2024 03:21:00 PM - Iteração 75
+[DEBUG]	26/02/2024 03:21:03 PM - Iteração 76
+[DEBUG]	26/02/2024 03:21:06 PM - Iteração 77
+[DEBUG]	26/02/2024 03:21:09 PM - Iteração 78
+[DEBUG]	26/02/2024 03:21:12 PM - Iteração 79
+[DEBUG]	26/02/2024 03:21:15 PM - Iteração 80
+[DEBUG]	26/02/2024 03:21:18 PM - Iteração 81
+[DEBUG]	26/02/2024 03:21:20 PM - Iteração 82
+[DEBUG]	26/02/2024 03:21:23 PM - Iteração 83
+[DEBUG]	26/02/2024 03:21:25 PM - Iteração 84
+[DEBUG]	26/02/2024 03:21:27 PM - Iteração 85
+[DEBUG]	26/02/2024 03:21:29 PM - Iteração 86
+[DEBUG]	26/02/2024 03:21:32 PM - Iteração 87
+[DEBUG]	26/02/2024 03:21:34 PM - Iteração 88
+[DEBUG]	26/02/2024 03:21:36 PM - Iteração 89
+[DEBUG]	26/02/2024 03:21:38 PM - Iteração 90
+[DEBUG]	26/02/2024 03:21:41 PM - Iteração 91
+[DEBUG]	26/02/2024 03:21:44 PM - Iteração 92
+[DEBUG]	26/02/2024 03:21:46 PM - Iteração 93
+[DEBUG]	26/02/2024 03:21:48 PM - Iteração 94
+[DEBUG]	26/02/2024 03:21:50 PM - Iteração 95
+[DEBUG]	26/02/2024 03:21:53 PM - Iteração 96
+[DEBUG]	26/02/2024 03:21:55 PM - Iteração 97
+[DEBUG]	26/02/2024 03:21:57 PM - Iteração 98
+[DEBUG]	26/02/2024 03:21:59 PM - Iteração 99
+[DEBUG]	26/02/2024 03:22:01 PM - Iteração 100
+[DEBUG]	26/02/2024 03:22:04 PM - Iteração 101
+[DEBUG]	26/02/2024 03:22:06 PM - Iteração 102
+[DEBUG]	26/02/2024 03:22:08 PM - Iteração 103
+[DEBUG]	26/02/2024 03:22:10 PM - Iteração 104
+[DEBUG]	26/02/2024 03:22:12 PM - Iteração 105
+[DEBUG]	26/02/2024 03:22:14 PM - Iteração 106
+[DEBUG]	26/02/2024 03:22:17 PM - Iteração 107
+[DEBUG]	26/02/2024 03:22:19 PM - Iteração 108
+[DEBUG]	26/02/2024 03:22:21 PM - Iteração 109
+[DEBUG]	26/02/2024 03:22:23 PM - Iteração 110
+[DEBUG]	26/02/2024 03:22:25 PM - Iteração 111
+[DEBUG]	26/02/2024 03:22:28 PM - Iteração 112
+[DEBUG]	26/02/2024 03:22:30 PM - Iteração 113
+[DEBUG]	26/02/2024 03:22:32 PM - Iteração 114
+[DEBUG]	26/02/2024 03:22:34 PM - Iteração 115
+[DEBUG]	26/02/2024 03:22:36 PM - Iteração 116
+[DEBUG]	26/02/2024 03:22:39 PM - Iteração 117
+[DEBUG]	26/02/2024 03:22:41 PM - Iteração 118
+[DEBUG]	26/02/2024 03:22:43 PM - Iteração 119
+[DEBUG]	26/02/2024 03:22:45 PM - Iteração 120
+[DEBUG]	26/02/2024 03:22:48 PM - Iteração 121
+[DEBUG]	26/02/2024 03:22:50 PM - Iteração 122
+[DEBUG]	26/02/2024 03:22:52 PM - Iteração 123
+[DEBUG]	26/02/2024 03:22:54 PM - Iteração 124
+[DEBUG]	26/02/2024 03:22:56 PM - Iteração 125
+[DEBUG]	26/02/2024 03:22:59 PM - Iteração 126
+[DEBUG]	26/02/2024 03:23:02 PM - Iteração 127
+[DEBUG]	26/02/2024 03:23:04 PM - Iteração 128
+[DEBUG]	26/02/2024 03:23:06 PM - Iteração 129
+[DEBUG]	26/02/2024 03:23:08 PM - Iteração 130
+[DEBUG]	26/02/2024 03:23:11 PM - Iteração 131
+[DEBUG]	26/02/2024 03:23:13 PM - Iteração 132
+[DEBUG]	26/02/2024 03:23:15 PM - Iteração 133
+[DEBUG]	26/02/2024 03:23:17 PM - Iteração 134
+[DEBUG]	26/02/2024 03:23:19 PM - Iteração 135
+[DEBUG]	26/02/2024 03:23:22 PM - Iteração 136
+[DEBUG]	26/02/2024 03:23:24 PM - Iteração 137
+[DEBUG]	26/02/2024 03:23:26 PM - Iteração 138
+[DEBUG]	26/02/2024 03:23:29 PM - Iteração 139
+[DEBUG]	26/02/2024 03:23:31 PM - Iteração 140
+[DEBUG]	26/02/2024 03:23:33 PM - Iteração 141
+[DEBUG]	26/02/2024 03:23:35 PM - Iteração 142
+[DEBUG]	26/02/2024 03:23:37 PM - Iteração 143
+[DEBUG]	26/02/2024 03:23:40 PM - Iteração 144
+[DEBUG]	26/02/2024 03:23:42 PM - Iteração 145
+[DEBUG]	26/02/2024 03:23:45 PM - Iteração 146
+[DEBUG]	26/02/2024 03:23:47 PM - Iteração 147
+[DEBUG]	26/02/2024 03:23:50 PM - Iteração 148
+[DEBUG]	26/02/2024 03:23:52 PM - Iteração 149
+[DEBUG]	26/02/2024 03:23:54 PM - Iteração 150
+[DEBUG]	26/02/2024 03:23:56 PM - Iteração 151
+[DEBUG]	26/02/2024 03:23:59 PM - Iteração 152
+[DEBUG]	26/02/2024 03:24:01 PM - Iteração 153
+[DEBUG]	26/02/2024 03:24:03 PM - Iteração 154
+[DEBUG]	26/02/2024 03:24:05 PM - Iteração 155
+[DEBUG]	26/02/2024 03:24:07 PM - Iteração 156
+[DEBUG]	26/02/2024 03:24:10 PM - Iteração 157
+[DEBUG]	26/02/2024 03:24:12 PM - Iteração 158
+[DEBUG]	26/02/2024 03:24:14 PM - Iteração 159
+[DEBUG]	26/02/2024 03:24:16 PM - Iteração 160
+[DEBUG]	26/02/2024 03:24:19 PM - Iteração 161
+[DEBUG]	26/02/2024 03:24:21 PM - Iteração 162
+[DEBUG]	26/02/2024 03:24:23 PM - Iteração 163
+[DEBUG]	26/02/2024 03:24:25 PM - Iteração 164
+[DEBUG]	26/02/2024 03:24:27 PM - Iteração 165
+[DEBUG]	26/02/2024 03:24:29 PM - Iteração 166
+[DEBUG]	26/02/2024 03:24:32 PM - Iteração 167
+[DEBUG]	26/02/2024 03:24:34 PM - Iteração 168
+[DEBUG]	26/02/2024 03:24:36 PM - Iteração 169
+[DEBUG]	26/02/2024 03:24:38 PM - Iteração 170
+[DEBUG]	26/02/2024 03:24:40 PM - Iteração 171
+[DEBUG]	26/02/2024 03:24:42 PM - Iteração 172
+[DEBUG]	26/02/2024 03:24:45 PM - Iteração 173
+[DEBUG]	26/02/2024 03:24:47 PM - Iteração 174
+[DEBUG]	26/02/2024 03:24:49 PM - Iteração 175
+[DEBUG]	26/02/2024 03:24:51 PM - Iteração 176
+[DEBUG]	26/02/2024 03:24:54 PM - Iteração 177
+[DEBUG]	26/02/2024 03:24:56 PM - Iteração 178
+[DEBUG]	26/02/2024 03:24:58 PM - Iteração 179
+[DEBUG]	26/02/2024 03:25:01 PM - Iteração 180
+[DEBUG]	26/02/2024 03:25:03 PM - Iteração 181
+[DEBUG]	26/02/2024 03:25:05 PM - Iteração 182
+[DEBUG]	26/02/2024 03:25:08 PM - Iteração 183
+[DEBUG]	26/02/2024 03:25:10 PM - Iteração 184
+[DEBUG]	26/02/2024 03:25:12 PM - Iteração 185
+[DEBUG]	26/02/2024 03:25:14 PM - Iteração 186
+[DEBUG]	26/02/2024 03:25:16 PM - Iteração 187
+[DEBUG]	26/02/2024 03:25:19 PM - Iteração 188
+[DEBUG]	26/02/2024 03:25:21 PM - Iteração 189
+[DEBUG]	26/02/2024 03:25:23 PM - Iteração 190
+[DEBUG]	26/02/2024 03:25:26 PM - Iteração 191
+[DEBUG]	26/02/2024 03:25:28 PM - Iteração 192
+[DEBUG]	26/02/2024 03:25:30 PM - Iteração 193
+[DEBUG]	26/02/2024 03:25:33 PM - Iteração 194
+[DEBUG]	26/02/2024 03:25:35 PM - Iteração 195
+[DEBUG]	26/02/2024 03:25:37 PM - Iteração 196
+[DEBUG]	26/02/2024 03:25:39 PM - Iteração 197
+[DEBUG]	26/02/2024 03:25:41 PM - Iteração 198
+[DEBUG]	26/02/2024 03:25:44 PM - Iteração 199
+[DEBUG]	26/02/2024 03:25:46 PM - Iteração 200
+[DEBUG]	26/02/2024 03:25:48 PM - Iteração 201
+[DEBUG]	26/02/2024 03:25:50 PM - Iteração 202
+[DEBUG]	26/02/2024 03:25:53 PM - Iteração 203
+[DEBUG]	26/02/2024 03:25:55 PM - Iteração 204
+[DEBUG]	26/02/2024 03:25:57 PM - Iteração 205
+[DEBUG]	26/02/2024 03:25:59 PM - Iteração 206
+[DEBUG]	26/02/2024 03:26:01 PM - Iteração 207
+[DEBUG]	26/02/2024 03:26:04 PM - Iteração 208
+[DEBUG]	26/02/2024 03:26:06 PM - Iteração 209
+[DEBUG]	26/02/2024 03:26:08 PM - Iteração 210
+[DEBUG]	26/02/2024 03:26:10 PM - Iteração 211
+[DEBUG]	26/02/2024 03:26:13 PM - Iteração 212
+[DEBUG]	26/02/2024 03:26:15 PM - Iteração 213
+[DEBUG]	26/02/2024 03:26:18 PM - Iteração 214
+[DEBUG]	26/02/2024 03:26:20 PM - Iteração 215
+[DEBUG]	26/02/2024 03:26:23 PM - Iteração 216
+[DEBUG]	26/02/2024 03:26:25 PM - Iteração 217
+[DEBUG]	26/02/2024 03:26:28 PM - Iteração 218
+[DEBUG]	26/02/2024 03:26:30 PM - Iteração 219
+[DEBUG]	26/02/2024 03:26:32 PM - Iteração 220
+[DEBUG]	26/02/2024 03:26:34 PM - Iteração 221
+[DEBUG]	26/02/2024 03:26:36 PM - Iteração 222
+[DEBUG]	26/02/2024 03:26:39 PM - Iteração 223
+[DEBUG]	26/02/2024 03:26:41 PM - Iteração 224
+[DEBUG]	26/02/2024 03:26:43 PM - Iteração 225
+[DEBUG]	26/02/2024 03:26:45 PM - Iteração 226
+[DEBUG]	26/02/2024 03:26:48 PM - Iteração 227
+[DEBUG]	26/02/2024 03:26:50 PM - Iteração 228
+[DEBUG]	26/02/2024 03:26:52 PM - Iteração 229
+[DEBUG]	26/02/2024 03:26:55 PM - Iteração 230
+[DEBUG]	26/02/2024 03:26:57 PM - Iteração 231
+[DEBUG]	26/02/2024 03:26:59 PM - Iteração 232
+[DEBUG]	26/02/2024 03:27:01 PM - Iteração 233
+[DEBUG]	26/02/2024 03:27:04 PM - Iteração 234
+[DEBUG]	26/02/2024 03:27:06 PM - Iteração 235
+[DEBUG]	26/02/2024 03:27:08 PM - Iteração 236
+[DEBUG]	26/02/2024 03:27:10 PM - Iteração 237
+[DEBUG]	26/02/2024 03:27:13 PM - Iteração 238
+[DEBUG]	26/02/2024 03:27:15 PM - Iteração 239
+[DEBUG]	26/02/2024 03:27:17 PM - Iteração 240
+[DEBUG]	26/02/2024 03:27:19 PM - Iteração 241
+[DEBUG]	26/02/2024 03:27:22 PM - Iteração 242
+[DEBUG]	26/02/2024 03:27:24 PM - Iteração 243
+[DEBUG]	26/02/2024 03:27:26 PM - Iteração 244
+[DEBUG]	26/02/2024 03:27:28 PM - Iteração 245
+[DEBUG]	26/02/2024 03:27:31 PM - Iteração 246
+[DEBUG]	26/02/2024 03:27:33 PM - Iteração 247
+[DEBUG]	26/02/2024 03:27:35 PM - Iteração 248
+[DEBUG]	26/02/2024 03:27:37 PM - Iteração 249
+[DEBUG]	26/02/2024 03:27:39 PM - Iteração 250
+[DEBUG]	26/02/2024 03:27:42 PM - Iteração 251
+[DEBUG]	26/02/2024 03:27:44 PM - Iteração 252
+[DEBUG]	26/02/2024 03:27:46 PM - Iteração 253
+[DEBUG]	26/02/2024 03:27:48 PM - Iteração 254
+[DEBUG]	26/02/2024 03:27:50 PM - Iteração 255
+[DEBUG]	26/02/2024 03:27:53 PM - Iteração 256
+[DEBUG]	26/02/2024 03:27:55 PM - Iteração 257
+[DEBUG]	26/02/2024 03:27:57 PM - Iteração 258
+[DEBUG]	26/02/2024 03:27:59 PM - Iteração 259
+[DEBUG]	26/02/2024 03:28:02 PM - Iteração 260
+[DEBUG]	26/02/2024 03:28:04 PM - Iteração 261
+[DEBUG]	26/02/2024 03:28:06 PM - Iteração 262
+[DEBUG]	26/02/2024 03:28:08 PM - Iteração 263
+[DEBUG]	26/02/2024 03:28:10 PM - Iteração 264
+[DEBUG]	26/02/2024 03:28:13 PM - Iteração 265
+[DEBUG]	26/02/2024 03:28:15 PM - Iteração 266
+[DEBUG]	26/02/2024 03:28:17 PM - Iteração 267
+[DEBUG]	26/02/2024 03:28:19 PM - Iteração 268
+[DEBUG]	26/02/2024 03:28:22 PM - Iteração 269
+[DEBUG]	26/02/2024 03:28:24 PM - Iteração 270
+[DEBUG]	26/02/2024 03:28:26 PM - Iteração 271
+[DEBUG]	26/02/2024 03:28:28 PM - Iteração 272
+[DEBUG]	26/02/2024 03:28:30 PM - Iteração 273
+[DEBUG]	26/02/2024 03:28:33 PM - Iteração 274
+[DEBUG]	26/02/2024 03:28:35 PM - Iteração 275
+[DEBUG]	26/02/2024 03:28:37 PM - Iteração 276
+[DEBUG]	26/02/2024 03:28:39 PM - Iteração 277
+[DEBUG]	26/02/2024 03:28:42 PM - Iteração 278
+[DEBUG]	26/02/2024 03:28:44 PM - Iteração 279
+[DEBUG]	26/02/2024 03:28:47 PM - Iteração 280
+[DEBUG]	26/02/2024 03:28:50 PM - Iteração 281
+[DEBUG]	26/02/2024 03:28:52 PM - Iteração 282
+[DEBUG]	26/02/2024 03:28:54 PM - Iteração 283
+[DEBUG]	26/02/2024 03:28:56 PM - Iteração 284
+[DEBUG]	26/02/2024 03:28:58 PM - Iteração 285
+[DEBUG]	26/02/2024 03:29:01 PM - Iteração 286
+[DEBUG]	26/02/2024 03:29:03 PM - Iteração 287
+[DEBUG]	26/02/2024 03:29:05 PM - Iteração 288
+[DEBUG]	26/02/2024 03:29:07 PM - Iteração 289
+[DEBUG]	26/02/2024 03:29:09 PM - Iteração 290
+[DEBUG]	26/02/2024 03:29:12 PM - Iteração 291
+[DEBUG]	26/02/2024 03:29:14 PM - Iteração 292
+[DEBUG]	26/02/2024 03:29:16 PM - Iteração 293
+[DEBUG]	26/02/2024 03:29:18 PM - Iteração 294
+[DEBUG]	26/02/2024 03:29:21 PM - Iteração 295
+[DEBUG]	26/02/2024 03:29:23 PM - Iteração 296
+[DEBUG]	26/02/2024 03:29:25 PM - Iteração 297
+[DEBUG]	26/02/2024 03:29:27 PM - Iteração 298
+[DEBUG]	26/02/2024 03:29:29 PM - Iteração 299
+[DEBUG]	26/02/2024 03:29:32 PM - Iteração 300
+[DEBUG]	26/02/2024 03:29:34 PM - Iteração 301
+[DEBUG]	26/02/2024 03:29:36 PM - Iteração 302
+[DEBUG]	26/02/2024 03:29:38 PM - Iteração 303
+[DEBUG]	26/02/2024 03:29:41 PM - Iteração 304
+[DEBUG]	26/02/2024 03:29:43 PM - Iteração 305
+[DEBUG]	26/02/2024 03:29:45 PM - Iteração 306
+[DEBUG]	26/02/2024 03:29:47 PM - Iteração 307
+[DEBUG]	26/02/2024 03:29:49 PM - Iteração 308
+[DEBUG]	26/02/2024 03:29:52 PM - Iteração 309
+[DEBUG]	26/02/2024 03:29:54 PM - Iteração 310
+[DEBUG]	26/02/2024 03:29:56 PM - Iteração 311
+[DEBUG]	26/02/2024 03:29:58 PM - Iteração 312
+[DEBUG]	26/02/2024 03:30:00 PM - Iteração 313
+[DEBUG]	26/02/2024 03:30:03 PM - Iteração 314
+[DEBUG]	26/02/2024 03:30:05 PM - Iteração 315
+[DEBUG]	26/02/2024 03:30:07 PM - Iteração 316
+[DEBUG]	26/02/2024 03:30:09 PM - Iteração 317
+[DEBUG]	26/02/2024 03:30:11 PM - Iteração 318
+[DEBUG]	26/02/2024 03:30:13 PM - Iteração 319
+[DEBUG]	26/02/2024 03:30:16 PM - Iteração 320
+[DEBUG]	26/02/2024 03:30:18 PM - Iteração 321
+[DEBUG]	26/02/2024 03:30:20 PM - Iteração 322
+[DEBUG]	26/02/2024 03:30:22 PM - Iteração 323
+[DEBUG]	26/02/2024 03:30:24 PM - Iteração 324
+[DEBUG]	26/02/2024 03:30:27 PM - Iteração 325
+[DEBUG]	26/02/2024 03:30:29 PM - Iteração 326
+[DEBUG]	26/02/2024 03:30:31 PM - Iteração 327
+[DEBUG]	26/02/2024 03:30:33 PM - Iteração 328
+[DEBUG]	26/02/2024 03:30:36 PM - Iteração 329
+[DEBUG]	26/02/2024 03:30:38 PM - Iteração 330
+[DEBUG]	26/02/2024 03:30:40 PM - Iteração 331
+[DEBUG]	26/02/2024 03:30:42 PM - Iteração 332
+[DEBUG]	26/02/2024 03:30:44 PM - Iteração 333
+[DEBUG]	26/02/2024 03:30:47 PM - Iteração 334
+[DEBUG]	26/02/2024 03:30:49 PM - Iteração 335
+[DEBUG]	26/02/2024 03:30:51 PM - Iteração 336
+[DEBUG]	26/02/2024 03:30:54 PM - Iteração 337
+[DEBUG]	26/02/2024 03:30:56 PM - Iteração 338
+[DEBUG]	26/02/2024 03:30:58 PM - Iteração 339
+[DEBUG]	26/02/2024 03:31:00 PM - Iteração 340
+[DEBUG]	26/02/2024 03:31:03 PM - Iteração 341
+[DEBUG]	26/02/2024 03:31:05 PM - Iteração 342
+[DEBUG]	26/02/2024 03:31:07 PM - Iteração 343
+[DEBUG]	26/02/2024 03:31:09 PM - Iteração 344
+[DEBUG]	26/02/2024 03:31:12 PM - Iteração 345
+[DEBUG]	26/02/2024 03:31:14 PM - Iteração 346
+[DEBUG]	26/02/2024 03:31:16 PM - Iteração 347
+[DEBUG]	26/02/2024 03:31:18 PM - Iteração 348
+[DEBUG]	26/02/2024 03:31:20 PM - Iteração 349
+[DEBUG]	26/02/2024 03:31:22 PM - Iteração 350
+[DEBUG]	26/02/2024 03:31:25 PM - Iteração 351
+[DEBUG]	26/02/2024 03:31:27 PM - Iteração 352
+[DEBUG]	26/02/2024 03:31:29 PM - Iteração 353
+[DEBUG]	26/02/2024 03:31:31 PM - Iteração 354
+[DEBUG]	26/02/2024 03:31:34 PM - Iteração 355
+[DEBUG]	26/02/2024 03:31:36 PM - Iteração 356
+[DEBUG]	26/02/2024 03:31:38 PM - Iteração 357
+[DEBUG]	26/02/2024 03:31:41 PM - Iteração 358
+[DEBUG]	26/02/2024 03:31:43 PM - Iteração 359
+[DEBUG]	26/02/2024 03:31:45 PM - Iteração 360
+[DEBUG]	26/02/2024 03:31:47 PM - Iteração 361
+[DEBUG]	26/02/2024 03:31:50 PM - Iteração 362
+[DEBUG]	26/02/2024 03:31:52 PM - Iteração 363
+[DEBUG]	26/02/2024 03:31:54 PM - Iteração 364
+[DEBUG]	26/02/2024 03:31:56 PM - Iteração 365
+[DEBUG]	26/02/2024 03:31:59 PM - Iteração 366
+[DEBUG]	26/02/2024 03:32:01 PM - Iteração 367
+[DEBUG]	26/02/2024 03:32:03 PM - Iteração 368
+[DEBUG]	26/02/2024 03:32:05 PM - Iteração 369
+[DEBUG]	26/02/2024 03:32:07 PM - Iteração 370
+[DEBUG]	26/02/2024 03:32:10 PM - Iteração 371
+[DEBUG]	26/02/2024 03:32:12 PM - Iteração 372
+[DEBUG]	26/02/2024 03:32:14 PM - Iteração 373
+[DEBUG]	26/02/2024 03:32:16 PM - Iteração 374
+[DEBUG]	26/02/2024 03:32:18 PM - Iteração 375
+[DEBUG]	26/02/2024 03:32:20 PM - Iteração 376
+[DEBUG]	26/02/2024 03:32:23 PM - Iteração 377
+[DEBUG]	26/02/2024 03:32:25 PM - Iteração 378
+[DEBUG]	26/02/2024 03:32:27 PM - Iteração 379
+[DEBUG]	26/02/2024 03:32:29 PM - Iteração 380
+[DEBUG]	26/02/2024 03:32:32 PM - Iteração 381
+[DEBUG]	26/02/2024 03:32:34 PM - Iteração 382
+[DEBUG]	26/02/2024 03:32:36 PM - Iteração 383
+[DEBUG]	26/02/2024 03:32:38 PM - Iteração 384
+[DEBUG]	26/02/2024 03:32:40 PM - Iteração 385
+[DEBUG]	26/02/2024 03:32:43 PM - Iteração 386
+[DEBUG]	26/02/2024 03:32:45 PM - Iteração 387
+[DEBUG]	26/02/2024 03:32:47 PM - Iteração 388
+[DEBUG]	26/02/2024 03:32:49 PM - Iteração 389
+[DEBUG]	26/02/2024 03:32:51 PM - Iteração 390
+[DEBUG]	26/02/2024 03:32:54 PM - Iteração 391
+[DEBUG]	26/02/2024 03:32:56 PM - Iteração 392
+[DEBUG]	26/02/2024 03:32:58 PM - Iteração 393
+[DEBUG]	26/02/2024 03:33:00 PM - Iteração 394
+[DEBUG]	26/02/2024 03:33:03 PM - Iteração 395
+[DEBUG]	26/02/2024 03:33:05 PM - Iteração 396
+[DEBUG]	26/02/2024 03:33:07 PM - Iteração 397
+[DEBUG]	26/02/2024 03:33:09 PM - Iteração 398
+[DEBUG]	26/02/2024 03:33:11 PM - Iteração 399
+[DEBUG]	26/02/2024 03:33:14 PM - Iteração 400
+[DEBUG]	26/02/2024 03:33:16 PM - Iteração 401
+[DEBUG]	26/02/2024 03:33:18 PM - Iteração 402
+[DEBUG]	26/02/2024 03:33:20 PM - Iteração 403
+[DEBUG]	26/02/2024 03:33:22 PM - Iteração 404
+[DEBUG]	26/02/2024 03:33:25 PM - Iteração 405
+[DEBUG]	26/02/2024 03:33:27 PM - Iteração 406
+[DEBUG]	26/02/2024 03:33:29 PM - Iteração 407
+[DEBUG]	26/02/2024 03:33:31 PM - Iteração 408
+[DEBUG]	26/02/2024 03:33:33 PM - Iteração 409
+[DEBUG]	26/02/2024 03:33:36 PM - Iteração 410
+[DEBUG]	26/02/2024 03:33:38 PM - Iteração 411
+[DEBUG]	26/02/2024 03:33:40 PM - Iteração 412
+[DEBUG]	26/02/2024 03:33:42 PM - Iteração 413
+[DEBUG]	26/02/2024 03:33:45 PM - Iteração 414
+[DEBUG]	26/02/2024 03:33:47 PM - Iteração 415
+[DEBUG]	26/02/2024 03:33:49 PM - Iteração 416
+[DEBUG]	26/02/2024 03:33:51 PM - Iteração 417
+[DEBUG]	26/02/2024 03:33:53 PM - Iteração 418
+[DEBUG]	26/02/2024 03:33:56 PM - Iteração 419
+[DEBUG]	26/02/2024 03:33:58 PM - Iteração 420
+[DEBUG]	26/02/2024 03:34:00 PM - Iteração 421
+[DEBUG]	26/02/2024 03:34:02 PM - Iteração 422
+[DEBUG]	26/02/2024 03:34:05 PM - Iteração 423
+[DEBUG]	26/02/2024 03:34:07 PM - Iteração 424
+[DEBUG]	26/02/2024 03:34:09 PM - Iteração 425
+[DEBUG]	26/02/2024 03:34:11 PM - Iteração 426
+[DEBUG]	26/02/2024 03:34:13 PM - Iteração 427
+[DEBUG]	26/02/2024 03:34:16 PM - Iteração 428
+[DEBUG]	26/02/2024 03:34:18 PM - Iteração 429
+[DEBUG]	26/02/2024 03:34:20 PM - Iteração 430
+[DEBUG]	26/02/2024 03:34:22 PM - Iteração 431
+[DEBUG]	26/02/2024 03:34:24 PM - Iteração 432
+[DEBUG]	26/02/2024 03:34:26 PM - Iteração 433
+[DEBUG]	26/02/2024 03:34:29 PM - Iteração 434
+[DEBUG]	26/02/2024 03:34:31 PM - Iteração 435
+[DEBUG]	26/02/2024 03:34:33 PM - Iteração 436
+[DEBUG]	26/02/2024 03:34:35 PM - Iteração 437
+[DEBUG]	26/02/2024 03:34:38 PM - Iteração 438
+[DEBUG]	26/02/2024 03:34:40 PM - Iteração 439
+[DEBUG]	26/02/2024 03:34:42 PM - Iteração 440
+[DEBUG]	26/02/2024 03:34:44 PM - Iteração 441
+[DEBUG]	26/02/2024 03:34:46 PM - Iteração 442
+[DEBUG]	26/02/2024 03:34:49 PM - Iteração 443
+[DEBUG]	26/02/2024 03:34:51 PM - Iteração 444
+[DEBUG]	26/02/2024 03:34:53 PM - Iteração 445
+[DEBUG]	26/02/2024 03:34:55 PM - Iteração 446
+[DEBUG]	26/02/2024 03:34:58 PM - Iteração 447
+[DEBUG]	26/02/2024 03:35:00 PM - Iteração 448
+[DEBUG]	26/02/2024 03:35:02 PM - Iteração 449
+[DEBUG]	26/02/2024 03:35:04 PM - Iteração 450
+[DEBUG]	26/02/2024 03:35:06 PM - Iteração 451
+[DEBUG]	26/02/2024 03:35:09 PM - Iteração 452
+[DEBUG]	26/02/2024 03:35:11 PM - Iteração 453
+[DEBUG]	26/02/2024 03:35:13 PM - Iteração 454
+[DEBUG]	26/02/2024 03:35:15 PM - Iteração 455
+[DEBUG]	26/02/2024 03:35:17 PM - Iteração 456
+[DEBUG]	26/02/2024 03:35:20 PM - Iteração 457
+[DEBUG]	26/02/2024 03:35:22 PM - Iteração 458
+[DEBUG]	26/02/2024 03:35:24 PM - Iteração 459
+[DEBUG]	26/02/2024 03:35:26 PM - Iteração 460
+[DEBUG]	26/02/2024 03:35:28 PM - Iteração 461
+[DEBUG]	26/02/2024 03:35:31 PM - Iteração 462
+[DEBUG]	26/02/2024 03:35:33 PM - Iteração 463
+[DEBUG]	26/02/2024 03:35:35 PM - Iteração 464
+[DEBUG]	26/02/2024 03:35:37 PM - Iteração 465
+[DEBUG]	26/02/2024 03:35:40 PM - Iteração 466
+[DEBUG]	26/02/2024 03:35:42 PM - Iteração 467
+[DEBUG]	26/02/2024 03:35:44 PM - Iteração 468
+[DEBUG]	26/02/2024 03:35:46 PM - Iteração 469
+[DEBUG]	26/02/2024 03:35:48 PM - Iteração 470
+[DEBUG]	26/02/2024 03:35:51 PM - Iteração 471
+[DEBUG]	26/02/2024 03:35:53 PM - Iteração 472
+[DEBUG]	26/02/2024 03:35:55 PM - Iteração 473
+[DEBUG]	26/02/2024 03:35:57 PM - Iteração 474
+[DEBUG]	26/02/2024 03:36:00 PM - Iteração 475
+[DEBUG]	26/02/2024 03:36:02 PM - Iteração 476
+[DEBUG]	26/02/2024 03:36:04 PM - Iteração 477
+[DEBUG]	26/02/2024 03:36:06 PM - Iteração 478
+[DEBUG]	26/02/2024 03:36:08 PM - Iteração 479
+[DEBUG]	26/02/2024 03:36:11 PM - Iteração 480
+[DEBUG]	26/02/2024 03:36:13 PM - Iteração 481
+[DEBUG]	26/02/2024 03:36:15 PM - Iteração 482
