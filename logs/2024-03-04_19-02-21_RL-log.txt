@@ -1,0 +1,34 @@
+[INFO]	04/03/2024 07:02:21 PM - Carregando o dataframe raw
+[INFO]	04/03/2024 07:03:18 PM - Número de amostras da classe 0: 6372575
+[INFO]	04/03/2024 07:03:18 PM - Número de amostras da classe 4: 1718832
+[INFO]	04/03/2024 07:03:18 PM - Número de 0.001 amostras da classe 0: 6372
+[INFO]	04/03/2024 07:03:18 PM - Número de 0.001 amostras da classe 4: 1718
+[INFO]	04/03/2024 07:03:19 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 07:04:18 PM - [0] - Recompensa: [-3271.9119]
+[INFO]	04/03/2024 07:04:18 PM - Média das recompensas: [-3271.9119]
+[INFO]	04/03/2024 07:17:55 PM - step = 25: loss = -6.98214054107666
+[INFO]	04/03/2024 07:30:24 PM - step = 50: loss = -4.124786853790283
+[INFO]	04/03/2024 07:30:24 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 07:31:23 PM - [0] - Recompensa: [-3403.0544]
+[INFO]	04/03/2024 07:31:23 PM - Média das recompensas: [-3403.0544]
+[INFO]	04/03/2024 07:44:20 PM - step = 75: loss = 10.971942901611328
+[INFO]	04/03/2024 07:57:15 PM - step = 100: loss = -8.966597557067871
+[INFO]	04/03/2024 07:57:15 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 07:58:14 PM - [0] - Recompensa: [-3271.9119]
+[INFO]	04/03/2024 07:58:14 PM - Média das recompensas: [-3271.9119]
+[INFO]	04/03/2024 08:11:09 PM - step = 125: loss = -0.7138218879699707
+[INFO]	04/03/2024 08:23:53 PM - step = 150: loss = 2.4640307426452637
+[INFO]	04/03/2024 08:23:53 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 08:24:51 PM - [0] - Recompensa: [-3326.0227]
+[INFO]	04/03/2024 08:24:51 PM - Média das recompensas: [-3326.0227]
+[INFO]	04/03/2024 08:36:49 PM - step = 175: loss = 3.178596258163452
+[INFO]	04/03/2024 08:49:15 PM - step = 200: loss = 5.379530906677246
+[INFO]	04/03/2024 08:49:15 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 08:50:13 PM - [0] - Recompensa: [-4499.458]
+[INFO]	04/03/2024 08:50:13 PM - Média das recompensas: [-4499.458]
+[INFO]	04/03/2024 09:03:03 PM - step = 225: loss = -16.24618911743164
+[INFO]	04/03/2024 09:15:41 PM - step = 250: loss = -25.114545822143555
+[INFO]	04/03/2024 09:15:41 PM - Computando a média das recompensas...
+[INFO]	04/03/2024 09:16:41 PM - [0] - Recompensa: [-3257.6714]
+[INFO]	04/03/2024 09:16:41 PM - Média das recompensas: [-3257.6714]
+[INFO]	04/03/2024 09:16:41 PM - Treinamento Concluído!

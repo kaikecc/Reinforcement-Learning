@@ -1,0 +1,39 @@
+[INFO]	05/03/2024 04:04:05 PM - Carregando o dataframe raw
+[INFO]	05/03/2024 04:05:57 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:02 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:13 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:17 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:27 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:31 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:40 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:44 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:53 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:06:58 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Número de amostras da classe 0: 6372575
+[INFO]	05/03/2024 04:07:09 PM - Número de amostras da classe 4: 1718832
+[INFO]	05/03/2024 04:07:09 PM - Número de 0.001 amostras da classe 0: 6372
+[INFO]	05/03/2024 04:07:09 PM - Número de 0.001 amostras da classe 4: 1718
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:09 PM - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+[INFO]	05/03/2024 04:07:11 PM - Primeira linha do dataset de treinamento: [-0.07517914  0.22204064  0.3732726   0.29857287 -0.44804665  4.        ]
+[INFO]	05/03/2024 04:07:11 PM - Time Step Inicial: TimeStep(
+{'step_type': array(0, dtype=int32),
+ 'reward': array(0., dtype=float32),
+ 'discount': array(1., dtype=float32),
+ 'observation': array([-0.07517914,  0.22204064,  0.3732726 ,  0.29857287, -0.44804665],
+      dtype=float32)})
+[INFO]	05/03/2024 04:07:11 PM - Segunda linha do dataset de treinamento: [-0.07517914  1.7412019  -1.2408173   1.8183577  -0.56811255  0.        ]
+[INFO]	05/03/2024 04:07:11 PM - Próximo Time Step: TimeStep(
+{'step_type': array(1, dtype=int32),
+ 'reward': array(1., dtype=float32),
+ 'discount': array(1., dtype=float32),
+ 'observation': array([-0.07517914,  0.22204064,  0.3732726 ,  0.29857287, -0.44804665],
+      dtype=float32)})
