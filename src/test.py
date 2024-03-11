@@ -44,7 +44,7 @@ def load_instance_with_numpy(data_path, events_names, columns):
     data_path = Path(data_path)
   
 
-    well_names = ['WELL-00001','WELL-00002', 'WELL-00004', 'WELL-00005', 'WELL-00007']
+    well_names = ['WELL-00001','WELL-00002', 'WELL-00004', 'WELL-00005', 'WELL-00007', 'WELL-00009', 'WELL-00010', 'WELL-00011', 'WELL-00012', 'WELL-00013']
 
     real_instances = list(class_and_file_generator(data_path, real=True, simulated=False, drawn=False))
 
@@ -53,14 +53,15 @@ def load_instance_with_numpy(data_path, events_names, columns):
     for instance in real_instances:
         class_code, instance_path = instance    
         well, _ = instance_path.stem.split('_')  
-             
-        if class_code in events_names and well in well_names:
+
+        
+
+        if class_code in events_names.keys() and well in well_names:
 
             # Read the entire CSV file into a NumPy array
             with open(instance_path, 'r') as file:
                 header = file.readline().strip().split(',')
-                indices = [header.index(col) for col in columns]
-                
+                indices = [header.index(col) for col in columns]                
                                                 
                 if 'timestamp' in columns:
                     arr = np.genfromtxt(file, delimiter=',', usecols=indices[1:], dtype=np.float32)
@@ -95,35 +96,85 @@ def load_instance_with_numpy(data_path, events_names, columns):
     return final_array
 
 
+path_dataset = '/home/dataset'
 events_names = {
-        0: 'Normal',
-        # 1: 'Abrupt Increase of BSW',
-        # 2: 'Spurious Closure of DHSV',
-        # 3: 'Severe Slugging',
-        4: 'Flow Instability',
-        # 5: 'Rapid Productivity Loss',
-        # 6: 'Quick Restriction in PCK',
-        # 7: 'Scaling in PCK',
-        # 8: 'Hydrate in Production Line'
-    }
+    0: 'Normal',
+    # 1: 'Abrupt Increase of BSW',
+     2: 'Spurious Closure of DHSV',
+    # 3: 'Severe Slugging',
+    # 4: 'Flow Instability',
+    # 5: 'Rapid Productivity Loss',
+    # 6: 'Quick Restriction in PCK',
+    # 7: 'Scaling in PCK',
+    # 8: 'Hydrate in Production Line'
+}
 
-columns = [
-        #'timestamp',
-        'P-PDG',
-        'P-TPT',
-        'T-TPT',
-        'P-MON-CKP',
-        'T-JUS-CKP',
-        #'P-JUS-CKGL',
-        #'T-JUS-CKGL',
-        #'QGL',
-        'class'        
-    ]
-dataset_test = load_instance_with_numpy(data_path = '/home/dataset_test', events_names = events_names, columns = columns)
+columns = [       
+    'P-PDG',
+    'P-TPT',
+    'T-TPT',
+    'P-MON-CKP',
+    'T-JUS-CKP',
+    #'P-JUS-CKGL',
+    #'T-JUS-CKGL',
+    #'QGL',
+    'class'
+]
 
-df = pd.DataFrame(dataset_test, columns = ['timestamp', 'P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP', 'class'])
-df.set_index('timestamp', inplace=True)
-df[['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']] = df[['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']].astype('float32')
-df['class'] = df['class'].astype(float).astype('int16')
-#explora = exploration(df)
-#explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'], _title = 'Plot DQN')
+logging.info(f'Iniciando carregamento do dataset')
+dataset = load_instance_with_numpy(data_path = path_dataset, events_names = events_names, columns = columns)    
+logging.info(f'Fim carregamento do dataset')
+
+logging.info(f'Iniciando divisão do dataset em treino e teste')
+
+# Filtrar índices que correspondem aos eventos de interesse
+condition = np.isin(dataset[:, -1], list(np.unique(dataset[:, -1])))
+indices = np.where(condition)[0]
+
+# Definindo a porcentagem para divisão entre treino e teste
+train_percentage = 0.8  # 80% para treino
+
+# Inicializando listas para guardar índices de treino e teste
+train_indices = []
+test_indices = []
+unique = np.unique(dataset[:, -1])
+# Processamento genérico para cada classe
+for event in np.unique(dataset[:, -1]):
+    # Selecionando índices para a classe atual
+    class_indices = indices[dataset[indices, -1] == event]
+    
+    # Logando o número de amostras por classe
+    print(f'Número de amostras da classe {event}: {len(class_indices)}')
+    logging.info(f'Número de amostras da classe {event}: {len(class_indices)}')
+    
+    # Dividindo os índices da classe atual em treino e teste
+    class_train_indices, class_test_indices = train_test_split(class_indices, train_size=train_percentage, random_state=42)
+    
+    # Logando o número de amostras de treino e teste
+    logging.info(f'Número de amostras de treino da classe {event}: {len(class_train_indices)}')
+    logging.info(f'Número de amostras de teste da classe {event}: {len(class_test_indices)}')
+    
+    # Adicionando aos índices gerais de treino e teste
+    train_indices.extend(class_train_indices)
+    test_indices.extend(class_test_indices)
+
+# Convertendo listas para arrays numpy para futura manipulação
+train_indices = np.array(train_indices)
+test_indices = np.array(test_indices)
+
+# Embaralhando os índices (opcional, dependendo da necessidade)
+np.random.shuffle(train_indices)
+np.random.shuffle(test_indices)
+
+# Criando conjuntos de dados de treino e teste
+dataset_train = dataset[train_indices]
+dataset_test = dataset[test_indices]
+
+# Dividindo em features (X) e target (y)
+X_train, y_train = dataset_train[:, :-1], dataset_train[:, -1]
+X_test, y_test = dataset_test[:, :-1], dataset_test[:, -1]
+
+# Escalonando as features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
