@@ -248,7 +248,7 @@ class exploration():
                     
                     # Aplica a cor baseada em 'class' em toda a extensão vertical
                     class_color = class_colors.get(cls, 'lightgrey')
-                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_color, alpha=0.5)
+                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_color, alpha=0.5, ymin=0.0, ymax=0.5)
                     
                     # Cor baseada em 'action', aplicada apenas à metade superior do gráfico
                     if action == 1 or action == 0:
