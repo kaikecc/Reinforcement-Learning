@@ -148,136 +148,7 @@ class exploration():
         plt.savefig(f"{title}.png", dpi=100, bbox_inches='tight')
         #plt.show()
   
-    '''def plot_sensor(self, sensor_columns, _title):
-        # Substituindo valores de 'class' e convertendo 'timestamp'
-        self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
-        #replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
-        #self.dataframe['class'] = self.dataframe['class'].replace(replace_values)
-        #self.dataframe['class'] = self.dataframe['class'].replace(101, -1).replace(102, -1).replace(103, -1)
         
-        # troque valores faltantes NaN por -1 da coluna 'class'
-        self.dataframe['class'] = self.dataframe['class'].fillna(-1)
-
-
-        # Definindo o eixo X e configurações de plotagem
-        x_hours = self.dataframe['timestamp']
-        #sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']  # Atualizado para incluir 'class'
-        colors = ['blue', 'green', 'red', 'purple', 'orange', 'black']  # Atualizado para corresponder ao número de colunas 
-        class_colors = {0: 'lightgreen', 
-                        1: 'lightcoral', 
-                        2: 'lightcoral',
-                        3: 'lightcoral',
-                        4: 'lightcoral',
-                        5: 'lightcoral',
-                        6: 'lightcoral',
-                        7: 'lightcoral',
-                        8: 'lightcoral',
-                        9: 'lightcoral',
-                        101: 'lightyellow', 
-                        102: 'lightyellow',
-                        103: 'lightyellow',
-                        104: 'lightyellow',
-                        105: 'lightyellow',
-                        106: 'lightyellow',
-                        107: 'lightyellow',
-                        108: 'lightyellow',
-                        109: 'lightyellow',
-                        -1: 'lightgrey'}
-        
-        legend_class = {0: 'Normal', 
-                        101: 'Transiente de Anomalia', 
-                        102: 'Transiente de Anomalia', 
-                        103: 'Transiente de Anomalia', 
-                        104: 'Transiente de Anomalia', 
-                        105: 'Transiente de Anomalia', 
-                        106: 'Transiente de Anomalia', 
-                        107: 'Transiente de Anomalia', 
-                        108: 'Transiente de Anomalia', 
-                        109: 'Transiente de Anomalia', 
-                        1: 'Estável de Anomalia',
-                        2: 'Estável de Anomalia',
-                        3: 'Estável de Anomalia',
-                        4: 'Estável de Anomalia',
-                        5: 'Estável de Anomalia',
-                        6: 'Estável de Anomalia',
-                        7: 'Estável de Anomalia',
-                        8: 'Estável de Anomalia',
-                        9: 'Estável de Anomalia',
-                        -1: 'Não Rotulado'}
-    
-        
-
-
-        instance_label_dict = {
-            0: 'Operação Normal',
-            1: 'Aumento Abrupto de BSW',
-            2: 'Fechamento Espúrio de DHSV',
-            3: 'Intermitência Severa',
-            4: 'Instabilidade na Vazão',
-            5: 'Perda Rápida de Produtividade',
-            6: 'Restrição Rápida em PCK',
-            7: 'Incrustações em PCK',
-            8: 'Hidrato na Linha de Produção'
-        }
-
-
-        plt.figure(figsize=(6, 12))  # Ajustado para acomodar todos os subplots
-        patches = [mpatches.Patch(color=class_colors[cls], label=label) for cls, label in legend_class.items()]
-
-        for i, column in enumerate(sensor_columns):
-            ax = plt.subplot(len(sensor_columns), 1, i + 1)  # Ajustado para criar um subplot para cada coluna
-            ax.plot(x_hours, self.dataframe[column], color=colors[i]) # comment  label=column)
-            ax.set_title(column)
-            ax.set_xlabel('Tempo (h)')
-            ax.set_ylabel('Pressão (Pa)' if column in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)')
-            ax.grid(True)
-            #ax.legend()
-
-        # Pintando a área de fundo de acordo com a classe
-            start_idx = 0
-            for j in range(1, len(self.dataframe)):
-                if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1:
-                    end_idx = j
-                    cls = self.dataframe.iloc[start_idx]['class']
-                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_colors.get(cls, 'lightgrey'), alpha=0.5)
-                    start_idx = j
-
-            ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
-            
-            # Rotacionando os ticks do eixo X especificamente para este subplot
-            for label in ax.get_xticklabels():
-                label.set_rotation(0)
-
-
-        #plt.suptitle(instance_label_dict[self.dataframe['label'].values[0]], fontsize=16, y=1.02)  # y é ajustado para evitar sobreposição com o topo do subplot superior
-
-
-        plt.tight_layout()
-
-        
-
-        unique_patches_dict = OrderedDict()
-
-        for patch in patches:  # 'patches' é sua lista original de objetos Patch
-            color = patch.get_facecolor()  # Ou outra função apropriada para obter a cor
-            label = patch.get_label()
-            key = (color, label)
-            
-            if key not in unique_patches_dict:
-                unique_patches_dict[key] = patch
-
-        unique_patches = list(unique_patches_dict.values())
-        
-        # Adicionando legenda de classes ao gráfico com ajuste de posição
-        # troque a localização para baixo e para a direita para evitar sobreposição com o gráfico
-        plt.figlegend(handles=unique_patches, loc='lower right', title='Classificação', bbox_to_anchor=(1.38, -0.08), bbox_transform=plt.gcf().transFigure)
-            
-
-        plt.savefig(f"{_title}.jpg", dpi=100, bbox_inches='tight')
-        plt.grid(True)
-        plt.show()'''
-    
     def plot_sensor(self, sensor_columns, _title):
         # Substituindo valores de 'class' e convertendo 'timestamp'
         self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
@@ -359,14 +230,33 @@ class exploration():
             ax.grid(True)
             #ax.legend()
 
+                    
         # Pintando a área de fundo de acordo com a classe
-            start_idx = 0
+            '''start_idx = 0
             for j in range(1, len(self.dataframe)):
                 if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1:
                     end_idx = j
                     cls = self.dataframe.iloc[start_idx]['class']
                     ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_colors.get(cls, 'lightgrey'), alpha=0.5)
+                    start_idx = j'''
+            start_idx = 0
+            for j in range(1, len(self.dataframe)):
+                if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1 or self.dataframe.iloc[j]['action'] != self.dataframe.iloc[j-1]['action']:
+                    end_idx = j
+                    cls = self.dataframe.iloc[start_idx]['class']
+                    action = self.dataframe.iloc[start_idx]['action']
+                    
+                    # Aplica a cor baseada em 'class' em toda a extensão vertical
+                    class_color = class_colors.get(cls, 'lightgrey')
+                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_color, alpha=0.5)
+                    
+                    # Cor baseada em 'action', aplicada apenas à metade superior do gráfico
+                    if action == 1 or action == 0:
+                        action_color = 'yellow' if action == 1 else 'cyan'
+                        ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
+
                     start_idx = j
+
 
             ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
             ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
