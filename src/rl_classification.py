@@ -110,6 +110,7 @@ def load_instance_with_numpy(data_path):
     }
 
     columns = [
+        'timestamp',
         'P-PDG',
         'P-TPT',
         'T-TPT',
@@ -136,15 +137,31 @@ def load_instance_with_numpy(data_path):
             # Read the entire CSV file into a NumPy array
             with open(instance_path, 'r') as file:
                 header = file.readline().strip().split(',')
-                indices = [header.index(col) for col in columns]
+                indices = [header.index(col) for col in columns[1:]]
                 arr = np.genfromtxt(file, delimiter=',', usecols=indices, dtype=np.float32)
                                                 
-                arr = arr[~np.isnan(arr[:, [0, 1, 2, 3, 4, 5]]).any(axis=1)]
-                arr[:, :-1] = arr[:, :-1].astype(np.float32)  # Convert selected columns to float32
-                arr[:, -1] = arr[:, -1].astype(np.int16)  # Convert 'class' column to int16
+                if 'timestamp' in columns:
+                    timestamp_idx = header.index('timestamp')
+                    file.seek(0)
+                    file.readline()  # Pula o cabeçalho
+                    timestamps = np.genfromtxt(file, delimiter=',', skip_header=0, usecols=timestamp_idx, dtype=str)
+                    if isinstance(timestamps, str):                
+                        timestamps = np.array([timestamps])
 
-                # Adds the processed NumPy array to the list
-                arrays_list.append(arr)
+                    fmt = "%Y-%m-%d %H:%M:%S.%f"
+                    rounded_timestamps = [datetime.strptime(ts, fmt).strftime("%Y-%m-%d %H:%M:%S") for ts in timestamps]
+                    
+                    # Combinação dos timestamps arredondados e dados numéricos
+                    final_data = np.hstack([np.array(rounded_timestamps).reshape(-1, 1), arr])
+                    #final_data = final_data[~np.isnan(final_data).any(axis=1)]
+                    #final_data[:, 1:-1] = final_data[:, 1:-1].astype(np.float32)
+                    #final_data[:, -1] = final_data[:, -1].astype(np.int16)
+                    arrays_list.append(final_data)
+                else:
+                    arr[:, :-1] = arr[:, :-1].astype(np.float32)  # Convert selected columns to float32
+                    arr[:, -1] = arr[:, -1].astype(np.int16)  # Convert 'class' column to int16
+                    arr = arr[~np.isnan(arr).any(axis=1)]
+                    arrays_list.append(arr)    
 
     # Concatenate all processed NumPy arrays
     final_array = np.concatenate(arrays_list)
