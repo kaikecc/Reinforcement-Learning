@@ -152,10 +152,10 @@ class exploration():
     def plot_sensor(self, sensor_columns, _title):
         # Substituindo valores de 'class' e convertendo 'timestamp'
         self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
-        replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
-        self.dataframe['class'] = self.dataframe['class'].replace(replace_values)
+        #replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
+        #self.dataframe['class'] = self.dataframe['class'].replace(replace_values)
         
-        # troque valores faltantes NaN por 2 da coluna 'class'
+        # troque valores faltantes NaN por -1 da coluna 'class'
         self.dataframe['class'] = self.dataframe['class'].fillna(-1)
 
 
