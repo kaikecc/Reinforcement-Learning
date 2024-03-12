@@ -22,126 +22,128 @@ import os
 #sys.path.append(os.path.join('..','..'))
 from classes._exploration import exploration
 from classes._Env3WGym import Env3WGym
+from classes._Agent import Agent
+from classes._LoadInstances import LoadInstances
 
-def class_and_file_generator(data_path, real=False, simulated=False, drawn=False):
-    for class_path in data_path.iterdir():
-        if class_path.is_dir():
-            try:
-                class_code = int(class_path.stem)
-            except ValueError:
-                # Se não for possível converter para int, pule este diretório
-                continue
-
-            for instance_path in class_path.iterdir():
-                if (instance_path.suffix == '.csv'):
-                    if (simulated and instance_path.stem.startswith('SIMULATED')) or \
-                       (drawn and instance_path.stem.startswith('DRAWN')) or \
-                       (real and (not instance_path.stem.startswith('SIMULATED')) and \
-                       (not instance_path.stem.startswith('DRAWN'))):
-                        yield class_code, instance_path
-
-def load_instance_with_numpy(data_path, events_names, columns, well_names):
-    data_path = Path(data_path)
-  
-    real_instances = list(class_and_file_generator(data_path, real=True, simulated=False, drawn=False))
-
-    arrays_list = []  # List to store processed NumPy arrays
-
-    for instance in real_instances:
-        class_code, instance_path = instance    
-        well, _ = instance_path.stem.split('_')  
-             
-        if class_code in events_names.keys() and well in well_names:
-
-            # Read the entire CSV file into a NumPy array
-            with open(instance_path, 'r') as file:
-                header = file.readline().strip().split(',')
-                indices = [header.index(col) for col in columns]
-                                                
-                if 'timestamp' in columns:
-                    arr = np.genfromtxt(file, delimiter=',', usecols=indices[1:], dtype=np.float32)
-                    arr[np.isinf(arr)] = np.nan
-                    timestamp_idx = header.index('timestamp')
-                    # Primeiro, vamos carregar todos os timestamps como um array numpy
-                    file.seek(0)
-                    file.readline()  # Skip the header
-                    timestamps = np.genfromtxt(file, delimiter=',', skip_header=0, usecols=timestamp_idx, dtype=str)
-                    if isinstance(timestamps, str):
-                        timestamps = np.array([timestamps])
-
-                    # Converta os timestamps para o formato desejado antes de aplicar o filtro
-                    fmt = "%Y-%m-%d %H:%M:%S.%f"
-                    rounded_timestamps = np.array([datetime.strptime(ts, fmt).strftime("%Y-%m-%d %H:%M:%S") for ts in timestamps])
-
-                    # Agora, aplicamos o mesmo filtro usado em 'arr' para 'rounded_timestamps'
-                    # Precisamos determinar quais linhas em 'arr' NÃO serão removidas por conter NaN
-                    not_nan_rows = ~np.isnan(arr).any(axis=1)
-
-                    # Filtramos 'arr' e 'rounded_timestamps' usando este índice
-                    arr_filtered = arr[not_nan_rows]
-                    rounded_timestamps_filtered = rounded_timestamps[not_nan_rows]
-
-                    # Agora, ambos 'arr_filtered' e 'rounded_timestamps_filtered' estão alinhados
-                    # e podemos concatená-los sem enfrentar o problema de dimensões incompatíveis
-                    final_data = np.hstack([rounded_timestamps_filtered.reshape(-1, 1), arr_filtered])
-
-                    arrays_list.append(final_data)
-                else:
-                    arr = np.genfromtxt(file, delimiter=',', usecols=indices, dtype=np.float32)
-                    # Tratando NaN e valores infinitos antes da conversão
-                    arr[np.isinf(arr)] = np.nan
-                    arr = arr[~np.isnan(arr).any(axis=1)]
-                    arr[:, :-1] = arr[:, :-1].astype(np.float32)  # Convert selected columns to float32
-                    arr[:, -1] = arr[:, -1].astype(np.int16)  # Convert 'class' column to int16
-                    
-                    arrays_list.append(arr)               
-
-    # Concatenate all processed NumPy arrays
-    final_array = np.concatenate(arrays_list) if arrays_list else np.array([])
-
-    return final_array
-
-
-columns = [
-        'timestamp',
-        'P-PDG',
-        'P-TPT',
-        'T-TPT',
-        'P-MON-CKP',
-        'T-JUS-CKP',
-        #'P-JUS-CKGL',
-        #'T-JUS-CKGL',
-        #'QGL',
-        'class'       
-    ]
 
 events_names = {
-        0: 'Normal',
-        1: 'Abrupt Increase of BSW',
-        # 2: 'Spurious Closure of DHSV',
-        # 3: 'Severe Slugging',
-        # 4: 'Flow Instability',
-        # 5: 'Rapid Productivity Loss',
-        # 6: 'Quick Restriction in PCK',
-        # 7: 'Scaling in PCK',
-        # 8: 'Hydrate in Production Line'
-    }
+    0: 'Normal',
+    # 1: 'Abrupt Increase of BSW',
+    # 2: 'Spurious Closure of DHSV',
+    # 3: 'Severe Slugging',
+    4: 'Flow Instability',
+    # 5: 'Rapid Productivity Loss',
+    # 6: 'Quick Restriction in PCK',
+    # 7: 'Scaling in PCK',
+    # 8: 'Hydrate in Production Line'
+}
+
+event_name = [value for key, value in events_names.items() if key != 0]
+
+path_dataset = '/home/dataset'    
+
+columns = [ 
+    'timestamp',      
+    'P-PDG',
+    'P-TPT',
+    'T-TPT',
+    'P-MON-CKP',
+    'T-JUS-CKP',
+    #'P-JUS-CKGL',
+    #'T-JUS-CKGL',
+    #'QGL',
+    'class'
+]
 
 well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
+
+instances = LoadInstances(path_dataset)
+
+
+dataset = instances.load_instance_with_numpy(events_names, columns)    
+
     
+# Definindo a porcentagem para divisão entre treino e teste
+train_percentage = 0.8  # 80% para treino
 
-dataset_test = load_instance_with_numpy(data_path = '/home/dataset_test', events_names = events_names, columns = columns, well_names = well_names)
-ones_column = np.ones((dataset_test.shape[0], 1))
+# Inicializando listas para guardar índices de treino e teste
+train_indices = []
+test_indices = []
 
-# Concatena a coluna de uns ao dataset
-dataset_with_ones = np.column_stack((dataset_test, ones_column))
+# Processamento genérico para cada classe
+for event in np.unique(dataset[:, -1]):
+    # Selecionando índices para a classe atual        
+    class_indices = np.where(dataset[:, -1] == event)[0]
+    
+    # Logando o número de amostras por classe
+    print(f'Número de amostras da classe {event}: {len(class_indices)}')
+    
+    
+    # Dividindo os índices da classe atual em treino e teste
+    class_train_indices, class_test_indices = train_test_split(class_indices, train_size=train_percentage, random_state=42)
+    
+        
+    # Adicionando aos índices gerais de treino e teste
+    train_indices.extend(class_train_indices)
+    test_indices.extend(class_test_indices)
 
-df = pd.DataFrame(dataset_with_ones, columns = ['timestamp', 'P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP', 'class', 'action'])
-df.set_index('timestamp', inplace=True)
-df[['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']] = df[['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']].astype('float32')
-df['class'] = df['class'].astype(float).astype('int16')
-df['action'] = df['action'].astype(float).astype('int16')
+# Convertendo listas para arrays numpy para futura manipulação
+train_indices = np.array(train_indices)    
+test_temp_indices = np.array(test_indices)       
+
+test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5, random_state=42)
+
+# Embaralhando os índices (opcional, dependendo da necessidade)
+np.random.shuffle(train_indices)
+np.random.shuffle(test_indices)
 
 
-explora = exploration(df)
-explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'], _title = 'Plot DQN')
+# Criando conjuntos de dados de treino e teste
+dataset_train = dataset[train_indices]
+dataset_test = dataset[test_indices]
+dataset_validation = dataset[validation_indices]
+
+
+# Dividindo em features (X) e target (y)
+X_train, y_train = dataset_train[:, :-1], dataset_train[:, -1]
+X_test, y_test = dataset_test[:, :-1], dataset_test[:, -1]
+X_validation, y_validation = dataset_validation[:, :-1], dataset_validation[:, -1]
+
+# Delete a primeira coluna (timestamp) das features
+X_train = np.delete(X_train, 0, axis=1)
+X_test = np.delete(X_test, 0, axis=1)
+
+# Escalonando as features
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+X_validation_scaled = scaler.transform(X_validation[:, 1:])   
+
+
+# Se necessário, você pode combinar as features escalonadas e o target para formar os datasets finais
+dataset_train_scaled = np.column_stack((X_train_scaled, y_train))
+dataset_test_scaled = np.column_stack((X_test_scaled, y_test))
+dataset_validation_scaled = np.column_stack((X_validation_scaled, y_validation))
+
+fmt = "%Y-%m-%d %H:%M:%S.%f"
+
+# Convertendo a primeira coluna para datetime
+timestamps = dataset_validation_scaled[:, 0].astype(str)  # Assegura que estamos lidando com strings
+datetimes = np.array([datetime.strptime(ts, fmt) for ts in timestamps])
+
+# Calculando as diferenças em segundos
+# As diferenças são calculadas entre timestamps consecutivos, convertendo para 'timedelta64[s]' para obter diferenças em segundos
+time_diffs = np.array([(datetimes[i] - datetimes[i-1]).total_seconds() if i > 0 else np.nan for i in range(1, len(datetimes))])
+
+# Encontrando índices onde o incremento excede 1 segundo
+split_indices = np.where(time_diffs > 1)[0] + 1  # Correção para alinhar os índices após o cálculo de diferença
+
+# Dividindo o dataset baseado nos índices encontrados
+datasets = []
+start_idx = 0
+for end_idx in split_indices:
+    datasets.append(dataset_validation_scaled[start_idx:end_idx, :])
+    start_idx = end_idx
+
+# Adicionando o último segmento após o último índice de divisão
+datasets.append(dataset_validation_scaled[start_idx:, :])
