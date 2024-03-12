@@ -101,4 +101,4 @@ class Agent:
         accuracy = sum(correct_predictions_list) / sum(total_predictions_list) if sum(total_predictions_list) > 0 else 0
 
         
-        return accuracy
+        return accuracy, model
