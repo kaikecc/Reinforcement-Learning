@@ -1,0 +1,1 @@
+[INFO]	12/03/2024 08:49:55 AM - Iniciando carregamento do dataset

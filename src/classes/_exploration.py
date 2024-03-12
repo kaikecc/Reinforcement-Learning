@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import os
 import matplotlib.dates as mdates
 from collections import OrderedDict
+import logging
 
 class exploration():
     def __init__(self, dataframe):
@@ -112,6 +113,7 @@ class exploration():
         # Dicionário para armazenar os resultados
         quartiles_results = {}
 
+        logging.info('Quartis para cada sensor e classe:')
         # Iterar sobre cada sensor
         for var in sensors:
             quartiles_results[var] = {}
@@ -119,14 +121,15 @@ class exploration():
                 data = filtered_data[filtered_data['class'] == cls][var]
                 quartiles = data.quantile([0.25, 0.5, 0.75]).to_dict()
                 quartiles_results[var][cls] = quartiles
+                logging.info(f'{var} - {legend_class[cls]}: {quartiles}')
         
-        print(quartiles_results)
+        
 
         plt.tight_layout()
         plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Classificação')
         plt.subplots_adjust(bottom=0.15, top=0.95)
 
-        plt.savefig(f"{_title}.jpg", dpi=300, bbox_inches='tight')
+        plt.savefig(f"{_title}.png", dpi=300, bbox_inches='tight')
         plt.grid(True)
         plt.show()
         return filtered_dataset_numpy
@@ -145,7 +148,7 @@ class exploration():
         plt.figure(figsize=(10, 8))
         sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
         #plt.title(title)
-        plt.savefig(f"{title}.png", dpi=100, bbox_inches='tight')
+        plt.savefig(f"{title}.png", dpi=300, bbox_inches='tight')
         #plt.show()
   
         
@@ -290,4 +293,31 @@ class exploration():
 
         plt.savefig(f"{_title}.png", dpi=300, bbox_inches='tight')
         plt.grid(True)
+        plt.show()
+
+    
+    def plot_estados(df_env):
+        # Contagem de valores para cada classe
+        class_counts = df_env['class'].value_counts().sort_index()
+        # soma os valores de 1 a 9 e 101 a 109
+        rare_class_counts_A = class_counts[(class_counts.index > 0) & (class_counts.index < 10)].sum()
+        rare_class_counts_B = class_counts[(class_counts.index > 10)].sum()
+        rare_class_counts_C = class_counts[(class_counts.index == 0)].sum()
+
+        # Total de amostras
+        total = rare_class_counts_A + rare_class_counts_B + rare_class_counts_C
+
+        logging.info(f'Normal: {rare_class_counts_C} - {round(rare_class_counts_C/total*100, 2)}%')
+        logging.info(f'Transiente de anomalia: {rare_class_counts_B} - {round(rare_class_counts_B/total*100, 2)}%')
+        logging.info(f'Estável de anomalia: {rare_class_counts_A} - {round(rare_class_counts_A/total*100, 2)}%')
+        logging.info(f'Total: {rare_class_counts_A + rare_class_counts_B + rare_class_counts_C}')
+
+        fig, ax = plt.subplots()
+        ax.bar('Normal', rare_class_counts_C, label='Normal')
+        ax.bar('Estável de anomalia', rare_class_counts_A, label='Estável de anomalia')
+        ax.bar('Transiente de anomalia', rare_class_counts_B, label='Transiente de anomalia')
+
+        ax.set_ylabel('Quantidade')
+        ax.set_title('Quantidade de amostras por classe')
+        ax.legend()
         plt.show()

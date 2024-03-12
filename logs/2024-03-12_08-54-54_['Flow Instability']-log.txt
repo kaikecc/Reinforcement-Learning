@@ -1,0 +1,14 @@
+[INFO]	12/03/2024 08:54:54 AM - Iniciando carregamento do dataset
+[INFO]	12/03/2024 08:55:27 AM - Fim carregamento do dataset
+[INFO]	12/03/2024 08:55:27 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	12/03/2024 08:55:27 AM - Número de amostras da classe 0.0: 8430978
+[INFO]	12/03/2024 08:55:27 AM - Número de amostras de treino da classe 0.0: 6744782
+[INFO]	12/03/2024 08:55:27 AM - Número de amostras de teste da classe 0.0: 1686196
+[INFO]	12/03/2024 08:55:28 AM - Número de amostras da classe 4.0: 2453192
+[INFO]	12/03/2024 08:55:28 AM - Número de amostras de treino da classe 4.0: 1962553
+[INFO]	12/03/2024 08:55:28 AM - Número de amostras de teste da classe 4.0: 490639
+[INFO]	12/03/2024 08:55:30 AM - Fim divisão do dataset em treino e teste
+[INFO]	12/03/2024 08:55:30 AM - Iniciando treinamento do modelo DQN
+[INFO]	12/03/2024 08:55:30 AM - Tempo de Treinamento DQN: 0.0001304149627685547
+[INFO]	12/03/2024 08:55:30 AM - Fim treinamento do modelo DQN
+[INFO]	12/03/2024 08:55:30 AM - Iniciando avaliação do modelo de teste DQN
