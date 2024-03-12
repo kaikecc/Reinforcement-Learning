@@ -291,7 +291,7 @@ class exploration():
     
         
 
-        plt.savefig(f"{_title}.png", dpi=300, bbox_inches='tight')
+        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
         plt.grid(True)
         plt.show()
 
