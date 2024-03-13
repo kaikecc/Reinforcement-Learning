@@ -61,6 +61,7 @@ class Agent:
 
     def env3W_dqn_eval(self, dataset_test_scaled, n_envs, n_eval_episodes=1):
         
+        logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
         envs = self.envs_random(dataset_test_scaled, n_envs)
         model = DQN.load(self.path_save)
         # Inicializa listas para armazenar os dados de cada episódio
@@ -87,8 +88,7 @@ class Agent:
             # Atualiza a mensagem de log para incluir a recompensa e a porcentagem de acerto
             if total_predictions > 0:  # Evita divisão por zero
                 percentage_correct = correct_predictions / total_predictions
-                #logging.info(f"[{episode}] Recompensa: {correct_predictions}, Porcentagem de acerto: {percentage_correct:.2f}.")
-                #print(f"[{episode}] Recompensa: {correct_predictions}, Porcentagem de acerto: {percentage_correct:.2f}.")
+                #logging.info(f"[{episode}] Recompensa: {correct_predictions}, Porcentagem de acerto: {percentage_correct:.2f}.")                
             else:
                 logging.info(f"Sem predições.")
                 #print(f"[{episode}] Sem predições.")
