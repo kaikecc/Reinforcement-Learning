@@ -1,0 +1,61 @@
+[INFO]	13/03/2024 09:46:07 AM - Iniciando carregamento do dataset
+[INFO]	13/03/2024 09:46:41 AM - Fim carregamento do dataset
+[INFO]	13/03/2024 09:46:41 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras da classe 0: 8430978
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras de treino da classe 0: 6744782
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras de teste da classe 0: 1686196
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras da classe 4: 2460270
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras de treino da classe 4: 1968216
+[INFO]	13/03/2024 09:46:45 AM - Número de amostras de teste da classe 4: 492054
+[INFO]	13/03/2024 09:46:49 AM - Número de amostras de treino: 8712998
+[INFO]	13/03/2024 09:46:49 AM - Número de amostras de teste: 1089125
+[INFO]	13/03/2024 09:46:49 AM - Número de amostras de validação: 1089125
+[INFO]	13/03/2024 09:46:57 AM - Fim divisão do dataset em treino e teste
+[INFO]	13/03/2024 09:46:57 AM - Iniciando treinamento do modelo DQN
+[INFO]	13/03/2024 09:47:18 AM - Tempo de Treinamento DQN: 20.97s
+[INFO]	13/03/2024 09:47:18 AM - Fim treinamento do modelo DQN
+[INFO]	13/03/2024 09:47:18 AM - Iniciando avaliação do modelo de teste DQN
+[INFO]	13/03/2024 09:47:18 AM - Avaliando o modelo ..\models\Flow Instability_dqn_env3W com 1 episódios.
+[INFO]	13/03/2024 09:47:44 AM - Acurácia: 0.9164
+[INFO]	13/03/2024 09:47:44 AM - Fim avaliação do modelo de teste DQN
+[INFO]	13/03/2024 09:47:44 AM - Iniciando a separação dos grupos de validação
+[INFO]	13/03/2024 09:47:51 AM - Fim da separação dos grupos de validação com 38 grupos
+[INFO]	13/03/2024 09:47:51 AM - Iniciando predição da 0ª instância para teste DQN
+[INFO]	13/03/2024 09:47:52 AM - Acurácia da 0ª instância: 1.0000
+[INFO]	13/03/2024 09:47:52 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:47:56 AM - Iniciando predição da 1ª instância para teste DQN
+[INFO]	13/03/2024 09:47:57 AM - Acurácia da 1ª instância: 1.4362
+[INFO]	13/03/2024 09:47:57 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:00 AM - Iniciando predição da 2ª instância para teste DQN
+[INFO]	13/03/2024 09:48:01 AM - Acurácia da 2ª instância: 1.4194
+[INFO]	13/03/2024 09:48:01 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:09 AM - Iniciando predição da 3ª instância para teste DQN
+[INFO]	13/03/2024 09:48:09 AM - Acurácia da 3ª instância: 8.4622
+[INFO]	13/03/2024 09:48:09 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:12 AM - Iniciando predição da 4ª instância para teste DQN
+[INFO]	13/03/2024 09:48:12 AM - Acurácia da 4ª instância: 13.4261
+[INFO]	13/03/2024 09:48:12 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:14 AM - Iniciando predição da 5ª instância para teste DQN
+[INFO]	13/03/2024 09:48:14 AM - Acurácia da 5ª instância: 14.8833
+[INFO]	13/03/2024 09:48:14 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:15 AM - Iniciando predição da 6ª instância para teste DQN
+[INFO]	13/03/2024 09:48:18 AM - Acurácia da 6ª instância: 1.5688
+[INFO]	13/03/2024 09:48:18 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:39 AM - Iniciando predição da 7ª instância para teste DQN
+[INFO]	13/03/2024 09:48:41 AM - Acurácia da 7ª instância: 3.7487
+[INFO]	13/03/2024 09:48:41 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:48:54 AM - Iniciando predição da 8ª instância para teste DQN
+[INFO]	13/03/2024 09:48:56 AM - Acurácia da 8ª instância: 3.3697
+[INFO]	13/03/2024 09:48:56 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:49:12 AM - Iniciando predição da 9ª instância para teste DQN
+[INFO]	13/03/2024 09:49:13 AM - Acurácia da 9ª instância: 6.9298
+[INFO]	13/03/2024 09:49:13 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:49:21 AM - Iniciando predição da 10ª instância para teste DQN
+[INFO]	13/03/2024 09:49:23 AM - Acurácia da 10ª instância: 8.0539
+[INFO]	13/03/2024 09:49:23 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:49:32 AM - Iniciando predição da 11ª instância para teste DQN
+[INFO]	13/03/2024 09:49:42 AM - Acurácia da 11ª instância: 1.8738
+[INFO]	13/03/2024 09:49:42 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:50:55 AM - Iniciando predição da 12ª instância para teste DQN
+[INFO]	13/03/2024 09:50:57 AM - Acurácia da 12ª instância: 13.0828
+[INFO]	13/03/2024 09:50:57 AM - Fim predição da instância de teste DQN
