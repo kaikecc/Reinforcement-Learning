@@ -117,7 +117,7 @@ X_test = np.delete(X_test, 0, axis=1)
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
-X_validation_scaled = scaler.transform(X_validation[:, 1:])   
+X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:])))    
 
 
 # Se necessário, você pode combinar as features escalonadas e o target para formar os datasets finais
