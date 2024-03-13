@@ -152,8 +152,7 @@ class exploration():
         #plt.title(title)
         plt.savefig(f"{title}.png", dpi=300, bbox_inches='tight')
         #plt.show()
-  
-        
+          
     def plot_sensor(self, sensor_columns, _title):
         # Substituindo valores de 'class' e convertendo 'timestamp'
         self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
@@ -304,11 +303,10 @@ class exploration():
         plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')        
         plt.close()
         #plt.show()
-
     
-    def plot_estados(df_env):
+    def plot_estados(self, _title):
         # Contagem de valores para cada classe
-        class_counts = df_env['class'].value_counts().sort_index()
+        class_counts = self.dataframe['class'].value_counts().sort_index()
         # soma os valores de 1 a 9 e 101 a 109
         rare_class_counts_A = class_counts[(class_counts.index > 0) & (class_counts.index < 10)].sum()
         rare_class_counts_B = class_counts[(class_counts.index > 10)].sum()
@@ -323,11 +321,20 @@ class exploration():
         logging.info(f'Total: {rare_class_counts_A + rare_class_counts_B + rare_class_counts_C}')
 
         fig, ax = plt.subplots()
-        ax.bar('Normal', rare_class_counts_C, label='Normal')
-        ax.bar('Estável de anomalia', rare_class_counts_A, label='Estável de anomalia')
-        ax.bar('Transiente de anomalia', rare_class_counts_B, label='Transiente de anomalia')
+        bars = ax.bar(['Normal', 'Estável de anomalia', 'Transiente de anomalia'], [rare_class_counts_C, rare_class_counts_A, rare_class_counts_B], label=['Normal', 'Estável de anomalia', 'Transiente de anomalia'])
 
         ax.set_ylabel('Quantidade')
-        ax.set_title('Quantidade de amostras por classe')
+        ax.set_title('Quantidade de registros por rótulos')
         ax.legend()
-        plt.show()
+
+        # Adiciona o valor acima de cada barra
+        for bar in bars:
+            height = bar.get_height()
+            ax.text(bar.get_x() + bar.get_width() / 2., 1.05*height,
+                    '%d' % int(height),
+                    ha='center', va='bottom')
+
+        # Salva a figura
+        plt.grid(True)
+        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
+        plt.close()
