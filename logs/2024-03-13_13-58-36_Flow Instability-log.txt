@@ -1,0 +1,24 @@
+[INFO]	13/03/2024 01:58:36 PM - Iniciando carregamento do dataset
+[INFO]	13/03/2024 01:58:36 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	13/03/2024 01:59:21 PM - Fim carregamento do dataset
+[INFO]	13/03/2024 01:59:21 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	13/03/2024 01:59:26 PM - Número de amostras da classe 0: 8430978
+[INFO]	13/03/2024 01:59:26 PM - Número de amostras de treino da classe 0: 6744782
+[INFO]	13/03/2024 01:59:26 PM - Número de amostras de teste da classe 0: 1686196
+[INFO]	13/03/2024 01:59:27 PM - Número de amostras da classe 4: 2460270
+[INFO]	13/03/2024 01:59:27 PM - Número de amostras de treino da classe 4: 1968216
+[INFO]	13/03/2024 01:59:27 PM - Número de amostras de teste da classe 4: 492054
+[INFO]	13/03/2024 01:59:32 PM - Número de amostras de treino: 8712998
+[INFO]	13/03/2024 01:59:32 PM - Número de amostras de teste: 1089125
+[INFO]	13/03/2024 01:59:32 PM - Número de amostras de validação: 1089125
+[INFO]	13/03/2024 01:59:50 PM - Fim divisão do dataset em treino e teste
+[INFO]	13/03/2024 01:59:50 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	13/03/2024 02:00:14 PM - Tempo de Treinamento DQN: 24.31s
+[INFO]	13/03/2024 02:00:14 PM - Fim treinamento do algoritmo DQN
+[INFO]	13/03/2024 02:00:14 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	13/03/2024 02:00:14 PM - Avaliando o modelo ..\models\Flow Instability_DQN_Env3W com 1 episódios.
+[INFO]	13/03/2024 02:00:45 PM - Acurácia: 0.23
+[INFO]	13/03/2024 02:00:45 PM - Acurácia de 0.22593 no conjunto de dados de teste usando DQN
+[INFO]	13/03/2024 02:00:45 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	13/03/2024 02:00:45 PM - Acurácia insuficiente para validação individual
+[INFO]	13/03/2024 02:00:45 PM - Concluído a execução do aprendizado por reforço

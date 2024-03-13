@@ -1,0 +1,22 @@
+[INFO]	13/03/2024 12:36:13 PM - Iniciando carregamento do dataset
+[INFO]	13/03/2024 12:36:13 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	13/03/2024 12:36:38 PM - Fim carregamento do dataset
+[INFO]	13/03/2024 12:36:38 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	13/03/2024 12:36:42 PM - Número de amostras da classe 0: 8626354
+[INFO]	13/03/2024 12:36:42 PM - Número de amostras de treino da classe 0: 6901083
+[INFO]	13/03/2024 12:36:42 PM - Número de amostras de teste da classe 0: 1725271
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras da classe 1.0: 10417
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras da classe 101.0: 95658
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	13/03/2024 12:36:43 PM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	13/03/2024 12:36:47 PM - Número de amostras de treino: 6985942
+[INFO]	13/03/2024 12:36:47 PM - Número de amostras de teste: 873243
+[INFO]	13/03/2024 12:36:47 PM - Número de amostras de validação: 873244
+[INFO]	13/03/2024 12:36:55 PM - Fim divisão do dataset em treino e teste
+[INFO]	13/03/2024 12:36:55 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	13/03/2024 12:37:19 PM - Tempo de Treinamento DQN: 24.33s
+[INFO]	13/03/2024 12:37:19 PM - Fim treinamento do algoritmo DQN
+[INFO]	13/03/2024 12:37:19 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	13/03/2024 12:37:19 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW_DQN_Env3W com 1 episódios.

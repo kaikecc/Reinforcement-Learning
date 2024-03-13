@@ -14,9 +14,9 @@ class exploration():
 
     def quartiles_plot(self, sensors, _title):
 
-        directory = os.path.dirname(_title)
+        '''directory = os.path.dirname(_title)
         if not os.path.exists(directory):
-            os.makedirs(directory)
+            os.makedirs(directory)'''
 
         # Garantir que os valores de 'class' estejam no formato correto
         self.dataframe['class'] = self.dataframe['class'].fillna('-1', inplace=False)
@@ -126,12 +126,14 @@ class exploration():
         
 
         plt.tight_layout()
-        plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Classificação')
+        plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Rotulagem de Observação')
         plt.subplots_adjust(bottom=0.15, top=0.95)
-
-        plt.savefig(f"{_title}.png", dpi=300, bbox_inches='tight')
+        
         plt.grid(True)
-        plt.show()
+        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
+        
+        #plt.show()
+        plt.close()
         return filtered_dataset_numpy
  
     def heatmap_corr(self, columns_of_interest, title):
@@ -287,14 +289,14 @@ class exploration():
         unique_patches = list(unique_patches_dict.values())
         
         # Adicionando legenda de classes ao gráfico com ajuste de posição
-        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.8, 1), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.5, 1), bbox_transform=plt.gcf().transFigure)
 
         # Criação de manipuladores para a segunda legenda
         action_patches = [mpatches.Patch(color='magenta', label='Detectado'),
                         mpatches.Patch(color='cyan', label='Não-Detectado')]
 
         # Adicionando a segunda legenda ao gráfico
-        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.8, 0.8), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.5, 0.8), bbox_transform=plt.gcf().transFigure)
 
     
         
