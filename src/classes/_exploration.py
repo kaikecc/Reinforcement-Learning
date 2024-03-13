@@ -255,7 +255,7 @@ class exploration():
                     
                     # Cor baseada em 'action', aplicada apenas à metade superior do gráfico
                     if action == 1 or action == 0:
-                        action_color = 'yellow' if action == 1 else 'cyan'
+                        action_color = 'magenta' if action == 1 else 'cyan'
                         ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
 
                     start_idx = j
@@ -286,14 +286,22 @@ class exploration():
 
         unique_patches = list(unique_patches_dict.values())
         
-    # Adicionando legenda de classes ao gráfico com ajuste de posição
-        plt.figlegend(handles=unique_patches, loc='upper right', title='Classificação', bbox_to_anchor=(1.18, 1.05), bbox_transform=plt.gcf().transFigure)
+        # Adicionando legenda de classes ao gráfico com ajuste de posição
+        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.8, 1), bbox_transform=plt.gcf().transFigure)
+
+        # Criação de manipuladores para a segunda legenda
+        action_patches = [mpatches.Patch(color='magenta', label='Detectado'),
+                        mpatches.Patch(color='cyan', label='Não-Detectado')]
+
+        # Adicionando a segunda legenda ao gráfico
+        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.8, 0.8), bbox_transform=plt.gcf().transFigure)
+
     
         
-
-        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
         plt.grid(True)
-        plt.show()
+        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')        
+        plt.close()
+        #plt.show()
 
     
     def plot_estados(df_env):

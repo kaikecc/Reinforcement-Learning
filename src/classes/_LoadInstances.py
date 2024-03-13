@@ -2,6 +2,7 @@ from pathlib import Path
 import numpy as np
 from datetime import datetime
 import pandas as pd  # Adicionado para melhorar a leitura de arquivos
+import logging
 
 class LoadInstances:
 
@@ -35,7 +36,7 @@ class LoadInstances:
     def load_instance_with_numpy(self, events_names, columns):
         well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
         real_instances = list(self.class_and_file_generator(real=True))
-        
+        logging.info(f'Total de  {len(real_instances)} instâncias reais encontradas.')
         arrays_list = []
 
         for class_code, instance_path in real_instances:
