@@ -80,3 +80,20 @@
 [INFO]	13/03/2024 09:07:28 AM - Fim predição da instância de teste DQN
 [INFO]	13/03/2024 09:08:32 AM - Iniciando predição da 29 instância para teste DQN
 [INFO]	13/03/2024 09:08:46 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:37 AM - Iniciando predição da 30 instância para teste DQN
+[INFO]	13/03/2024 09:10:38 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:42 AM - Iniciando predição da 31 instância para teste DQN
+[INFO]	13/03/2024 09:10:43 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:46 AM - Iniciando predição da 32 instância para teste DQN
+[INFO]	13/03/2024 09:10:47 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:50 AM - Iniciando predição da 33 instância para teste DQN
+[INFO]	13/03/2024 09:10:51 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:56 AM - Iniciando predição da 34 instância para teste DQN
+[INFO]	13/03/2024 09:10:56 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:10:58 AM - Iniciando predição da 35 instância para teste DQN
+[INFO]	13/03/2024 09:10:59 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:11:00 AM - Iniciando predição da 36 instância para teste DQN
+[INFO]	13/03/2024 09:11:01 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:11:08 AM - Iniciando predição da 37 instância para teste DQN
+[INFO]	13/03/2024 09:11:12 AM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 09:11:46 AM - Concluído a execução do aprendizado por reforço
