@@ -1,0 +1,2 @@
+[INFO]	13/03/2024 10:46:06 PM - Iniciando carregamento do dataset
+[INFO]	13/03/2024 10:46:06 PM - Total de  1019 instâncias reais encontradas.

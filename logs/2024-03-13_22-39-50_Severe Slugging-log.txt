@@ -1,0 +1,52 @@
+[INFO]	13/03/2024 10:39:50 PM - Iniciando carregamento do dataset
+[INFO]	13/03/2024 10:39:50 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	13/03/2024 10:40:45 PM - Fim carregamento do dataset
+[INFO]	13/03/2024 10:40:45 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	13/03/2024 10:40:51 PM - Número de amostras da classe 0: 8430978
+[INFO]	13/03/2024 10:40:52 PM - Número de amostras de treino da classe 0: 6744782
+[INFO]	13/03/2024 10:40:52 PM - Número de amostras de teste da classe 0: 1686196
+[INFO]	13/03/2024 10:40:52 PM - Número de amostras da classe 3: 568433
+[INFO]	13/03/2024 10:40:52 PM - Número de amostras de treino da classe 3: 454746
+[INFO]	13/03/2024 10:40:52 PM - Número de amostras de teste da classe 3: 113687
+[INFO]	13/03/2024 10:40:58 PM - Número de registros de treino: 7199528
+[INFO]	13/03/2024 10:40:58 PM - Número de registros de teste: 899941
+[INFO]	13/03/2024 10:40:58 PM - Número de registros de validação: 899942
+[INFO]	13/03/2024 10:41:10 PM - Iniciando o processo de undersampling.
+[INFO]	13/03/2024 10:41:16 PM - Tamanho da menor classe: 454746
+[INFO]	13/03/2024 10:41:17 PM - Classe 0 foi undersampled para 454746 instâncias.
+[INFO]	13/03/2024 10:41:17 PM - Classe 3 foi undersampled para 454746 instâncias.
+[INFO]	13/03/2024 10:41:19 PM - Dataset final undersampled e embaralhado.
+[INFO]	13/03/2024 10:41:19 PM - Iniciando o processo de undersampling.
+[INFO]	13/03/2024 10:41:20 PM - Tamanho da menor classe: 56519
+[INFO]	13/03/2024 10:41:20 PM - Classe 0 foi undersampled para 56519 instâncias.
+[INFO]	13/03/2024 10:41:20 PM - Classe 3 foi undersampled para 56519 instâncias.
+[INFO]	13/03/2024 10:41:20 PM - Dataset final undersampled e embaralhado.
+[INFO]	13/03/2024 10:41:21 PM - Número de registros de treino undersampling: 909492
+[INFO]	13/03/2024 10:41:21 PM - Número de registros de teste undersampling: 113038
+[INFO]	13/03/2024 10:41:21 PM - Número de registros de validação: 899942
+[INFO]	13/03/2024 10:41:21 PM - Fim divisão do dataset em treino e teste
+[INFO]	13/03/2024 10:41:21 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	13/03/2024 10:41:51 PM - Tempo de Treinamento DQN: 29.83s
+[INFO]	13/03/2024 10:41:51 PM - Fim treinamento do algoritmo DQN
+[INFO]	13/03/2024 10:41:51 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	13/03/2024 10:41:51 PM - Avaliando o modelo ..\models\Severe Slugging_DQN_Env3W com 1 episódios.
+[INFO]	13/03/2024 10:42:18 PM - Acurácia: 0.98
+[INFO]	13/03/2024 10:42:18 PM - Acurácia de 0.98300 no conjunto de dados de teste usando DQN
+[INFO]	13/03/2024 10:42:18 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	13/03/2024 10:42:18 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	13/03/2024 10:42:30 PM - Fim da separação dos grupos de dados para validação com 29 grupos de instâncias
+[INFO]	13/03/2024 10:42:30 PM - Iniciando predição da 0ª instância para teste usando DQN
+[INFO]	13/03/2024 10:42:30 PM - Acurácia da 0ª instância: 100.000%
+[INFO]	13/03/2024 10:42:30 PM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 10:42:36 PM - Iniciando predição da 1ª instância para teste usando DQN
+[INFO]	13/03/2024 10:42:37 PM - Acurácia da 1ª instância: 100.000%
+[INFO]	13/03/2024 10:42:37 PM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 10:42:42 PM - Iniciando predição da 2ª instância para teste usando DQN
+[INFO]	13/03/2024 10:42:44 PM - Acurácia da 2ª instância: 100.000%
+[INFO]	13/03/2024 10:42:44 PM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 10:42:54 PM - Iniciando predição da 3ª instância para teste usando DQN
+[INFO]	13/03/2024 10:42:56 PM - Acurácia da 3ª instância: 100.000%
+[INFO]	13/03/2024 10:42:56 PM - Fim predição da instância de teste DQN
+[INFO]	13/03/2024 10:43:12 PM - Iniciando predição da 4ª instância para teste usando DQN
+[INFO]	13/03/2024 10:43:31 PM - Acurácia da 4ª instância: 100.000%
+[INFO]	13/03/2024 10:43:31 PM - Fim predição da instância de teste DQN

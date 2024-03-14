@@ -297,10 +297,13 @@ class exploration():
         # Adicionando a segunda legenda ao gráfico
         plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.5, 0.8), bbox_transform=plt.gcf().transFigure)
 
-    
+        folder = _title.split(" - ")[1] + " - " + _title.split(" - ")[2]
+        directory = f'..\\..\\img\\{folder}'
+        if not os.path.exists(directory):
+            os.makedirs(directory)
         
         plt.grid(True)
-        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')        
+        plt.savefig(f"..\\..\\img\\{folder}\\{_title}.png", dpi=300, bbox_inches='tight')        
         plt.close()
         #plt.show()
     
