@@ -1,0 +1,48 @@
+[INFO]	14/03/2024 11:42:04 AM - Iniciando carregamento do dataset
+[INFO]	14/03/2024 11:42:04 AM - Total de  1019 instâncias reais encontradas.
+[INFO]	14/03/2024 11:42:30 AM - Total de 599 instâncias reais carregadas para o evento {0: 'Normal', 7: 'Scaling in PCK'}.
+[INFO]	14/03/2024 11:42:30 AM - Fim carregamento do dataset
+[INFO]	14/03/2024 11:42:30 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	14/03/2024 11:42:33 AM - Número de amostras da classe 0: 8583017
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de treino da classe 0: 6866413
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de teste da classe 0: 1716604
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras da classe 7.0: 25870
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de treino da classe 7.0: 20696
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de teste da classe 7.0: 5174
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras da classe 107.0: 282900
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de treino da classe 107.0: 226320
+[INFO]	14/03/2024 11:42:34 AM - Número de amostras de teste da classe 107.0: 56580
+[INFO]	14/03/2024 11:42:38 AM - Número de registros de treino: 7113429
+[INFO]	14/03/2024 11:42:38 AM - Número de registros de teste: 889179
+[INFO]	14/03/2024 11:42:38 AM - Número de registros de validação: 889179
+[INFO]	14/03/2024 11:42:45 AM - Iniciando o processo de undersampling.
+[INFO]	14/03/2024 11:42:49 AM - Tamanho da menor classe: 20696
+[INFO]	14/03/2024 11:42:49 AM - Classe 0 foi undersampled para 20696 instâncias.
+[INFO]	14/03/2024 11:42:49 AM - Classe 7.0 foi undersampled para 20696 instâncias.
+[INFO]	14/03/2024 11:42:49 AM - Classe 107.0 foi undersampled para 20696 instâncias.
+[INFO]	14/03/2024 11:42:49 AM - Dataset final undersampled e embaralhado.
+[INFO]	14/03/2024 11:42:50 AM - Iniciando o processo de undersampling.
+[INFO]	14/03/2024 11:42:50 AM - Tamanho da menor classe: 2568
+[INFO]	14/03/2024 11:42:50 AM - Classe 0 foi undersampled para 2568 instâncias.
+[INFO]	14/03/2024 11:42:50 AM - Classe 7.0 foi undersampled para 2568 instâncias.
+[INFO]	14/03/2024 11:42:50 AM - Classe 107.0 foi undersampled para 2568 instâncias.
+[INFO]	14/03/2024 11:42:50 AM - Dataset final undersampled e embaralhado.
+[INFO]	14/03/2024 11:42:50 AM - Número de registros de treino undersampling: 62088
+[INFO]	14/03/2024 11:42:50 AM - Número de registros de teste undersampling: 7704
+[INFO]	14/03/2024 11:42:50 AM - Número de registros de validação: 889179
+[INFO]	14/03/2024 11:42:50 AM - Fim divisão do dataset em treino e teste
+[INFO]	14/03/2024 11:42:50 AM - Iniciando treinamento do algoritmo DQN
+[INFO]	14/03/2024 11:43:14 AM - Tempo de Treinamento DQN: 23.23s
+[INFO]	14/03/2024 11:43:14 AM - Fim treinamento do algoritmo DQN
+[INFO]	14/03/2024 11:43:14 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	14/03/2024 11:43:14 AM - Avaliando o modelo ..\models\Scaling in PCK_DQN_Env3W com 1 episódios.
+[INFO]	14/03/2024 11:43:14 AM - Acurácia: 0.87
+[INFO]	14/03/2024 11:43:14 AM - Acurácia de 0.86812 no conjunto de dados de teste usando DQN
+[INFO]	14/03/2024 11:43:14 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	14/03/2024 11:43:14 AM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	14/03/2024 11:43:21 AM - Fim da separação dos grupos de dados para validação com 27 grupos de instâncias
+[INFO]	14/03/2024 11:43:21 AM - Iniciando predição da 0ª instância de validação usando DQN
+[INFO]	14/03/2024 11:43:21 AM - Acurácia da 0ª instância: 100.000%
+[INFO]	14/03/2024 11:43:21 AM - Acurácia de Não-Falha na 0ª instância: 100.000%
+[INFO]	14/03/2024 11:43:21 AM - Acurácia das Falha na 0ª instância: 0.000%
+[INFO]	14/03/2024 11:43:21 AM - Fim predição da instância de teste DQN

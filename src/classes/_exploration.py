@@ -153,7 +153,7 @@ class exploration():
         plt.savefig(f"{title}.png", dpi=300, bbox_inches='tight')
         #plt.show()
           
-    def plot_sensor(self, sensor_columns, _title):
+    def plot_sensor(self, sensor_columns, _title, additional_labels):
         # Substituindo valores de 'class' e convertendo 'timestamp'
         self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
         #replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
@@ -288,14 +288,24 @@ class exploration():
         unique_patches = list(unique_patches_dict.values())
         
         # Adicionando legenda de classes ao gráfico com ajuste de posição
-        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.5, 1), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.4, 1), bbox_transform=plt.gcf().transFigure)
 
         # Criação de manipuladores para a segunda legenda
         action_patches = [mpatches.Patch(color='magenta', label='Detectado'),
                         mpatches.Patch(color='cyan', label='Não-Detectado')]
 
         # Adicionando a segunda legenda ao gráfico
-        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.5, 0.8), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure)
+
+        # Criação de manipuladores para a terceira legenda sem especificar cores
+        
+        #additional_patches = [mpatches.Patch(color='none', label=label) for label in additional_labels]
+        additional_patches = [mpatches.Patch(color='white', alpha=0, label=label) for label in additional_labels]
+
+        # Adicionando a terceira legenda ao gráfico
+        plt.figlegend(handles=additional_patches, loc='upper right', title='Acurácias', bbox_to_anchor=(1.5, 0.83), bbox_transform=plt.gcf().transFigure)
+        
+
 
         folder = _title.split(" - ")[1] + " - " + _title.split(" - ")[2]
         directory = f'..\\..\\img\\{folder}'
