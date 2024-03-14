@@ -33,8 +33,20 @@ class LoadInstances:
                             (real and prefix not in ['SIMULATED', 'DRAWN'])):
                             yield class_code, instance_path
     
-    def load_instance_with_numpy(self, events_names, columns):
+    def load_instance_with_numpy(self, events_names):
         well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
+        columns = [ 
+            'timestamp',      
+            'P-PDG',
+            'P-TPT',
+            'T-TPT',
+            'P-MON-CKP',
+            'T-JUS-CKP',
+            #'P-JUS-CKGL',
+            #'T-JUS-CKGL',
+            #'QGL',
+            'class'
+        ]
         real_instances = list(self.class_and_file_generator(real=True))
         logging.info(f'Total de  {len(real_instances)} instâncias reais encontradas.')
         arrays_list = []
@@ -56,6 +68,7 @@ class LoadInstances:
                 
                 arrays_list.append(arr)
         
+        logging.info(f'Total de {len(arrays_list)} instâncias reais carregadas para o evento {events_names}.')
         final_array = np.concatenate(arrays_list) if arrays_list else np.array([])
         
         return final_array
