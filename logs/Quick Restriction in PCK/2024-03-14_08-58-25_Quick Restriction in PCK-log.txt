@@ -65,3 +65,59 @@
 [INFO]	14/03/2024 09:00:04 AM - Iniciando predição da 7ª instância para teste usando DQN
 [INFO]	14/03/2024 09:00:13 AM - Acurácia da 7ª instância: 100.000%
 [INFO]	14/03/2024 09:00:13 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:01:17 AM - Iniciando predição da 8ª instância para teste usando DQN
+[INFO]	14/03/2024 09:01:18 AM - Acurácia da 8ª instância: 100.000%
+[INFO]	14/03/2024 09:01:18 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:01:30 AM - Iniciando predição da 9ª instância para teste usando DQN
+[INFO]	14/03/2024 09:01:32 AM - Acurácia da 9ª instância: 100.000%
+[INFO]	14/03/2024 09:01:32 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:01:46 AM - Iniciando predição da 10ª instância para teste usando DQN
+[INFO]	14/03/2024 09:01:48 AM - Acurácia da 10ª instância: 100.000%
+[INFO]	14/03/2024 09:01:48 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:02:04 AM - Iniciando predição da 11ª instância para teste usando DQN
+[INFO]	14/03/2024 09:02:08 AM - Acurácia da 11ª instância: 100.000%
+[INFO]	14/03/2024 09:02:08 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:02:41 AM - Iniciando predição da 12ª instância para teste usando DQN
+[INFO]	14/03/2024 09:02:42 AM - Acurácia da 12ª instância: 100.000%
+[INFO]	14/03/2024 09:02:42 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:02:44 AM - Iniciando predição da 13ª instância para teste usando DQN
+[INFO]	14/03/2024 09:02:44 AM - Acurácia da 13ª instância: 100.000%
+[INFO]	14/03/2024 09:02:44 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:02:46 AM - Iniciando predição da 14ª instância para teste usando DQN
+[INFO]	14/03/2024 09:02:46 AM - Acurácia da 14ª instância: 100.000%
+[INFO]	14/03/2024 09:02:46 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:02:52 AM - Iniciando predição da 15ª instância para teste usando DQN
+[INFO]	14/03/2024 09:02:55 AM - Acurácia da 15ª instância: 100.000%
+[INFO]	14/03/2024 09:02:55 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:03:15 AM - Iniciando predição da 16ª instância para teste usando DQN
+[INFO]	14/03/2024 09:03:16 AM - Acurácia da 16ª instância: 100.000%
+[INFO]	14/03/2024 09:03:16 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:03:21 AM - Iniciando predição da 17ª instância para teste usando DQN
+[INFO]	14/03/2024 09:03:26 AM - Acurácia da 17ª instância: 100.000%
+[INFO]	14/03/2024 09:03:26 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:04:06 AM - Iniciando predição da 18ª instância para teste usando DQN
+[INFO]	14/03/2024 09:04:11 AM - Acurácia da 18ª instância: 100.000%
+[INFO]	14/03/2024 09:04:11 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:04:46 AM - Iniciando predição da 19ª instância para teste usando DQN
+[INFO]	14/03/2024 09:04:53 AM - Acurácia da 19ª instância: 100.000%
+[INFO]	14/03/2024 09:04:53 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:05:42 AM - Iniciando predição da 20ª instância para teste usando DQN
+[INFO]	14/03/2024 09:05:42 AM - Acurácia da 20ª instância: 0.000%
+[INFO]	14/03/2024 09:05:42 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:05:44 AM - Iniciando predição da 21ª instância para teste usando DQN
+[INFO]	14/03/2024 09:05:53 AM - Acurácia da 21ª instância: 100.000%
+[INFO]	14/03/2024 09:05:53 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:06:52 AM - Iniciando predição da 22ª instância para teste usando DQN
+[INFO]	14/03/2024 09:07:06 AM - Acurácia da 22ª instância: 93.998%
+[INFO]	14/03/2024 09:07:06 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:10:24 AM - Iniciando predição da 23ª instância para teste usando DQN
+[INFO]	14/03/2024 09:10:24 AM - Acurácia da 23ª instância: 100.000%
+[INFO]	14/03/2024 09:10:24 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:10:29 AM - Iniciando predição da 24ª instância para teste usando DQN
+[INFO]	14/03/2024 09:10:29 AM - Acurácia da 24ª instância: 100.000%
+[INFO]	14/03/2024 09:10:29 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:10:33 AM - Iniciando predição da 25ª instância para teste usando DQN
+[INFO]	14/03/2024 09:10:33 AM - Acurácia da 25ª instância: 28.676%
+[INFO]	14/03/2024 09:10:33 AM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 09:10:35 AM - Acurácia: 97.089% no conjunto de dados de validação usando DQN
+[INFO]	14/03/2024 09:10:35 AM - Concluído a execução do aprendizado por reforço
