@@ -153,7 +153,7 @@ class exploration():
         plt.savefig(f"{title}.png", dpi=300, bbox_inches='tight')
         #plt.show()
           
-    def plot_sensor(self, sensor_columns, _title, additional_labels):
+    def plot_sensor(self, sensor_columns, _title, additional_labels, model):
         # Substituindo valores de 'class' e convertendo 'timestamp'
         self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
         #replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
@@ -295,7 +295,7 @@ class exploration():
                         mpatches.Patch(color='cyan', label='Não-Detectado')]
 
         # Adicionando a segunda legenda ao gráfico
-        plt.figlegend(handles=action_patches, loc='upper right', title='Identificação de Falha (DQN)', bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=action_patches, loc='upper right', title=f'Identificação de Falha ({model})', bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure)
 
         # Criação de manipuladores para a terceira legenda sem especificar cores
         
