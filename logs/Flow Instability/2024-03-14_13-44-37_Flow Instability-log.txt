@@ -1,0 +1,69 @@
+[INFO]	14/03/2024 01:44:37 PM - Iniciando carregamento do dataset
+[INFO]	14/03/2024 01:44:37 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	14/03/2024 01:45:10 PM - Total de 938 instâncias reais carregadas para o evento {0: 'Normal', 4: 'Flow Instability'}.
+[INFO]	14/03/2024 01:45:11 PM - Fim carregamento do dataset
+[INFO]	14/03/2024 01:45:11 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	14/03/2024 01:45:15 PM - Número de amostras da classe 0: 8430978
+[INFO]	14/03/2024 01:45:15 PM - Número de amostras de treino da classe 0: 6744782
+[INFO]	14/03/2024 01:45:15 PM - Número de amostras de teste da classe 0: 1686196
+[INFO]	14/03/2024 01:45:16 PM - Número de amostras da classe 4: 2460270
+[INFO]	14/03/2024 01:45:16 PM - Número de amostras de treino da classe 4: 1968216
+[INFO]	14/03/2024 01:45:16 PM - Número de amostras de teste da classe 4: 492054
+[INFO]	14/03/2024 01:45:20 PM - Número de registros de treino: 8712998
+[INFO]	14/03/2024 01:45:20 PM - Número de registros de teste: 1089125
+[INFO]	14/03/2024 01:45:20 PM - Número de registros de validação: 1089125
+[INFO]	14/03/2024 01:45:30 PM - Número de registros de treino undersampling: 8712998
+[INFO]	14/03/2024 01:45:30 PM - Número de registros de teste undersampling: 1089125
+[INFO]	14/03/2024 01:45:30 PM - Número de registros de validação: 1089125
+[INFO]	14/03/2024 01:45:30 PM - Fim divisão do dataset em treino e teste
+[INFO]	14/03/2024 01:45:32 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	14/03/2024 01:45:57 PM - Tempo de Treinamento DQN: 24.81s
+[INFO]	14/03/2024 01:45:57 PM - Fim treinamento do algoritmo DQN
+[INFO]	14/03/2024 01:45:57 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	14/03/2024 01:45:57 PM - Avaliando o modelo ..\models\Flow Instability_DQN_Env3W com 1 episódios.
+[INFO]	14/03/2024 01:48:11 PM - Acurácia: 0.94
+[INFO]	14/03/2024 01:48:11 PM - Acurácia de 0.93635 no conjunto de dados de teste usando DQN
+[INFO]	14/03/2024 01:48:11 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	14/03/2024 01:48:11 PM - Iniciando a validação do modelo DQN
+[INFO]	14/03/2024 01:48:11 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	14/03/2024 01:48:19 PM - Fim da separação dos grupos de dados para validação com 38 grupos de instâncias
+[INFO]	14/03/2024 01:48:19 PM - Iniciando predição da 0ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:20 PM - Acurácia da 0ª instância: 100.000%
+[INFO]	14/03/2024 01:48:20 PM - Acurácia de Não-Falha na 0ª instância: 0.000%
+[INFO]	14/03/2024 01:48:20 PM - Acurácia das Falha na 0ª instância: 100.000%
+[INFO]	14/03/2024 01:48:20 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:25 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:25 PM - Acurácia da 1ª instância: 28.824%
+[INFO]	14/03/2024 01:48:25 PM - Acurácia de Não-Falha na 1ª instância: 0.000%
+[INFO]	14/03/2024 01:48:25 PM - Acurácia das Falha na 1ª instância: 100.000%
+[INFO]	14/03/2024 01:48:25 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:29 PM - Iniciando predição da 2ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:30 PM - Acurácia da 2ª instância: 81.262%
+[INFO]	14/03/2024 01:48:30 PM - Acurácia de Não-Falha na 2ª instância: 0.000%
+[INFO]	14/03/2024 01:48:30 PM - Acurácia das Falha na 2ª instância: 100.000%
+[INFO]	14/03/2024 01:48:30 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:38 PM - Iniciando predição da 3ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:38 PM - Acurácia da 3ª instância: 100.000%
+[INFO]	14/03/2024 01:48:38 PM - Acurácia de Não-Falha na 3ª instância: 0.000%
+[INFO]	14/03/2024 01:48:38 PM - Acurácia das Falha na 3ª instância: 100.000%
+[INFO]	14/03/2024 01:48:38 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:41 PM - Iniciando predição da 4ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:41 PM - Acurácia da 4ª instância: 100.000%
+[INFO]	14/03/2024 01:48:41 PM - Acurácia de Não-Falha na 4ª instância: 0.000%
+[INFO]	14/03/2024 01:48:41 PM - Acurácia das Falha na 4ª instância: 100.000%
+[INFO]	14/03/2024 01:48:41 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:42 PM - Iniciando predição da 5ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:42 PM - Acurácia da 5ª instância: 100.000%
+[INFO]	14/03/2024 01:48:42 PM - Acurácia de Não-Falha na 5ª instância: 0.000%
+[INFO]	14/03/2024 01:48:42 PM - Acurácia das Falha na 5ª instância: 100.000%
+[INFO]	14/03/2024 01:48:42 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:48:44 PM - Iniciando predição da 6ª instância de validação usando DQN
+[INFO]	14/03/2024 01:48:47 PM - Acurácia da 6ª instância: 100.000%
+[INFO]	14/03/2024 01:48:47 PM - Acurácia de Não-Falha na 6ª instância: 0.000%
+[INFO]	14/03/2024 01:48:47 PM - Acurácia das Falha na 6ª instância: 100.000%
+[INFO]	14/03/2024 01:48:47 PM - Fim predição da instância de teste DQN
+[INFO]	14/03/2024 01:49:11 PM - Iniciando predição da 7ª instância de validação usando DQN
+[INFO]	14/03/2024 01:49:13 PM - Acurácia da 7ª instância: 100.000%
+[INFO]	14/03/2024 01:49:13 PM - Acurácia de Não-Falha na 7ª instância: 0.000%
+[INFO]	14/03/2024 01:49:13 PM - Acurácia das Falha na 7ª instância: 100.000%
+[INFO]	14/03/2024 01:49:13 PM - Fim predição da instância de teste DQN

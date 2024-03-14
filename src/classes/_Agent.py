@@ -1,9 +1,14 @@
 from stable_baselines3 import DQN
 from stable_baselines3.dqn.policies import MlpPolicy
 from stable_baselines3.common.env_util import make_vec_env
+from stable_baselines3.common.vec_env import DummyVecEnv
+from stable_baselines3.common.monitor import Monitor
+from stable_baselines3.common.callbacks import CheckpointCallback
+from stable_baselines3 import PPO
 from classes._Env3WGym import Env3WGym
 import logging
 import numpy as np
+import os
 
 class Agent:
     def __init__(self, path_save):        
@@ -42,7 +47,7 @@ class Agent:
             device='auto'
         )
         model.learn(total_timesteps=int(1.2e5))
-        model.save(self.path_save)
+        model.save(f'{self.path_save}_DQN_Env3W')
         envs.close()
 
     def env3W_dqn_eval(self, dataset_test_scaled, n_envs, n_eval_episodes=1):
@@ -64,4 +69,67 @@ class Agent:
         logging.info(f"Acurácia: {accuracy:.2f}")
 
         return accuracy, model
+    
+    def env3W_ppo(self, dataset_test_scaled, n_envs):
+        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
+        envs = self.envs_random(dataset_test_scaled, n_envs)
 
+        # Define o caminho para salvar os checkpoints
+        checkpoint_dir = os.path.join(self.path_save, 'ppo_checkpoints')
+        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
+
+        model = PPO('MlpPolicy', envs, verbose=1,
+                    learning_rate=1e-3,
+                    n_steps=2048,
+                    batch_size=64,
+                    n_epochs=10,
+                    gamma=0.99,
+                    gae_lambda=0.95,
+                    clip_range=0.2,
+                    ent_coef=0.0,
+                    tensorboard_log=os.path.join(self.path_save, 'tensorboard_logs'))
+
+        # Callback para salvar o modelo periodicamente
+        checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
+                                                  name_prefix='PPO_Env3W')
+
+        # Treina o modelo
+        model.learn(total_timesteps=int(1.2e5), callback=checkpoint_callback)
+
+        # Salva o modelo final
+        model.save(os.path.join(self.path_save, '_PPO_Env3W'))
+
+        return model
+
+    def env3W_ppo_eval(self, dataset_eval_scaled, n_envs, n_eval_episodes=1):
+        """
+        Avalia o desempenho do modelo PPO em ambientes gerados a partir de um conjunto de dados de avaliação.
+        Agora também calcula a "acurácia" como a proporção de episódios concluídos com sucesso.
+
+        Args:
+        - dataset_eval_scaled: Conjunto de dados escalado para avaliação.
+        - n_envs: Número de ambientes paralelos para avaliação.
+        - n_eval_episodes: Número de episódios de avaliação por ambiente.
+
+        Returns:
+        - accuracy: A proporção de episódios concluídos com sucesso.
+        """       
+        
+        logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
+        envs = self.envs_random(dataset_eval_scaled, n_envs)
+        model = PPO.load(os.path.join(self.path_save, '_PPO_Env3W'))
+
+        correct_predictions, total_predictions = 0, 0
+        for episode in range(n_eval_episodes):
+            obs = envs.reset()
+            dones = np.array([False] * n_envs)  # Inicializa um array de "done" para cada ambiente
+            while not dones.all():  # Continua até que todos os ambientes estejam concluídos
+                action, _states = model.predict(obs, deterministic=True)
+                obs, rewards, dones, info = envs.step(action)
+                correct_predictions += sum(reward > 0 for reward in rewards)
+                total_predictions += len(rewards)
+
+        accuracy = correct_predictions / total_predictions if total_predictions else 0
+        logging.info(f"Acurácia: {accuracy:.2f}")
+
+        return accuracy, model
