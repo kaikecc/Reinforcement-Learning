@@ -303,7 +303,7 @@ class exploration():
         additional_patches = [mpatches.Patch(color='white', alpha=0, label=label) for label in additional_labels]
 
         # Adicionando a terceira legenda ao gráfico
-        plt.figlegend(handles=additional_patches, loc='upper right', title='Acurácias', bbox_to_anchor=(1.5, 0.83), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=additional_patches, loc='upper right', title='Acurácias', bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure)
         
 
 
