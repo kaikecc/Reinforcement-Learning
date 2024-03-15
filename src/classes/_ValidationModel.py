@@ -3,7 +3,10 @@ import numpy as np
 import pandas as pd
 from datetime import datetime
 from classes._exploration import exploration
-
+from pathlib import Path
+import logging
+import numpy as np
+import matplotlib.pyplot as plt
 
 class ValidationModel():
     def __init__(self, model_name, event_name):
@@ -87,6 +90,7 @@ class ValidationModel():
         return TN, TP
 
     def validation_model(self, accuracy, dataset_validation_scaled, model):
+        """Valida o modelo com base na acurácia fornecida e nos dados de validação escalados."""
         if accuracy > 0.8:
             logging.info('Iniciando a separação dos grupos de dados para validação individual')
             sort_indices = np.argsort(dataset_validation_scaled[:, 0])
@@ -95,24 +99,26 @@ class ValidationModel():
             datasets = self.separate_datasets(dataset_validation_sorted)
             logging.info(f'Fim da separação dos grupos de dados para validação com {len(datasets)} grupos de instâncias')
 
-            acc_total, array_prec_total = [], []
+            acc_total = []
+            accuracy_values, acc_values, TN_values, TP_values = [], [], [], []
+
             for count, dataset_test in enumerate(datasets):
-                logging.info(f'Iniciando predição da {count}ª instância de validação usando {self.model_name}')
+                logging.info(f'Iniciando predição da {count + 1}ª instância de validação usando {self.model_name}')
                 acc, array_action_pred = self.predict_and_evaluate(model, dataset_test)
                 
                 acc_total.append(acc)
-                array_prec_total.append(len(array_action_pred))
-                
-
                 df = self.create_and_filter_df(dataset_test, array_action_pred)
                 TN, TP = self.calculate_accuracy(df)
 
-                logging.info(f'Acurácia da {count}ª instância: {acc  * 100:.3f}%')
-                logging.info(f'Verdadeiro Negativo na {count}ª instância: {TN * 100:.3f}%')
-                logging.info(f'Verdadeiro Positivo na {count}ª instância: {TP * 100:.3f}%')
-                logging.info(f'Fim predição da instância de teste {self.model_name}')
+                logging_details = f'Acurácia da {count + 1}ª instância: {acc * 100:.3f}%, ' \
+                                f'Verdadeiro Negativo: {TN * 100:.3f}%, Verdadeiro Positivo: {TP * 100:.3f}%'
+                logging.info(logging_details)
 
-                # Aqui você adicionaria o código para a plotagem, se necessário
+                accuracy_values.append(acc * 100)
+                acc_values.append(accuracy * 100)  # Revisar se este uso está correto
+                TN_values.append(TN * 100)
+                TP_values.append(TP * 100)
+
                 additional_labels = [
                 f'Acurácia (Teste): {accuracy * 100:.1f}%', 
                 f'Acurácia (Validação): {acc  * 100:.1f}%',  
@@ -124,9 +130,38 @@ class ValidationModel():
                 explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
                                      _title = f'[{count}] - {self.event_name} - {self.model_name}', additional_labels =  additional_labels, model = self.model_name)
 
-            final_validation_accuracy = sum(acc_total) / len(acc_total) * 100
-            logging.info(f'Acurácia: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
+            # Plotagem e salvamento das métricas
+            self.plot_and_save_metrics(len(datasets), accuracy_values, acc_values, TN_values, TP_values)
 
+            final_validation_accuracy = sum(acc_total) / len(acc_total) * 100
+            logging.info(f'Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
         else:
-            logging.info(f'Acurácia insuficiente para validação individual')
-            print(f'Acurácia insuficiente para validação individual')
+            logging.info('Acurácia insuficiente para validação individual')
+            print('Acurácia insuficiente para validação individual')
+
+    def plot_and_save_metrics(self, num_datasets, accuracy_values, acc_values, TN_values, TP_values):
+        """Plota e salva as métricas de validação."""
+        fig, ax = plt.subplots(figsize=(10, 6))
+        count_iterations = list(range(1, num_datasets + 1))
+
+        ax.plot(count_iterations, accuracy_values, marker='o', color='blue', label='Acurácia (Validação)')
+        ax.plot(count_iterations, acc_values, marker='o', color='red', label='Acurácia (Teste)')
+        ax.plot(count_iterations, TN_values, marker='o', color='green', label='TN')
+        ax.plot(count_iterations, TP_values, marker='o', color='purple', label='TP')
+
+        ax.set(title='Métricas de Acurácia por Instância de Validação', xlabel='Instâncias de Validação', ylabel='Métricas de Acurácia (%)')
+        ax.legend()
+        ax.grid(True)
+
+        images_path = Path(f'..\\..\\img\\')
+        metrics_path = Path(f'..\\metrics\\')
+        images_path.mkdir(parents=True, exist_ok=True)
+        metrics_path.mkdir(parents=True, exist_ok=True)
+
+        plt.savefig(images_path / f'Métricas_{self.event_name}_{self.model_name}.png')
+        plt.close()
+
+        with open(metrics_path / f'Métricas_{self.event_name}_{self.model_name}.txt', 'w') as txt_file:
+            txt_file.write('Count Iteration, Accuracy (%), ACC (%), TN (%), TP (%)\n')
+            for i in range(len(count_iterations)):
+                txt_file.write(f'{count_iterations[i]}, {accuracy_values[i]}, {acc_values[i]}, {TN_values[i]}, {TP_values[i]}\n')
