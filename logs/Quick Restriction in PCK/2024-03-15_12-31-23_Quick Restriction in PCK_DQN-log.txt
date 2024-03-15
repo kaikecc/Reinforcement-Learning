@@ -84,3 +84,79 @@
 [INFO]	15/03/2024 12:41:05 PM - Verdadeiro Negativo na 10ª instância: 100.000%
 [INFO]	15/03/2024 12:41:05 PM - Verdadeiro Positivo na 10ª instância: 0.000%
 [INFO]	15/03/2024 12:41:05 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:41:54 PM - Iniciando predição da 11ª instância de validação usando DQN
+[INFO]	15/03/2024 12:42:06 PM - Acurácia da 11ª instância: 100.000%
+[INFO]	15/03/2024 12:42:06 PM - Verdadeiro Negativo na 11ª instância: 100.000%
+[INFO]	15/03/2024 12:42:06 PM - Verdadeiro Positivo na 11ª instância: 0.000%
+[INFO]	15/03/2024 12:42:06 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:43:46 PM - Iniciando predição da 12ª instância de validação usando DQN
+[INFO]	15/03/2024 12:43:47 PM - Acurácia da 12ª instância: 100.000%
+[INFO]	15/03/2024 12:43:47 PM - Verdadeiro Negativo na 12ª instância: 100.000%
+[INFO]	15/03/2024 12:43:47 PM - Verdadeiro Positivo na 12ª instância: 0.000%
+[INFO]	15/03/2024 12:43:47 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:43:52 PM - Iniciando predição da 13ª instância de validação usando DQN
+[INFO]	15/03/2024 12:43:52 PM - Acurácia da 13ª instância: 100.000%
+[INFO]	15/03/2024 12:43:52 PM - Verdadeiro Negativo na 13ª instância: 100.000%
+[INFO]	15/03/2024 12:43:52 PM - Verdadeiro Positivo na 13ª instância: 0.000%
+[INFO]	15/03/2024 12:43:52 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:43:57 PM - Iniciando predição da 14ª instância de validação usando DQN
+[INFO]	15/03/2024 12:43:59 PM - Acurácia da 14ª instância: 100.000%
+[INFO]	15/03/2024 12:43:59 PM - Verdadeiro Negativo na 14ª instância: 100.000%
+[INFO]	15/03/2024 12:43:59 PM - Verdadeiro Positivo na 14ª instância: 0.000%
+[INFO]	15/03/2024 12:43:59 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:44:14 PM - Iniciando predição da 15ª instância de validação usando DQN
+[INFO]	15/03/2024 12:44:21 PM - Acurácia da 15ª instância: 100.000%
+[INFO]	15/03/2024 12:44:21 PM - Verdadeiro Negativo na 15ª instância: 100.000%
+[INFO]	15/03/2024 12:44:21 PM - Verdadeiro Positivo na 15ª instância: 0.000%
+[INFO]	15/03/2024 12:44:21 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:45:20 PM - Iniciando predição da 16ª instância de validação usando DQN
+[INFO]	15/03/2024 12:45:21 PM - Acurácia da 16ª instância: 100.000%
+[INFO]	15/03/2024 12:45:21 PM - Verdadeiro Negativo na 16ª instância: 100.000%
+[INFO]	15/03/2024 12:45:21 PM - Verdadeiro Positivo na 16ª instância: 0.000%
+[INFO]	15/03/2024 12:45:21 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:45:35 PM - Iniciando predição da 17ª instância de validação usando DQN
+[INFO]	15/03/2024 12:45:48 PM - Acurácia da 17ª instância: 100.000%
+[INFO]	15/03/2024 12:45:48 PM - Verdadeiro Negativo na 17ª instância: 100.000%
+[INFO]	15/03/2024 12:45:48 PM - Verdadeiro Positivo na 17ª instância: 0.000%
+[INFO]	15/03/2024 12:45:48 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:47:43 PM - Iniciando predição da 18ª instância de validação usando DQN
+[INFO]	15/03/2024 12:47:54 PM - Acurácia da 18ª instância: 100.000%
+[INFO]	15/03/2024 12:47:54 PM - Verdadeiro Negativo na 18ª instância: 100.000%
+[INFO]	15/03/2024 12:47:54 PM - Verdadeiro Positivo na 18ª instância: 0.000%
+[INFO]	15/03/2024 12:47:54 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:49:30 PM - Iniciando predição da 19ª instância de validação usando DQN
+[INFO]	15/03/2024 12:49:46 PM - Acurácia da 19ª instância: 100.000%
+[INFO]	15/03/2024 12:49:46 PM - Verdadeiro Negativo na 19ª instância: 100.000%
+[INFO]	15/03/2024 12:49:46 PM - Verdadeiro Positivo na 19ª instância: 0.000%
+[INFO]	15/03/2024 12:49:46 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:52:07 PM - Iniciando predição da 20ª instância de validação usando DQN
+[INFO]	15/03/2024 12:52:08 PM - Acurácia da 20ª instância: 100.000%
+[INFO]	15/03/2024 12:52:08 PM - Verdadeiro Negativo na 20ª instância: 100.000%
+[INFO]	15/03/2024 12:52:08 PM - Verdadeiro Positivo na 20ª instância: 0.000%
+[INFO]	15/03/2024 12:52:08 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:52:11 PM - Iniciando predição da 21ª instância de validação usando DQN
+[INFO]	15/03/2024 12:52:30 PM - Acurácia da 21ª instância: 100.000%
+[INFO]	15/03/2024 12:52:30 PM - Verdadeiro Negativo na 21ª instância: 100.000%
+[INFO]	15/03/2024 12:52:30 PM - Verdadeiro Positivo na 21ª instância: 0.000%
+[INFO]	15/03/2024 12:52:30 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 12:55:09 PM - Iniciando predição da 22ª instância de validação usando DQN
+[INFO]	15/03/2024 12:55:42 PM - Acurácia da 22ª instância: 100.000%
+[INFO]	15/03/2024 12:55:42 PM - Verdadeiro Negativo na 22ª instância: 100.000%
+[INFO]	15/03/2024 12:55:42 PM - Verdadeiro Positivo na 22ª instância: 0.000%
+[INFO]	15/03/2024 12:55:42 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 01:00:38 PM - Iniciando predição da 23ª instância de validação usando DQN
+[INFO]	15/03/2024 01:00:40 PM - Acurácia da 23ª instância: 100.000%
+[INFO]	15/03/2024 01:00:40 PM - Verdadeiro Negativo na 23ª instância: 100.000%
+[INFO]	15/03/2024 01:00:40 PM - Verdadeiro Positivo na 23ª instância: 0.000%
+[INFO]	15/03/2024 01:00:40 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 01:00:51 PM - Iniciando predição da 24ª instância de validação usando DQN
+[INFO]	15/03/2024 01:00:52 PM - Acurácia da 24ª instância: 100.000%
+[INFO]	15/03/2024 01:00:52 PM - Verdadeiro Negativo na 24ª instância: 100.000%
+[INFO]	15/03/2024 01:00:52 PM - Verdadeiro Positivo na 24ª instância: 0.000%
+[INFO]	15/03/2024 01:00:52 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 01:01:00 PM - Iniciando predição da 25ª instância de validação usando DQN
+[INFO]	15/03/2024 01:01:00 PM - Acurácia da 25ª instância: 71.465%
+[INFO]	15/03/2024 01:01:00 PM - Verdadeiro Negativo na 25ª instância: 100.000%
+[INFO]	15/03/2024 01:01:00 PM - Verdadeiro Positivo na 25ª instância: 0.000%
+[INFO]	15/03/2024 01:01:00 PM - Fim predição da instância de teste DQN
+[INFO]	15/03/2024 01:01:03 PM - Acurácia: 0.003% no conjunto de dados de validação
