@@ -40,26 +40,14 @@ class ValidationModel():
             yield data[i:i+batch_size]
 
     def predict_and_evaluate(self, model, dataset_test, batch_size=32):
-        acc = 0
+        
         array_action_pred = []
-
-        # Inicialização da matriz de confusão
-        TP, FP, TN, FN = 0, 0, 0, 0
 
         if self.model_name != 'RNA':
             for row in dataset_test:
                 obs = self.preprocess_observation(row)
                 action = model.predict(obs, deterministic=True)[0]
-                array_action_pred.append(action)
-
-                if (row[-1] in range(1, 10) and action == 1) or (row[-1] in range(101, 110) and action == 1):
-                    TP += 1
-                elif row[-1] == 0 and action == 0:
-                    TN += 1
-                elif row[-1] == 0 and action == 1:
-                    FP += 1
-                elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
-                    FN += 1
+                array_action_pred.append(action)                
         else:
             # Processamento em lote para RNA
             batches = self.create_batches(dataset_test, batch_size)
@@ -70,24 +58,9 @@ class ValidationModel():
                 #obs_batch = np.expand_dims(obs_batch, axis=1)  # Ajuste conforme a necessidade do seu modelo RNN
                 batch_predictions = np.argmax(model.predict(obs_batch, verbose=0), axis=1)
                 array_action_pred.extend(batch_predictions)
+               
 
-                for i, row in enumerate(batch):
-                    action = batch_predictions[i]
-
-                    if (row[-1] in range(1, 10) and action == 1) or (row[-1] in range(101, 110) and action == 1):
-                        TP += 1
-                    elif row[-1] == 0 and action == 0:
-                        TN += 1
-                    elif row[-1] == 0 and action == 1:
-                        FP += 1
-                    elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
-                        FN += 1
-
-        
-        # Calculando a acurácia
-        acc = (TP + TN) / (TP + TN + FP + FN) if (TP + TN + FP + FN) > 0 else 0
-
-        return acc, array_action_pred
+        return array_action_pred
 
 
     def create_and_filter_df(self, dataset_test, array_action_pred):
@@ -99,25 +72,29 @@ class ValidationModel():
         return df
 
     def calculate_accuracy(self, df):
+        # Calcula o total de previsões para o cálculo da acurácia
+        total_de_previsoes = len(df)
         
-        total_de_previsoes = len(df[df['class'] == 0])
-        
+        # Se não houver previsões, retorna zero para todas as métricas
         if total_de_previsoes == 0:
             return 0.0, 0.0, 0.0, 0.0
-        else:
-            numerator_normal = len(df[(df['class'] == 0) & (df['action'] == 0)])            
-            TN = (numerator_normal / total_de_previsoes) 
+        
+        # Calcula TN, TP, FP, FN
+        TN = len(df[(df['class'] == 0) & (df['action'] == 0)])
+        TP = len(df[(df['class'] != 0) & (df['action'] == 1)])
+        FP = len(df[(df['class'] == 0) & (df['action'] == 1)])
+        FN = len(df[(df['class'] != 0) & (df['action'] == 0)])
+        
+        # Converte os valores para taxas dividindo pelo total de previsões
+        TN_rate = TN / total_de_previsoes
+        TP_rate = TP / total_de_previsoes
+        FP_rate = FP / total_de_previsoes
+        FN_rate = FN / total_de_previsoes
 
-            numerator_falha = len(df[(df['class'] != 0) & (df['action'] == 1)])            
-            TP = (numerator_falha / total_de_previsoes) 
+        accuracy = (TP + TN) / (TP + TN + FP + FN) if (TP + TN + FP + FN) > 0 else 0
+        
+        return accuracy, TN_rate, TP_rate, FP_rate, FN_rate
 
-            numerador_FP = len(df[(df['class'] == 0) & (df['action'] == 1)])
-            FP = (numerador_FP / total_de_previsoes) 
-
-            numerador_FN = len(df[(df['class'] != 0) & (df['action'] == 0)])
-            FN = (numerador_FN / total_de_previsoes) 
-
-            return TN, TP, FP, FN
 
     def calculate_evaluation_metrics(self, TP, FP, TN, FN):
         # Calcula precisão, recall e F1-score
@@ -142,13 +119,11 @@ class ValidationModel():
 
             for count, dataset_test in enumerate(datasets):
                 logging.info(f'Iniciando predição da {count + 1}ª instância de validação usando {self.model_name}')
-                acc, array_action_pred = self.predict_and_evaluate(model, dataset_test)
-
+                array_action_pred = self.predict_and_evaluate(model, dataset_test)
                 
-                
-                acc_total.append(acc)
                 df = self.create_and_filter_df(dataset_test, array_action_pred)
-                TN, TP, FP, FN = self.calculate_accuracy(df)
+                acc, TN, TP, FP, FN = self.calculate_accuracy(df)
+                acc_total.append(acc)
 
                 precision, recall, f1_score = self.calculate_evaluation_metrics(TP, FP, TN, FN)
 
@@ -163,8 +138,8 @@ class ValidationModel():
                 TP_values.append(TP * 100)
 
                 additional_labels = [
-                f'Acurácia (Teste): {accuracy * 100:.1f}%', 
-                f'Acurácia (Validação): {acc  * 100:.1f}%',  
+                f'Acurácia (Dataset Teste): {accuracy * 100:.1f}%', 
+                f'Acurácia: {acc  * 100:.1f}%',  
                 f'TN: {TN * 100:.1f}%',  
                 f'TP: {TP * 100:.1f}%', 
                 f'Precision: {precision:.3f}',
@@ -199,7 +174,7 @@ class ValidationModel():
         ax.legend()
         ax.grid(True)
 
-        images_path = Path(f'..\\..\\img\\')
+        images_path = Path(f'..\\..\\img\\metrics')
         metrics_path = Path(f'..\\metrics\\')
         images_path.mkdir(parents=True, exist_ok=True)
         metrics_path.mkdir(parents=True, exist_ok=True)
