@@ -1,2 +1,41 @@
 [INFO]	16/03/2024 01:38:18 PM - Iniciando carregamento do dataset
 [INFO]	16/03/2024 01:38:18 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	16/03/2024 01:38:19 PM - Total de 5 instâncias reais carregadas para o evento {1: 'Abrupt Increase of BSW'}.
+[INFO]	16/03/2024 01:38:19 PM - Fim carregamento do dataset
+[INFO]	16/03/2024 01:38:19 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras da classe 0.0: 195376
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras da classe 1.0: 10417
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras da classe 101.0: 95658
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	16/03/2024 01:38:19 PM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	16/03/2024 01:38:19 PM - Número de registros de treino: 241159
+[INFO]	16/03/2024 01:38:19 PM - Número de registros de teste: 30146
+[INFO]	16/03/2024 01:38:19 PM - Número de registros de validação: 30146
+[INFO]	16/03/2024 01:38:20 PM - Número de registros de treino undersampling: 241159
+[INFO]	16/03/2024 01:38:20 PM - Número de registros de teste undersampling: 30146
+[INFO]	16/03/2024 01:38:20 PM - Número de registros de validação: 30146
+[INFO]	16/03/2024 01:38:20 PM - Fim divisão do dataset em treino e teste
+[INFO]	16/03/2024 01:38:20 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	16/03/2024 01:38:41 PM - Tempo de Treinamento DQN: 21.45s
+[INFO]	16/03/2024 01:38:41 PM - Fim treinamento do algoritmo DQN
+[INFO]	16/03/2024 01:38:41 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	16/03/2024 01:38:41 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW\DQN com 1 episódios.
+[INFO]	16/03/2024 01:38:48 PM - Acurácia de 0.85480 no conjunto de dados de teste usando DQN
+[INFO]	16/03/2024 01:38:48 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	16/03/2024 01:38:48 PM - Iniciando a validação do modelo DQN
+[INFO]	16/03/2024 01:38:48 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	16/03/2024 01:38:48 PM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	16/03/2024 01:38:48 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	16/03/2024 01:38:48 PM - Acurácia da 1ª instância: 97.654%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 22.119%
+[INFO]	16/03/2024 01:38:55 PM - Iniciando predição da 2ª instância de validação usando DQN
+[INFO]	16/03/2024 01:38:55 PM - Acurácia da 2ª instância: 81.900%, Verdadeiro Negativo: 33.911%, Verdadeiro Positivo: 47.989%
+[INFO]	16/03/2024 01:38:57 PM - Iniciando predição da 3ª instância de validação usando DQN
+[INFO]	16/03/2024 01:38:59 PM - Acurácia da 3ª instância: 94.688%, Verdadeiro Negativo: 58.901%, Verdadeiro Positivo: 35.787%
+[INFO]	16/03/2024 01:39:25 PM - Iniciando predição da 4ª instância de validação usando DQN
+[INFO]	16/03/2024 01:39:25 PM - Acurácia da 4ª instância: 80.511%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 0.000%
+[INFO]	16/03/2024 01:39:31 PM - Acurácia final: 88.688% no conjunto de dados de validação
+[INFO]	16/03/2024 01:39:31 PM - Concluído a execução do algoritmo DQN para o evento Abrupt Increase of BSW
