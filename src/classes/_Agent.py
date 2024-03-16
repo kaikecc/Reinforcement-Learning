@@ -18,7 +18,7 @@ class Agent:
         return Env3WGym(dataset_part)
 
     def envs_random(self, dataset_train_scaled, n_envs):
-        #np.random.seed(42)  # Para reprodutibilidade
+        np.random.seed(42)  # Para reprodutibilidade
         shuffled_indices = np.random.permutation(len(dataset_train_scaled))
         dataset_shuffled = dataset_train_scaled[shuffled_indices]
         split_datasets = np.array_split(dataset_shuffled, n_envs)

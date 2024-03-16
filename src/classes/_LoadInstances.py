@@ -5,7 +5,7 @@ import pandas as pd  # Adicionado para melhorar a leitura de arquivos
 import logging
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-
+from sklearn.utils import resample
 class LoadInstances:
 
     '''
@@ -124,9 +124,9 @@ class LoadInstances:
             print(f'Número de amostras da classe {event}: {len(class_indices)}')
             logging.info(f'Número de amostras da classe {event}: {len(class_indices)}')
             
-            #O parâmetro random_state=42 garante que essa divisão seja feita de maneira reproducível, ou seja, a função produzirá o mesmo resultado cada vez que for executada com o mesmo estado aleatório. 
+            # O parâmetro random_state=42 garante que essa divisão seja feita de maneira reproducível, ou seja, a função produzirá o mesmo resultado cada vez que for executada com o mesmo estado aleatório. 
             # Dividindo os índices da classe atual em treino e teste
-            class_train_indices, class_test_indices = train_test_split(class_indices, train_size=train_percentage) # , random_state=42
+            class_train_indices, class_test_indices = train_test_split(class_indices, train_size=train_percentage, random_state=42) # , random_state=42
             
             # Logando o número de amostras de treino e teste
             logging.info(f'Número de amostras de treino da classe {event}: {len(class_train_indices)}')
@@ -140,7 +140,7 @@ class LoadInstances:
         train_indices = np.array(train_indices)    
         test_temp_indices = np.array(test_indices)       
 
-        test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5) # , random_state=42
+        test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5, random_state=42) # , random_state=42
 
         # Embaralhando os índices (opcional, dependendo da necessidade)
         np.random.shuffle(train_indices)
