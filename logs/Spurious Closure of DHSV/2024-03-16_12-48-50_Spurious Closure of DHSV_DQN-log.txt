@@ -20,3 +20,20 @@
 [INFO]	16/03/2024 12:48:50 PM - Número de registros de validação: 2554
 [INFO]	16/03/2024 12:48:50 PM - Fim divisão do dataset em treino e teste
 [INFO]	16/03/2024 12:48:50 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	16/03/2024 12:49:15 PM - Tempo de Treinamento DQN: 25.15s
+[INFO]	16/03/2024 12:49:15 PM - Fim treinamento do algoritmo DQN
+[INFO]	16/03/2024 12:49:15 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	16/03/2024 12:49:15 PM - Avaliando o modelo ..\models\Spurious Closure of DHSV\DQN com 1 episódios.
+[INFO]	16/03/2024 12:49:15 PM - Acurácia de 0.90807 no conjunto de dados de teste usando DQN
+[INFO]	16/03/2024 12:49:15 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	16/03/2024 12:49:15 PM - Iniciando a validação do modelo DQN
+[INFO]	16/03/2024 12:49:15 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	16/03/2024 12:49:15 PM - Fim da separação dos grupos de dados para validação com 3 grupos de instâncias
+[INFO]	16/03/2024 12:49:15 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	16/03/2024 12:49:15 PM - Acurácia da 1ª instância: 100.000%, Verdadeiro Negativo: 40.834%, Verdadeiro Positivo: 59.166%
+[INFO]	16/03/2024 12:49:17 PM - Iniciando predição da 2ª instância de validação usando DQN
+[INFO]	16/03/2024 12:49:17 PM - Acurácia da 2ª instância: 99.421%, Verdadeiro Negativo: 54.124%, Verdadeiro Positivo: 45.297%
+[INFO]	16/03/2024 12:49:18 PM - Iniciando predição da 3ª instância de validação usando DQN
+[INFO]	16/03/2024 12:49:18 PM - Acurácia da 3ª instância: 88.340%, Verdadeiro Negativo: 60.609%, Verdadeiro Positivo: 27.731%
+[INFO]	16/03/2024 12:49:19 PM - Acurácia final: 95.920% no conjunto de dados de validação
+[INFO]	16/03/2024 12:49:19 PM - Concluído a execução do aprendizado por reforço
