@@ -1,0 +1,30 @@
+[INFO]	16/03/2024 11:59:32 AM - Iniciando carregamento do dataset
+[INFO]	16/03/2024 11:59:32 AM - Total de  1019 instâncias reais encontradas.
+[INFO]	16/03/2024 11:59:33 AM - Total de 5 instâncias reais carregadas para o evento {1: 'Abrupt Increase of BSW'}.
+[INFO]	16/03/2024 11:59:33 AM - Fim carregamento do dataset
+[INFO]	16/03/2024 11:59:33 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras da classe 0.0: 195376
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras da classe 1.0: 10417
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras da classe 101.0: 95658
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	16/03/2024 11:59:33 AM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	16/03/2024 11:59:33 AM - Número de registros de treino: 241159
+[INFO]	16/03/2024 11:59:33 AM - Número de registros de teste: 30146
+[INFO]	16/03/2024 11:59:33 AM - Número de registros de validação: 30146
+[INFO]	16/03/2024 11:59:34 AM - Número de registros de treino undersampling: 241159
+[INFO]	16/03/2024 11:59:34 AM - Número de registros de teste undersampling: 30146
+[INFO]	16/03/2024 11:59:34 AM - Número de registros de validação: 30146
+[INFO]	16/03/2024 11:59:34 AM - Fim divisão do dataset em treino e teste
+[INFO]	16/03/2024 11:59:34 AM - Iniciando treinamento do modelo RNA
+[WARNING]	16/03/2024 11:59:34 AM - From c:\Python311\Lib\site-packages\keras\src\backend.py:1398: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[WARNING]	16/03/2024 11:59:34 AM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	16/03/2024 11:59:34 AM - From c:\Python311\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+[WARNING]	16/03/2024 11:59:34 AM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+

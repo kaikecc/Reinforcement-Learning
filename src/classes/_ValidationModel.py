@@ -83,6 +83,7 @@ class ValidationModel():
                     elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
                         FN += 1
 
+        
         # Calculando a acurácia
         acc = (TP + TN) / (TP + TN + FP + FN) if (TP + TN + FP + FN) > 0 else 0
 
@@ -98,16 +99,34 @@ class ValidationModel():
         return df
 
     def calculate_accuracy(self, df):
-        numerator_normal = len(df[(df['class'] == 0) & (df['action'] == 0)])
-        denominator_normal = len(df[df['class'] == 0])
-        TN = (numerator_normal / denominator_normal) if denominator_normal > 0 else 0
+        
+        total_de_previsoes = len(df[df['class'] == 0])
+        
+        if total_de_previsoes == 0:
+            return 0.0, 0.0, 0.0, 0.0
+        else:
+            numerator_normal = len(df[(df['class'] == 0) & (df['action'] == 0)])            
+            TN = (numerator_normal / total_de_previsoes) 
 
-        numerator_falha = len(df[(df['class'] != 0) & (df['action'] == 1)])
-        denominator_falha = len(df[df['class'] != 0])
-        TP = (numerator_falha / denominator_falha) if denominator_falha > 0 else 0
+            numerator_falha = len(df[(df['class'] != 0) & (df['action'] == 1)])            
+            TP = (numerator_falha / total_de_previsoes) 
 
-        return TN, TP
+            numerador_FP = len(df[(df['class'] == 0) & (df['action'] == 1)])
+            FP = (numerador_FP / total_de_previsoes) 
 
+            numerador_FN = len(df[(df['class'] != 0) & (df['action'] == 0)])
+            FN = (numerador_FN / total_de_previsoes) 
+
+            return TN, TP, FP, FN
+
+    def calculate_evaluation_metrics(self, TP, FP, TN, FN):
+        # Calcula precisão, recall e F1-score
+        precision = TP / (TP + FP) if (TP + FP) > 0 else 0
+        recall = TP / (TP + FN) if (TP + FN) > 0 else 0
+        f1_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
+        
+        return precision, recall, f1_score
+    
     def validation_model(self, accuracy, dataset_validation_scaled, model):
         """Valida o modelo com base na acurácia fornecida e nos dados de validação escalados."""
         if accuracy > 0.8:
@@ -124,10 +143,15 @@ class ValidationModel():
             for count, dataset_test in enumerate(datasets):
                 logging.info(f'Iniciando predição da {count + 1}ª instância de validação usando {self.model_name}')
                 acc, array_action_pred = self.predict_and_evaluate(model, dataset_test)
+
+                
                 
                 acc_total.append(acc)
                 df = self.create_and_filter_df(dataset_test, array_action_pred)
-                TN, TP = self.calculate_accuracy(df)
+                TN, TP, FP, FN = self.calculate_accuracy(df)
+
+                precision, recall, f1_score = self.calculate_evaluation_metrics(TP, FP, TN, FN)
+
 
                 logging_details = f'Acurácia da {count + 1}ª instância: {acc * 100:.3f}%, ' \
                                 f'Verdadeiro Negativo: {TN * 100:.3f}%, Verdadeiro Positivo: {TP * 100:.3f}%'
@@ -142,7 +166,10 @@ class ValidationModel():
                 f'Acurácia (Teste): {accuracy * 100:.1f}%', 
                 f'Acurácia (Validação): {acc  * 100:.1f}%',  
                 f'TN: {TN * 100:.1f}%',  
-                f'TP: {TP * 100:.1f}%' 
+                f'TP: {TP * 100:.1f}%', 
+                f'Precision: {precision:.3f}',
+                f'Recall: {recall:.3f}',
+                f'F1 Score: {f1_score:.3f}' 
                 ]
 
                 explora = exploration(df)

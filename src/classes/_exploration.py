@@ -236,13 +236,7 @@ class exploration():
 
                     
         # Pintando a área de fundo de acordo com a classe
-            '''start_idx = 0
-            for j in range(1, len(self.dataframe)):
-                if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1:
-                    end_idx = j
-                    cls = self.dataframe.iloc[start_idx]['class']
-                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_colors.get(cls, 'lightgrey'), alpha=0.5)
-                    start_idx = j'''
+            
             start_idx = 0
             for j in range(1, len(self.dataframe)):
                 if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1 or self.dataframe.iloc[j]['action'] != self.dataframe.iloc[j-1]['action']:
@@ -258,7 +252,9 @@ class exploration():
                     if action == 1 or action == 0:
                         action_color = 'magenta' if action == 1 else 'cyan'
                         ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
-
+                    else:
+                        action_color = '#807fff'
+                        ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
                     start_idx = j
 
 
@@ -303,7 +299,7 @@ class exploration():
         additional_patches = [mpatches.Patch(color='white', alpha=0, label=label) for label in additional_labels]
 
         # Adicionando a terceira legenda ao gráfico
-        plt.figlegend(handles=additional_patches, loc='upper right', title='Acurácias', bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure)
+        plt.figlegend(handles=additional_patches, loc='upper right', title='Métricas', bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure)
         
 
 
