@@ -32,43 +32,62 @@ class ValidationModel():
         return datasets
 
     def preprocess_observation(self, row):
-        obs = row[1:-1].astype(np.float32)
-        if self.model_name == 'RNN':
-            obs = np.expand_dims(obs, axis=0)
+        obs = row[1:-1].astype(np.float32)        
         return obs
 
-    def predict_and_evaluate(self, model, dataset_test):
-        '''
-            TP (Verdadeiro Positivo): Ação correta (1) e falha (1)
-            TN (Verdadeiro Negativo): Ação correta (0) e não falha (0)
-            FP (Falso Positivo): Ação incorreta (1) e não falha (0)
-            FN (Falso Negativo): Ação incorreta (0) e falha (1)
-        
-        '''
-                
+    def create_batches(self, data, batch_size):
+        for i in range(0, len(data), batch_size):
+            yield data[i:i+batch_size]
+
+    def predict_and_evaluate(self, model, dataset_test, batch_size=32):
         acc = 0
         array_action_pred = []
+
         # Inicialização da matriz de confusão
         TP, FP, TN, FN = 0, 0, 0, 0
-        
-        for row in dataset_test:
-            obs = self.preprocess_observation(row)
-            action = model.predict(obs, deterministic=True)[0] if self.model_name != 'RNN' else np.argmax(model.predict(obs, verbose=0), axis=1)
-            array_action_pred.append(action)
 
-            if (row[-1] in range(1, 10) and action == 1) or (row[-1] in range(101, 110) and action == 1):                
-                TP += 1
-            elif row[-1] == 0 and action == 0:
-                TN += 1
-            elif row[-1] == 0 and action == 1:
-                FP += 1
-            elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
-                FN += 1           
+        if self.model_name != 'RNA':
+            for row in dataset_test:
+                obs = self.preprocess_observation(row)
+                action = model.predict(obs, deterministic=True)[0]
+                array_action_pred.append(action)
 
-            # Calculando a acurácia
+                if (row[-1] in range(1, 10) and action == 1) or (row[-1] in range(101, 110) and action == 1):
+                    TP += 1
+                elif row[-1] == 0 and action == 0:
+                    TN += 1
+                elif row[-1] == 0 and action == 1:
+                    FP += 1
+                elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
+                    FN += 1
+        else:
+            # Processamento em lote para RNA
+            batches = self.create_batches(dataset_test, batch_size)
+            for batch in batches:
+                # Preprocessa cada observação no lote
+                obs_batch = np.array([self.preprocess_observation(row) for row in batch])
+                # Ajusta a entrada para o formato esperado pelo RNN se necessário
+                #obs_batch = np.expand_dims(obs_batch, axis=1)  # Ajuste conforme a necessidade do seu modelo RNN
+                batch_predictions = np.argmax(model.predict(obs_batch, verbose=0), axis=1)
+                array_action_pred.extend(batch_predictions)
+
+                for i, row in enumerate(batch):
+                    action = batch_predictions[i]
+
+                    if (row[-1] in range(1, 10) and action == 1) or (row[-1] in range(101, 110) and action == 1):
+                        TP += 1
+                    elif row[-1] == 0 and action == 0:
+                        TN += 1
+                    elif row[-1] == 0 and action == 1:
+                        FP += 1
+                    elif (row[-1] in range(1, 10) and action == 0) or (row[-1] in range(101, 110) and action == 0):
+                        FN += 1
+
+        # Calculando a acurácia
         acc = (TP + TN) / (TP + TN + FP + FN) if (TP + TN + FP + FN) > 0 else 0
-            
+
         return acc, array_action_pred
+
 
     def create_and_filter_df(self, dataset_test, array_action_pred):
         df = pd.DataFrame(np.column_stack((dataset_test, array_action_pred)),

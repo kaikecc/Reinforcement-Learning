@@ -1,0 +1,47 @@
+[INFO]	15/03/2024 07:57:50 PM - Iniciando carregamento do dataset
+[INFO]	15/03/2024 07:57:50 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	15/03/2024 07:58:23 PM - Total de 600 instâncias reais carregadas para o evento {0: 'Normal', 6: 'Quick Restriction in PCK'}.
+[INFO]	15/03/2024 07:58:23 PM - Fim carregamento do dataset
+[INFO]	15/03/2024 07:58:23 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	15/03/2024 07:58:27 PM - Número de amostras da classe 0: 8467297
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de treino da classe 0: 6773837
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de teste da classe 0: 1693460
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras da classe 6.0: 12951
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de treino da classe 6.0: 10360
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de teste da classe 6.0: 2591
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras da classe 106.0: 6252
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de treino da classe 106.0: 5001
+[INFO]	15/03/2024 07:58:28 PM - Número de amostras de teste da classe 106.0: 1251
+[INFO]	15/03/2024 07:58:32 PM - Número de registros de treino: 6789198
+[INFO]	15/03/2024 07:58:32 PM - Número de registros de teste: 848651
+[INFO]	15/03/2024 07:58:32 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 07:58:40 PM - Número de registros de treino undersampling: 6789198
+[INFO]	15/03/2024 07:58:40 PM - Número de registros de teste undersampling: 848651
+[INFO]	15/03/2024 07:58:40 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 07:58:40 PM - Fim divisão do dataset em treino e teste
+[INFO]	15/03/2024 07:58:42 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	15/03/2024 07:59:05 PM - Tempo de Treinamento DQN: 22.99s
+[INFO]	15/03/2024 07:59:05 PM - Fim treinamento do algoritmo DQN
+[INFO]	15/03/2024 07:59:05 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	15/03/2024 07:59:05 PM - Avaliando o modelo ..\models\Quick Restriction in PCK\DQN com 1 episódios.
+[INFO]	15/03/2024 08:02:25 PM - Acurácia de 0.99560 no conjunto de dados de teste usando DQN
+[INFO]	15/03/2024 08:02:25 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	15/03/2024 08:02:25 PM - Iniciando a validação do modelo DQN
+[INFO]	15/03/2024 08:02:25 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	15/03/2024 08:02:35 PM - Fim da separação dos grupos de dados para validação com 26 grupos de instâncias
+[INFO]	15/03/2024 08:02:35 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:36 PM - Acurácia da 1ª instância: 100.000%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:02:40 PM - Iniciando predição da 2ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:41 PM - Acurácia da 2ª instância: 100.000%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:02:44 PM - Iniciando predição da 3ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:44 PM - Acurácia da 3ª instância: 61.759%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:02:48 PM - Iniciando predição da 4ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:49 PM - Acurácia da 4ª instância: 86.759%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:02:51 PM - Iniciando predição da 5ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:51 PM - Acurácia da 5ª instância: 46.536%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:02:53 PM - Iniciando predição da 6ª instância de validação usando DQN
+[INFO]	15/03/2024 08:02:54 PM - Acurácia da 6ª instância: 100.000%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:03:04 PM - Iniciando predição da 7ª instância de validação usando DQN
+[INFO]	15/03/2024 08:03:06 PM - Acurácia da 7ª instância: 100.000%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%
+[INFO]	15/03/2024 08:03:18 PM - Iniciando predição da 8ª instância de validação usando DQN
+[INFO]	15/03/2024 08:03:34 PM - Acurácia da 8ª instância: 100.000%, Verdadeiro Negativo: 100.000%, Verdadeiro Positivo: 0.000%

@@ -1,0 +1,32 @@
+[INFO]	15/03/2024 07:48:02 PM - Iniciando carregamento do dataset
+[INFO]	15/03/2024 07:48:02 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	15/03/2024 07:48:46 PM - Total de 600 instâncias reais carregadas para o evento {0: 'Normal', 6: 'Quick Restriction in PCK'}.
+[INFO]	15/03/2024 07:48:46 PM - Fim carregamento do dataset
+[INFO]	15/03/2024 07:48:46 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	15/03/2024 07:48:51 PM - Número de amostras da classe 0: 8467297
+[INFO]	15/03/2024 07:48:51 PM - Número de amostras de treino da classe 0: 6773837
+[INFO]	15/03/2024 07:48:51 PM - Número de amostras de teste da classe 0: 1693460
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras da classe 6.0: 12951
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras de treino da classe 6.0: 10360
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras de teste da classe 6.0: 2591
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras da classe 106.0: 6252
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras de treino da classe 106.0: 5001
+[INFO]	15/03/2024 07:48:52 PM - Número de amostras de teste da classe 106.0: 1251
+[INFO]	15/03/2024 07:48:56 PM - Número de registros de treino: 6789198
+[INFO]	15/03/2024 07:48:56 PM - Número de registros de teste: 848651
+[INFO]	15/03/2024 07:48:56 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 07:49:06 PM - Número de registros de treino undersampling: 6789198
+[INFO]	15/03/2024 07:49:06 PM - Número de registros de teste undersampling: 848651
+[INFO]	15/03/2024 07:49:06 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 07:49:06 PM - Fim divisão do dataset em treino e teste
+[INFO]	15/03/2024 07:49:07 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	15/03/2024 07:49:32 PM - Tempo de Treinamento DQN: 24.45s
+[INFO]	15/03/2024 07:49:32 PM - Fim treinamento do algoritmo DQN
+[INFO]	15/03/2024 07:49:32 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	15/03/2024 07:49:32 PM - Avaliando o modelo ..\models\Quick Restriction in PCK\DQN com 1 episódios.
+[INFO]	15/03/2024 07:52:32 PM - Acurácia de 0.99549 no conjunto de dados de teste usando DQN
+[INFO]	15/03/2024 07:52:32 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	15/03/2024 07:52:32 PM - Iniciando a validação do modelo DQN
+[INFO]	15/03/2024 07:52:32 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	15/03/2024 07:52:41 PM - Fim da separação dos grupos de dados para validação com 26 grupos de instâncias
+[INFO]	15/03/2024 07:52:41 PM - Iniciando predição da 1ª instância de validação usando DQN

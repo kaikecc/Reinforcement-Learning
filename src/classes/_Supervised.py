@@ -6,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder
 import logging
 
 class Supervised:
-    def __init__(self, dataset_train_scaled, dataset_test_scaled):
+    def __init__(self, path_save, dataset_train_scaled, dataset_test_scaled):
         
         # Ajuste na definição de num_classes e input_shape
         self.input_shape = dataset_train_scaled.shape[1] - 1  # Correto como uma dimensão única
@@ -16,6 +16,8 @@ class Supervised:
         self.y_train = self.y_train.astype('float32')
         self.x_test = self.x_test.astype('float32')
         self.y_test = self.y_test.astype('float32')
+
+        self.path_save = path_save
 
         # Aplicar one-hot encoding nos rótulos
         encoder = OneHotEncoder(sparse=False)
@@ -41,11 +43,12 @@ class Supervised:
         # Treina o modelo
         model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
 
+        model.save(f'{self.path_save}_RNA')
         return model
 
-    def keras_evaluate(self, model):
-        score = model.evaluate(self.x_test, self.y_test, verbose=0)
+    def keras_evaluate(self):
+        # Carrega o modelo
+        self.model = keras.models.load_model(f'{self.path_save}_RNA')
+        score = self.model.evaluate(self.x_test, self.y_test, verbose=0)
 
-        # Correção na forma de usar o logging para registrar a perda do teste
-        logging.info(f"Test loss: {score[0]}")
-        print(f"Test accuracy: {score[1]}")
+        return score[1]

@@ -50,8 +50,6 @@ class Agent:
         model.save(f'{self.path_save}_DQN_Env3W')
         envs.close()
 
-
-
     def env3W_dqn_eval(self, dataset_test_scaled, n_envs, n_eval_episodes=1):
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
         envs = self.envs_random(dataset_test_scaled, n_envs)
@@ -64,13 +62,13 @@ class Agent:
         reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
         atol = 1e-6
 
-        for episode in range(n_eval_episodes):
+        for _ in range(n_eval_episodes):
             obs = envs.reset()
             dones = np.array([False] * n_envs)
             
             while not dones.all():
-                action, _states = model.predict(obs, deterministic=True)
-                obs, rewards, dones, info = envs.step(action)
+                action, _ = model.predict(obs, deterministic=True)
+                obs, rewards, dones, _ = envs.step(action)
                 
                 for reward in rewards:
                     # Reduzindo a quantidade de vezes que np.isclose é chamado
@@ -85,7 +83,6 @@ class Agent:
 
         accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
         return accuracy, model
-
     
     def env3W_ppo(self, dataset_test_scaled, n_envs):
         # Cria ambientes aleatórios a partir do conjunto de dados fornecido
@@ -136,17 +133,29 @@ class Agent:
         envs = self.envs_random(dataset_eval_scaled, n_envs)
         model = PPO.load(os.path.join(self.path_save, '_PPO_Env3W'))
 
-        correct_predictions, total_predictions = 0, 0
-        for episode in range(n_eval_episodes):
+         # Inicialização da matriz de confusão
+        TP, FP, TN, FN = 0, 0, 0, 0
+        # Reduzindo chamadas para np.isclose pré-definindo os valores de recompensa
+        reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
+        atol = 1e-6
+
+        for _ in range(n_eval_episodes):
             obs = envs.reset()
             dones = np.array([False] * n_envs)  # Inicializa um array de "done" para cada ambiente
             while not dones.all():  # Continua até que todos os ambientes estejam concluídos
-                action, _states = model.predict(obs, deterministic=True)
-                obs, rewards, dones, info = envs.step(action)
-                correct_predictions += sum(reward > 0 for reward in rewards)
-                total_predictions += len(rewards)
+                action, _ = model.predict(obs, deterministic=True)
+                obs, rewards, dones, info = envs.step(action)                
+                for reward in rewards:
+                    # Reduzindo a quantidade de vezes que np.isclose é chamado
+                    close_values = np.isclose(reward, reward_thresholds, atol=atol)
+                    if close_values[0]:
+                        TN += 1
+                    elif close_values[1] or close_values[2]:
+                        TP += 1
+                    elif close_values[3] or close_values[4]:
+                        FP += 1  
+                        FN += 1
 
-        accuracy = correct_predictions / total_predictions if total_predictions else 0
-        logging.info(f"Acurácia: {accuracy:.2f}")
+        accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
 
         return accuracy, model

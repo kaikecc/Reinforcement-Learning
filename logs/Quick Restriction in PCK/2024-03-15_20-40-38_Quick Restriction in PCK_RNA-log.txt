@@ -1,0 +1,34 @@
+[INFO]	15/03/2024 08:40:38 PM - Iniciando carregamento do dataset
+[INFO]	15/03/2024 08:40:38 PM - Total de  1019 instâncias reais encontradas.
+[INFO]	15/03/2024 08:41:24 PM - Total de 600 instâncias reais carregadas para o evento {0: 'Normal', 6: 'Quick Restriction in PCK'}.
+[INFO]	15/03/2024 08:41:26 PM - Fim carregamento do dataset
+[INFO]	15/03/2024 08:41:26 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	15/03/2024 08:41:31 PM - Número de amostras da classe 0: 8467297
+[INFO]	15/03/2024 08:41:31 PM - Número de amostras de treino da classe 0: 6773837
+[INFO]	15/03/2024 08:41:31 PM - Número de amostras de teste da classe 0: 1693460
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras da classe 6.0: 12951
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras de treino da classe 6.0: 10360
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras de teste da classe 6.0: 2591
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras da classe 106.0: 6252
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras de treino da classe 106.0: 5001
+[INFO]	15/03/2024 08:41:32 PM - Número de amostras de teste da classe 106.0: 1251
+[INFO]	15/03/2024 08:41:36 PM - Número de registros de treino: 6789198
+[INFO]	15/03/2024 08:41:36 PM - Número de registros de teste: 848651
+[INFO]	15/03/2024 08:41:36 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 08:41:45 PM - Número de registros de treino undersampling: 6789198
+[INFO]	15/03/2024 08:41:45 PM - Número de registros de teste undersampling: 848651
+[INFO]	15/03/2024 08:41:45 PM - Número de registros de validação: 848651
+[INFO]	15/03/2024 08:41:45 PM - Fim divisão do dataset em treino e teste
+[INFO]	15/03/2024 08:41:47 PM - Iniciando treinamento do modelo RNA
+[INFO]	15/03/2024 09:00:45 PM - Assets written to: ..\models\Quick Restriction in PCK\RNA_RNA\assets
+[INFO]	15/03/2024 09:00:45 PM - Tempo de Treinamento RNA: 1135.68s
+[INFO]	15/03/2024 09:00:45 PM - Fim treinamento do modelo RNA
+[INFO]	15/03/2024 09:00:45 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[WARNING]	15/03/2024 09:00:45 PM - From c:\Python311\Lib\site-packages\keras\src\saving\legacy\saved_model\load.py:107: The name tf.gfile.Exists is deprecated. Please use tf.io.gfile.exists instead.
+
+[INFO]	15/03/2024 09:01:31 PM - Acurácia de 0.99964 no conjunto de dados de teste usando RNA
+[INFO]	15/03/2024 09:01:31 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	15/03/2024 09:01:31 PM - Iniciando a validação do modelo RNA
+[INFO]	15/03/2024 09:01:31 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	15/03/2024 09:01:50 PM - Fim da separação dos grupos de dados para validação com 26 grupos de instâncias
+[INFO]	15/03/2024 09:01:50 PM - Iniciando predição da 1ª instância de validação usando RNA
