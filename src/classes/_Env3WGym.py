@@ -19,7 +19,7 @@ class Env3WGym(gym.Env):
         super(Env3WGym, self).__init__()
         self.dataset = dataset
         self.index = 0
-        num_features = 5  # Adjust based on your features
+        num_features = dataset.shape[1] - 1  # 5 Adjust based on your features
         
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
         self.observation_space = spaces.Box(low=np.float32(-np.inf), high=np.float32(np.inf), shape=(num_features,), dtype=np.float32)
