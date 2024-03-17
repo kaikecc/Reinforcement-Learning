@@ -20,10 +20,10 @@ class Env3WGym(gym.Env):
         - -1 (Houve diminuição abrupta de BSW)
 
     Ações/Recompensas:
-    - Se Ação 0 e Z-score 0: Recompensa 0.01
-    - Se Ação 0 e Z-score 1: Recompensa -1    
-    - Se Ação 1 e Z-score 0: Recompensa -1
-    - Se Ação 1 e Z-score 1: Recompensa 0
+    - Se Ação = 0 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = 0.01
+    - Se Ação = 0 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = -1
+    - Se Ação = 1 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = -1
+    - Se Ação = 1 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = 1
 
     """
     metadata = {'render.modes': ['human']}
@@ -117,27 +117,31 @@ class Env3WGym(gym.Env):
         return np.array(self.state, dtype=np.float32)
 
     def calculate_reward(self, action):
+        # Determina se a tendência de Z-score corresponde ao padrão de 'aumento abrupto de BSW'
+        # Cada posição em 'self.z_score[self.dataset_index, :-1]' será comparada com 'self.inc_abrupt_bsw'
+        # para ver se corresponde ao padrão de 'aumento' ou 'diminuição' esperado
+        pattern_matches = self.z_score[self.dataset_index, :-1] == self.inc_abrupt_bsw
 
+        # Verifica se todas as tendências correspondem ao padrão esperado (True se sim, False caso contrário)
+        aumento_abrupto_bsw = np.all(pattern_matches)
 
-        # Supondo que seja um array de cinco posições, cada uma representando uma variável 
+        # Inicialmente define a recompensa como -1 para cobrir os casos não especificados
+        reward = 0
 
-        # Detectar se houve aumento abrupto de BSW
-        # Usamos o operador lógico XOR (^) para comparar os sinais de z_score e inc_abrupt_bsw,
-        # seguido de np.all() para verificar se todos os elementos resultantes são False (indicando correspondência de sinais)
-        # True (1) em inc_abrupt_bsw indica esperar um valor positivo em z_score para essa variável, e vice-versa.
-        aumento_abrupto_bsw = not np.any(self.z_score ^ (self.inc_abrupt_bsw > 0))
-        
-        # Definir a recompensa com base na ação e se houve aumento abrupto de BSW
-        if aumento_abrupto_bsw == 0 and action == 0:
-            reward = 0.01
-        elif aumento_abrupto_bsw == 0 and action == 1:
-            reward = -1
-        elif aumento_abrupto_bsw == 1 and action == 0:
-            reward = -1
-        elif aumento_abrupto_bsw == 1 and action == 1:
-            reward = 1
+        # Ajusta a recompensa com base na ação e na correspondência com o padrão de aumento abrupto de BSW
+        if action == 0:
+            if aumento_abrupto_bsw:
+                reward = -1  # Ação não desejada se houve aumento abrupto de BSW
+            else:
+                reward = 0.01  # Pequena recompensa se a ação foi correta considerando a ausência de aumento abrupto de BSW
+        elif action == 1:
+            if aumento_abrupto_bsw:
+                reward = 1  # Recompensa positiva se a ação foi correta e houve aumento abrupto de BSW
+            else:
+                reward = -1  # Ação não desejada na ausência de aumento abrupto de BSW
 
         return reward
+
             
 
     def render(self, mode='human'):
