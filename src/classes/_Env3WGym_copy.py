@@ -59,8 +59,8 @@ class Env3WGym(gym.Env):
                                        [1, -1, 1, -1, 1]])  
         
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 6 * 3600   # 1 * 3600 Ajuste para o número de linhas que representa uma hora
-        self.margin=0.1
+        self.window_size = 3 * 3600   # 1 * 3600 Ajuste para o número de linhas que representa uma hora
+        
         self.update_dataset() # Atualiza o dataset
         
         num_features = self.dataset.shape[1]  # Numero de colunas        
@@ -155,14 +155,11 @@ class Env3WGym(gym.Env):
 
     def calculate_reward(self, action):
        
-        current_trend = self.array_trend[self.dataset_index, :][np.newaxis, :]  # Make it 2D for comparison
-
-        # Compare the current trend against all patterns in inc_abrupt_bsw
-        # This creates a 2D boolean array where each row represents the comparison with one pattern
-        pattern_matches = np.all(current_trend == self.inc_abrupt_bsw, axis=1)
+        
 
         # Check if any of the patterns matches the current trend
-        aumento_abrupto_bsw = np.any(pattern_matches)  # Corrected line
+        aumento_abrupto_bsw  = any(np.array_equal(self.array_trend[self.dataset_index, :], x) for x in self.inc_abrupt_bsw)
+
 
         # Initially sets reward to 0 to cover unspecified cases
         reward = 0
