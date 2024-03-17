@@ -36,6 +36,10 @@ class Env3WGym(gym.Env):
         self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
         self.dataset = array_list[0] # Primeiro array de dados
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
+        self.z_score = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
+        self.update_dataset() # Atualiza o dataset
+        
+        self.window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
         
         num_features = self.dataset.shape[1] - 1  # Numero de colunas        
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
@@ -49,17 +53,17 @@ class Env3WGym(gym.Env):
         std = np.sqrt(np.convolve(np.square(data - np.pad(ma, (window_size - 1, 0), 'constant', constant_values=np.nan)), np.ones(window_size) / window_size, mode='valid'))
         return ma, std
 
-    def detect_z_score_trends(self, array_data):
-        window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
-        array_z = np.zeros_like(array_data)
+    def detect_z_score_trends(self):
+        
+        array_z = np.zeros_like(self.dataset)
 
-        for col in range(array_data.shape[1]):
-            data_col = array_data[:, col]
+        for col in range(self.dataset.shape[1]):
+            data_col = self.dataset[:, col]
             # Calcular média móvel e desvio padrão móvel
-            ma, std = self.moving_average_std(data_col, window_size)
+            ma, std = self.moving_average_std(data_col, self.window_size)
             # Calcular Z-scores
-            z_scores = (data_col - np.pad(ma, (window_size - 1, 0), 'constant', constant_values=np.nan)) / \
-                    np.pad(std, (window_size - 1, 0), 'constant', constant_values=np.nan)
+            z_scores = (data_col - np.pad(ma, (self.window_size - 1, 0), 'constant', constant_values=np.nan)) / \
+                    np.pad(std, (self.window_size - 1, 0), 'constant', constant_values=np.nan)
             # Calcular a diferença dos Z-scores para identificar tendências
             z_scores_diff = np.diff(z_scores, prepend=np.nan)
 
@@ -78,12 +82,13 @@ class Env3WGym(gym.Env):
     def update_dataset(self):
         self.dataset_index = 0
         self.dataset = self.array_list[self.array_index]
+        self.z_score = self.detect_z_score_trends()  # É um array de cinco posições, cada uma representando uma variável
 
     def step(self, action):
         if self.episode_ended:
             return self.reset()
         
-        reward = self.calculate_reward(action, self.dataset[self.dataset_index, -1])
+        reward = self.calculate_reward(action)
 
         self.dataset_index += 1
         if self.dataset_index >= self.dataset.shape[0]:
@@ -111,15 +116,16 @@ class Env3WGym(gym.Env):
         self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
 
-    def calculate_reward(self, action, array_data):
+    def calculate_reward(self, action):
 
-        z_score = self.detect_z_score_trends(array_data)  # É um array de cinco posições, cada uma representando uma variável
-                
+
+        # Supondo que seja um array de cinco posições, cada uma representando uma variável 
+
         # Detectar se houve aumento abrupto de BSW
         # Usamos o operador lógico XOR (^) para comparar os sinais de z_score e inc_abrupt_bsw,
         # seguido de np.all() para verificar se todos os elementos resultantes são False (indicando correspondência de sinais)
         # True (1) em inc_abrupt_bsw indica esperar um valor positivo em z_score para essa variável, e vice-versa.
-        aumento_abrupto_bsw = not np.any(z_score ^ (self.inc_abrupt_bsw > 0))
+        aumento_abrupto_bsw = not np.any(self.z_score ^ (self.inc_abrupt_bsw > 0))
         
         # Definir a recompensa com base na ação e se houve aumento abrupto de BSW
         if aumento_abrupto_bsw == 0 and action == 0:
