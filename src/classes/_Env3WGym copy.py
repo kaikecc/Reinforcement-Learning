@@ -5,22 +5,23 @@ import numpy as np
 class Env3WGym(gym.Env):
     """
    
-    Observadores: ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'] 
+    - Observadores: ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'] 
 
-    Pressão: P-PDG, P-TPT, P-MON-CKP
-    Temperatura: T-TPT, T-JUS-CKP
+    - Pressão: P-PDG, P-TPT, P-MON-CKP
+    - Temperatura: T-TPT, T-JUS-CKP
 
         * A regra geral, entretanto, é que as pressões medidas em pontos mais profundos aumentem 
         e que as pressões nos pontos mais próximos à superfície diminuam. As temperaturas, no geral, costumam
         aumentar em todos os equipamentos.
-    Aumento Abrupto de BSW:
+    
+    - Para detecção de Aumento Abrupto de BSW (detect_z_score_trends):
         - 0 (Não houve aumento abrupto de BSW)
         - 1 (Houve aumento abrupto de BSW)
         - -1 (Houve diminuição abrupta de BSW)
 
     Ações/Recompensas:
     - Se Ação 0 e Z-score 0: Recompensa 0.01
-    - Se Ação 0 e Z-score 1: Recompensa -1
+    - Se Ação 0 e Z-score 1: Recompensa -1    
     - Se Ação 1 e Z-score 0: Recompensa -1
     - Se Ação 1 e Z-score 1: Recompensa 0
 
@@ -34,7 +35,7 @@ class Env3WGym(gym.Env):
         self.index = 0 # Indice do array list
         self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
         self.dataset = array_list[0] # Primeiro array de dados
-        self.inc_abrupt_bsw = [0, -1, 1, -1, 1]  # Aumento Abrupto de BSW
+        self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         
         num_features = self.dataset.shape[1] - 1  # Numero de colunas        
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
@@ -49,28 +50,33 @@ class Env3WGym(gym.Env):
         return ma, std
 
     def detect_z_score_trends(self, array_data):
-        window_size = 1 * 3600
+        window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
         array_z = np.zeros_like(array_data)
-        
+
         for col in range(array_data.shape[1]):
             data_col = array_data[:, col]
+            # Calcular média móvel e desvio padrão móvel
             ma, std = self.moving_average_std(data_col, window_size)
-            ma_padded = np.pad(ma, (window_size - 1, 0), 'constant', constant_values=np.nan)
-            std_padded = np.pad(std, (window_size - 1, 0), 'constant', constant_values=np.nan)
-            z_scores = (data_col - ma_padded) / std_padded
+            # Calcular Z-scores
+            z_scores = (data_col - np.pad(ma, (window_size - 1, 0), 'constant', constant_values=np.nan)) / \
+                    np.pad(std, (window_size - 1, 0), 'constant', constant_values=np.nan)
+            # Calcular a diferença dos Z-scores para identificar tendências
             z_scores_diff = np.diff(z_scores, prepend=np.nan)
+
+            # Inicializar array de tendências como zeros
+            z_scores_trends = np.zeros_like(z_scores)
             
-            z_scores_increasing = np.zeros_like(z_scores)
-            if col in [0, 1, 3]:  # Colunas para verificar diminuição
-                z_scores_increasing[z_scores_diff < 0] = 1
-            else:  # Colunas para verificar aumento
-                z_scores_increasing[z_scores_diff > 0] = 1
+            # Atribuir -1 para diminuição, 1 para aumento
+            z_scores_trends[z_scores_diff < 0] = -1 if col in [0, 1, 3] else 0  # Colunas especificadas para verificar diminuição, se não, mantém 0
+            z_scores_trends[z_scores_diff > 0] = 1 if col not in [0, 1, 3] else 0  # Colunas restantes verificam aumento, se não, mantém 0
             
-            array_z[:, col] = z_scores_increasing
+            # Armazenar os resultados
+            array_z[:, col] = z_scores_trends
         
         return array_z
 
     def update_dataset(self):
+        self.dataset_index = 0
         self.dataset = self.array_list[self.array_index]
 
     def step(self, action):
@@ -80,16 +86,16 @@ class Env3WGym(gym.Env):
         reward = self.calculate_reward(action, self.dataset[self.dataset_index, -1])
 
         self.dataset_index += 1
-        if self.dataset_index >= len(self.dataset.shape[0]):
+        if self.dataset_index >= self.dataset.shape[0]:
             self.array_index += 1
             if self.array_index >= self.num_datasets:
                 self.episode_ended = True
             else:
                 self.update_dataset()
-                self.array_index = 0
+                
         
         done = self.episode_ended
-        
+
         if not done:
             self.state = self.dataset[self.dataset_index, :-1]
         else:
@@ -100,23 +106,33 @@ class Env3WGym(gym.Env):
     def reset(self):
         self.array_index = 0
         self.dataset_index = 0
-        self.dataset = self.detect_z_score_trends(self.array_list[0])
+        self.dataset = self.array_list[self.array_index]
         self.state = self.dataset[0, :-1]
         self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
 
     def calculate_reward(self, action, array_data):
-        
-        z_score = self.detect_z_score_trends(array_data) # É um array de cinco posições, cada uma representando uma variável
 
-        if action == 0 and z_score == 0:
-            return 0.01
-        elif action == 0 and z_score == 1:
-            return -1
-        elif action == 1 and z_score == 0:
-            return -1
-        else:
-            return 0
+        z_score = self.detect_z_score_trends(array_data)  # É um array de cinco posições, cada uma representando uma variável
+                
+        # Detectar se houve aumento abrupto de BSW
+        # Usamos o operador lógico XOR (^) para comparar os sinais de z_score e inc_abrupt_bsw,
+        # seguido de np.all() para verificar se todos os elementos resultantes são False (indicando correspondência de sinais)
+        # True (1) em inc_abrupt_bsw indica esperar um valor positivo em z_score para essa variável, e vice-versa.
+        aumento_abrupto_bsw = not np.any(z_score ^ (self.inc_abrupt_bsw > 0))
+        
+        # Definir a recompensa com base na ação e se houve aumento abrupto de BSW
+        if aumento_abrupto_bsw == 0 and action == 0:
+            reward = 0.01
+        elif aumento_abrupto_bsw == 0 and action == 1:
+            reward = -1
+        elif aumento_abrupto_bsw == 1 and action == 0:
+            reward = -1
+        elif aumento_abrupto_bsw == 1 and action == 1:
+            reward = 1
+
+        return reward
+            
 
     def render(self, mode='human'):
         pass
