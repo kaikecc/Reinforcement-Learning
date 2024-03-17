@@ -35,8 +35,23 @@ class LoadInstances:
                             (real and prefix not in ['SIMULATED', 'DRAWN'])):
                             yield class_code, instance_path
     
-    def load_instance_with_numpy(self, events_names):
-        well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
+    def load_instance_with_numpy(self, events_names, type_instance='real'):
+        
+        if type_instance == 'real':            
+            well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
+        elif type_instance == 'simulated':
+            well_names = [f'SIMULATED_{i:05d}' for i in range(1, 19)]
+        elif type_instance == 'drawn':
+            well_names = [f'DRAWN_{i:05d}' for i in range(1, 19)]
+
+        type_flags = {
+            'real': {'real': True, 'simulated': False, 'drawn': False},
+            'simulated': {'real': False, 'simulated': True, 'drawn': False},
+            'drawn': {'real': False, 'simulated': False, 'drawn': True}
+        }
+        
+        flags = type_flags[type_instance]
+
         columns = [ 
             'timestamp',      
             'P-PDG',
@@ -49,12 +64,18 @@ class LoadInstances:
             #'QGL',
             'class'
         ]
-        real_instances = list(self.class_and_file_generator(real=True))
-        logging.info(f'Total de  {len(real_instances)} instâncias reais encontradas.')
+
+
+        instances = list(self.class_and_file_generator(**flags))
+        logging.info(f'Total de  {len(instances)} instâncias reais encontradas.')
         arrays_list = []
 
-        for class_code, instance_path in real_instances:
-            well, _ = instance_path.stem.split('_')
+        for class_code, instance_path in instances:
+
+            if type_instance == 'real':
+                well, _ = instance_path.stem.split('_')
+            else:
+                well =  instance_path.stem
             
             if class_code in events_names and well in well_names:
                 df = pd.read_csv(instance_path, usecols=columns + (['timestamp'] if 'timestamp' in columns else []))

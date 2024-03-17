@@ -26,7 +26,7 @@ class Agent:
         envs = self.envs_random(dataset_train_scaled, n_envs)
         model = DQN(
             MlpPolicy, envs,
-            learning_rate=1e-5,
+            learning_rate=1e-4,
             buffer_size=10000,
             learning_starts=10000,
             batch_size=64,
@@ -86,7 +86,7 @@ class Agent:
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
 
         model = PPO('MlpPolicy', envs, verbose=0,
-                    learning_rate=1e-3,
+                    learning_rate=1e-4,
                     n_steps=2048,
                     batch_size=64,
                     n_epochs=10,
