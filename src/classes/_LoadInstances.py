@@ -73,7 +73,7 @@ class LoadInstances:
         logging.info(f'Total de {len(arrays_list)} instâncias reais carregadas para o evento {events_names}.')
         final_array = np.concatenate(arrays_list) if arrays_list else np.array([])
         
-        return final_array
+        return final_array, arrays_list
     
     # Função para aplicar undersampling no dataset
     def apply_undersampling(X, y):
