@@ -42,10 +42,24 @@ class Env3WGym(gym.Env):
         else:
             self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
             self.dataset = array_list[0] # Primeiro array de dados
-
-        self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
+        # Definição do padrão para aumento abrupto de BSW
+        self.inc_abrupt_bsw = np.array([[1, -1, 1, -1, 1], # Padrão original
+                                       [1, -1, 1, -1, 0],
+                                       [1, -1, 1, 0, 1],
+                                       [1, -1, 0, -1, 1],
+                                       [1, 0, 1, -1, 1],
+                                       [0, 0, 1, -1, 1],
+                                       [1, 0, 1, -1, 1],
+                                       [0, -1, 1, -1, 1],
+                                       [1, -1, 1, -1, -1],
+                                       [1, -1, 1, 1, 1],
+                                       [1, -1, -1, -1, 1],
+                                       [1, 1, 1, -1, 1],
+                                       [-1, -1, 1, -1, 1],
+                                       [1, -1, 1, -1, 1]])  
+        
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 6408  # 1.78 * 3600 Ajuste para o número de linhas que representa uma hora
+        self.window_size = 6 * 3600   # 1 * 3600 Ajuste para o número de linhas que representa uma hora
         self.margin=0.1
         self.update_dataset() # Atualiza o dataset
         
@@ -140,30 +154,33 @@ class Env3WGym(gym.Env):
         return np.array(self.state, dtype=np.float32)
 
     def calculate_reward(self, action):
-        # Determina se a tendência de Z-score corresponde ao padrão de 'aumento abrupto de BSW'
-        # Cada posição em 'self.array_trend[self.dataset_index, :-1]' será comparada com 'self.inc_abrupt_bsw'
-        # para ver se corresponde ao padrão de 'aumento' ou 'diminuição' esperado
-        pattern_matches = self.array_trend[self.dataset_index, :] == self.inc_abrupt_bsw
+       
+        current_trend = self.array_trend[self.dataset_index, :][np.newaxis, :]  # Make it 2D for comparison
 
-        # Verifica se todas as tendências correspondem ao padrão esperado (True se sim, False caso contrário)
-        aumento_abrupto_bsw = np.all(pattern_matches)
+        # Compare the current trend against all patterns in inc_abrupt_bsw
+        # This creates a 2D boolean array where each row represents the comparison with one pattern
+        pattern_matches = np.all(current_trend == self.inc_abrupt_bsw, axis=1)
 
-        # Inicialmente define a recompensa como -1 para cobrir os casos não especificados
+        # Check if any of the patterns matches the current trend
+        aumento_abrupto_bsw = np.any(pattern_matches)  # Corrected line
+
+        # Initially sets reward to 0 to cover unspecified cases
         reward = 0
 
-        # Ajusta a recompensa com base na ação e na correspondência com o padrão de aumento abrupto de BSW
+        # Adjust the reward based on the action and whether it matches the pattern for abrupt BSW increase
         if action == 0:
             if aumento_abrupto_bsw:
-                reward = -1  # Ação não desejada se houve aumento abrupto de BSW
+                reward = -1  # Undesired action if there was an abrupt BSW increase
             else:
-                reward = 0.01  # Pequena recompensa se a ação foi correta considerando a ausência de aumento abrupto de BSW
+                reward = 0.01  # Small reward if the action was correct considering no abrupt BSW increase
         elif action == 1:
             if aumento_abrupto_bsw:
-                reward = 1  # Recompensa positiva se a ação foi correta e houve aumento abrupto de BSW
+                reward = 1  # Positive reward if the action was correct and there was an abrupt BSW increase
             else:
-                reward = -1  # Ação não desejada na ausência de aumento abrupto de BSW
+                reward = -1  # Undesired action in the absence of abrupt BSW increase
 
         return reward
+
            
 
     def render(self, mode='human'):
