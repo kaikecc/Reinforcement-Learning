@@ -45,7 +45,7 @@ class Env3WGym(gym.Env):
 
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
+        self.window_size = 6408  # 1.78 * 3600 Ajuste para o número de linhas que representa uma hora
         self.margin=0.1
         self.update_dataset() # Atualiza o dataset
         
