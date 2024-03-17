@@ -40,7 +40,7 @@ class LoadInstances:
         if type_instance == 'real':            
             well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
         elif type_instance == 'simulated':
-            well_names = [f'SIMULATED_{i:05d}' for i in range(1, 19)]
+            well_names = [f'SIMULATED_{i:05d}' for i in range(1, 120)]
         elif type_instance == 'drawn':
             well_names = [f'DRAWN_{i:05d}' for i in range(1, 19)]
 
