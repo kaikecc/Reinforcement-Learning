@@ -26,7 +26,7 @@ class Agent:
         envs = self.envs_random(dataset_train_scaled, n_envs)
         model = DQN(
             MlpPolicy, envs,
-            learning_rate=1e-4,
+            learning_rate=1e-5,
             buffer_size=10000,
             learning_starts=10000,
             batch_size=64,
