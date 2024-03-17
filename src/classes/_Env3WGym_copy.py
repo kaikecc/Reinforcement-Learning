@@ -38,7 +38,7 @@ class Env3WGym(gym.Env):
         self.dataset = array_list[0]# Primeiro array de dados
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         self.z_score = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
+        self.window_size = 12 * 3600  # Ajuste para o número de linhas que representa uma hora
         self.update_dataset() # Atualiza o dataset
         
         
@@ -149,8 +149,7 @@ class Env3WGym(gym.Env):
                 reward = -1  # Ação não desejada na ausência de aumento abrupto de BSW
 
         return reward
-
-            
+           
 
     def render(self, mode='human'):
         pass
