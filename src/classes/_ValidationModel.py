@@ -104,15 +104,20 @@ class ValidationModel():
         
         return precision, recall, f1_score
     
-    def validation_model(self, accuracy, dataset_validation_scaled, model):
+    def validation_model(self, accuracy, dataset_validation_scaled, model, type_ml = 'Supervised'):
         """Valida o modelo com base na acurácia fornecida e nos dados de validação escalados."""
         if accuracy > 0.8:
             logging.info('Iniciando a separação dos grupos de dados para validação individual')
-            sort_indices = np.argsort(dataset_validation_scaled[:, 0])
-            dataset_validation_sorted = dataset_validation_scaled[sort_indices]
+            
+            if type_ml == 'Supervised':
+                sort_indices = np.argsort(dataset_validation_scaled[:, 0])
+                dataset_validation_sorted = dataset_validation_scaled[sort_indices]
 
-            datasets = self.separate_datasets(dataset_validation_sorted)
-            logging.info(f'Fim da separação dos grupos de dados para validação com {len(datasets)} grupos de instâncias')
+                datasets = self.separate_datasets(dataset_validation_sorted)
+                logging.info(f'Fim da separação dos grupos de dados para validação com {len(datasets)} grupos de instâncias')
+            else:
+                datasets = dataset_validation_scaled
+                logging.info(f'Fim da separação dos grupos de dados para validação com ... grupo de instâncias')
 
             acc_total = []
             accuracy_values, acc_values, TN_values, TP_values = [], [], [], []
