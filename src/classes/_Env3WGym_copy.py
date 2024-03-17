@@ -34,7 +34,7 @@ class Env3WGym(gym.Env):
         self.array_index = 0 # Indice do array_z (dataset)
         self.index = 0 # Indice do array list
         self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
-        self.dataset = array_list[0] # Primeiro array de dados
+        self.dataset = array_list[0][:, 1:-1] # Primeiro array de dados
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         self.z_score = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
         self.update_dataset() # Atualiza o dataset
@@ -81,7 +81,7 @@ class Env3WGym(gym.Env):
 
     def update_dataset(self):
         self.dataset_index = 0
-        self.dataset = self.array_list[self.array_index]
+        self.dataset = self.array_list[self.array_index][:, 1:-1]
         self.z_score = self.detect_z_score_trends()  # É um array de cinco posições, cada uma representando uma variável
 
     def step(self, action):
