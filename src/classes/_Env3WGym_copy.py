@@ -15,16 +15,16 @@ class Env3WGym(gym.Env):
         e que as pressões nos pontos mais próximos à superfície diminuam. As temperaturas, no geral, costumam
         aumentar em todos os equipamentos.
     
-    - Para detecção de Aumento Abrupto de BSW (detect_z_score_trends):
+    - Para detecção de Aumento Abrupto de BSW (detect_array_trend_trends):
         - 0 (Não houve aumento abrupto de BSW)
         - 1 (Houve aumento abrupto de BSW)
         - -1 (Houve diminuição abrupta de BSW)
 
     Ações/Recompensas:
-    - Se Ação = 0 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = 0.01
-    - Se Ação = 0 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = -1
-    - Se Ação = 1 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = -1
-    - Se Ação = 1 AND (self.z_score[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = 1
+    - Se Ação = 0 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = 0.01
+    - Se Ação = 0 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = -1
+    - Se Ação = 1 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = -1
+    - Se Ação = 1 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = 1
 
     """
     metadata = {'render.modes': ['human']}
@@ -37,8 +37,9 @@ class Env3WGym(gym.Env):
         self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
         self.dataset = array_list[0]# Primeiro array de dados
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
-        self.z_score = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 12 * 3600  # Ajuste para o número de linhas que representa uma hora
+        self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
+        self.window_size = 4 * 3600  # Ajuste para o número de linhas que representa uma hora
+        self.margin=0.1
         self.update_dataset() # Atualiza o dataset
         
         
@@ -64,33 +65,34 @@ class Env3WGym(gym.Env):
 
         return ma_filled, std_filled
 
-    def detect_z_score_trends(self):
+ 
+    def detect_trends_with_window(self):
         # Converte self.dataset para um DataFrame Pandas para utilizar as funcionalidades de rolling window
         df = pd.DataFrame(self.dataset)
-        array_z = np.zeros_like(self.dataset)
+        array_trend = np.zeros_like(self.dataset, dtype=float)
 
         for col in df.columns:
-            # Calcular média móvel e desvio padrão móvel
-            ma, std = self.moving_average_std(df[col])
-            
-            # Calcular Z-scores usando a média e desvio padrão móveis
-            z_scores = (df[col] - ma) / std
-            
-            # Calcular a diferença dos Z-scores para identificar tendências
-            z_scores_diff = z_scores.diff().fillna(0)  # preenche NaNs resultantes do diff com 0
+            # Calculando a diferença discreta para capturar a tendência
+            derivative = df[col].diff()
 
-            # Atribuir -1 para diminuição, 1 para aumento, e 0 para nenhuma mudança
-            array_z[:, col] = np.where(z_scores_diff < 0, -1, 
-                           np.where(z_scores_diff > 0, 1, 0))
+            # Aplicando a média móvel sobre a diferença discreta com a janela especificada
+            moving_average_derivative = derivative.rolling(window=self.window_size).mean()
 
-            
-        return array_z
+            # Identificando pontos de aumento, diminuição e estabilidade
+            increasing = moving_average_derivative > 0
+            decreasing = moving_average_derivative < 0
+
+            # Atribuir 1 para aumento, -1 para diminuição, e 0 para estabilidade
+            array_trend[:, col] = np.where(increasing, 1, np.where(decreasing, -1, 0))
+
+        return array_trend
+
 
 
     def update_dataset(self):
         self.dataset_index = 0
         self.dataset = self.array_list[self.array_index]
-        self.z_score = self.detect_z_score_trends()  # É um array de cinco posições, cada uma representando uma variável
+        self.array_trend = self.detect_trends_with_window()  # É um array de cinco posições, cada uma representando uma variável
 
     def step(self, action):
         if self.episode_ended:
@@ -126,9 +128,9 @@ class Env3WGym(gym.Env):
 
     def calculate_reward(self, action):
         # Determina se a tendência de Z-score corresponde ao padrão de 'aumento abrupto de BSW'
-        # Cada posição em 'self.z_score[self.dataset_index, :-1]' será comparada com 'self.inc_abrupt_bsw'
+        # Cada posição em 'self.array_trend[self.dataset_index, :-1]' será comparada com 'self.inc_abrupt_bsw'
         # para ver se corresponde ao padrão de 'aumento' ou 'diminuição' esperado
-        pattern_matches = self.z_score[self.dataset_index, :] == self.inc_abrupt_bsw
+        pattern_matches = self.array_trend[self.dataset_index, :] == self.inc_abrupt_bsw
 
         # Verifica se todas as tendências correspondem ao padrão esperado (True se sim, False caso contrário)
         aumento_abrupto_bsw = np.all(pattern_matches)
