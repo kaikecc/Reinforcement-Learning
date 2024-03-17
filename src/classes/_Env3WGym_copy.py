@@ -34,15 +34,20 @@ class Env3WGym(gym.Env):
         self.array_list = array_list
         self.array_index = 0 # Indice do array_z (dataset)
         self.index = 0 # Indice do array list
-        self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
-        self.dataset = array_list[0]# Primeiro array de dados
+        
+        
+        if isinstance(array_list, np.ndarray):
+            self.num_datasets = 1
+            self.dataset = array_list
+        else:
+            self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
+            self.dataset = array_list[0] # Primeiro array de dados
+
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
         self.window_size = 4 * 3600  # Ajuste para o número de linhas que representa uma hora
         self.margin=0.1
         self.update_dataset() # Atualiza o dataset
-        
-        
         
         num_features = self.dataset.shape[1]  # Numero de colunas        
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
@@ -91,7 +96,11 @@ class Env3WGym(gym.Env):
 
     def update_dataset(self):
         self.dataset_index = 0
-        self.dataset = self.array_list[self.array_index]
+        if isinstance(self.array_list, np.ndarray):
+            self.dataset = self.array_list
+        else:
+            self.dataset = self.array_list[self.array_index]
+        
         self.array_trend = self.detect_trends_with_window()  # É um array de cinco posições, cada uma representando uma variável
 
     def step(self, action):
@@ -121,8 +130,12 @@ class Env3WGym(gym.Env):
     def reset(self):
         self.array_index = 0
         self.dataset_index = 0
-        self.dataset = self.array_list[self.array_index]
-        self.state = self.dataset[0, :-1]
+        if isinstance(self.array_list, np.ndarray):
+            self.dataset = self.array_list
+        else:
+            self.dataset = self.array_list[self.array_index]
+            
+        self.state = self.dataset[0, :]
         self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
 
