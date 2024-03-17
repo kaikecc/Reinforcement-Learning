@@ -29,7 +29,7 @@ class Agent:
             learning_rate=1e-4,
             buffer_size=10000,
             learning_starts=10000,
-            batch_size=32,
+            batch_size=64,
             tau=1.0,
             gamma=0.99,
             train_freq=4,
@@ -40,7 +40,7 @@ class Agent:
             exploration_final_eps=0.01,
             max_grad_norm=10,
             tensorboard_log=None,
-            verbose=1,
+            verbose=0,
             device='auto'
         )
         model.learn(total_timesteps=int(1.2e5))
@@ -85,7 +85,7 @@ class Agent:
         checkpoint_dir = os.path.join(self.path_save, 'ppo_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
 
-        model = PPO('MlpPolicy', envs, verbose=1,
+        model = PPO('MlpPolicy', envs, verbose=0,
                     learning_rate=1e-3,
                     n_steps=2048,
                     batch_size=64,
