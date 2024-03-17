@@ -1,6 +1,7 @@
 import gym
 from gym import spaces
 import numpy as np
+import pandas as pd
 
 class Env3WGym(gym.Env):
     """
@@ -34,54 +35,61 @@ class Env3WGym(gym.Env):
         self.array_index = 0 # Indice do array_z (dataset)
         self.index = 0 # Indice do array list
         self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
-        self.dataset = array_list[0][:, 1:-1] # Primeiro array de dados
+        self.dataset = array_list[0]# Primeiro array de dados
         self.inc_abrupt_bsw = np.array([0, -1, 1, -1, 1])  # Definição do padrão para aumento abrupto de BSW
         self.z_score = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
+        self.window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
         self.update_dataset() # Atualiza o dataset
         
-        self.window_size = 1 * 3600  # Ajuste para o número de linhas que representa uma hora
         
-        num_features = self.dataset.shape[1] - 1  # Numero de colunas        
+        
+        num_features = self.dataset.shape[1]  # Numero de colunas        
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
         self.observation_space = spaces.Box(low=np.float32(-np.inf), high=np.float32(np.inf), shape=(num_features,), dtype=np.float32)       
         
         self.episode_ended = False
 
-    def moving_average_std(self, data, window_size):
-        """Calcula a média móvel e o desvio padrão móvel."""
-        ma = np.convolve(data, np.ones(window_size) / window_size, mode='valid')
-        std = np.sqrt(np.convolve(np.square(data - np.pad(ma, (window_size - 1, 0), 'constant', constant_values=np.nan)), np.ones(window_size) / window_size, mode='valid'))
-        return ma, std
+    def moving_average_std(self, data_col):
+        """Calcula a média móvel e o desvio padrão móvel usando Pandas."""
+        data_series = pd.Series(data_col)
+        
+        # Calcula a média móvel e o desvio padrão móvel usando a janela definida em self.window_size
+        rolling = data_series.rolling(window=self.window_size, min_periods=1)
+        ma = rolling.mean()
+        std = rolling.std(ddof=0)
+
+        # Substitui NaNs nos cálculos da média e desvio padrão para manter o tamanho consistente
+        ma_filled = ma.fillna(method='bfill').fillna(method='ffill')
+        std_filled = std.fillna(method='bfill').fillna(method='ffill')
+
+        return ma_filled, std_filled
 
     def detect_z_score_trends(self):
-        
+        # Converte self.dataset para um DataFrame Pandas para utilizar as funcionalidades de rolling window
+        df = pd.DataFrame(self.dataset)
         array_z = np.zeros_like(self.dataset)
 
-        for col in range(self.dataset.shape[1]):
-            data_col = self.dataset[:, col]
+        for col in df.columns:
             # Calcular média móvel e desvio padrão móvel
-            ma, std = self.moving_average_std(data_col, self.window_size)
-            # Calcular Z-scores
-            z_scores = (data_col - np.pad(ma, (self.window_size - 1, 0), 'constant', constant_values=np.nan)) / \
-                    np.pad(std, (self.window_size - 1, 0), 'constant', constant_values=np.nan)
+            ma, std = self.moving_average_std(df[col])
+            
+            # Calcular Z-scores usando a média e desvio padrão móveis
+            z_scores = (df[col] - ma) / std
+            
             # Calcular a diferença dos Z-scores para identificar tendências
-            z_scores_diff = np.diff(z_scores, prepend=np.nan)
+            z_scores_diff = z_scores.diff().fillna(0)  # preenche NaNs resultantes do diff com 0
 
-            # Inicializar array de tendências como zeros
-            z_scores_trends = np.zeros_like(z_scores)
+            # Atribuir -1 para diminuição, 1 para aumento, e 0 para nenhuma mudança
+            array_z[:, col] = np.where(z_scores_diff < 0, -1, 
+                           np.where(z_scores_diff > 0, 1, 0))
+
             
-            # Atribuir -1 para diminuição, 1 para aumento
-            z_scores_trends[z_scores_diff < 0] = -1 if col in [0, 1, 3] else 0  # Colunas especificadas para verificar diminuição, se não, mantém 0
-            z_scores_trends[z_scores_diff > 0] = 1 if col not in [0, 1, 3] else 0  # Colunas restantes verificam aumento, se não, mantém 0
-            
-            # Armazenar os resultados
-            array_z[:, col] = z_scores_trends
-        
         return array_z
+
 
     def update_dataset(self):
         self.dataset_index = 0
-        self.dataset = self.array_list[self.array_index][:, 1:-1]
+        self.dataset = self.array_list[self.array_index]
         self.z_score = self.detect_z_score_trends()  # É um array de cinco posições, cada uma representando uma variável
 
     def step(self, action):
@@ -102,7 +110,7 @@ class Env3WGym(gym.Env):
         done = self.episode_ended
 
         if not done:
-            self.state = self.dataset[self.dataset_index, :-1]
+            self.state = self.dataset[self.dataset_index, :]
         else:
             self.state = np.zeros(self.observation_space.shape[0])
 
@@ -120,7 +128,7 @@ class Env3WGym(gym.Env):
         # Determina se a tendência de Z-score corresponde ao padrão de 'aumento abrupto de BSW'
         # Cada posição em 'self.z_score[self.dataset_index, :-1]' será comparada com 'self.inc_abrupt_bsw'
         # para ver se corresponde ao padrão de 'aumento' ou 'diminuição' esperado
-        pattern_matches = self.z_score[self.dataset_index, :-1] == self.inc_abrupt_bsw
+        pattern_matches = self.z_score[self.dataset_index, :] == self.inc_abrupt_bsw
 
         # Verifica se todas as tendências correspondem ao padrão esperado (True se sim, False caso contrário)
         aumento_abrupto_bsw = np.all(pattern_matches)
