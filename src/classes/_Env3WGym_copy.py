@@ -2,6 +2,7 @@ import gym
 from gym import spaces
 import numpy as np
 import pandas as pd
+from scipy.signal import savgol_filter
 
 class Env3WGym(gym.Env):
     """
@@ -21,11 +22,7 @@ class Env3WGym(gym.Env):
         - -1 (Houve diminuição abrupta de BSW)
 
     Ações/Recompensas:
-    - Se Ação = 0 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = 0.01
-    - Se Ação = 0 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = -1
-    - Se Ação = 1 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 0: Recompensa = -1
-    - Se Ação = 1 AND (self.array_trend[self.dataset_index] XOR self.inc_abrupt_bsw) == 1: Recompensa = 1
-
+    
     """
     metadata = {'render.modes': ['human']}
     
@@ -42,70 +39,56 @@ class Env3WGym(gym.Env):
         else:
             self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
             self.dataset = array_list[0] # Primeiro array de dados
-        # Definição do padrão para aumento abrupto de BSW
-        self.inc_abrupt_bsw = np.array([[1, -1, 1, -1, 1], # Padrão original
-                                       [1, -1, 1, -1, 0],
-                                       [1, -1, 1, 0, 1],
-                                       [1, -1, 0, -1, 1],
-                                       [1, 0, 1, -1, 1],
-                                       [0, 0, 1, -1, 1],
-                                       [1, 0, 1, -1, 1],
-                                       [0, -1, 1, -1, 1],
-                                       [1, -1, 1, -1, -1],
-                                       [1, -1, 1, 1, 1],
-                                       [1, -1, -1, -1, 1],
-                                       [1, 1, 1, -1, 1],
-                                       [-1, -1, 1, -1, 1],
-                                       [1, -1, 1, -1, 1]])  
+        
+        self.window_hour = 9  # Janela de 9 horas
         
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
-        self.window_size = 3 * 3600   # 1 * 3600 Ajuste para o número de linhas que representa uma hora
         
         self.update_dataset() # Atualiza o dataset
         
-        num_features = self.dataset.shape[1]  # Numero de colunas        
+        num_features = self.dataset.shape[1] - 1  # Numero de colunas        
         self.action_space = spaces.Discrete(2)  # Actions: 0 or 1
         self.observation_space = spaces.Box(low=np.float32(-np.inf), high=np.float32(np.inf), shape=(num_features,), dtype=np.float32)       
         
         self.episode_ended = False
+  
 
-    def moving_average_std(self, data_col):
-        """Calcula a média móvel e o desvio padrão móvel usando Pandas."""
-        data_series = pd.Series(data_col)
+    def detect_trends(self):
         
-        # Calcula a média móvel e o desvio padrão móvel usando a janela definida em self.window_size
-        rolling = data_series.rolling(window=self.window_size, min_periods=1)
-        ma = rolling.mean()
-        std = rolling.std(ddof=0)
+        columns_to_normalize = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
+        
+        # Convertendo o array NumPy para um DataFrame pandas
+        df = pd.DataFrame(self.dataset, columns=['timestamp', 'P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'])
 
-        # Substitui NaNs nos cálculos da média e desvio padrão para manter o tamanho consistente
-        ma_filled = ma.fillna(method='bfill').fillna(method='ffill')
-        std_filled = std.fillna(method='bfill').fillna(method='ffill')
+        df['timestamp'] = pd.to_datetime(df['timestamp'])
 
-        return ma_filled, std_filled
+        # Normalizando os dados especificados entre 0 e 1 diretamente no DataFrame original        
+        for col in columns_to_normalize:
+            df[col] = (df[col] - df[col].min()) / (df[col].max() - df[col].min())
 
- 
-    def detect_trends_with_window(self):
-        # Converte self.dataset para um DataFrame Pandas para utilizar as funcionalidades de rolling window
-        df = pd.DataFrame(self.dataset)
-        array_trend = np.zeros_like(self.dataset, dtype=float)
+        # Calculando a frequência de amostragem mais comum (em segundos)
+        sampling_frequency_seconds = df['timestamp'].diff().dt.total_seconds().mode()[0]
 
-        for col in df.columns:
-            # Calculando a diferença discreta para capturar a tendência
-            derivative = df[col].diff()
+        # Convertendo a frequência de amostragem para amostras por hora e ajustando a janela para 6 horas de dados
+        samples_per_hour = 3600 / sampling_frequency_seconds
+        window_length = int(samples_per_hour * self.window_hour)
+        if window_length % 2 == 0:  # Ajustando para ímpar se necessário
+            window_length += 1
 
-            # Aplicando a média móvel sobre a diferença discreta com a janela especificada
-            moving_average_derivative = derivative.rolling(window=self.window_size).mean()
+        # Aplicando o filtro Savitzky-Golay diretamente ao DataFrame
+        polyorder = 3  # Ordem do polinômio
+        for col in columns_to_normalize:
+            df[col] = savgol_filter(df[col], window_length, polyorder)
 
-            # Identificando pontos de aumento, diminuição e estabilidade
-            increasing = moving_average_derivative > 0
-            decreasing = moving_average_derivative < 0
+        # Calculando as derivadas com variação de 6 horas diretamente, sem criar um novo DataFrame
+        df_diff = df[columns_to_normalize].diff(window_length)
 
-            # Atribuir 1 para aumento, -1 para diminuição, e 0 para estabilidade
-            array_trend[:, col] = np.where(increasing, 1, np.where(decreasing, -1, 0))
+        # Normalizando df_diff para ficar de 0 a 1 e substituindo NaN por 0 diretamente
+        for col in columns_to_normalize:
+            df_diff[col] = (df_diff[col] - df_diff[col].min()) / (df_diff[col].max() - df_diff[col].min())
+        df_diff.fillna(0, inplace=True)
 
-        return array_trend
-
+        self.array_trend = df_diff.values  # Convertendo o DataFrame de diferenças normalizadas para um array NumPy
 
 
     def update_dataset(self):
@@ -115,8 +98,8 @@ class Env3WGym(gym.Env):
         else:
             self.dataset = self.array_list[self.array_index]
         
-        self.array_trend = self.detect_trends_with_window()  # É um array de cinco posições, cada uma representando uma variável
-
+        self.detect_trends()  # É um array de cinco posições, cada uma representando uma variável
+        
     def step(self, action):
         if self.episode_ended:
             return self.reset()
@@ -135,9 +118,9 @@ class Env3WGym(gym.Env):
         done = self.episode_ended
 
         if not done:
-            self.state = self.dataset[self.dataset_index, :]
+            self.state = self.dataset[self.dataset_index, 1:]
         else:
-            self.state = np.zeros(self.observation_space.shape[0])
+            self.state = np.zeros(self.observation_space.shape[0]-1)
 
         return np.array(self.state, dtype=np.float32), reward, done, {}
 
@@ -149,16 +132,15 @@ class Env3WGym(gym.Env):
         else:
             self.dataset = self.array_list[self.array_index]
 
-        self.state = self.dataset[0, :]
+        self.state = self.dataset[0, 1:]
         self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
 
     def calculate_reward(self, action):
        
-        
-
+        pattern_matches = self.array_trend[self.dataset_index, :] != [0, 0, 0, 0, 0]
         # Check if any of the patterns matches the current trend
-        aumento_abrupto_bsw  = any(np.array_equal(self.array_trend[self.dataset_index, :], x) for x in self.inc_abrupt_bsw)
+        aumento_abrupto_bsw  = np.all(pattern_matches)
 
 
         # Initially sets reward to 0 to cover unspecified cases
