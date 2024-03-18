@@ -36,11 +36,13 @@ class Env3WGym(gym.Env):
         if isinstance(array_list, np.ndarray):
             self.num_datasets = 1
             self.dataset = array_list
+            self.window_hour = int((len(array_list)/3600)/6)  # Janela de 9 horas
         else:
             self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
             self.dataset = array_list[0] # Primeiro array de dados
+            self.window_hour = int((len(self.dataset )/3600)/6)
         
-        self.window_hour = 9  # Janela de 9 horas
+        
         
         self.array_trend = np.zeros_like(self.dataset)  # Inicialização do array de tendências de Z-score
         
@@ -78,17 +80,25 @@ class Env3WGym(gym.Env):
         # Aplicando o filtro Savitzky-Golay diretamente ao DataFrame
         polyorder = 3  # Ordem do polinômio
         for col in columns_to_normalize:
-            df[col] = savgol_filter(df[col], window_length, polyorder)
+            df[col] = savgol_filter(df[col], window_length if window_length <= len(df[col]) else len(df[col])//2*2+1, polyorder)
 
-        # Calculando as derivadas com variação de 6 horas diretamente, sem criar um novo DataFrame
-        df_diff = df[columns_to_normalize].diff(window_length)
+        df_trend = pd.DataFrame(0, index=df.index, columns=columns_to_normalize)
 
-        # Normalizando df_diff para ficar de 0 a 1 e substituindo NaN por 0 diretamente
+        # Calculando a inclinação e classificando as variações
         for col in columns_to_normalize:
-            df_diff[col] = (df_diff[col] - df_diff[col].min()) / (df_diff[col].max() - df_diff[col].min())
-        df_diff.fillna(0, inplace=True)
+            for i in range(window_length, len(df)):
+                # Calcula a variação percentual
+                percent_change = (df[col].iloc[i] - df[col].iloc[i - window_length]) / df[col].iloc[i - window_length]
+                
+                # Classifica a variação
+                if percent_change > 0.1:
+                    df_trend[col].iloc[i] = 1
+                elif percent_change < -0.1:
+                    df_trend[col].iloc[i] = -1
 
-        self.array_trend = df_diff.values  # Convertendo o DataFrame de diferenças normalizadas para um array NumPy
+        self.array_trend = df_trend.values  # Convertendo o DataFrame de tendências para um array NumPy
+
+        
 
 
     def update_dataset(self):
@@ -97,6 +107,7 @@ class Env3WGym(gym.Env):
             self.dataset = self.array_list
         else:
             self.dataset = self.array_list[self.array_index]
+            self.window_hour = int((len(self.dataset )/3600)/6)
         
         self.detect_trends()  # É um array de cinco posições, cada uma representando uma variável
         
@@ -138,7 +149,7 @@ class Env3WGym(gym.Env):
 
     def calculate_reward(self, action):
        
-        pattern_matches = self.array_trend[self.dataset_index, :] != [0, 0, 0, 0, 0]
+        pattern_matches = self.array_trend[self.dataset_index, :] != [1, 1, -1, 1, -1] # ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
         # Check if any of the patterns matches the current trend
         aumento_abrupto_bsw  = np.all(pattern_matches)
 
