@@ -36,7 +36,7 @@ class Env3WGym(gym.Env):
         if isinstance(array_list, np.ndarray):
             self.num_datasets = 1
             self.dataset = array_list
-            self.window_hour = int((len(array_list)/3600)/6)  # Janela de 9 horas
+            self.window_hour = 5  # Janela de 9 horas
         else:
             self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
             self.dataset = array_list[0] # Primeiro array de dados
@@ -83,18 +83,19 @@ class Env3WGym(gym.Env):
             df[col] = savgol_filter(df[col], window_length if window_length <= len(df[col]) else len(df[col])//2*2+1, polyorder)
 
         df_trend = pd.DataFrame(0, index=df.index, columns=columns_to_normalize)
-
+        size = len(df)
         # Calculando a inclinação e classificando as variações
         for col in columns_to_normalize:
-            for i in range(window_length, len(df)):
+            for i in range(window_length, size):
                 # Calcula a variação percentual
                 percent_change = (df[col].iloc[i] - df[col].iloc[i - window_length]) / df[col].iloc[i - window_length]
                 
                 # Classifica a variação
                 if percent_change > 0.1:
-                    df_trend[col].iloc[i] = 1
+                    df_trend[col].iloc[i] = 1                    
                 elif percent_change < -0.1:
                     df_trend[col].iloc[i] = -1
+                    
 
         self.array_trend = df_trend.values  # Convertendo o DataFrame de tendências para um array NumPy
 
@@ -149,7 +150,7 @@ class Env3WGym(gym.Env):
 
     def calculate_reward(self, action):
        
-        pattern_matches = self.array_trend[self.dataset_index, :] != [1, 1, -1, 1, -1] # ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
+        pattern_matches = self.array_trend[self.dataset_index, :] != [1, 1, -1, -1, -1] # ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
         # Check if any of the patterns matches the current trend
         aumento_abrupto_bsw  = np.all(pattern_matches)
 
