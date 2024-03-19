@@ -1,0 +1,33 @@
+[INFO]	19/03/2024 04:00:58 PM - Iniciando carregamento do dataset
+[INFO]	19/03/2024 04:00:58 PM - Total de  939 instâncias reais encontradas.
+[INFO]	19/03/2024 04:01:30 PM - Total de 114 instâncias reais carregadas para o evento {1: 'Abrupt Increase of BSW'}.
+[INFO]	19/03/2024 04:01:31 PM - Fim carregamento do dataset
+[INFO]	19/03/2024 04:01:31 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	19/03/2024 04:01:34 PM - Número de amostras da classe 0: 684000
+[INFO]	19/03/2024 04:01:34 PM - Número de amostras de treino da classe 0: 547200
+[INFO]	19/03/2024 04:01:34 PM - Número de amostras de teste da classe 0: 136800
+[INFO]	19/03/2024 04:01:34 PM - Número de amostras da classe 1: 2872713
+[INFO]	19/03/2024 04:01:35 PM - Número de amostras de treino da classe 1: 2298170
+[INFO]	19/03/2024 04:01:35 PM - Número de amostras de teste da classe 1: 574543
+[INFO]	19/03/2024 04:01:35 PM - Número de amostras da classe 101: 4766400
+[INFO]	19/03/2024 04:01:35 PM - Número de amostras de treino da classe 101: 3813120
+[INFO]	19/03/2024 04:01:35 PM - Número de amostras de teste da classe 101: 953280
+[INFO]	19/03/2024 04:01:39 PM - Número de registros de treino: 6658490
+[INFO]	19/03/2024 04:01:39 PM - Número de registros de teste: 832311
+[INFO]	19/03/2024 04:01:39 PM - Número de registros de validação: 832312
+[INFO]	19/03/2024 04:01:47 PM - Número de registros de treino undersampling: 6658490
+[INFO]	19/03/2024 04:01:47 PM - Número de registros de teste undersampling: 832311
+[INFO]	19/03/2024 04:01:47 PM - Número de registros de validação: 832312
+[INFO]	19/03/2024 04:01:47 PM - Fim divisão do dataset em treino e teste
+[INFO]	19/03/2024 04:01:48 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	19/03/2024 04:02:22 PM - Tempo de Treinamento DQN: 33.37s
+[INFO]	19/03/2024 04:02:22 PM - Fim treinamento do algoritmo DQN
+[INFO]	19/03/2024 04:02:22 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	19/03/2024 04:02:22 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW\DQN com 1 episódios.
+[INFO]	19/03/2024 04:08:39 PM - Acurácia de 0.82230 no conjunto de dados de teste usando DQN
+[INFO]	19/03/2024 04:08:39 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	19/03/2024 04:08:39 PM - Iniciando a validação do modelo DQN
+[INFO]	19/03/2024 04:08:39 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	19/03/2024 04:08:54 PM - Fim da separação dos grupos de dados para validação com 1 grupos de instâncias
+[INFO]	19/03/2024 04:08:54 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	19/03/2024 04:13:11 PM - Acurácia da 1ª instância: 90.291%, Verdadeiro Negativo: 0.500%, Verdadeiro Positivo: 89.791%

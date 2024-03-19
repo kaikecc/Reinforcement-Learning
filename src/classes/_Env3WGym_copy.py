@@ -36,7 +36,7 @@ class Env3WGym(gym.Env):
         if isinstance(array_list, np.ndarray):
             self.num_datasets = 1
             self.dataset = array_list
-            self.window_hour = 5  # Janela de 9 horas
+            self.window_hour = 5  # Janela de 5 horas
         else:
             self.num_datasets = len(array_list) # Tamanho de arrays dentro de array_list
             self.dataset = array_list[0] # Primeiro array de dados

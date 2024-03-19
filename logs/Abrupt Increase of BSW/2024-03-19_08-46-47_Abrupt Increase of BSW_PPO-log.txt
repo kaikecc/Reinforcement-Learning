@@ -1,6 +1,0 @@
-[INFO]	19/03/2024 08:46:47 AM - Total de  939 instâncias reais encontradas.
-[INFO]	19/03/2024 08:47:09 AM - Total de 114 instâncias reais carregadas para o evento {1: 'Abrupt Increase of BSW'}.
-[INFO]	19/03/2024 08:52:25 AM - Tempo de Treinamento PPO: 313.13s
-[INFO]	19/03/2024 08:52:25 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW com 1 episódios.
-[INFO]	19/03/2024 09:01:14 AM - Acurácia de 0.31171 no conjunto de dados de teste usando PPO
-[INFO]	19/03/2024 09:01:14 AM - Acurácia insuficiente para validação individual

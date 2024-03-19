@@ -1,6 +1,0 @@
-[INFO]	19/03/2024 09:46:58 AM - Total de  939 instâncias reais encontradas.
-[INFO]	19/03/2024 09:47:20 AM - Total de 114 instâncias reais carregadas para o evento {1: 'Abrupt Increase of BSW'}.
-[INFO]	19/03/2024 09:52:22 AM - Tempo de Treinamento DQN: 299.15s
-[INFO]	19/03/2024 09:52:22 AM - Evaluating model ..\models\Abrupt Increase of BSW with 1 episodes.
-[INFO]	19/03/2024 10:04:02 AM - Acurácia de 0.63902 no conjunto de dados de teste usando DQN
-[INFO]	19/03/2024 10:04:02 AM - Acurácia insuficiente para validação individual
