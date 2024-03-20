@@ -1,9 +1,13 @@
+import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import layers
 import numpy as np
 import time
 from sklearn.preprocessing import OneHotEncoder
+from tensorflow.keras.callbacks import TensorBoard
 import logging
+import os
+from classes._F1Score import F1Score
 
 class Supervised:
     def __init__(self, path_save, dataset_train_scaled, dataset_test_scaled):
@@ -38,10 +42,17 @@ class Supervised:
         model.summary()
 
         # Compila o modelo
-        model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+        #model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+        model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy", tf.keras.metrics.Precision(), tf.keras.metrics.Recall(), F1Score()])
+
+
+        # Prepara o callback do TensorBoard
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')
+        tensorboard_callback = TensorBoard(log_dir=logdir, histogram_freq=1)
 
         # Treina o modelo
-        model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+        model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1, callbacks=[tensorboard_callback])
 
         model.save(f'{self.path_save}_RNA')
         return model
@@ -50,5 +61,9 @@ class Supervised:
         # Carrega o modelo
         self.model = keras.models.load_model(f'{self.path_save}_RNA')
         score = self.model.evaluate(self.x_test, self.y_test, verbose=0)
-
+        logging.info(f"Test loss: {score[0]}")
+        logging.info(f"Test accuracy: {score[1]}")
+        logging.info(f"Test precision: {score[2]}")
+        logging.info(f"Test recall: {score[3]}")
+        logging.info(f"Test F1 Score: {score[4]}")
         return score[1]

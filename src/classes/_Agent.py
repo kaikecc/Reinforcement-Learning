@@ -1,17 +1,17 @@
-from stable_baselines3 import DQN
+from stable_baselines3 import DQN, PPO
 from stable_baselines3.dqn.policies import MlpPolicy
 from stable_baselines3.common.env_util import make_vec_env
-from stable_baselines3.common.vec_env import DummyVecEnv
-from stable_baselines3.common.monitor import Monitor
-from stable_baselines3.common.callbacks import CheckpointCallback
-from stable_baselines3.common.logger import Logger, configure
-
-from stable_baselines3 import PPO
+from stable_baselines3.common.callbacks import CheckpointCallback, BaseCallback, EvalCallback
+from stable_baselines3.common.logger import configure
+import tensorflow as tf
+import os
 from classes._Env3WGym import Env3WGym
 import logging
 import numpy as np
-import os
+from stable_baselines3.common.logger import Logger
 
+
+    
 class Agent:
     def __init__(self, path_save):        
         self.path_save = path_save
@@ -42,6 +42,9 @@ class Agent:
         if not os.path.exists(logdir):
             os.makedirs(logdir)
 
+        #Configurar o logger para usar o diretório especificado
+        new_logger = configure(logdir, ["stdout", "tensorboard"])
+
         # Define o caminho para salvar os checkpoints
         checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
@@ -49,10 +52,10 @@ class Agent:
         model = DQN(
             MlpPolicy, 
             envs,
-            learning_rate=1e-4,
+            learning_rate=1e-3,
             buffer_size=10000,
             learning_starts=10000,
-            batch_size=32,
+            batch_size=64,
             tau=1.0,
             gamma=0.99,
             train_freq=4,
@@ -66,15 +69,17 @@ class Agent:
             verbose=1,
             device='auto'
         )
-        # Callback para salvar o modelo periodicamente
+
+        model.set_logger(new_logger)
+    
         checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                                  name_prefix='DQN_Env3W')
+                                             name_prefix='DQN_Env3W')   
         
-        
+                  
 
         TIMESTEPS = 100000
         for i in range(1, 3):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=checkpoint_callback)
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=[checkpoint_callback])
             
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
             model.save(model_path)
