@@ -1,0 +1,2 @@
+[INFO]	20/03/2024 03:43:47 PM - Iniciando carregamento do dataset
+[INFO]	20/03/2024 03:43:47 PM - Total de  939 instâncias simulated encontradas.

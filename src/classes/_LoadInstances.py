@@ -206,9 +206,9 @@ class LoadInstances:
         #dataset_test_scaled = np.column_stack((X_test_undersampled, y_test_undersampled))
         dataset_validation_scaled = np.column_stack((X_validation_scaled, y_validation))
 
-        logging.info(f'Número de registros de treino undersampling: {len(dataset_train_scaled)}')
-        logging.info(f'Número de registros de teste undersampling: {len(dataset_test_scaled)}')
-        logging.info(f'Número de registros de validação: {len(dataset_validation_scaled)}')       
+        #logging.info(f'Número de registros de treino undersampling: {len(dataset_train_scaled)}')
+        #logging.info(f'Número de registros de teste undersampling: {len(dataset_test_scaled)}')
+        #logging.info(f'Número de registros de validação: {len(dataset_validation_scaled)}')       
         logging.info(f'Fim divisão do dataset em treino e teste')
 
         return dataset_train_scaled, dataset_test_scaled, dataset_validation_scaled

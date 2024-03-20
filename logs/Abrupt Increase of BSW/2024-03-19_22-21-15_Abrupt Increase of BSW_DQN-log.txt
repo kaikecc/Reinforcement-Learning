@@ -1,0 +1,26 @@
+[INFO]	19/03/2024 10:21:15 PM - Iniciando carregamento do dataset
+[INFO]	19/03/2024 10:21:15 PM - Total de  939 instâncias simulated encontradas.
+[INFO]	19/03/2024 10:21:44 PM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	19/03/2024 10:21:45 PM - Fim carregamento do dataset
+[INFO]	19/03/2024 10:21:45 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras da classe 0: 684000
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de treino da classe 0: 136800
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de teste da classe 0: 547200
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras da classe 1: 2872713
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de treino da classe 1: 574542
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de teste da classe 1: 2298171
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras da classe 101: 4766400
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de treino da classe 101: 953280
+[INFO]	19/03/2024 10:21:49 PM - Número de amostras de teste da classe 101: 3813120
+[INFO]	19/03/2024 10:21:53 PM - Número de registros de treino: 1664622
+[INFO]	19/03/2024 10:21:53 PM - Número de registros de teste: 3329245
+[INFO]	19/03/2024 10:21:53 PM - Número de registros de validação: 3329246
+[INFO]	19/03/2024 10:22:00 PM - Número de registros de treino undersampling: 1664622
+[INFO]	19/03/2024 10:22:00 PM - Número de registros de teste undersampling: 3329245
+[INFO]	19/03/2024 10:22:00 PM - Número de registros de validação: 3329246
+[INFO]	19/03/2024 10:22:00 PM - Fim divisão do dataset em treino e teste
+[INFO]	19/03/2024 10:22:11 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	19/03/2024 10:43:49 PM - Tempo de Treinamento DQN: 1296.7s
+[INFO]	19/03/2024 10:43:49 PM - Fim treinamento do algoritmo DQN
+[INFO]	19/03/2024 10:43:49 PM - Iniciando a validação do modelo DQN
+[INFO]	19/03/2024 10:43:49 PM - Concluído a execução do algoritmo DQN para o evento Abrupt Increase of BSW

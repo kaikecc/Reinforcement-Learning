@@ -4,6 +4,8 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.monitor import Monitor
 from stable_baselines3.common.callbacks import CheckpointCallback
+from stable_baselines3.common.logger import Logger, configure
+
 from stable_baselines3 import PPO
 from classes._Env3WGym import Env3WGym
 import logging
@@ -13,6 +15,7 @@ import os
 class Agent:
     def __init__(self, path_save):        
         self.path_save = path_save
+        
 
     def create_env(self, dataset_part):
         return Env3WGym(dataset_part)
@@ -27,8 +30,25 @@ class Agent:
 
     def env3W_dqn(self, dataset_train_scaled, n_envs):
         envs = self.envs_random(dataset_train_scaled, n_envs)
+        
+        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
+        # Define o caminho para salvar os checkpoints
+        checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
+        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
+
         model = DQN(
-            MlpPolicy, envs,
+            MlpPolicy, 
+            envs,
             learning_rate=1e-4,
             buffer_size=10000,
             learning_starts=10000,
@@ -42,11 +62,24 @@ class Agent:
             exploration_initial_eps=1.0,
             exploration_final_eps=0.01,
             max_grad_norm=10,
-            tensorboard_log=None,
+            tensorboard_log=logdir,  # Usa o caminho ajustado para os logs do TensorBoard
             verbose=1,
             device='auto'
         )
-        model.learn(total_timesteps=int(1.2e5))
+        # Callback para salvar o modelo periodicamente
+        checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
+                                                  name_prefix='DQN_Env3W')
+        
+        
+
+        TIMESTEPS = 100000
+        for i in range(1, 3):
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=checkpoint_callback)
+            
+            model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.save(model_path)
+
+        # Final do treinamento
         model.save(f'{self.path_save}_DQN_Env3W')
         envs.close()
 
@@ -87,6 +120,18 @@ class Agent:
     def env3W_ppo(self, dataset_test_scaled, n_envs):
         # Cria ambientes aleatórios a partir do conjunto de dados fornecido
         envs = self.envs_random(dataset_test_scaled, n_envs)
+        # tensorboard --logdir=tensorboard_logs
+
+        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
 
         # Define o caminho para salvar os checkpoints
         checkpoint_dir = os.path.join(self.path_save, 'ppo_checkpoints')
@@ -101,17 +146,23 @@ class Agent:
                     gae_lambda=0.95,
                     clip_range=0.2,
                     ent_coef=0.0,
-                    tensorboard_log=os.path.join(self.path_save, 'tensorboard_logs'))
+                    tensorboard_log=logdir)
 
         # Callback para salvar o modelo periodicamente
         checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
                                                   name_prefix='PPO_Env3W')
 
         # Treina o modelo
-        model.learn(total_timesteps=int(1.2e5), callback=checkpoint_callback)
-
+        TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
+        for i in range(1, 30):            
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO", callback=checkpoint_callback)
+            # Ajuste para tornar o nome do arquivo salvo mais informativo
+            model_path = os.path.join(self.path_save, f'PPO_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.save(model_path)
+       
         # Salva o modelo final
         model.save(os.path.join(self.path_save, '_PPO_Env3W'))
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO_Env3W')}")
 
         return model
 

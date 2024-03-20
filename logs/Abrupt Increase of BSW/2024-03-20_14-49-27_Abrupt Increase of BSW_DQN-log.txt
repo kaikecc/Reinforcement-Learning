@@ -1,0 +1,29 @@
+[INFO]	20/03/2024 02:49:27 PM - Iniciando carregamento do dataset
+[INFO]	20/03/2024 02:49:27 PM - Total de  939 instâncias simulated encontradas.
+[INFO]	20/03/2024 02:49:54 PM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	20/03/2024 02:49:54 PM - Fim carregamento do dataset
+[INFO]	20/03/2024 02:49:54 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	20/03/2024 02:49:58 PM - Número de amostras da classe 0: 684000
+[INFO]	20/03/2024 02:49:58 PM - Número de amostras de treino da classe 0: 136800
+[INFO]	20/03/2024 02:49:58 PM - Número de amostras de teste da classe 0: 547200
+[INFO]	20/03/2024 02:49:58 PM - Número de amostras da classe 1: 2872713
+[INFO]	20/03/2024 02:49:59 PM - Número de amostras de treino da classe 1: 574542
+[INFO]	20/03/2024 02:49:59 PM - Número de amostras de teste da classe 1: 2298171
+[INFO]	20/03/2024 02:49:59 PM - Número de amostras da classe 101: 4766400
+[INFO]	20/03/2024 02:49:59 PM - Número de amostras de treino da classe 101: 953280
+[INFO]	20/03/2024 02:49:59 PM - Número de amostras de teste da classe 101: 3813120
+[INFO]	20/03/2024 02:50:03 PM - Número de registros de treino: 1664622
+[INFO]	20/03/2024 02:50:03 PM - Número de registros de teste: 3329245
+[INFO]	20/03/2024 02:50:03 PM - Número de registros de validação: 3329246
+[INFO]	20/03/2024 02:50:09 PM - Número de registros de treino undersampling: 1664622
+[INFO]	20/03/2024 02:50:09 PM - Número de registros de teste undersampling: 3329245
+[INFO]	20/03/2024 02:50:09 PM - Número de registros de validação: 3329246
+[INFO]	20/03/2024 02:50:09 PM - Fim divisão do dataset em treino e teste
+[INFO]	20/03/2024 02:50:10 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	20/03/2024 02:50:11 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW\tensorboard_logs'
+[INFO]	20/03/2024 02:51:43 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW\DQN\DQN_iteration_29_timesteps_290000
+[INFO]	20/03/2024 02:51:43 PM - Tempo de Treinamento DQN: 92.76s
+[INFO]	20/03/2024 02:51:43 PM - Fim treinamento do algoritmo DQN
+[INFO]	20/03/2024 02:51:43 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	20/03/2024 02:51:43 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW\DQN com 1 episódios.
