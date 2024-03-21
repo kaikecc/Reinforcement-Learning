@@ -409,12 +409,14 @@ class Agent:
         checkpoint_dir = os.path.join(self.path_save, 'ppo-cl_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
         
+        checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
+                                                  name_prefix='PPO-CL_Env3W')
         
         model_agent.set_env(envs)
         model_agent._last_obs = None
-        model_agent.learn(total_timesteps=100000, log_interval = 4, reset_num_timesteps = False, tb_log_name="PPO-CL")
+        model_agent.learn(total_timesteps=10000, log_interval = 4, reset_num_timesteps = False, tb_log_name="PPO-CL", callback=checkpoint_callback)
         # Salva o modelo final
-        model_agent.save(os.path.join(self.path_save, '_PPO_Env3W'))
+        model_agent.save(os.path.join(self.path_save, '_PPO-CL_Env3W'))
         logging.info(f"Modelo de Aprendizado Contínuo salvo em {os.path.join(self.path_save, '_PPO-CL_Env3W')}")
 
         return model_agent
