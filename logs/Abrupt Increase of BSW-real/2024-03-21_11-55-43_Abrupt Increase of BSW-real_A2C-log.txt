@@ -1,0 +1,18 @@
+[INFO]	21/03/2024 11:55:43 AM - Iniciando carregamento do dataset
+[INFO]	21/03/2024 11:55:44 AM - Total de  1019 instâncias real encontradas.
+[INFO]	21/03/2024 11:55:45 AM - Total de 5 instâncias real carregadas para o evento Abrupt Increase of BSW.
+[INFO]	21/03/2024 11:55:52 AM - Fim carregamento do dataset
+[INFO]	21/03/2024 11:55:52 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	21/03/2024 11:55:52 AM - Número de amostras da classe 0.0: 195376
+[INFO]	21/03/2024 11:55:52 AM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	21/03/2024 11:55:52 AM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras da classe 1.0: 10417
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras da classe 101.0: 95658
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	21/03/2024 11:55:53 AM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	21/03/2024 11:55:53 AM - Número de registros de treino: 241159
+[INFO]	21/03/2024 11:55:53 AM - Número de registros de teste: 30146
+[INFO]	21/03/2024 11:55:53 AM - Número de registros de validação: 30146
+[INFO]	21/03/2024 11:55:53 AM - Fim divisão do dataset em treino e teste

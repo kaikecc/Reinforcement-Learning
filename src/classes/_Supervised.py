@@ -5,6 +5,8 @@ import numpy as np
 import time
 from sklearn.preprocessing import OneHotEncoder
 from tensorflow.keras.callbacks import TensorBoard
+from tensorflow.keras.models import load_model
+
 import logging
 import os
 from classes._F1Score import F1Score
@@ -21,13 +23,18 @@ class Supervised:
         self.x_test = self.x_test.astype('float32')
         self.y_test = self.y_test.astype('float32')
 
-        self.path_save = path_save
+        self.path_save = path_save    
 
         # Aplicar one-hot encoding nos rótulos
         encoder = OneHotEncoder(sparse=False)
         self.y_train = encoder.fit_transform(self.y_train.reshape(-1, 1))
         self.y_test = encoder.transform(self.y_test.reshape(-1, 1))
         self.num_classes = self.y_train.shape[1]  # Número de classes baseado na codificação one-hot
+
+    def keras_load_model(self, model_file):
+        # Certifique-se de que 'self.path_save' seja o diretório base onde seus modelos são salvos.
+        model_full_path = os.path.join(self.path_save, model_file)
+        return load_model(model_full_path)
 
     def keras_train(self, batch_size=32, epochs=2):
         # Define a arquitetura do modelo
@@ -54,13 +61,16 @@ class Supervised:
         # Treina o modelo
         model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1, callbacks=[tensorboard_callback])
 
-        model.save(f'{self.path_save}_RNA')
+        # Salvamento do modelo
+        model_save_path = f'{self.path_save}_Env3W'
+        os.makedirs(os.path.dirname(model_save_path), exist_ok=True)  # Assegura que o diretório de salvamento exista
+        model.save(model_save_path)
         return model
 
-    def keras_evaluate(self):
+    def keras_evaluate(self, model):
         # Carrega o modelo
-        self.model = keras.models.load_model(f'{self.path_save}_RNA')
-        score = self.model.evaluate(self.x_test, self.y_test, verbose=0)
+        #self.model = keras.models.load_model(f'{self.path_save}')
+        score = model.evaluate(self.x_test, self.y_test, verbose=0)
         logging.info(f"Test loss: {score[0]}")
         logging.info(f"Test accuracy: {score[1]}")
         logging.info(f"Test precision: {score[2]}")

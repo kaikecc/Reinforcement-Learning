@@ -1,0 +1,35 @@
+[INFO]	21/03/2024 01:32:17 PM - Iniciando carregamento do dataset
+[INFO]	21/03/2024 01:32:17 PM - Total de  939 instâncias simulated encontradas.
+[INFO]	21/03/2024 01:32:41 PM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	21/03/2024 01:32:42 PM - Fim carregamento do dataset
+[INFO]	21/03/2024 01:32:42 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras da classe 0: 684000
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de treino da classe 0: 547200
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de teste da classe 0: 136800
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras da classe 1: 2872713
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de treino da classe 1: 2298170
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de teste da classe 1: 574543
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras da classe 101: 4766400
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de treino da classe 101: 3813120
+[INFO]	21/03/2024 01:32:45 PM - Número de amostras de teste da classe 101: 953280
+[INFO]	21/03/2024 01:32:48 PM - Número de registros de treino: 6658490
+[INFO]	21/03/2024 01:32:48 PM - Número de registros de teste: 832311
+[INFO]	21/03/2024 01:32:48 PM - Número de registros de validação: 832312
+[INFO]	21/03/2024 01:32:56 PM - Fim divisão do dataset em treino e teste
+[INFO]	21/03/2024 01:32:57 PM - Iniciando treinamento do modelo RNA
+[WARNING]	21/03/2024 01:32:59 PM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	21/03/2024 01:33:00 PM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[INFO]	21/03/2024 02:01:21 PM - Assets written to: ..\models\Abrupt Increase of BSW-simulated\RNA_Env3W\assets
+[INFO]	21/03/2024 02:01:21 PM - Tempo de Treinamento RNA: 1702.17s
+[INFO]	21/03/2024 02:01:21 PM - Fim treinamento do modelo RNA
+[INFO]	21/03/2024 02:01:21 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[INFO]	21/03/2024 02:02:09 PM - Test loss: 0.1001787856221199
+[INFO]	21/03/2024 02:02:09 PM - Test accuracy: 0.9640074372291565
+[INFO]	21/03/2024 02:02:09 PM - Test precision: 0.9640085697174072
+[INFO]	21/03/2024 02:02:09 PM - Test recall: 0.964006245136261
+[INFO]	21/03/2024 02:02:09 PM - Test F1 Score: 0.9640073776245117
+[INFO]	21/03/2024 02:02:09 PM - Acurácia de 0.96401 no conjunto de dados de teste usando RNA
+[INFO]	21/03/2024 02:02:09 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	21/03/2024 02:02:09 PM - Concluído a execução do algoritmo RNA-simulated para o evento Abrupt Increase of BSW

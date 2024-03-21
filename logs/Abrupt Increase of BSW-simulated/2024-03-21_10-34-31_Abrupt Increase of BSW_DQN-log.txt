@@ -1,0 +1,26 @@
+[INFO]	21/03/2024 10:34:31 AM - Iniciando carregamento do dataset
+[INFO]	21/03/2024 10:34:31 AM - Total de  939 instâncias simulated encontradas.
+[INFO]	21/03/2024 10:35:25 AM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	21/03/2024 10:35:27 AM - Fim carregamento do dataset
+[INFO]	21/03/2024 10:35:27 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras da classe 0: 684000
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras de treino da classe 0: 547200
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras de teste da classe 0: 136800
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras da classe 1: 2872713
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras de treino da classe 1: 2298170
+[INFO]	21/03/2024 10:35:35 AM - Número de amostras de teste da classe 1: 574543
+[INFO]	21/03/2024 10:35:36 AM - Número de amostras da classe 101: 4766400
+[INFO]	21/03/2024 10:35:36 AM - Número de amostras de treino da classe 101: 3813120
+[INFO]	21/03/2024 10:35:36 AM - Número de amostras de teste da classe 101: 953280
+[INFO]	21/03/2024 10:35:41 AM - Número de registros de treino: 6658490
+[INFO]	21/03/2024 10:35:41 AM - Número de registros de teste: 832311
+[INFO]	21/03/2024 10:35:41 AM - Número de registros de validação: 832312
+[INFO]	21/03/2024 10:35:59 AM - Fim divisão do dataset em treino e teste
+[INFO]	21/03/2024 10:36:03 AM - Iniciando treinamento do algoritmo DQN
+[INFO]	21/03/2024 10:36:06 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	21/03/2024 10:53:03 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-simulated\DQN\_DQN_Env3W
+[INFO]	21/03/2024 10:53:04 AM - Tempo de Treinamento DQN: 1020.64s
+[INFO]	21/03/2024 10:53:04 AM - Fim treinamento do algoritmo DQN
+[INFO]	21/03/2024 10:53:04 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	21/03/2024 10:53:04 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-simulated\DQN com 1 episódios.

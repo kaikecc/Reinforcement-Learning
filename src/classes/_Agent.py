@@ -8,7 +8,9 @@ import os
 from classes._Env3WGym import Env3WGym
 import logging
 import numpy as np
+from stable_baselines3 import A2C
 from stable_baselines3.common.logger import Logger
+from torch.utils.tensorboard import SummaryWriter  # Importando o TensorBoard
 
 
     
@@ -16,7 +18,6 @@ class Agent:
     def __init__(self, path_save):        
         self.path_save = path_save
         
-
     def create_env(self, dataset_part):
         return Env3WGym(dataset_part)
 
@@ -28,9 +29,9 @@ class Agent:
 
         return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=n_envs)
 
-    def env3W_dqn(self, dataset_train_scaled, n_envs):
+    def env3W_dqn_old(self, dataset_train_scaled, n_envs):
         envs = self.envs_random(dataset_train_scaled, n_envs)
-        
+        # tensorboard --logdir=tensorboard_logs
         # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
         logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
         logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
@@ -42,8 +43,61 @@ class Agent:
         if not os.path.exists(logdir):
             os.makedirs(logdir)
 
-        #Configurar o logger para usar o diretório especificado
-        new_logger = configure(logdir, ["stdout", "tensorboard"])
+        # Define o caminho para salvar os checkpoints
+        checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
+        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
+
+        model = DQN(
+            MlpPolicy, 
+            envs,
+            learning_rate=1e-3,
+            buffer_size=10000,
+            learning_starts=10000,
+            batch_size=64,
+            tau=1.0,
+            gamma=0.99,
+            train_freq=4,
+            gradient_steps=1,
+            target_update_interval=1000,
+            exploration_fraction=0.1,
+            exploration_initial_eps=1.0,
+            exploration_final_eps=0.01,
+            max_grad_norm=10,
+            tensorboard_log=logdir,  # Usa o caminho ajustado para os logs do TensorBoard
+            verbose=1,
+            device='auto'
+        )
+            
+        #checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
+        #                                     name_prefix='DQN_Env3W')                          
+
+        TIMESTEPS = 100000
+        for i in range(1, 3):
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN") # , callback=[checkpoint_callback]
+            
+            model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.save(model_path)
+
+        # Final do treinamento
+        model.save(f'{self.path_save}_DQN_Env3W')
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_DQN_Env3W')}")
+        envs.close()
+
+    def env3W_dqn(self, dataset_test_scaled, n_envs):
+        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
+        envs = self.envs_random(dataset_test_scaled, n_envs)
+        # tensorboard --logdir=tensorboard_logs
+
+        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
 
         # Define o caminho para salvar os checkpoints
         checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
@@ -70,29 +124,28 @@ class Agent:
             device='auto'
         )
 
-        model.set_logger(new_logger)
-    
+        # Callback para salvar o modelo periodicamente
         checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                             name_prefix='DQN_Env3W')   
-        
-                  
+                                                  name_prefix='DQN_Env3W')
 
-        TIMESTEPS = 100000
-        for i in range(1, 3):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=[checkpoint_callback])
-            
+        # Treina o modelo
+        TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
+        for i in range(1, 10):            
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=checkpoint_callback)
+            # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
             model.save(model_path)
+       
+        # Salva o modelo final
+        model.save(os.path.join(self.path_save, '_DQN_Env3W'))
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_DQN_Env3W')}")
 
-        # Final do treinamento
-        model.save(f'{self.path_save}_DQN_Env3W')
-        envs.close()
-
-    def env3W_dqn_eval(self, dataset_test_scaled, n_envs, n_eval_episodes=1):
+        return model
+    
+    def env3W_dqn_eval(self, dataset_test_scaled, model, n_envs, n_eval_episodes=1):
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
         envs = self.envs_random(dataset_test_scaled, n_envs)
-        model = DQN.load(f'{self.path_save}_DQN_Env3W')
-
+        #model = DQN.load(f'{self.path_save}_DQN_Env3W')
         # Inicialização da matriz de confusão
         TP, FP, TN, FN = 0, 0, 0, 0
 
@@ -120,8 +173,8 @@ class Agent:
                         FN += 1
 
         accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
-        return accuracy, model
-    
+        return accuracy
+     
     def env3W_ppo(self, dataset_test_scaled, n_envs):
         # Cria ambientes aleatórios a partir do conjunto de dados fornecido
         envs = self.envs_random(dataset_test_scaled, n_envs)
@@ -159,7 +212,7 @@ class Agent:
 
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
-        for i in range(1, 30):            
+        for i in range(1, 10):            
             model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO", callback=checkpoint_callback)
             # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'PPO_iteration_{i}_timesteps_{TIMESTEPS*i}')
@@ -171,7 +224,7 @@ class Agent:
 
         return model
 
-    def env3W_ppo_eval(self, dataset_eval_scaled, n_envs, n_eval_episodes=1):
+    def env3W_ppo_eval(self, dataset_eval_scaled, model, n_envs, n_eval_episodes=1):
         """
         Avalia o desempenho do modelo PPO em ambientes gerados a partir de um conjunto de dados de avaliação.
         Agora também calcula a "acurácia" como a proporção de episódios concluídos com sucesso.
@@ -187,7 +240,21 @@ class Agent:
         
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
         envs = self.envs_random(dataset_eval_scaled, n_envs)
-        model = PPO.load(os.path.join(self.path_save, '_PPO_Env3W'))
+        #model = PPO.load(os.path.join(self.path_save, '_PPO_Env3W'))
+
+         # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
+        # Cria uma instância do SummaryWriter para registrar logs
+        writer = SummaryWriter(logdir)
 
          # Inicialização da matriz de confusão
         TP, FP, TN, FN = 0, 0, 0, 0
@@ -195,7 +262,7 @@ class Agent:
         reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
         atol = 1e-6
 
-        for _ in range(n_eval_episodes):
+        for episode in range(n_eval_episodes):
             obs = envs.reset()
             dones = np.array([False] * n_envs)  # Inicializa um array de "done" para cada ambiente
             while not dones.all():  # Continua até que todos os ambientes estejam concluídos
@@ -211,7 +278,143 @@ class Agent:
                     elif close_values[3] or close_values[4]:
                         FP += 1  
                         FN += 1
+            accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
+            writer.add_scalar('Accuracy', accuracy, episode)
 
-        accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
+        
+        # Fechando o SummaryWriter após o registro
+        writer.close() 
 
-        return accuracy, model
+        return accuracy
+
+    def env3W_a2c(self, dataset_test_scaled, n_envs):
+        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
+        envs = self.envs_random(dataset_test_scaled, n_envs)
+
+        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
+        # Define o caminho para salvar os checkpoints
+        checkpoint_dir = os.path.join(self.path_save, 'a2c_checkpoints')
+        os.makedirs(checkpoint_dir, exist_ok=True)
+
+        model = A2C('MlpPolicy', envs, verbose=1,
+                    learning_rate=1e-3,
+                    n_steps=5,
+                    gamma=0.99,
+                    gae_lambda=0.95,
+                    ent_coef=0.0,
+                    tensorboard_log=logdir)
+
+        # Callback para salvar o modelo periodicamente
+        checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
+                                                name_prefix='A2C_Env3W')
+
+        # Treina o modelo
+        TIMESTEPS = 100000
+        for i in range(1, 10):
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C", callback=checkpoint_callback)
+            model_path = os.path.join(self.path_save, f'A2C_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.save(model_path)
+
+        # Salva o modelo final
+        model.save(os.path.join(self.path_save, '_A2C_Env3W'))
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_A2C_Env3W')}")
+
+        return model
+
+    def env3W_a2c_eval(self, dataset_eval_scaled, model, n_envs, n_eval_episodes=1):
+        """
+        Avalia o desempenho do modelo A2C em ambientes gerados a partir de um conjunto de dados de avaliação.
+        Agora também calcula a "acurácia" como a proporção de episódios concluídos com sucesso.
+
+        Args:
+        - dataset_eval_scaled: Conjunto de dados escalado para avaliação.
+        - model: Modelo A2C carregado para avaliação.
+        - n_envs: Número de ambientes paralelos para avaliação.
+        - n_eval_episodes: Número de episódios de avaliação por ambiente.
+
+        Returns:
+        - accuracy: A proporção de episódios concluídos com sucesso.
+        """
+
+        logging.info(f"Avaliando o modelo A2C {self.path_save} com {n_eval_episodes} episódios.")
+        envs = self.envs_random(dataset_eval_scaled, n_envs)
+
+        logdir_base = os.path.dirname(self.path_save)
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
+        writer = SummaryWriter(logdir)
+
+        TP, FP, TN, FN = 0, 0, 0, 0
+        reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
+        atol = 1e-6
+
+        for episode in range(n_eval_episodes):
+            obs = envs.reset()
+            dones = np.array([False] * n_envs)
+            while not dones.all():
+                action, _states = model.predict(obs, deterministic=True)
+                obs, rewards, dones, info = envs.step(action)
+                for reward in rewards:
+                    close_values = np.isclose(reward, reward_thresholds, atol=atol)
+                    if close_values[0]:
+                        TN += 1
+                    elif close_values[1] or close_values[2]:
+                        TP += 1
+                    elif close_values[3] or close_values[4]:
+                        FP += 1
+                        FN += 1
+            accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
+            writer.add_scalar('Accuracy', accuracy, episode)
+
+        writer.close()
+
+        return accuracy
+
+    def env3W_ppo_cl(self, model_agent, dataset_cl, n_envs):
+        '''
+        Continual Learning com PPO
+        
+        '''
+        envs = self.envs_random(dataset_cl, n_envs)
+        # tensorboard --logdir=tensorboard_logs
+
+        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
+
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
+        # Define o caminho para salvar os checkpoints
+        checkpoint_dir = os.path.join(self.path_save, 'ppo-cl_checkpoints')
+        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
+        
+        
+        model_agent.set_env(envs)
+        model_agent._last_obs = None
+        model_agent.learn(total_timesteps=100000, log_interval = 4, reset_num_timesteps = False, tb_log_name="PPO-CL")
+        # Salva o modelo final
+        model_agent.save(os.path.join(self.path_save, '_PPO_Env3W'))
+        logging.info(f"Modelo de Aprendizado Contínuo salvo em {os.path.join(self.path_save, '_PPO-CL_Env3W')}")
+
+        return model_agent
