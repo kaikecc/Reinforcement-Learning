@@ -92,12 +92,18 @@ class Agent:
         logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
         logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
 
+        replaydir = os.path.join(self.path_save, 'replay_buffer')
+
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
 
         # Cria o diretório se não existir
         if not os.path.exists(logdir):
             os.makedirs(logdir)
+
+         # Cria o diretório se não existir
+        if not os.path.exists(replaydir):
+            os.makedirs(replaydir)
 
         # Define o caminho para salvar os checkpoints
         checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
@@ -137,10 +143,12 @@ class Agent:
             model.save(model_path)
        
         # Salva o modelo final
-        model.save(os.path.join(self.path_save, '_DQN_Env3W'))
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_DQN_Env3W')}")
-
-        return model
+        final_model_path = os.path.join(self.path_save, '_DQN_Env3W')
+        model.save(final_model_path)
+        logging.info(f"Modelo final salvo em {final_model_path}")
+        final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
+        model.save_replay_buffer(final_replay_path)        
+        return model, final_replay_path
     
     def env3W_dqn_eval(self, dataset_test_scaled, model, n_envs, n_eval_episodes=1):
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
@@ -220,7 +228,7 @@ class Agent:
        
         # Salva o modelo final
         model.save(os.path.join(self.path_save, '_PPO_Env3W'))
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO_Env3W')}")
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO_Env3W')}")        
 
         return model
 
@@ -328,7 +336,7 @@ class Agent:
         # Salva o modelo final
         model.save(os.path.join(self.path_save, '_A2C_Env3W'))
         logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_A2C_Env3W')}")
-
+        
         return model
 
     def env3W_a2c_eval(self, dataset_eval_scaled, model, n_envs, n_eval_episodes=1):
@@ -385,10 +393,10 @@ class Agent:
         writer.close()
 
         return accuracy
-
-    def env3W_ppo_cl(self, model_agent, dataset_cl, n_envs):
+    
+    def env3W_dqn_cl(self, model_agent, dataset_cl, replaydir, n_envs):
         '''
-        Continual Learning com PPO
+        Continual Learning com DQN
         
         '''
         envs = self.envs_random(dataset_cl, n_envs)
@@ -406,17 +414,18 @@ class Agent:
             os.makedirs(logdir)
 
         # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(self.path_save, 'ppo-cl_checkpoints')
+        checkpoint_dir = os.path.join(self.path_save, 'dqn-cl_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
         
         checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
-                                                  name_prefix='PPO-CL_Env3W')
+                                                  name_prefix='DQN-CL_Env3W')
         
+        model_agent.load_replay_buffer(replaydir)
         model_agent.set_env(envs)
         model_agent._last_obs = None
-        model_agent.learn(total_timesteps=10000, log_interval = 4, reset_num_timesteps = False, tb_log_name="PPO-CL", callback=checkpoint_callback)
+        model_agent.learn(total_timesteps=100000, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL", callback=checkpoint_callback)
         # Salva o modelo final
-        model_agent.save(os.path.join(self.path_save, '_PPO-CL_Env3W'))
-        logging.info(f"Modelo de Aprendizado Contínuo salvo em {os.path.join(self.path_save, '_PPO-CL_Env3W')}")
+        model_agent.save(os.path.join(self.path_save, '_DQN-CL_Env3W'))
+        logging.info(f"Modelo de Aprendizado Contínuo salvo em {os.path.join(self.path_save, '_DQN-CL_Env3W')}")
 
         return model_agent
