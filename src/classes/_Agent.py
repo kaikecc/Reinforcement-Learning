@@ -125,29 +125,33 @@ class Agent:
             exploration_initial_eps=1.0,
             exploration_final_eps=0.01,
             max_grad_norm=10,
-            tensorboard_log=logdir,  # Usa o caminho ajustado para os logs do TensorBoard
             verbose=1,
+            tensorboard_log=logdir,  # Usa o caminho ajustado para os logs do TensorBoard            
             device='auto'
         )
 
         # Callback para salvar o modelo periodicamente
-        checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                                  name_prefix='DQN_Env3W')
+        checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
+                                                  name_prefix='DQN_Env3W', save_replay_buffer=True,
+                                                    save_vecnormalize=True)
 
+        
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
-        for i in range(1, 10):            
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN", callback=checkpoint_callback)
+        '''for i in range(1, 1):            
+            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=checkpoint_callback)
             # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
-            model.save(model_path)
+            model.save(model_path)'''
        
         # Salva o modelo final
+        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=checkpoint_callback)
         final_model_path = os.path.join(self.path_save, '_DQN_Env3W')
         model.save(final_model_path)
         logging.info(f"Modelo final salvo em {final_model_path}")
         final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
-        model.save_replay_buffer(final_replay_path)        
+        model.save_replay_buffer(final_replay_path)   
+        logging.info(f"Replay Buffer de Aprendizado Contínuo salvo em {final_replay_path}")     
         return model, final_replay_path
     
     def env3W_dqn_eval(self, dataset_test_scaled, model, n_envs, n_eval_episodes=1):
@@ -396,8 +400,7 @@ class Agent:
     
     def env3W_dqn_cl(self, model_agent, dataset_cl, replaydir, n_envs):
         '''
-        Continual Learning com DQN
-        
+        Continual Learning com DQN        
         '''
         envs = self.envs_random(dataset_cl, n_envs)
         # tensorboard --logdir=tensorboard_logs
@@ -424,8 +427,11 @@ class Agent:
         model_agent.set_env(envs)
         model_agent._last_obs = None
         model_agent.learn(total_timesteps=100000, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL", callback=checkpoint_callback)
-        # Salva o modelo final
-        model_agent.save(os.path.join(self.path_save, '_DQN-CL_Env3W'))
-        logging.info(f"Modelo de Aprendizado Contínuo salvo em {os.path.join(self.path_save, '_DQN-CL_Env3W')}")
+        # Salva o modelo final        
+        final_model_path = os.path.join(self.path_save, '_DQN-CL_Env3W')
+        model_agent.save(final_model_path)
+        final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
+        model_agent.save_replay_buffer(final_replay_path)  
+        logging.info(f"Modelo de Aprendizado Contínuo salvo em {replaydir}")  
 
         return model_agent
