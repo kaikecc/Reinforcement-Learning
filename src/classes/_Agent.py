@@ -2,6 +2,8 @@ from stable_baselines3 import DQN, PPO
 from stable_baselines3.dqn.policies import MlpPolicy
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.callbacks import CheckpointCallback, BaseCallback, EvalCallback
+import os
+import csv
 from stable_baselines3.common.logger import configure
 import tensorflow as tf
 import os
@@ -36,7 +38,37 @@ class TensorboardCallback(BaseCallback):
         
         return True
 
+class DQNMetricsCSVCallback(BaseCallback):
+    def __init__(self, save_path, verbose=0):
+        super(DQNMetricsCSVCallback, self).__init__(verbose)
+        self.save_path = save_path
+        # Verifica e cria o diretório se necessário
+        os.makedirs(self.save_path, exist_ok=True)
+        self.file_path = os.path.join(self.save_path, 'metrics.csv')
+        # Verifica se o arquivo já existe para evitar recriar o cabeçalho
+        self.file_exists = os.path.isfile(self.file_path)
 
+    def _on_step(self) -> bool:
+        # Atualiza e registra o valor de epsilon
+        epsilon = self.model.exploration_rate
+        self.logger.record('epsilon', epsilon)
+
+        # Chama o dump do logger para atualizar as métricas no TensorBoard
+        if self.num_timesteps % 10000 == 0:
+            self.logger.dump(self.num_timesteps)
+            self._save_metrics_csv(epsilon)
+
+        return True
+
+    def _save_metrics_csv(self, epsilon):
+        with open(self.file_path, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            # Escreve o cabeçalho se o arquivo não existia
+            if not self.file_exists:
+                writer.writerow(['timestep', 'epsilon'])
+                self.file_exists = True
+            # Escreve as métricas no arquivo CSV
+            writer.writerow([self.num_timesteps, epsilon])
 
     
 class Agent:
@@ -165,17 +197,20 @@ class Agent:
         top_score = [None]  # Supondo que top_score é gerenciado globalmente
         tensorboard_callback = TensorboardCallback(model=model, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=1)
 
+        metrics_callback = DQNMetricsCSVCallback(save_path=final_model_path, verbose=1)
         
+
+
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
         for i in range(1, 10):            
-            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[checkpoint_callback, tensorboard_callback])
+            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[metrics_callback, tensorboard_callback])
             # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
             model.save(model_path)
        
         # Salva o modelo final
-        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[checkpoint_callback, tensorboard_callback])
+        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[metrics_callback, tensorboard_callback])
         
         model.save(final_model_path)
         logging.info(f"Modelo final salvo em {final_model_path}")
