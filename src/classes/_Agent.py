@@ -4,6 +4,7 @@ from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.callbacks import CheckpointCallback, BaseCallback, EvalCallback
 import os
 import csv
+import json
 from stable_baselines3.common.logger import configure
 import tensorflow as tf
 import os
@@ -48,27 +49,76 @@ class DQNMetricsCSVCallback(BaseCallback):
         # Verifica se o arquivo já existe para evitar recriar o cabeçalho
         self.file_exists = os.path.isfile(self.file_path)
 
+        # Inicialização dos atributos faltantes
+        self.reward_max = float('-inf')
+        self.reward_min = float('inf')
+        self.reward_sum = 0
+        self.reward_count = 0
+        self.metrics = []  # Lista para armazenar as métricas coletadas
+
     def _on_step(self) -> bool:
         # Atualiza e registra o valor de epsilon
         epsilon = self.model.exploration_rate
         self.logger.record('epsilon', epsilon)
 
+        # Atualização das estatísticas de recompensa
+        rewards = self.locals['rewards'] if 'rewards' in self.locals else []
+        for reward in rewards:
+            self.reward_max = max(self.reward_max, reward)
+            self.reward_min = min(self.reward_min, reward)
+            self.reward_sum += reward
+            self.reward_count += 1
+        
+        # Se houver recompensas, atualiza e registra as métricas de recompensa
+        if self.reward_count > 0:
+            reward_avg = self.reward_sum / self.reward_count
+            self.logger.record('reward_avg', reward_avg)
+            self.logger.record('reward_max', self.reward_max)
+            self.logger.record('reward_min', self.reward_min)
+
+        # Armazena as métricas coletadas
+            self.metrics.append({
+                'step': self.num_timesteps,
+                'epsilon': epsilon,
+                'reward_avg': reward_avg,
+                'reward_max': self.reward_max,
+                'reward_min': self.reward_min
+            })
+
+
         # Chama o dump do logger para atualizar as métricas no TensorBoard
         if self.num_timesteps % 10000 == 0:
             self.logger.dump(self.num_timesteps)
-            self._save_metrics_csv(epsilon)
+            self._save_metrics()
 
         return True
 
-    def _save_metrics_csv(self, epsilon):
-        with open(self.file_path, mode='a', newline='') as file:
-            writer = csv.writer(file)
-            # Escreve o cabeçalho se o arquivo não existia
-            if not self.file_exists:
-                writer.writerow(['timestep', 'epsilon'])
-                self.file_exists = True
-            # Escreve as métricas no arquivo CSV
-            writer.writerow([self.num_timesteps, epsilon])
+    def _save_metrics(self):
+        # Converte métricas para serem serializáveis em JSON
+        serializable_metrics = self._convert_to_serializable(self.metrics)
+        
+        # Salva as métricas acumuladas em um arquivo JSON
+        file_path = os.path.join(self.save_path, 'metrics.json')
+        with open(file_path, 'w') as fp:
+            json.dump(serializable_metrics, fp, indent=4)
+    
+    def _convert_to_serializable(self, data):
+        # Função para converter recursivamente elementos não serializáveis
+        if isinstance(data, (np.int_, np.intc, np.intp, np.int8,
+            np.int16, np.int32, np.int64, np.uint8,
+            np.uint16, np.uint32, np.uint64)):
+            return int(data)
+        elif isinstance(data, (np.float_, np.float16, np.float32, 
+                               np.float64)):
+            return float(data)
+        elif isinstance(data, (np.ndarray,)): # se for um array numpy, converte para lista
+            return data.tolist()
+        elif isinstance(data, (list,)):
+            return [self._convert_to_serializable(item) for item in data]
+        elif isinstance(data, (dict,)):
+            return {key: self._convert_to_serializable(value) for key, value in data.items()}
+        else:
+            return data
 
     
 class Agent:
@@ -149,7 +199,16 @@ class Agent:
         logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
         logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
 
+        # Cria o diretório se não existir
+        if not os.path.exists(logdir):
+            os.makedirs(logdir)
+
         replaydir = os.path.join(self.path_save, 'replay_buffer')
+
+        # Cria o diretório se não existir
+        if not os.path.exists(replaydir):
+            os.makedirs(replaydir)
+
 
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
@@ -187,11 +246,8 @@ class Agent:
             device='auto'
         )
 
-        # Callback para salvar o modelo periodicamente
-        checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
-                                                  name_prefix='DQN_Env3W', save_replay_buffer=True,
-                                                    save_vecnormalize=True)
-        final_model_path = os.path.join(self.path_save, '_DQN_Env3W')
+        
+        final_model_path = os.path.join(self.path_save, '_DQN')
         # Within env3W_dqn, before starting training
         top_score = [None]  # Use a list for mutability
         top_score = [None]  # Supondo que top_score é gerenciado globalmente
@@ -204,13 +260,13 @@ class Agent:
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
         for i in range(1, 10):            
-            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[metrics_callback, tensorboard_callback])
+            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
             # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
             model.save(model_path)
        
         # Salva o modelo final
-        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[metrics_callback, tensorboard_callback])
+        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
         
         model.save(final_model_path)
         logging.info(f"Modelo final salvo em {final_model_path}")
@@ -233,9 +289,9 @@ class Agent:
          # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
         logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
         logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
-
+        final_model_path = os.path.join(logdir, 'DQN')
         # Cria uma instância do SummaryWriter para registrar logs
-        writer = SummaryWriter(logdir)
+        writer = SummaryWriter(final_model_path)
 
         for episode in range(n_eval_episodes):
             obs = envs.reset()
@@ -294,7 +350,7 @@ class Agent:
 
         # Callback para salvar o modelo periodicamente
         checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                                  name_prefix='PPO_Env3W')
+                                                  name_prefix='PPO')
 
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
@@ -305,8 +361,8 @@ class Agent:
             model.save(model_path)
        
         # Salva o modelo final
-        model.save(os.path.join(self.path_save, '_PPO_Env3W'))
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO_Env3W')}")        
+        model.save(os.path.join(self.path_save, '_PPO'))
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO')}")        
 
         return model
 
@@ -331,7 +387,13 @@ class Agent:
          # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
         logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
         logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+        final_model_path = os.path.join(logdir, 'PPO')
+        # Cria o diretório se não existir
+        if not os.path.exists(final_model_path):
+            os.makedirs(final_model_path)
 
+        # Cria uma instância do SummaryWriter para registrar logs
+        writer = SummaryWriter(final_model_path)
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
 
@@ -339,9 +401,7 @@ class Agent:
         if not os.path.exists(logdir):
             os.makedirs(logdir)
 
-        # Cria uma instância do SummaryWriter para registrar logs
-        writer = SummaryWriter(logdir)
-
+        
          # Inicialização da matriz de confusão
         TP, FP, TN, FN = 0, 0, 0, 0
         # Reduzindo chamadas para np.isclose pré-definindo os valores de recompensa
@@ -393,8 +453,8 @@ class Agent:
         os.makedirs(checkpoint_dir, exist_ok=True)
 
         model = A2C('MlpPolicy', envs, verbose=1,
-                    learning_rate=1e-3,
-                    n_steps=2048, # 5
+                    learning_rate=1e-4,
+                    n_steps=5, # 5
                     gamma=0.99,
                     gae_lambda=0.95,
                     ent_coef=0.0,
@@ -402,18 +462,18 @@ class Agent:
 
         # Callback para salvar o modelo periodicamente
         checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                                name_prefix='A2C_Env3W')
+                                                name_prefix='A2C')
 
         # Treina o modelo
-        TIMESTEPS = 100000
+        TIMESTEPS = 10000
         for i in range(1, 10):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C", callback=checkpoint_callback)
+            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C")
             model_path = os.path.join(self.path_save, f'A2C_iteration_{i}_timesteps_{TIMESTEPS*i}')
             model.save(model_path)
 
         # Salva o modelo final
-        model.save(os.path.join(self.path_save, '_A2C_Env3W'))
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_A2C_Env3W')}")
+        model.save(os.path.join(self.path_save, 'A2C'))
+        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_A2C')}")
         
         return model
 
@@ -438,13 +498,18 @@ class Agent:
         logdir_base = os.path.dirname(self.path_save)
         logdir = os.path.join(logdir_base, 'tensorboard_logs')
 
+        final_model_path = os.path.join(logdir, 'A2C')
+
+        if not os.path.exists(final_model_path):
+            os.makedirs(final_model_path)
+
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
 
         if not os.path.exists(logdir):
             os.makedirs(logdir)
 
-        writer = SummaryWriter(logdir)
+        writer = SummaryWriter(final_model_path)
 
         TP, FP, TN, FN = 0, 0, 0, 0
         reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
