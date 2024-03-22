@@ -135,61 +135,7 @@ class Agent:
         split_datasets = np.array_split(dataset_shuffled, n_envs)
 
         return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=n_envs)
-
-    def env3W_dqn_old(self, dataset_train_scaled, n_envs):
-        envs = self.envs_random(dataset_train_scaled, n_envs)
-        # tensorboard --logdir=tensorboard_logs
-        # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
-        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
-        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
-
-        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
-        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{logdir}'")
-
-        # Cria o diretório se não existir
-        if not os.path.exists(logdir):
-            os.makedirs(logdir)
-
-        # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
-        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
-
-        model = DQN(
-            MlpPolicy, 
-            envs,
-            learning_rate=1e-3,
-            buffer_size=10000,
-            learning_starts=10000,
-            batch_size=64,
-            tau=1.0,
-            gamma=0.99,
-            train_freq=4,
-            gradient_steps=1,
-            target_update_interval=1000,
-            exploration_fraction=0.1,
-            exploration_initial_eps=1.0,
-            exploration_final_eps=0.01,
-            max_grad_norm=10,
-            tensorboard_log=logdir,  # Usa o caminho ajustado para os logs do TensorBoard
-            verbose=1,
-            device='auto'
-        )
-            
-        #checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-        #                                     name_prefix='DQN_Env3W')                          
-
-        TIMESTEPS = 100000
-        for i in range(1, 3):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="DQN") # , callback=[checkpoint_callback]
-            
-            model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
-            model.save(model_path)
-
-        # Final do treinamento
-        model.save(f'{self.path_save}_DQN_Env3W')
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_DQN_Env3W')}")
-        envs.close()
-
+    
     def env3W_dqn(self, dataset_test_scaled, n_envs):
         # Cria ambientes aleatórios a partir do conjunto de dados fornecido
         envs = self.envs_random(dataset_test_scaled, n_envs)
@@ -231,7 +177,7 @@ class Agent:
             learning_rate=1e-4,
             buffer_size=10000,
             learning_starts=10000,
-            batch_size=64,
+            batch_size=32,
             tau=1.0,
             gamma=0.99,
             train_freq=4,
@@ -340,7 +286,7 @@ class Agent:
         model = PPO('MlpPolicy', envs, verbose=1,
                     learning_rate=1e-4,
                     n_steps=2048,
-                    batch_size=64,
+                    batch_size=32,
                     n_epochs=10,
                     gamma=0.99,
                     gae_lambda=0.95,
@@ -465,7 +411,7 @@ class Agent:
                                                 name_prefix='A2C')
 
         # Treina o modelo
-        TIMESTEPS = 10000
+        TIMESTEPS = 100000
         for i in range(1, 10):
             model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C")
             model_path = os.path.join(self.path_save, f'A2C_iteration_{i}_timesteps_{TIMESTEPS*i}')

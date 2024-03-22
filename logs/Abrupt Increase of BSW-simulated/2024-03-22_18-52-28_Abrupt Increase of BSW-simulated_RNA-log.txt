@@ -1,0 +1,48 @@
+[INFO]	22/03/2024 06:52:28 PM - Iniciando carregamento do dataset
+[INFO]	22/03/2024 06:52:29 PM - Total de  939 instâncias simulated encontradas.
+[INFO]	22/03/2024 06:53:01 PM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	22/03/2024 06:53:03 PM - Fim carregamento do dataset
+[INFO]	22/03/2024 06:53:03 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	22/03/2024 06:53:07 PM - Número de amostras da classe 0: 684000
+[INFO]	22/03/2024 06:53:07 PM - Número de amostras de treino da classe 0: 547200
+[INFO]	22/03/2024 06:53:07 PM - Número de amostras de teste da classe 0: 136800
+[INFO]	22/03/2024 06:53:07 PM - Número de amostras da classe 1: 2872713
+[INFO]	22/03/2024 06:53:08 PM - Número de amostras de treino da classe 1: 2298170
+[INFO]	22/03/2024 06:53:08 PM - Número de amostras de teste da classe 1: 574543
+[INFO]	22/03/2024 06:53:08 PM - Número de amostras da classe 101: 4766400
+[INFO]	22/03/2024 06:53:08 PM - Número de amostras de treino da classe 101: 3813120
+[INFO]	22/03/2024 06:53:08 PM - Número de amostras de teste da classe 101: 953280
+[INFO]	22/03/2024 06:53:13 PM - Número de registros de treino: 6658490
+[INFO]	22/03/2024 06:53:13 PM - Número de registros de teste: 832311
+[INFO]	22/03/2024 06:53:13 PM - Número de registros de validação: 832312
+[INFO]	22/03/2024 06:53:24 PM - Fim divisão do dataset em treino e teste
+[INFO]	22/03/2024 06:53:27 PM - Iniciando treinamento do modelo RNA
+[WARNING]	22/03/2024 06:53:30 PM - From c:\Python311\Lib\site-packages\keras\src\backend.py:1398: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[WARNING]	22/03/2024 06:53:30 PM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	22/03/2024 06:53:31 PM - From c:\Python311\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+[WARNING]	22/03/2024 06:53:31 PM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[INFO]	22/03/2024 07:11:22 PM - Assets written to: ..\models\Abrupt Increase of BSW-simulated\RNA_Env3W\assets
+[INFO]	22/03/2024 07:11:24 PM - Tempo de Treinamento RNA: 1075.41s
+[INFO]	22/03/2024 07:11:24 PM - Fim treinamento do modelo RNA
+[INFO]	22/03/2024 07:11:24 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[INFO]	22/03/2024 07:12:01 PM - Test loss: 0.12583576142787933
+[INFO]	22/03/2024 07:12:01 PM - Test accuracy: 0.954390823841095
+[INFO]	22/03/2024 07:12:01 PM - Test precision: 0.954390823841095
+[INFO]	22/03/2024 07:12:01 PM - Test recall: 0.954390823841095
+[INFO]	22/03/2024 07:12:01 PM - Test F1 Score: 0.9543907642364502
+[INFO]	22/03/2024 07:12:01 PM - Acurácia de 0.95439 no conjunto de dados de teste usando RNA
+[INFO]	22/03/2024 07:12:01 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	22/03/2024 07:12:01 PM - Iniciando a validação do modelo RNA
+[INFO]	22/03/2024 07:12:01 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	22/03/2024 07:12:13 PM - Fim da separação dos grupos de dados para validação com 1 grupos de instâncias
+[INFO]	22/03/2024 07:12:13 PM - Iniciando predição da 1ª instância de validação usando RNA
+[INFO]	22/03/2024 07:41:41 PM - Acurácia da 1ª instância: 97.079%, Verdadeiro Negativo: 8.189%, Verdadeiro Positivo: 34.867% da 1ª instância
+[INFO]	22/03/2024 07:41:41 PM - Precision: 1.000, Recall: 0.964, F1 Score: 0.982 da 1ª instância
+[INFO]	22/03/2024 07:41:41 PM - Iniciando a plotagem e salvamento das métricas de validação para RNA
+[INFO]	22/03/2024 07:41:42 PM - Fim da plotagem e salvamento das métricas de validação para RNA
+[INFO]	22/03/2024 07:41:42 PM - Acurácia final: 97.079% no conjunto de dados de validação
+[INFO]	22/03/2024 07:41:42 PM - Concluído a execução do algoritmo RNA-simulated para o evento Abrupt Increase of BSW

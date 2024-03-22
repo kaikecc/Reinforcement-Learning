@@ -1,0 +1,33 @@
+[INFO]	22/03/2024 07:41:42 PM - Iniciando carregamento do dataset
+[INFO]	22/03/2024 07:41:42 PM - Total de  939 instâncias simulated encontradas.
+[INFO]	22/03/2024 07:42:19 PM - Total de 114 instâncias simulated carregadas para o evento Abrupt Increase of BSW.
+[INFO]	22/03/2024 07:42:22 PM - Fim carregamento do dataset
+[INFO]	22/03/2024 07:42:22 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras da classe 0: 684000
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras de treino da classe 0: 547200
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras de teste da classe 0: 136800
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras da classe 1: 2872713
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras de treino da classe 1: 2298170
+[INFO]	22/03/2024 07:42:27 PM - Número de amostras de teste da classe 1: 574543
+[INFO]	22/03/2024 07:42:28 PM - Número de amostras da classe 101: 4766400
+[INFO]	22/03/2024 07:42:28 PM - Número de amostras de treino da classe 101: 3813120
+[INFO]	22/03/2024 07:42:28 PM - Número de amostras de teste da classe 101: 953280
+[INFO]	22/03/2024 07:42:32 PM - Número de registros de treino: 6658490
+[INFO]	22/03/2024 07:42:32 PM - Número de registros de teste: 832311
+[INFO]	22/03/2024 07:42:32 PM - Número de registros de validação: 832312
+[INFO]	22/03/2024 07:42:42 PM - Fim divisão do dataset em treino e teste
+[INFO]	22/03/2024 07:42:48 PM - Iniciando treinamento do algoritmo A2C
+[INFO]	22/03/2024 07:42:50 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	22/03/2024 07:48:40 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-simulated\A2C\_A2C
+[INFO]	22/03/2024 07:48:40 PM - Tempo de Treinamento A2C: 351.9s
+[INFO]	22/03/2024 07:48:40 PM - Fim treinamento do algoritmo A2C
+[INFO]	22/03/2024 07:48:40 PM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	22/03/2024 07:48:40 PM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-simulated\A2C com 1 episódios.
+[INFO]	22/03/2024 07:48:40 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	22/03/2024 07:54:17 PM - Acurácia de 0.76979 no conjunto de dados de teste usando A2C
+[INFO]	22/03/2024 07:54:17 PM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	22/03/2024 07:54:17 PM - Iniciando a validação do modelo A2C
+[INFO]	22/03/2024 07:54:17 PM - Acurácia insuficiente para validação individual
+[INFO]	22/03/2024 07:54:17 PM - Concluído a execução do algoritmo A2C-simulated para o evento Abrupt Increase of BSW
