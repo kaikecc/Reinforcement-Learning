@@ -12,6 +12,31 @@ from stable_baselines3 import A2C
 from stable_baselines3.common.logger import Logger
 from torch.utils.tensorboard import SummaryWriter  # Importando o TensorBoard
 
+class TensorboardCallback(BaseCallback):
+    def __init__(self, model, referencia_top_score, caminho_salvar_modelo="./model_DQN", verbose=0):
+        super(TensorboardCallback, self).__init__(verbose)
+        self.model = model
+        self.referencia_top_score = referencia_top_score  # Uma referência à variável global top_score
+        self.caminho_salvar_modelo = caminho_salvar_modelo
+
+    def _on_step(self) -> bool:
+        # Recupera de forma segura 'score' de 'infos' se existir, caso contrário, usa None como padrão
+        score = self.locals.get("infos")[0].get("score") if self.locals.get("infos") else None
+
+        # Procede apenas com o registro e comparação do score se um score estiver realmente presente
+        if score is not None:
+            self.logger.record('a_score', score)
+            if self.referencia_top_score[0] is None or score > self.referencia_top_score[0]:
+                self.referencia_top_score[0] = score  # Atualiza o top_score global
+                self.model.save(self.caminho_salvar_modelo)
+        
+        # Registro condicional no log a cada 10.000 timesteps
+        if self.num_timesteps % 10000 == 0:
+            self.logger.dump(self.num_timesteps)
+        
+        return True
+
+
 
     
 class Agent:
@@ -112,7 +137,7 @@ class Agent:
         model = DQN(
             MlpPolicy, 
             envs,
-            learning_rate=1e-3,
+            learning_rate=1e-4,
             buffer_size=10000,
             learning_starts=10000,
             batch_size=64,
@@ -134,19 +159,24 @@ class Agent:
         checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
                                                   name_prefix='DQN_Env3W', save_replay_buffer=True,
                                                     save_vecnormalize=True)
+        final_model_path = os.path.join(self.path_save, '_DQN_Env3W')
+        # Within env3W_dqn, before starting training
+        top_score = [None]  # Use a list for mutability
+        top_score = [None]  # Supondo que top_score é gerenciado globalmente
+        tensorboard_callback = TensorboardCallback(model=model, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=1)
 
         
         # Treina o modelo
         TIMESTEPS = 100000  # Usando um número inteiro diretamente é mais claro
-        '''for i in range(1, 1):            
-            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=checkpoint_callback)
+        for i in range(1, 10):            
+            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[checkpoint_callback, tensorboard_callback])
             # Ajuste para tornar o nome do arquivo salvo mais informativo
             model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
-            model.save(model_path)'''
+            model.save(model_path)
        
         # Salva o modelo final
-        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=checkpoint_callback)
-        final_model_path = os.path.join(self.path_save, '_DQN_Env3W')
+        model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN-env3W", callback=[checkpoint_callback, tensorboard_callback])
+        
         model.save(final_model_path)
         logging.info(f"Modelo final salvo em {final_model_path}")
         final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
@@ -165,7 +195,14 @@ class Agent:
         reward_thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
         atol = 1e-6
 
-        for _ in range(n_eval_episodes):
+         # Ajusta o caminho para subir um nível com os.path.dirname e, em seguida, entra no diretório 'tensorboard_logs'
+        logdir_base = os.path.dirname(self.path_save)  # Sobe um nível (para '..\\models\\Abrupt Increase of BSW')
+        logdir = os.path.join(logdir_base, 'tensorboard_logs')  # Entra em '..\\models\\Abrupt Increase of BSW\\tensorboard_logs'
+
+        # Cria uma instância do SummaryWriter para registrar logs
+        writer = SummaryWriter(logdir)
+
+        for episode in range(n_eval_episodes):
             obs = envs.reset()
             dones = np.array([False] * n_envs)
             
@@ -184,7 +221,9 @@ class Agent:
                         FP += 1  
                         FN += 1
 
-        accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
+            accuracy = (TP + TN) / (TP + FP + TN + FN) if (TP + FP + TN + FN) else 0
+            writer.add_scalar('Accuracy', accuracy, episode)
+        writer.close() 
         return accuracy
      
     def env3W_ppo(self, dataset_test_scaled, n_envs):
@@ -208,7 +247,7 @@ class Agent:
         os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
 
         model = PPO('MlpPolicy', envs, verbose=1,
-                    learning_rate=1e-3,
+                    learning_rate=1e-4,
                     n_steps=2048,
                     batch_size=64,
                     n_epochs=10,
@@ -320,7 +359,7 @@ class Agent:
 
         model = A2C('MlpPolicy', envs, verbose=1,
                     learning_rate=1e-3,
-                    n_steps=5,
+                    n_steps=2048, # 5
                     gamma=0.99,
                     gae_lambda=0.95,
                     ent_coef=0.0,

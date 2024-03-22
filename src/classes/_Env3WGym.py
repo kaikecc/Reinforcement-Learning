@@ -4,7 +4,7 @@ import numpy as np
 
 class Env3WGym(gym.Env):
     """
-    Modelo do Ambiente em python para detecção de falhas em poços de petróleo com mais de 10 milhões de registros.
+    Modelo do Ambiente em python para detecção de falhas em poços de petróleo.
     O dataset é fornecido como entrada, contendo dados de seis poços com cinco variáveis de entrada
     ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'] e um rótulo identificador de falha [class].
     

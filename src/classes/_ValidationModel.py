@@ -135,7 +135,7 @@ class ValidationModel():
 
                 logging_details = f'Acurácia da {count + 1}ª instância: {acc * 100:.3f}%, ' \
                                 f'Verdadeiro Negativo: {TN * 100:.3f}%, Verdadeiro Positivo: {TP * 100:.3f}%'
-                logging.info(logging_details)
+                logging.info(f'{logging_details} da {count + 1}ª instância')
 
                 accuracy_values.append(acc * 100)
                 acc_values.append(accuracy * 100)  # Revisar se este uso está correto
@@ -152,15 +152,22 @@ class ValidationModel():
                 f'F1 Score: {f1_score:.3f}' 
                 ]
 
-                explora = exploration(df)
-                explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
-                                     _title = f'[{count}] - {self.event_name} - {self.model_name}', additional_labels =  additional_labels, model = self.model_name)
+                logging.info(f'Precision: {precision:.3f}, Recall: {recall:.3f}, F1 Score: {f1_score:.3f} da {count + 1}ª instância')
 
+                #logging.info(f'Iniciando plotagem da {count + 1}ª instância de validação')
+                #explora = exploration(df)
+                #explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
+                #                     _title = f'[{count}] - {self.event_name} - {self.model_name}', additional_labels =  additional_labels, model = self.model_name)
+                #logging.info(f'Fim da plotagem da {count + 1}ª instância de validação')
+
+            logging.info(f'Iniciando a plotagem e salvamento das métricas de validação para {self.model_name}')    
             # Plotagem e salvamento das métricas
             self.plot_and_save_metrics(len(datasets), accuracy_values, acc_values, TN_values, TP_values)
+            logging.info(f'Fim da plotagem e salvamento das métricas de validação para {self.model_name}')
 
             final_validation_accuracy = sum(acc_total) / len(acc_total) * 100
             logging.info(f'Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
+            print(f'Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
         else:
             logging.info('Acurácia insuficiente para validação individual')
             print('Acurácia insuficiente para validação individual')
