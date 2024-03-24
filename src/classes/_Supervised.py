@@ -62,7 +62,7 @@ class Supervised:
         model.fit(self.x_train, self.y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1, callbacks=[tensorboard_callback])
 
         # Salvamento do modelo
-        model_save_path = f'{self.path_save}_Env3W'
+        model_save_path = f'{self.path_save}'
         os.makedirs(os.path.dirname(model_save_path), exist_ok=True)  # Assegura que o diretório de salvamento exista
         model.save(model_save_path)
         return model
