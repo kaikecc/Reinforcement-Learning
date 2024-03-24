@@ -130,11 +130,20 @@ class MetricsCSVCallback(BaseCallback):
             return data
     
 class Agent:
-    def __init__(self, path_save, port=6006):        
+    def __init__(self, path_save, dataset_train_scaled, dataset_test_scaled, n_envs = 5, n_envs_eval = 1, port=6006):        
+        
+        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
+        self.n_envs = n_envs
+        self.envs_train = self.envs_random(dataset_train_scaled, n_envs)        
+        
+        self.n_envs_eval = n_envs_eval
+        self.envs_eval = self.envs_random(dataset_test_scaled, n_envs_eval)
+        
         self.path_save = path_save
         self.logdir = os.path.join(os.path.dirname(self.path_save), 'tensorboard_logs')
         if not os.path.exists(self.logdir):
             os.makedirs(self.logdir)
+            
 
         self.port = port  # Store the port
         self.launch_tensorboard()
@@ -164,17 +173,13 @@ class Agent:
 
         return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=n_envs)
     
-    def env3W_dqn(self, dataset_test_scaled, n_envs):
+    def env3W_dqn(self):
         '''
         Deep Q Network (DQN) baseia-se em Fitted Q-Iteration (FQI) e 
         faz uso de diferentes truques para estabilizar o aprendizado 
-        com redes neurais: usa um buffer de repetição, uma rede alvo e recorte de gradiente.
-        
+        com redes neurais: usa um buffer de repetição, uma rede alvo e recorte de gradiente.        
         '''        
-        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
-        envs = self.envs_random(dataset_test_scaled, n_envs)
-        # tensorboard --logdir=tensorboard_logs
-       
+        
         replaydir = os.path.join(self.path_save, 'replay_buffer')
 
         # Cria o diretório se não existir
@@ -183,26 +188,17 @@ class Agent:
 
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
-
-       
-         # Cria o diretório se não existir
-        if not os.path.exists(replaydir):
-            os.makedirs(replaydir)
-
-        # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(self.path_save, 'dqn_checkpoints')
-        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
-
+        
         model = DQN(
             MlpPolicy, # O modelo de política a ser usado (MlpPolicy, CnnPolicy,…)
-            envs, # O ambiente a ser usado
+            self.envs_train, # O ambiente a ser usado
             learning_rate=1e-4, # Taxa de aprendizado, pode ser uma função do progresso atual restante (de 1 a 0)
             buffer_size=10000, # Tamanho do buffer de repetição
             learning_starts=10000, # Número de etapas de aprendizado para coletar experiências antes de começar a treinar a rede
             batch_size=32, # Tamanho do buffer de repetição
             tau=1.0, #  Coeficiente de atualização suave (“atualização Polyak”, entre 0 e 1) padrão 1 para atualização forçada
             gamma=0.99, # Fator de desconto
-            train_freq=4, # Frequência de treinamento, Atualize o modelo a cada train_freq step.
+            train_freq=5, # Frequência de treinamento, Atualize o modelo a cada train_freq step.
             gradient_steps=1, #  Quantas etapas de gradiente executar após cada implementação (consulte train_freq) Definir como -1significa executar tantas etapas de gradiente quanto as etapas realizadas no ambiente durante a implementação.
             target_update_interval=1000, #  Atualiza a rede de destino a cada target_update_interval etapa do ambiente.
             exploration_fraction=0.1, # Fração de todo o período de treinamento durante o qual a taxa de exploração é reduzida
@@ -213,13 +209,11 @@ class Agent:
             tensorboard_log=self.logdir,  # Usa o caminho ajustado para os logs do TensorBoard            
             device='auto'
         )
-
         
         final_model_path = os.path.join(self.path_save, '_DQN')
         # Within env3W_dqn, before starting training
         top_score = [None]  # Supondo que top_score é gerenciado globalmente
         tensorboard_callback = TensorboardCallback(model=model, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=1)
-
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=1)
         
         # Treina o modelo
@@ -237,10 +231,10 @@ class Agent:
         logging.info(f"Replay Buffer de Aprendizado Contínuo salvo em {final_replay_path}")     
         return model, final_replay_path
     
-    def env3W_dqn_eval(self, dataset_test_scaled, model, n_envs, n_eval_episodes=1):
+    def env3W_dqn_eval(self, model, n_eval_episodes=1):
+        
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
-        envs = self.envs_random(dataset_test_scaled, n_envs)
-        #model = DQN.load(f'{self.path_save}_DQN_Env3W')
+        
         # Inicialização da matriz de confusão
         TP, FP, TN, FN = 0, 0, 0, 0
 
@@ -254,12 +248,12 @@ class Agent:
 
         for episode in range(n_eval_episodes):
             
-            obs = envs.reset()
-            dones = np.array([False] * n_envs)
+            obs = self.envs_eval.reset()
+            dones = np.array([False] * self.n_envs_eval)
             
             while not dones.all():
                 action, _ = model.predict(obs, deterministic=True)
-                obs, rewards, dones, _ = envs.step(action)
+                obs, rewards, dones, _ = self.envs_eval.step(action)
                 
                 for reward in rewards:
                     # Reduzindo a quantidade de vezes que np.isclose é chamado
@@ -277,55 +271,8 @@ class Agent:
         writer.close() 
         return accuracy
      
-    def env3W_ppo_old(self, dataset_test_scaled, n_envs):
-        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
-        envs = self.envs_random(dataset_test_scaled, n_envs)
-        # tensorboard --logdir=tensorboard_logs
-       
-
-        print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
-        logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
-
-        # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(self.path_save, 'ppo_checkpoints')
-        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir
-
-        model = PPO('MlpPolicy', envs, verbose=1,
-                    learning_rate=1e-4,
-                    n_steps=2048,
-                    batch_size=32,
-                    n_epochs=10,
-                    gamma=0.99,
-                    gae_lambda=0.95,
-                    clip_range=0.2,
-                    ent_coef=0.0,
-                    tensorboard_log=self.logdir)
-
-        # Callback para salvar o modelo periodicamente
-        checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir,
-                                                  name_prefix='PPO')
-        
-        #eval_env = self.envs_random(dataset_test_scaled, 1)  # Supondo que você possa criar um único ambiente de avaliação
-        #eval_callback = EvalCallback(eval_env, best_model_save_path=checkpoint_dir,
-        #                         log_path=checkpoint_dir, eval_freq=10000,
-        #                         deterministic=True, render=False)
-        # Treina o modelo
-        TIMESTEPS = 10000  # Usando um número inteiro diretamente é mais claro
-        for i in range(1, 11):            
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO")
-            # Ajuste para tornar o nome do arquivo salvo mais informativo
-            model_path = os.path.join(self.path_save, f'PPO_iteration_{i}_timesteps_{TIMESTEPS*i}')
-            model.save(model_path)
-       
-        # Salva o modelo final
-        model.save(os.path.join(self.path_save, '_PPO'))
-        logging.info(f"Modelo final salvo em {os.path.join(self.path_save, '_PPO')}")        
-
-        return model
-    
-    def env3W_ppo(self, dataset_test_scaled, n_envs):
-        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
-        envs = self.envs_random(dataset_test_scaled, n_envs)
+    def env3W_ppo(self):
+               
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
 
@@ -335,7 +282,7 @@ class Agent:
 
         # Configura o modelo PPO
         model = PPO('MlpPolicy', 
-                    envs, verbose=1, 
+                    self.envs_train, verbose=1, 
                     learning_rate=1e-4, 
                     n_steps=5, # 2048
                     batch_size=32, 
@@ -371,7 +318,8 @@ class Agent:
         logging.info(f"Modelo final salvo em {final_model_path}")
 
         return model
-    def env3W_ppo_eval(self, dataset_eval_scaled, model, n_envs, n_eval_episodes=1):
+    
+    def env3W_ppo_eval(self, model, n_eval_episodes=1):
         """
         Avalia o desempenho do modelo PPO em ambientes gerados a partir de um conjunto de dados de avaliação.
         Agora também calcula a "acurácia" como a proporção de episódios concluídos com sucesso.
@@ -386,9 +334,6 @@ class Agent:
         """       
         
         logging.info(f"Avaliando o modelo {self.path_save} com {n_eval_episodes} episódios.")
-        envs = self.envs_random(dataset_eval_scaled, n_envs)
-        #model = PPO.load(os.path.join(self.path_save, '_PPO_Env3W'))
-
         
         final_model_path = os.path.join(self.logdir, 'PPO')
         # Cria o diretório se não existir
@@ -407,11 +352,11 @@ class Agent:
         atol = 1e-6
 
         for episode in range(n_eval_episodes):
-            obs = envs.reset()
-            dones = np.array([False] * n_envs)  # Inicializa um array de "done" para cada ambiente
+            obs = self.envs_eval.reset()
+            dones = np.array([False] * self.n_envs_eval)  # Inicializa um array de "done" para cada ambiente
             while not dones.all():  # Continua até que todos os ambientes estejam concluídos
                 action, _ = model.predict(obs, deterministic=True)
-                obs, rewards, dones, info = envs.step(action)                
+                obs, rewards, dones, info = self.envs_eval.step(action)                
                 for reward in rewards:
                     # Reduzindo a quantidade de vezes que np.isclose é chamado
                     close_values = np.isclose(reward, reward_thresholds, atol=atol)
@@ -431,28 +376,18 @@ class Agent:
 
         return accuracy
 
-    def env3W_a2c(self, dataset_test_scaled, n_envs):
-        # Cria ambientes aleatórios a partir do conjunto de dados fornecido
-        envs = self.envs_random(dataset_test_scaled, n_envs)
-        
+    def env3W_a2c(self):
+         
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
 
-        # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(self.path_save, 'a2c_checkpoints')
-        os.makedirs(checkpoint_dir, exist_ok=True)
-
-        model = A2C('MlpPolicy', envs, verbose=1,
+        model = A2C('MlpPolicy', self.envs_train, verbose=1,
                     learning_rate=1e-4,
                     n_steps=5, # 5
                     gamma=0.99,
                     gae_lambda=0.95,
                     ent_coef=0.0,
-                    tensorboard_log=self.logdir)
-
-        # Callback para salvar o modelo periodicamente
-        checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
-                                                name_prefix='A2C')
+                    tensorboard_log=self.logdir)        
         
         final_model_path = os.path.join(self.path_save, '_A2C')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=1)
@@ -470,7 +405,7 @@ class Agent:
         
         return model
 
-    def env3W_a2c_eval(self, dataset_eval_scaled, model, n_envs, n_eval_episodes=1):
+    def env3W_a2c_eval(self, model, n_eval_episodes=1):
         """
         Avalia o desempenho do modelo A2C em ambientes gerados a partir de um conjunto de dados de avaliação.
         Agora também calcula a "acurácia" como a proporção de episódios concluídos com sucesso.
@@ -486,8 +421,7 @@ class Agent:
         """
 
         logging.info(f"Avaliando o modelo A2C {self.path_save} com {n_eval_episodes} episódios.")
-        envs = self.envs_random(dataset_eval_scaled, n_envs)
-        
+               
 
         final_model_path = os.path.join(self.logdir, 'A2C')
 
@@ -504,11 +438,11 @@ class Agent:
         atol = 1e-6
 
         for episode in range(n_eval_episodes):
-            obs = envs.reset()
-            dones = np.array([False] * n_envs)
+            obs = self.envs_eval.reset()
+            dones = np.array([False] * self.n_envs_eval)
             while not dones.all():
                 action, _states = model.predict(obs, deterministic=True)
-                obs, rewards, dones, info = envs.step(action)
+                obs, rewards, dones, info = self.envs_eval.step(action)
                 for reward in rewards:
                     close_values = np.isclose(reward, reward_thresholds, atol=atol)
                     if close_values[0]:
