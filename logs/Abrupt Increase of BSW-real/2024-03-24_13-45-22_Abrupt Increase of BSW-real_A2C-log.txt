@@ -1,0 +1,704 @@
+[INFO]	24/03/2024 01:45:22 PM - Server binary (from Python package v0.7.2): None
+[INFO]	24/03/2024 01:45:22 PM - No data server: TensorBoard data server not supported on this platform.
+[INFO]	24/03/2024 01:45:22 PM - Event Multiplexer initializing.
+[INFO]	24/03/2024 01:45:22 PM - Event Multiplexer done initializing
+[INFO]	24/03/2024 01:45:22 PM - Launching reload in a daemon thread
+[INFO]	24/03/2024 01:45:22 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:22 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:22 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:22 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:22 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:22 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:22 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:22 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:22 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:22 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:22 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298321.KAIKEPC.5004.0 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298327.KAIKEPC.5004.1
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298327.KAIKEPC.5004.1 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298334.KAIKEPC.5004.2
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298334.KAIKEPC.5004.2 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298342.KAIKEPC.5004.3
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298342.KAIKEPC.5004.3 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298351.KAIKEPC.5004.4
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298351.KAIKEPC.5004.4 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298359.KAIKEPC.5004.5
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298359.KAIKEPC.5004.5 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298367.KAIKEPC.5004.6
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298367.KAIKEPC.5004.6 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298375.KAIKEPC.5004.7
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298375.KAIKEPC.5004.7 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298383.KAIKEPC.5004.8
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298383.KAIKEPC.5004.8 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:22 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:22 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:22 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298409.KAIKEPC.5004.11 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298431.KAIKEPC.5004.12
+[INFO]	24/03/2024 01:45:22 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:22 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:22 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:22 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:22 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:22 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:22 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:22 PM - TensorBoard done reloading. Load took 0.440 secs
+[INFO]	24/03/2024 01:45:22 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298431.KAIKEPC.5004.12 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298455.KAIKEPC.5004.13
+[INFO]	24/03/2024 01:45:23 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298455.KAIKEPC.5004.13 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298480.KAIKEPC.5004.14
+[ERROR]	24/03/2024 01:45:23 PM - An error occurred while launching TensorBoard: TensorBoard could not bind to port 6006, it was already in use
+[INFO]	24/03/2024 01:45:23 PM - Iniciando treinamento do algoritmo A2C
+[INFO]	24/03/2024 01:45:23 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	24/03/2024 01:45:23 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298480.KAIKEPC.5004.14 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298507.KAIKEPC.5004.15
+[INFO]	24/03/2024 01:45:24 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298507.KAIKEPC.5004.15 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298536.KAIKEPC.5004.16
+[INFO]	24/03/2024 01:45:24 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298536.KAIKEPC.5004.16 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298566.KAIKEPC.5004.17
+[INFO]	24/03/2024 01:45:24 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298566.KAIKEPC.5004.17 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298601.KAIKEPC.5004.18
+[INFO]	24/03/2024 01:45:25 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298601.KAIKEPC.5004.18 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298637.KAIKEPC.5004.19
+[INFO]	24/03/2024 01:45:25 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298637.KAIKEPC.5004.19 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:26 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:26 PM - TensorBoard done reloading. Load took 4.087 secs
+[INFO]	24/03/2024 01:45:26 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:26 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:26 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:26 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:26 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22
+[INFO]	24/03/2024 01:45:26 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:26 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:26 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:26 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:26 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:26 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:26 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:26 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:26 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22
+[INFO]	24/03/2024 01:45:26 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:26 PM - TensorBoard done reloading. Load took 0.033 secs
+[INFO]	24/03/2024 01:45:27 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:27 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:27 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:27 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:27 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22
+[INFO]	24/03/2024 01:45:27 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:27 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:27 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:27 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:27 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:27 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:27 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:27 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:27 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22
+[INFO]	24/03/2024 01:45:27 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:27 PM - TensorBoard done reloading. Load took 0.058 secs
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:31 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:31 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:31 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:31 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:31 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:31 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:31 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:31 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard done reloading. Load took 0.142 secs
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:31 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:31 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:31 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:31 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:31 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:31 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:31 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:31 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:31 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:31 PM - TensorBoard done reloading. Load took 0.066 secs
+[INFO]	24/03/2024 01:45:32 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:32 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:32 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:32 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:32 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:32 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:32 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:32 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:32 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:32 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:32 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:32 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:32 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:33 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:33 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:33 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:33 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298723.KAIKEPC.5004.22 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:33 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23
+[INFO]	24/03/2024 01:45:33 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:33 PM - TensorBoard done reloading. Load took 0.062 secs
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:36 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:36 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:36 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:36 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:36 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:36 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24
+[INFO]	24/03/2024 01:45:36 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard done reloading. Load took 0.047 secs
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:36 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:36 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:36 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:36 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:36 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:36 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:36 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24
+[INFO]	24/03/2024 01:45:36 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24
+[INFO]	24/03/2024 01:45:36 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:36 PM - TensorBoard done reloading. Load took 0.080 secs
+[INFO]	24/03/2024 01:45:38 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:38 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:38 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:38 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:38 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:38 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:38 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:38 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:38 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:38 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:38 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:38 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:38 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:38 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:38 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:38 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:38 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298729.KAIKEPC.5004.23 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24
+[INFO]	24/03/2024 01:45:38 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25
+[INFO]	24/03/2024 01:45:38 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25
+[INFO]	24/03/2024 01:45:38 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:38 PM - TensorBoard done reloading. Load took 0.046 secs
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:41 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:41 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:41 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:41 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:41 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:41 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25
+[INFO]	24/03/2024 01:45:41 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:41 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard done reloading. Load took 0.061 secs
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:41 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:41 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:41 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:41 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:41 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:41 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:41 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298733.KAIKEPC.5004.24 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25
+[INFO]	24/03/2024 01:45:41 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for custom_scalars took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for images took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for audio took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for debugger-v2 took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for graphs took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for distributions took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for histograms took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for text took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for pr_curves took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for profile_redirect took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for hparams took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for mesh took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for wit_redirect took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:41 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:41 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:41 PM - Plugin listing: is_active() for projector took 0.000 seconds
+[INFO]	24/03/2024 01:45:41 PM - TensorBoard done reloading. Load took 0.148 secs
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:41 PM - 127.0.0.1 - - [24/Mar/2024 13:45:41] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:42 PM - 127.0.0.1 - - [24/Mar/2024 13:45:42] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:42 PM - 127.0.0.1 - - [24/Mar/2024 13:45:42] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:42 PM - 127.0.0.1 - - [24/Mar/2024 13:45:42] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:42 PM - 127.0.0.1 - - [24/Mar/2024 13:45:42] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:45:43 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:43 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:43 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:43 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:43 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:43 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:43 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:43 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:43 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:43 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:43 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:43 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:43 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:43 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:43 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:43 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:43 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298736.KAIKEPC.5004.25 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:43 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26
+[INFO]	24/03/2024 01:45:43 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:43 PM - TensorBoard done reloading. Load took 0.036 secs
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:46 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:46 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:46 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:46 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:46 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:46 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27
+[INFO]	24/03/2024 01:45:46 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard done reloading. Load took 0.064 secs
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:46 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:46 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:46 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:46 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:46 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:46 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:46 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27
+[INFO]	24/03/2024 01:45:46 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27
+[INFO]	24/03/2024 01:45:46 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:46 PM - TensorBoard done reloading. Load took 0.074 secs
+[INFO]	24/03/2024 01:45:48 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:48 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:48 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:48 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:48 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:48 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:48 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:48 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:48 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:48 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:48 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:48 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:48 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:48 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:48 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:48 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:48 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298740.KAIKEPC.5004.26 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27
+[INFO]	24/03/2024 01:45:48 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:48 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:48 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:48 PM - TensorBoard done reloading. Load took 0.046 secs
+[INFO]	24/03/2024 01:45:51 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:51 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:51 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:51 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:51 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:51 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:51 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:51 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:51 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:51 PM - TensorBoard done reloading. Load took 0.129 secs
+[INFO]	24/03/2024 01:45:51 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:51 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:51 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:51 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:51 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:51 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:51 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:51 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:51 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:52 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:52 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:52 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298744.KAIKEPC.5004.27 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:52 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28
+[INFO]	24/03/2024 01:45:52 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:52 PM - TensorBoard done reloading. Load took 0.116 secs
+[INFO]	24/03/2024 01:45:53 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:53 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:53 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:53 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:53 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:53 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:53 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:53 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:53 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:53 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:53 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:53 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:53 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:53 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:53 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:53 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:53 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29
+[INFO]	24/03/2024 01:45:53 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29
+[INFO]	24/03/2024 01:45:53 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:53 PM - TensorBoard done reloading. Load took 0.205 secs
+[INFO]	24/03/2024 01:45:56 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:56 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:56 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:56 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:56 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:56 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:56 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:56 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:56 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:56 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:56 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:56 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:56 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:56 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:56 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:56 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:56 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29
+[INFO]	24/03/2024 01:45:56 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:56 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:56 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:56 PM - TensorBoard done reloading. Load took 0.058 secs
+[INFO]	24/03/2024 01:45:57 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:57 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:57 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:57 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:57 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:57 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:57 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:57 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:57 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:57 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:57 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:57 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:57 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:57 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:57 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:57 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:57 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298748.KAIKEPC.5004.28 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29
+[INFO]	24/03/2024 01:45:57 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:57 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:57 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:57 PM - TensorBoard done reloading. Load took 0.050 secs
+[INFO]	24/03/2024 01:45:58 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:45:58 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:58 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:45:58 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:45:58 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:45:58 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:45:58 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:45:58 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:45:58 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:45:58 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:45:58 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:58 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:45:58 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:45:58 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:45:58 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:45:58 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:45:58 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298752.KAIKEPC.5004.29 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:58 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30
+[INFO]	24/03/2024 01:45:58 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:45:58 PM - TensorBoard done reloading. Load took 0.044 secs
+[INFO]	24/03/2024 01:46:01 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:01 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:01 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:01 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:01 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:01 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:01 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:01 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:01 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:01 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:01 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:01 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:01 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:01 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:01 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:01 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:01 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:01 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:01 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:01 PM - TensorBoard done reloading. Load took 0.047 secs
+[INFO]	24/03/2024 01:46:02 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:02 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:02 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:02 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:02 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:02 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:02 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:02 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:02 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:02 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:02 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:02 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:02 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:02 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:02 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:02 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:02 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:02 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:02 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:02 PM - TensorBoard done reloading. Load took 0.031 secs
+[INFO]	24/03/2024 01:46:03 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:03 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:03 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:03 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:03 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:03 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:03 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:03 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:03 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:03 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:03 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:03 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:03 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:03 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:03 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:03 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:03 PM - Directory watcher advancing from ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298756.KAIKEPC.5004.30 to ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:03 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:03 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:03 PM - TensorBoard done reloading. Load took 0.064 secs
+[INFO]	24/03/2024 01:46:06 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	24/03/2024 01:46:06 PM - Tempo de Treinamento A2C: 42.58s
+[INFO]	24/03/2024 01:46:06 PM - Fim treinamento do algoritmo A2C
+[INFO]	24/03/2024 01:46:06 PM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	24/03/2024 01:46:06 PM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	24/03/2024 01:46:06 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	24/03/2024 01:46:06 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:06 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:06 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:06 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:06 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:06 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:06 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:06 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:06 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:06 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:06 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:06 PM - TensorBoard done reloading. Load took 0.042 secs
+[INFO]	24/03/2024 01:46:07 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:07 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:07 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:07 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:07 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:07 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:07 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:07 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:07 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:07 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:07 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:07 PM - TensorBoard done reloading. Load took 0.048 secs
+[INFO]	24/03/2024 01:46:08 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:08 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:08 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:08 PM - Constructing EventAccumulator for ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:08 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:08 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:08 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:08 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:08 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:08 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:08 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:08 PM - TensorBoard done reloading. Load took 0.044 secs
+[INFO]	24/03/2024 01:46:11 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:11 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:11 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for custom_scalars took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for images took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for audio took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for debugger-v2 took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for graphs took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for distributions took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for histograms took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for text took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for pr_curves took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for profile_redirect took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for hparams took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for mesh took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for wit_redirect took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - Plugin listing: is_active() for projector took 0.000 seconds
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:11 PM - 127.0.0.1 - - [24/Mar/2024 13:46:11] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:11 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:11 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:11 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:11 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:11 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:11 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:11 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:11 PM - TensorBoard done reloading. Load took 0.095 secs
+[INFO]	24/03/2024 01:46:12 PM - 127.0.0.1 - - [24/Mar/2024 13:46:12] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:12 PM - 127.0.0.1 - - [24/Mar/2024 13:46:12] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:12 PM - 127.0.0.1 - - [24/Mar/2024 13:46:12] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:12 PM - 127.0.0.1 - - [24/Mar/2024 13:46:12] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	24/03/2024 01:46:12 PM - TensorBoard reload process beginning
+[INFO]	24/03/2024 01:46:12 PM - Starting AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:12 PM - GetLogdirSubdirectories: Starting to list directories via walking.
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO
+[INFO]	24/03/2024 01:46:12 PM - Adding run from directory ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0
+[INFO]	24/03/2024 01:46:12 PM - Done with AddRunsFromDirectory: ..\models\Abrupt Increase of BSW-real\tensorboard_logs
+[INFO]	24/03/2024 01:46:12 PM - TensorBoard reload process: Reload the whole Multiplexer
+[INFO]	24/03/2024 01:46:12 PM - Beginning EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:12 PM - Reloading runs serially (one after another) on the main thread.
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN_0\events.out.tfevents.1711298392.KAIKEPC.5004.9
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\DQN\events.out.tfevents.1711298403.KAIKEPC.5004.10
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO_0\events.out.tfevents.1711298674.KAIKEPC.5004.20
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\PPO\events.out.tfevents.1711298712.KAIKEPC.5004.21
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C_0\events.out.tfevents.1711298761.KAIKEPC.5004.31
+[INFO]	24/03/2024 01:46:12 PM - No path found after ..\models\Abrupt Increase of BSW-real\tensorboard_logs\A2C\events.out.tfevents.1711298766.KAIKEPC.5004.32
+[INFO]	24/03/2024 01:46:12 PM - Finished with EventMultiplexer.Reload()
+[INFO]	24/03/2024 01:46:12 PM - TensorBoard done reloading. Load took 0.044 secs
+[INFO]	24/03/2024 01:46:12 PM - Acurácia de 0.85337 no conjunto de dados de teste usando A2C
+[INFO]	24/03/2024 01:46:12 PM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	24/03/2024 01:46:12 PM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW

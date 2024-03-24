@@ -130,20 +130,20 @@ class MetricsCSVCallback(BaseCallback):
             return data
     
 class Agent:
-    def __init__(self, path_save, dataset_train_scaled, dataset_test_scaled, n_envs = 5, n_envs_eval = 1, port=6006):        
+    def __init__(self, path_save, dataset_train_scaled, dataset_test_scaled, n_envs = 5, n_envs_eval = 1, TIMESTEPS = 10000, port=6006):        
         
+
         # Cria ambientes aleatórios a partir do conjunto de dados fornecido
         self.n_envs = n_envs
         self.envs_train = self.envs_random(dataset_train_scaled, n_envs)        
-        
+        self.TIMESTEPS = TIMESTEPS
         self.n_envs_eval = n_envs_eval
         self.envs_eval = self.envs_random(dataset_test_scaled, n_envs_eval)
         
         self.path_save = path_save
         self.logdir = os.path.join(os.path.dirname(self.path_save), 'tensorboard_logs')
         if not os.path.exists(self.logdir):
-            os.makedirs(self.logdir)
-            
+            os.makedirs(self.logdir)            
 
         self.port = port  # Store the port
         self.launch_tensorboard()
@@ -192,13 +192,13 @@ class Agent:
         model = DQN(
             MlpPolicy, # O modelo de política a ser usado (MlpPolicy, CnnPolicy,…)
             self.envs_train, # O ambiente a ser usado
-            learning_rate=1e-4, # Taxa de aprendizado, pode ser uma função do progresso atual restante (de 1 a 0)
+            learning_rate=1e-3, # Taxa de aprendizado, pode ser uma função do progresso atual restante (de 1 a 0)
             buffer_size=10000, # Tamanho do buffer de repetição
-            learning_starts=10000, # Número de etapas de aprendizado para coletar experiências antes de começar a treinar a rede
+            learning_starts=1000, # Número de etapas de aprendizado para coletar experiências antes de começar a treinar a rede
             batch_size=32, # Tamanho do buffer de repetição
             tau=1.0, #  Coeficiente de atualização suave (“atualização Polyak”, entre 0 e 1) padrão 1 para atualização forçada
             gamma=0.99, # Fator de desconto
-            train_freq=5, # Frequência de treinamento, Atualize o modelo a cada train_freq step.
+            train_freq=1, # Frequência de treinamento, Atualize o modelo a cada train_freq step.
             gradient_steps=1, #  Quantas etapas de gradiente executar após cada implementação (consulte train_freq) Definir como -1significa executar tantas etapas de gradiente quanto as etapas realizadas no ambiente durante a implementação.
             target_update_interval=1000, #  Atualiza a rede de destino a cada target_update_interval etapa do ambiente.
             exploration_fraction=0.1, # Fração de todo o período de treinamento durante o qual a taxa de exploração é reduzida
@@ -217,11 +217,11 @@ class Agent:
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=1)
         
         # Treina o modelo
-        TIMESTEPS = 10000  # Usando um número inteiro diretamente é mais claro
+        #TIMESTEPS = 10000  # Usando um número inteiro diretamente é mais claro
         for i in range(1, 11):            
-            model.learn(total_timesteps=TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
+            model.learn(total_timesteps=self.TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
             # Ajuste para tornar o nome do arquivo salvo mais informativo
-            model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model_path = os.path.join(self.path_save, f'DQN_iteration_{i}_timesteps_{self.TIMESTEPS*i}')
             model.save(model_path)
                
         model.save(final_model_path)
@@ -283,8 +283,8 @@ class Agent:
         # Configura o modelo PPO
         model = PPO('MlpPolicy', 
                     self.envs_train, verbose=1, 
-                    learning_rate=1e-4, 
-                    n_steps=5, # 2048
+                    learning_rate=1e-3, 
+                    n_steps=5, 
                     batch_size=32, 
                     n_epochs=10, 
                     gamma=0.99, 
@@ -305,10 +305,10 @@ class Agent:
         # eval_callback = EvalCallback(eval_env, best_model_save_path=checkpoint_dir, log_path=checkpoint_dir, eval_freq=5000, deterministic=True, render=False)
 
         # Treina o modelo
-        TIMESTEPS = 10000
+        #TIMESTEPS = 10000
         for i in range(1, 11):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO", callback=[checkpoint_callback, metrics_callback])  # Adicione `eval_callback` à lista de callbacks, se estiver usando
-            model_path = os.path.join(checkpoint_dir, f'PPO_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO", callback=[checkpoint_callback, metrics_callback])  # Adicione `eval_callback` à lista de callbacks, se estiver usando
+            model_path = os.path.join(checkpoint_dir, f'PPO_iteration_{i}_timesteps_{self.TIMESTEPS*i}')
             model.save(model_path)
             print(f"Modelo salvo em: {model_path}")
 
@@ -382,21 +382,21 @@ class Agent:
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
 
         model = A2C('MlpPolicy', self.envs_train, verbose=1,
-                    learning_rate=1e-4,
+                    learning_rate=1e-3,
                     n_steps=5, # 5
                     gamma=0.99,
                     gae_lambda=0.95,
-                    ent_coef=0.0,
+                    ent_coef=0.01,
                     tensorboard_log=self.logdir)        
         
         final_model_path = os.path.join(self.path_save, '_A2C')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=1)
 
         # Treina o modelo
-        TIMESTEPS = 10000
+        #TIMESTEPS = 10000
         for i in range(1, 11):
-            model.learn(total_timesteps=TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C", callback=[metrics_callback])
-            model_path = os.path.join(self.path_save, f'A2C_iteration_{i}_timesteps_{TIMESTEPS*i}')
+            model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C", callback=[metrics_callback])
+            model_path = os.path.join(self.path_save, f'A2C_iteration_{i}_timesteps_{self.TIMESTEPS*i}')
             model.save(model_path)
 
         # Salva o modelo final
