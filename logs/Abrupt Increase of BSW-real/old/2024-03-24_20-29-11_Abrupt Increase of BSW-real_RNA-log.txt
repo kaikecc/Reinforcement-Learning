@@ -1,0 +1,48 @@
+[INFO]	24/03/2024 08:29:11 PM - Iniciando treinamento do modelo RNA
+[WARNING]	24/03/2024 08:29:12 PM - From c:\Python311\Lib\site-packages\keras\src\backend.py:1398: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[WARNING]	24/03/2024 08:29:12 PM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	24/03/2024 08:29:12 PM - From c:\Python311\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+[WARNING]	24/03/2024 08:29:12 PM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[INFO]	24/03/2024 08:29:51 PM - Assets written to: ..\models\Abrupt Increase of BSW-real\RNA\assets
+[INFO]	24/03/2024 08:29:51 PM - Tempo de Treinamento RNA: 39.17s
+[INFO]	24/03/2024 08:29:51 PM - Fim treinamento do modelo RNA
+[INFO]	24/03/2024 08:29:51 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[INFO]	24/03/2024 08:29:52 PM - Test loss: 0.08117562532424927
+[INFO]	24/03/2024 08:29:52 PM - Test accuracy: 0.9656339287757874
+[INFO]	24/03/2024 08:29:52 PM - Test precision: 0.9656339287757874
+[INFO]	24/03/2024 08:29:52 PM - Test recall: 0.9656339287757874
+[INFO]	24/03/2024 08:29:52 PM - Test F1 Score: 0.9656338691711426
+[INFO]	24/03/2024 08:29:52 PM - Acurácia de 0.96563 no conjunto de dados de teste usando RNA
+[INFO]	24/03/2024 08:29:52 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	24/03/2024 08:29:52 PM - Iniciando a validação do modelo RNA
+[INFO]	24/03/2024 08:29:52 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	24/03/2024 08:29:52 PM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	24/03/2024 08:29:52 PM - Iniciando predição da 1ª instância de validação usando RNA
+[INFO]	24/03/2024 08:30:03 PM - Acurácia da 1ª instância: 99.817%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 9.369% da 1ª instância
+[INFO]	24/03/2024 08:30:03 PM - Precision: 1.000, Recall: 0.984, F1 Score: 0.992 da 1ª instância
+[INFO]	24/03/2024 08:30:03 PM - Iniciando plotagem da 1ª instância de validação
+[INFO]	24/03/2024 08:30:10 PM - Fim da plotagem da 1ª instância de validação
+[INFO]	24/03/2024 08:30:10 PM - Iniciando predição da 2ª instância de validação usando RNA
+[INFO]	24/03/2024 08:30:13 PM - Acurácia da 2ª instância: 97.593%, Verdadeiro Negativo: 33.911%, Verdadeiro Positivo: 22.330% da 2ª instância
+[INFO]	24/03/2024 08:30:13 PM - Precision: 1.000, Recall: 0.942, F1 Score: 0.970 da 2ª instância
+[INFO]	24/03/2024 08:30:13 PM - Iniciando plotagem da 2ª instância de validação
+[INFO]	24/03/2024 08:30:15 PM - Fim da plotagem da 2ª instância de validação
+[INFO]	24/03/2024 08:30:15 PM - Iniciando predição da 3ª instância de validação usando RNA
+[INFO]	24/03/2024 08:30:49 PM - Acurácia da 3ª instância: 95.589%, Verdadeiro Negativo: 57.963%, Verdadeiro Positivo: 0.580% da 3ª instância
+[INFO]	24/03/2024 08:30:49 PM - Precision: 1.000, Recall: 0.177, F1 Score: 0.300 da 3ª instância
+[INFO]	24/03/2024 08:30:49 PM - Iniciando plotagem da 3ª instância de validação
+[INFO]	24/03/2024 08:31:12 PM - Fim da plotagem da 3ª instância de validação
+[INFO]	24/03/2024 08:31:12 PM - Iniciando predição da 4ª instância de validação usando RNA
+[INFO]	24/03/2024 08:31:25 PM - Acurácia da 4ª instância: 99.122%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 0.000% da 4ª instância
+[INFO]	24/03/2024 08:31:25 PM - Precision: 0.000, Recall: 0.000, F1 Score: 0.000 da 4ª instância
+[INFO]	24/03/2024 08:31:25 PM - Iniciando plotagem da 4ª instância de validação
+[INFO]	24/03/2024 08:31:32 PM - Fim da plotagem da 4ª instância de validação
+[INFO]	24/03/2024 08:31:32 PM - Iniciando a plotagem e salvamento das métricas de validação para RNA
+[INFO]	24/03/2024 08:31:32 PM - Fim da plotagem e salvamento das métricas de validação para RNA
+[INFO]	24/03/2024 08:31:32 PM - Acurácia final: 98.030% no conjunto de dados de validação
+[INFO]	24/03/2024 08:31:32 PM - Precision: 0.750, Recall: 0.525, F1 Score: 0.566
+[INFO]	24/03/2024 08:31:32 PM - Concluído a execução do algoritmo RNA-real para o evento Abrupt Increase of BSW

@@ -150,6 +150,7 @@ class Agent:
     
     def launch_tensorboard(self):
         # Launch TensorBoard, and specify the log directory
+        logging.getLogger('tensorboard').setLevel(logging.WARNING)
         tb = tensorboard.program.TensorBoard()
         try:
             tb.configure(argv=[None, '--logdir', self.logdir, '--port', str(self.port)])
@@ -284,7 +285,7 @@ class Agent:
         model = PPO('MlpPolicy', 
                     self.envs_train, verbose=1, 
                     learning_rate=1e-3, 
-                    n_steps=5, 
+                    n_steps=1, 
                     batch_size=32, 
                     n_epochs=10, 
                     gamma=0.99, 
@@ -313,7 +314,7 @@ class Agent:
             print(f"Modelo salvo em: {model_path}")
 
         # Salva o modelo final
-        final_model_path = os.path.join(self.path_save, 'final_PPO')
+        final_model_path = os.path.join(self.path_save, '_PPO')
         model.save(final_model_path)
         logging.info(f"Modelo final salvo em {final_model_path}")
 
@@ -383,7 +384,7 @@ class Agent:
 
         model = A2C('MlpPolicy', self.envs_train, verbose=1,
                     learning_rate=1e-3,
-                    n_steps=5, # 5
+                    n_steps=1, # 5
                     gamma=0.99,
                     gae_lambda=0.95,
                     ent_coef=0.01,

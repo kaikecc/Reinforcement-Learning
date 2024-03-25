@@ -1,0 +1,54 @@
+[INFO]	25/03/2024 11:29:24 AM - Server binary (from Python package v0.7.2): None
+[ERROR]	25/03/2024 11:29:27 AM - An error occurred while launching TensorBoard: TensorBoard could not bind to port 6006, it was already in use
+[INFO]	25/03/2024 11:29:27 AM - Iniciando a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW com timesteps 10000 e n_envs 5
+[INFO]	25/03/2024 11:29:27 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	25/03/2024 11:29:27 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	25/03/2024 11:31:09 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	25/03/2024 11:31:09 AM - Tempo de Treinamento A2C: 102.13s
+[INFO]	25/03/2024 11:31:09 AM - Fim treinamento do algoritmo A2C
+[INFO]	25/03/2024 11:31:09 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	25/03/2024 11:31:09 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	25/03/2024 11:31:09 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	25/03/2024 11:31:18 AM - Acurácia de 0.86547 no conjunto de dados de teste usando A2C
+[INFO]	25/03/2024 11:31:18 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	25/03/2024 11:31:18 AM - Iniciando a validação do modelo A2C
+[INFO]	25/03/2024 11:31:18 AM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	25/03/2024 11:31:18 AM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	25/03/2024 11:31:18 AM - Iniciando predição da 1ª instância de validação usando A2C
+[INFO]	25/03/2024 11:31:20 AM - Acurácia da 1ª instância: 99.638%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 24.103% da 1ª instância
+[INFO]	25/03/2024 11:31:20 AM - Precision: 1.000, Recall: 0.985, F1 Score: 0.993 da 1ª instância
+[INFO]	25/03/2024 11:31:20 AM - Iniciando plotagem da 1ª instância de validação
+[INFO]	25/03/2024 11:31:26 AM - Fim da plotagem da 1ª instância de validação
+[INFO]	25/03/2024 11:31:26 AM - Iniciando predição da 2ª instância de validação usando A2C
+[INFO]	25/03/2024 11:31:26 AM - Acurácia da 2ª instância: 66.089%, Verdadeiro Negativo: 0.000%, Verdadeiro Positivo: 66.089% da 2ª instância
+[INFO]	25/03/2024 11:31:26 AM - Precision: 0.661, Recall: 1.000, F1 Score: 0.796 da 2ª instância
+[INFO]	25/03/2024 11:31:26 AM - Iniciando plotagem da 2ª instância de validação
+[INFO]	25/03/2024 11:31:28 AM - Fim da plotagem da 2ª instância de validação
+[INFO]	25/03/2024 11:31:28 AM - Iniciando predição da 3ª instância de validação usando A2C
+[INFO]	25/03/2024 11:31:30 AM - Acurácia da 3ª instância: 96.258%, Verdadeiro Negativo: 58.850%, Verdadeiro Positivo: 37.408% da 3ª instância
+[INFO]	25/03/2024 11:31:30 AM - Precision: 0.999, Recall: 0.910, F1 Score: 0.952 da 3ª instância
+[INFO]	25/03/2024 11:31:30 AM - Iniciando plotagem da 3ª instância de validação
+[INFO]	25/03/2024 11:31:44 AM - 127.0.0.1 - - [25/Mar/2024 11:31:44] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:44 AM - 127.0.0.1 - - [25/Mar/2024 11:31:44] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:44 AM - 127.0.0.1 - - [25/Mar/2024 11:31:44] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:44 AM - 127.0.0.1 - - [25/Mar/2024 11:31:44] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:44 AM - 127.0.0.1 - - [25/Mar/2024 11:31:44] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:45 AM - 127.0.0.1 - - [25/Mar/2024 11:31:45] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 11:31:58 AM - Fim da plotagem da 3ª instância de validação
+[INFO]	25/03/2024 11:31:58 AM - Iniciando predição da 4ª instância de validação usando A2C
+[INFO]	25/03/2024 11:31:58 AM - Acurácia da 4ª instância: 80.511%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 0.000% da 4ª instância
+[INFO]	25/03/2024 11:31:58 AM - Precision: 0.000, Recall: 0.000, F1 Score: 0.000 da 4ª instância
+[INFO]	25/03/2024 11:31:58 AM - Iniciando plotagem da 4ª instância de validação
+[INFO]	25/03/2024 11:32:03 AM - Fim da plotagem da 4ª instância de validação
+[INFO]	25/03/2024 11:32:03 AM - Iniciando a plotagem e salvamento das métricas de validação para A2C
+[INFO]	25/03/2024 11:32:03 AM - Fim da plotagem e salvamento das métricas de validação para A2C
+[INFO]	25/03/2024 11:32:03 AM - Acurácia final: 85.624% no conjunto de dados de validação
+[INFO]	25/03/2024 11:32:03 AM - Precision: 0.665, Recall: 0.724, F1 Score: 0.685
+[INFO]	25/03/2024 11:32:03 AM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW

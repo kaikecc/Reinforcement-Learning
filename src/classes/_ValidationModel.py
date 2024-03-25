@@ -121,6 +121,7 @@ class ValidationModel():
 
             acc_total = []
             accuracy_values, acc_values, TN_values, TP_values = [], [], [], []
+            precision_values, recall_values, f1_score_values = [], [], []
 
             for count, dataset_test in enumerate(datasets):
                 logging.info(f'Iniciando predição da {count + 1}ª instância de validação usando {self.model_name}')
@@ -152,13 +153,17 @@ class ValidationModel():
                 f'F1 Score: {f1_score:.3f}' 
                 ]
 
+                precision_values.append(precision)
+                recall_values.append(recall)
+                f1_score_values.append(f1_score)
+
                 logging.info(f'Precision: {precision:.3f}, Recall: {recall:.3f}, F1 Score: {f1_score:.3f} da {count + 1}ª instância')
 
-                #logging.info(f'Iniciando plotagem da {count + 1}ª instância de validação')
-                #explora = exploration(df)
-                #explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
-                #                     _title = f'[{count}] - {self.event_name} - {self.model_name}', additional_labels =  additional_labels, model = self.model_name)
-                #logging.info(f'Fim da plotagem da {count + 1}ª instância de validação')
+                logging.info(f'Iniciando plotagem da {count + 1}ª instância de validação')
+                explora = exploration(df)
+                explora.plot_sensor(sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
+                                     _title = f'[{count}] - {self.event_name} - {self.model_name}', additional_labels =  additional_labels, model = self.model_name)
+                logging.info(f'Fim da plotagem da {count + 1}ª instância de validação')
 
             logging.info(f'Iniciando a plotagem e salvamento das métricas de validação para {self.model_name}')    
             # Plotagem e salvamento das métricas
@@ -167,6 +172,7 @@ class ValidationModel():
 
             final_validation_accuracy = sum(acc_total) / len(acc_total) * 100
             logging.info(f'Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
+            logging.info(f'Precision: {sum(precision_values) / len(precision_values):.3f}, Recall: {sum(recall_values) / len(recall_values):.3f}, F1 Score: {sum(f1_score_values) / len(f1_score_values):.3f}')
             print(f'Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação')
         else:
             logging.info('Acurácia insuficiente para validação individual')
