@@ -1,6 +1,7 @@
 import gym
 from gym import spaces
 import numpy as np
+from stable_baselines3.common.env_util import make_vec_env
 
 class Env3WGym(gym.Env):
     """
@@ -15,9 +16,10 @@ class Env3WGym(gym.Env):
     """
     metadata = {'render.modes': ['human']}
     
-    def __init__(self, dataset):
+    def __init__(self, dataset, n_envs = 1):
         super(Env3WGym, self).__init__()
         self.dataset = dataset
+        self.n_envs = n_envs
         self.index = 0
         num_features = dataset.shape[1] - 1  # 5 Adjust based on your features
         
@@ -63,3 +65,13 @@ class Env3WGym(gym.Env):
 
     def close(self):
         pass
+
+    def create_env(self, dataset_part):
+        return Env3WGym(dataset_part)
+
+    def envs_random(self):
+        np.random.seed(42)  # Para reprodutibilidade
+        shuffled_indices = np.random.permutation(len(self.dataset))
+        dataset_shuffled = self.dataset[shuffled_indices]
+        split_datasets = np.array_split(dataset_shuffled, self.n_envs)
+        return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=self.n_envs)

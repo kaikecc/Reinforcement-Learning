@@ -1,0 +1,96 @@
+[INFO]	26/03/2024 04:11:40 PM - Iniciando a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	26/03/2024 04:11:40 PM - Iniciando treinamento do algoritmo A2C
+[INFO]	26/03/2024 04:11:40 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	26/03/2024 04:11:59 PM - 127.0.0.1 - - [26/Mar/2024 16:11:59] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:11:59 PM - 127.0.0.1 - - [26/Mar/2024 16:11:59] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:00 PM - 127.0.0.1 - - [26/Mar/2024 16:12:00] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:01 PM - 127.0.0.1 - - [26/Mar/2024 16:12:01] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:01 PM - 127.0.0.1 - - [26/Mar/2024 16:12:01] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:06 PM - 127.0.0.1 - - [26/Mar/2024 16:12:06] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:07 PM - 127.0.0.1 - - [26/Mar/2024 16:12:07] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:07 PM - 127.0.0.1 - - [26/Mar/2024 16:12:07] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:07 PM - 127.0.0.1 - - [26/Mar/2024 16:12:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:07 PM - 127.0.0.1 - - [26/Mar/2024 16:12:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:07 PM - 127.0.0.1 - - [26/Mar/2024 16:12:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:09 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	26/03/2024 04:12:09 PM - Tempo de Treinamento A2C: 29.12s
+[INFO]	26/03/2024 04:12:09 PM - Fim treinamento do algoritmo A2C
+[INFO]	26/03/2024 04:12:09 PM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 04:12:09 PM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	26/03/2024 04:12:09 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	26/03/2024 04:12:18 PM - Acurácia de 0.84306 no conjunto de dados de teste usando A2C
+[INFO]	26/03/2024 04:12:18 PM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 04:12:18 PM - Iniciando a validação do modelo A2C
+[INFO]	26/03/2024 04:12:18 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	26/03/2024 04:12:18 PM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	26/03/2024 04:12:18 PM - Iniciando predição da 1ª instância de validação usando A2C
+[INFO]	26/03/2024 04:12:19 PM - Acurácia da 1ª instância: 93.323%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 17.788% da 1ª instância
+[INFO]	26/03/2024 04:12:19 PM - Precision: 1.000, Recall: 0.727, F1 Score: 0.842 da 1ª instância
+[INFO]	26/03/2024 04:12:19 PM - Iniciando plotagem da 1ª instância de validação
+[INFO]	26/03/2024 04:12:24 PM - Fim da plotagem da 1ª instância de validação
+[INFO]	26/03/2024 04:12:24 PM - Iniciando predição da 2ª instância de validação usando A2C
+[INFO]	26/03/2024 04:12:24 PM - Acurácia da 2ª instância: 66.089%, Verdadeiro Negativo: 0.000%, Verdadeiro Positivo: 66.089% da 2ª instância
+[INFO]	26/03/2024 04:12:24 PM - Precision: 0.661, Recall: 1.000, F1 Score: 0.796 da 2ª instância
+[INFO]	26/03/2024 04:12:24 PM - Iniciando plotagem da 2ª instância de validação
+[INFO]	26/03/2024 04:12:26 PM - Fim da plotagem da 2ª instância de validação
+[INFO]	26/03/2024 04:12:26 PM - Iniciando predição da 3ª instância de validação usando A2C
+[INFO]	26/03/2024 04:12:29 PM - Acurácia da 3ª instância: 96.047%, Verdadeiro Negativo: 58.890%, Verdadeiro Positivo: 37.157% da 3ª instância
+[INFO]	26/03/2024 04:12:29 PM - Precision: 1.000, Recall: 0.904, F1 Score: 0.949 da 3ª instância
+[INFO]	26/03/2024 04:12:29 PM - Iniciando plotagem da 3ª instância de validação
+[INFO]	26/03/2024 04:12:29 PM - 127.0.0.1 - - [26/Mar/2024 16:12:29] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:30 PM - 127.0.0.1 - - [26/Mar/2024 16:12:30] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:31 PM - 127.0.0.1 - - [26/Mar/2024 16:12:31] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:31 PM - 127.0.0.1 - - [26/Mar/2024 16:12:31] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:31 PM - 127.0.0.1 - - [26/Mar/2024 16:12:31] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:33 PM - 127.0.0.1 - - [26/Mar/2024 16:12:33] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:34 PM - 127.0.0.1 - - [26/Mar/2024 16:12:34] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:35 PM - 127.0.0.1 - - [26/Mar/2024 16:12:35] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:35 PM - 127.0.0.1 - - [26/Mar/2024 16:12:35] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:35 PM - 127.0.0.1 - - [26/Mar/2024 16:12:35] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:12:59 PM - 127.0.0.1 - - [26/Mar/2024 16:12:59] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:00 PM - 127.0.0.1 - - [26/Mar/2024 16:13:00] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:01 PM - 127.0.0.1 - - [26/Mar/2024 16:13:01] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:01 PM - 127.0.0.1 - - [26/Mar/2024 16:13:01] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:13:04 PM - Fim da plotagem da 3ª instância de validação
+[INFO]	26/03/2024 04:13:04 PM - Iniciando predição da 4ª instância de validação usando A2C
+[INFO]	26/03/2024 04:13:05 PM - Acurácia da 4ª instância: 80.511%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 0.000% da 4ª instância
+[INFO]	26/03/2024 04:13:05 PM - Precision: 0.000, Recall: 0.000, F1 Score: 0.000 da 4ª instância
+[INFO]	26/03/2024 04:13:05 PM - Iniciando plotagem da 4ª instância de validação
+[INFO]	26/03/2024 04:13:14 PM - Fim da plotagem da 4ª instância de validação
+[INFO]	26/03/2024 04:13:14 PM - Iniciando a plotagem e salvamento das métricas de validação para A2C
+[INFO]	26/03/2024 04:13:14 PM - Fim da plotagem e salvamento das métricas de validação para A2C
+[INFO]	26/03/2024 04:13:14 PM - Acurácia final: 83.992% no conjunto de dados de validação
+[INFO]	26/03/2024 04:13:14 PM - Precision: 0.665, Recall: 0.658, F1 Score: 0.647
+[INFO]	26/03/2024 04:13:14 PM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW
