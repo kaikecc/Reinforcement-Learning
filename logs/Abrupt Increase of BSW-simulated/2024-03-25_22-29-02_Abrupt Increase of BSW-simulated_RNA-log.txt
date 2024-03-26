@@ -1,0 +1,46 @@
+[INFO]	25/03/2024 10:29:04 PM - Server binary (from Python package v0.7.2): None
+[ERROR]	25/03/2024 10:29:09 PM - An error occurred while launching TensorBoard: TensorBoard could not bind to port 6006, it was already in use
+[INFO]	25/03/2024 10:29:09 PM - Iniciando a execução do algoritmo RNA-simulated para o evento Abrupt Increase of BSW com timesteps 100000 e n_envs 5
+[INFO]	25/03/2024 10:29:09 PM - Iniciando treinamento do modelo RNA
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:12 PM - 127.0.0.1 - - [25/Mar/2024 22:29:12] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:13 PM - 127.0.0.1 - - [25/Mar/2024 22:29:13] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:14 PM - 127.0.0.1 - - [25/Mar/2024 22:29:14] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:14 PM - 127.0.0.1 - - [25/Mar/2024 22:29:14] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:29:14 PM - 127.0.0.1 - - [25/Mar/2024 22:29:14] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[WARNING]	25/03/2024 10:29:25 PM - From c:\Python311\Lib\site-packages\keras\src\backend.py:1398: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[WARNING]	25/03/2024 10:29:25 PM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	25/03/2024 10:29:26 PM - From c:\Python311\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+[WARNING]	25/03/2024 10:29:27 PM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[INFO]	25/03/2024 10:40:43 PM - Assets written to: ..\models\Abrupt Increase of BSW-simulated\RNA\assets
+[INFO]	25/03/2024 10:40:44 PM - Tempo de Treinamento RNA: 692.05s
+[INFO]	25/03/2024 10:40:44 PM - Fim treinamento do modelo RNA
+[INFO]	25/03/2024 10:40:44 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[INFO]	25/03/2024 10:41:12 PM - Test loss: 0.027729708701372147
+[INFO]	25/03/2024 10:41:12 PM - Test accuracy: 0.9901539087295532
+[INFO]	25/03/2024 10:41:12 PM - Test precision: 0.9901539087295532
+[INFO]	25/03/2024 10:41:12 PM - Test recall: 0.9901539087295532
+[INFO]	25/03/2024 10:41:12 PM - Test F1 Score: 0.9901538491249084
+[INFO]	25/03/2024 10:41:12 PM - Acurácia de 0.99015 no conjunto de dados de teste usando RNA
+[INFO]	25/03/2024 10:41:12 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	25/03/2024 10:41:12 PM - Iniciando a validação do modelo RNA
+[INFO]	25/03/2024 10:41:12 PM - Concluído a execução do algoritmo RNA-simulated para o evento Abrupt Increase of BSW

@@ -1,0 +1,49 @@
+[INFO]	25/03/2024 10:03:46 PM - Server binary (from Python package v0.7.2): None
+[INFO]	25/03/2024 10:03:48 PM - TensorBoard started at http://localhost:6006/
+[INFO]	25/03/2024 10:03:49 PM - Iniciando a execução do algoritmo DQN-simulated para o evento Abrupt Increase of BSW com timesteps 100000 e n_envs 5
+[INFO]	25/03/2024 10:03:49 PM - Iniciando treinamento do algoritmo DQN
+[INFO]	25/03/2024 10:03:49 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	25/03/2024 10:03:49 PM - 127.0.0.1 - - [25/Mar/2024 22:03:49] "GET / HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:49 PM - 127.0.0.1 - - [25/Mar/2024 22:03:49] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:50 PM - 127.0.0.1 - - [25/Mar/2024 22:03:50] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:51 PM - 127.0.0.1 - - [25/Mar/2024 22:03:51] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:51 PM - 127.0.0.1 - - [25/Mar/2024 22:03:51] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:54 PM - 127.0.0.1 - - [25/Mar/2024 22:03:54] "GET /?darkMode=true HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:55 PM - 127.0.0.1 - - [25/Mar/2024 22:03:55] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:56 PM - 127.0.0.1 - - [25/Mar/2024 22:03:56] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:56 PM - 127.0.0.1 - - [25/Mar/2024 22:03:56] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:56 PM - 127.0.0.1 - - [25/Mar/2024 22:03:56] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:56 PM - 127.0.0.1 - - [25/Mar/2024 22:03:56] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:57 PM - 127.0.0.1 - - [25/Mar/2024 22:03:57] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:58 PM - 127.0.0.1 - - [25/Mar/2024 22:03:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:58 PM - 127.0.0.1 - - [25/Mar/2024 22:03:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:03:58 PM - 127.0.0.1 - - [25/Mar/2024 22:03:58] "GET /font-roboto/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	25/03/2024 10:05:17 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-simulated\DQN\_DQN
+[INFO]	25/03/2024 10:05:17 PM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-simulated\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	25/03/2024 10:05:17 PM - Tempo de Treinamento DQN: 88.26s
+[INFO]	25/03/2024 10:05:17 PM - Fim treinamento do algoritmo DQN
+[INFO]	25/03/2024 10:05:17 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	25/03/2024 10:05:17 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW-simulated\DQN com 1 episódios.
+[INFO]	25/03/2024 10:07:12 PM - Acurácia de 0.81106 no conjunto de dados de teste usando DQN
+[INFO]	25/03/2024 10:07:12 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	25/03/2024 10:07:12 PM - Iniciando a validação do modelo DQN
+[INFO]	25/03/2024 10:07:12 PM - Concluído a execução do algoritmo DQN-simulated para o evento Abrupt Increase of BSW
