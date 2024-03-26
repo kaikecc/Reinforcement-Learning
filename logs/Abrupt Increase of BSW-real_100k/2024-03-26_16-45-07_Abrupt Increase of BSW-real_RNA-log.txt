@@ -1,0 +1,126 @@
+[INFO]	26/03/2024 04:45:07 PM - Iniciando a execução do algoritmo RNA-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	26/03/2024 04:45:07 PM - Iniciando treinamento do modelo RNA
+[WARNING]	26/03/2024 04:45:07 PM - From c:\Python311\Lib\site-packages\keras\src\backend.py:1398: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[WARNING]	26/03/2024 04:45:07 PM - From c:\Python311\Lib\site-packages\keras\src\optimizers\__init__.py:309: The name tf.train.Optimizer is deprecated. Please use tf.compat.v1.train.Optimizer instead.
+
+[WARNING]	26/03/2024 04:45:08 PM - From c:\Python311\Lib\site-packages\keras\src\utils\tf_utils.py:492: The name tf.ragged.RaggedTensorValue is deprecated. Please use tf.compat.v1.ragged.RaggedTensorValue instead.
+
+[WARNING]	26/03/2024 04:45:08 PM - From c:\Python311\Lib\site-packages\keras\src\engine\base_layer_utils.py:384: The name tf.executing_eagerly_outside_functions is deprecated. Please use tf.compat.v1.executing_eagerly_outside_functions instead.
+
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:23 PM - 127.0.0.1 - - [26/Mar/2024 16:45:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:24 PM - 127.0.0.1 - - [26/Mar/2024 16:45:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:24 PM - 127.0.0.1 - - [26/Mar/2024 16:45:24] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:24 PM - 127.0.0.1 - - [26/Mar/2024 16:45:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:24 PM - 127.0.0.1 - - [26/Mar/2024 16:45:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:24 PM - 127.0.0.1 - - [26/Mar/2024 16:45:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:36 PM - Assets written to: ..\models\Abrupt Increase of BSW-real\RNA\assets
+[INFO]	26/03/2024 04:45:36 PM - Tempo de Treinamento RNA: 29.79s
+[INFO]	26/03/2024 04:45:36 PM - Fim treinamento do modelo RNA
+[INFO]	26/03/2024 04:45:36 PM - Iniciando avaliação do modelo RNA conjunto de teste
+[INFO]	26/03/2024 04:45:38 PM - Test loss: 0.051244501024484634
+[INFO]	26/03/2024 04:45:38 PM - Test accuracy: 0.9759835600852966
+[INFO]	26/03/2024 04:45:38 PM - Test precision: 0.9759835600852966
+[INFO]	26/03/2024 04:45:38 PM - Test recall: 0.9759835600852966
+[INFO]	26/03/2024 04:45:38 PM - Test F1 Score: 0.9759835004806519
+[INFO]	26/03/2024 04:45:38 PM - Acurácia de 0.97598 no conjunto de dados de teste usando RNA
+[INFO]	26/03/2024 04:45:38 PM - Fim avaliação  do modelo RNA conjunto de teste
+[INFO]	26/03/2024 04:45:38 PM - Iniciando a validação do modelo RNA
+[INFO]	26/03/2024 04:45:38 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	26/03/2024 04:45:38 PM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	26/03/2024 04:45:38 PM - Iniciando predição da 1ª instância de validação usando RNA
+[INFO]	26/03/2024 04:45:46 PM - Acurácia da 1ª instância: 99.914%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 24.379% da 1ª instância
+[INFO]	26/03/2024 04:45:46 PM - Precision: 1.000, Recall: 0.996, F1 Score: 0.998 da 1ª instância
+[INFO]	26/03/2024 04:45:46 PM - Iniciando plotagem da 1ª instância de validação
+[INFO]	26/03/2024 04:45:50 PM - Fim da plotagem da 1ª instância de validação
+[INFO]	26/03/2024 04:45:50 PM - Iniciando predição da 2ª instância de validação usando RNA
+[INFO]	26/03/2024 04:45:53 PM - Acurácia da 2ª instância: 99.515%, Verdadeiro Negativo: 33.911%, Verdadeiro Positivo: 65.603% da 2ª instância
+[INFO]	26/03/2024 04:45:53 PM - Precision: 1.000, Recall: 0.993, F1 Score: 0.996 da 2ª instância
+[INFO]	26/03/2024 04:45:53 PM - Iniciando plotagem da 2ª instância de validação
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:53 PM - 127.0.0.1 - - [26/Mar/2024 16:45:53] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:54 PM - 127.0.0.1 - - [26/Mar/2024 16:45:54] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:54 PM - 127.0.0.1 - - [26/Mar/2024 16:45:54] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:54 PM - 127.0.0.1 - - [26/Mar/2024 16:45:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:54 PM - Fim da plotagem da 2ª instância de validação
+[INFO]	26/03/2024 04:45:54 PM - Iniciando predição da 3ª instância de validação usando RNA
+[INFO]	26/03/2024 04:45:55 PM - 127.0.0.1 - - [26/Mar/2024 16:45:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:45:55 PM - 127.0.0.1 - - [26/Mar/2024 16:45:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:06 PM - 127.0.0.1 - - [26/Mar/2024 16:46:06] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:09 PM - 127.0.0.1 - - [26/Mar/2024 16:46:09] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:23 PM - Acurácia da 3ª instância: 96.331%, Verdadeiro Negativo: 57.405%, Verdadeiro Positivo: 38.926% da 3ª instância
+[INFO]	26/03/2024 04:46:23 PM - Precision: 0.963, Recall: 0.947, F1 Score: 0.955 da 3ª instância
+[INFO]	26/03/2024 04:46:23 PM - Iniciando plotagem da 3ª instância de validação
+[INFO]	26/03/2024 04:46:23 PM - 127.0.0.1 - - [26/Mar/2024 16:46:23] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:23 PM - 127.0.0.1 - - [26/Mar/2024 16:46:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:24 PM - 127.0.0.1 - - [26/Mar/2024 16:46:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:25 PM - 127.0.0.1 - - [26/Mar/2024 16:46:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:53 PM - 127.0.0.1 - - [26/Mar/2024 16:46:53] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:53 PM - 127.0.0.1 - - [26/Mar/2024 16:46:53] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:54 PM - 127.0.0.1 - - [26/Mar/2024 16:46:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:46:55 PM - 127.0.0.1 - - [26/Mar/2024 16:46:55] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 04:47:00 PM - Fim da plotagem da 3ª instância de validação
+[INFO]	26/03/2024 04:47:00 PM - Iniciando predição da 4ª instância de validação usando RNA
+[INFO]	26/03/2024 04:47:10 PM - Acurácia da 4ª instância: 99.681%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 19.170% da 4ª instância
+[INFO]	26/03/2024 04:47:10 PM - Precision: 1.000, Recall: 0.984, F1 Score: 0.992 da 4ª instância
+[INFO]	26/03/2024 04:47:10 PM - Iniciando plotagem da 4ª instância de validação
+[INFO]	26/03/2024 04:47:19 PM - Fim da plotagem da 4ª instância de validação
+[INFO]	26/03/2024 04:47:19 PM - Iniciando a plotagem e salvamento das métricas de validação para RNA
+[INFO]	26/03/2024 04:47:19 PM - Fim da plotagem e salvamento das métricas de validação para RNA
+[INFO]	26/03/2024 04:47:19 PM - Acurácia final: 98.860% no conjunto de dados de validação
+[INFO]	26/03/2024 04:47:19 PM - Precision: 0.991, Recall: 0.980, F1 Score: 0.985
+[INFO]	26/03/2024 04:47:19 PM - Concluído a execução do algoritmo RNA-real para o evento Abrupt Increase of BSW
