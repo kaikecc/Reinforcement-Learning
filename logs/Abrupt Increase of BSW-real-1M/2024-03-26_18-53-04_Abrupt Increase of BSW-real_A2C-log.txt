@@ -1,0 +1,305 @@
+[INFO]	26/03/2024 06:53:04 PM - Iniciando a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW com timesteps 1000000
+[INFO]	26/03/2024 06:53:04 PM - Iniciando treinamento do algoritmo A2C
+[INFO]	26/03/2024 06:53:04 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	26/03/2024 06:53:20 PM - 127.0.0.1 - - [26/Mar/2024 18:53:20] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:20 PM - 127.0.0.1 - - [26/Mar/2024 18:53:20] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:20 PM - 127.0.0.1 - - [26/Mar/2024 18:53:20] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:20 PM - 127.0.0.1 - - [26/Mar/2024 18:53:20] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:20 PM - 127.0.0.1 - - [26/Mar/2024 18:53:20] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:21 PM - 127.0.0.1 - - [26/Mar/2024 18:53:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:53:22 PM - 127.0.0.1 - - [26/Mar/2024 18:53:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:19 PM - 127.0.0.1 - - [26/Mar/2024 18:56:19] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:20 PM - 127.0.0.1 - - [26/Mar/2024 18:56:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:56:21 PM - 127.0.0.1 - - [26/Mar/2024 18:56:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:51 PM - 127.0.0.1 - - [26/Mar/2024 18:59:51] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 06:59:52 PM - 127.0.0.1 - - [26/Mar/2024 18:59:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:23 PM - 127.0.0.1 - - [26/Mar/2024 19:02:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:24 PM - 127.0.0.1 - - [26/Mar/2024 19:02:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:25 PM - 127.0.0.1 - - [26/Mar/2024 19:02:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:55 PM - 127.0.0.1 - - [26/Mar/2024 19:02:55] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:56 PM - 127.0.0.1 - - [26/Mar/2024 19:02:56] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:57 PM - 127.0.0.1 - - [26/Mar/2024 19:02:57] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:58 PM - 127.0.0.1 - - [26/Mar/2024 19:02:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:02:58 PM - 127.0.0.1 - - [26/Mar/2024 19:02:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:45 PM - 127.0.0.1 - - [26/Mar/2024 19:04:45] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:46 PM - 127.0.0.1 - - [26/Mar/2024 19:04:46] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:04:47 PM - 127.0.0.1 - - [26/Mar/2024 19:04:47] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:06 PM - 127.0.0.1 - - [26/Mar/2024 19:06:06] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:06 PM - 127.0.0.1 - - [26/Mar/2024 19:06:06] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:06 PM - 127.0.0.1 - - [26/Mar/2024 19:06:06] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:06 PM - 127.0.0.1 - - [26/Mar/2024 19:06:06] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:06 PM - 127.0.0.1 - - [26/Mar/2024 19:06:06] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:07 PM - 127.0.0.1 - - [26/Mar/2024 19:06:07] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:06:08 PM - 127.0.0.1 - - [26/Mar/2024 19:06:08] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:17 PM - 127.0.0.1 - - [26/Mar/2024 19:10:17] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:18 PM - 127.0.0.1 - - [26/Mar/2024 19:10:18] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:19 PM - 127.0.0.1 - - [26/Mar/2024 19:10:19] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:19 PM - 127.0.0.1 - - [26/Mar/2024 19:10:19] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:19 PM - 127.0.0.1 - - [26/Mar/2024 19:10:19] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:19 PM - 127.0.0.1 - - [26/Mar/2024 19:10:19] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:10:19 PM - 127.0.0.1 - - [26/Mar/2024 19:10:19] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:49 PM - 127.0.0.1 - - [26/Mar/2024 19:11:49] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:50 PM - 127.0.0.1 - - [26/Mar/2024 19:11:50] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:51 PM - 127.0.0.1 - - [26/Mar/2024 19:11:51] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:52 PM - 127.0.0.1 - - [26/Mar/2024 19:11:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:53 PM - 127.0.0.1 - - [26/Mar/2024 19:11:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:53 PM - 127.0.0.1 - - [26/Mar/2024 19:11:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:53 PM - 127.0.0.1 - - [26/Mar/2024 19:11:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:53 PM - 127.0.0.1 - - [26/Mar/2024 19:11:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:11:53 PM - 127.0.0.1 - - [26/Mar/2024 19:11:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:21 PM - 127.0.0.1 - - [26/Mar/2024 19:20:21] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:22 PM - 127.0.0.1 - - [26/Mar/2024 19:20:22] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:20:23 PM - 127.0.0.1 - - [26/Mar/2024 19:20:23] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:52 PM - 127.0.0.1 - - [26/Mar/2024 19:27:52] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:53 PM - 127.0.0.1 - - [26/Mar/2024 19:27:53] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:27:54 PM - 127.0.0.1 - - [26/Mar/2024 19:27:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 07:31:27 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	26/03/2024 07:31:27 PM - Tempo de Treinamento A2C: 2302.77s
+[INFO]	26/03/2024 07:31:27 PM - Fim treinamento do algoritmo A2C
+[INFO]	26/03/2024 07:31:27 PM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 07:31:27 PM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	26/03/2024 07:31:27 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	26/03/2024 07:31:41 PM - Acurácia de 0.80721 no conjunto de dados de teste usando A2C
+[INFO]	26/03/2024 07:31:41 PM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 07:31:41 PM - Iniciando a validação do modelo A2C
+[INFO]	26/03/2024 07:31:41 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	26/03/2024 07:31:41 PM - Fim da separação dos grupos de dados para validação com 4 grupos de instâncias
+[INFO]	26/03/2024 07:31:41 PM - Iniciando predição da 1ª instância de validação usando A2C
+[INFO]	26/03/2024 07:31:43 PM - Acurácia da 1ª instância: 75.535%, Verdadeiro Negativo: 75.535%, Verdadeiro Positivo: 0.000% da 1ª instância
+[INFO]	26/03/2024 07:31:43 PM - Precision: 0.000, Recall: 0.000, F1 Score: 0.000 da 1ª instância
+[INFO]	26/03/2024 07:31:43 PM - Iniciando plotagem da 1ª instância de validação
+[INFO]	26/03/2024 07:31:53 PM - Fim da plotagem da 1ª instância de validação
+[INFO]	26/03/2024 07:31:53 PM - Iniciando predição da 2ª instância de validação usando A2C
+[INFO]	26/03/2024 07:31:53 PM - Acurácia da 2ª instância: 96.047%, Verdadeiro Negativo: 33.911%, Verdadeiro Positivo: 62.136% da 2ª instância
+[INFO]	26/03/2024 07:31:53 PM - Precision: 1.000, Recall: 0.940, F1 Score: 0.969 da 2ª instância
+[INFO]	26/03/2024 07:31:53 PM - Iniciando plotagem da 2ª instância de validação
+[INFO]	26/03/2024 07:31:57 PM - Fim da plotagem da 2ª instância de validação
+[INFO]	26/03/2024 07:31:57 PM - Iniciando predição da 3ª instância de validação usando A2C
+[INFO]	26/03/2024 07:32:03 PM - Acurácia da 3ª instância: 95.859%, Verdadeiro Negativo: 58.901%, Verdadeiro Positivo: 36.958% da 3ª instância
+[INFO]	26/03/2024 07:32:03 PM - Precision: 1.000, Recall: 0.899, F1 Score: 0.947 da 3ª instância
+[INFO]	26/03/2024 07:32:03 PM - Iniciando plotagem da 3ª instância de validação
+[INFO]	26/03/2024 07:32:41 PM - Fim da plotagem da 3ª instância de validação
+[INFO]	26/03/2024 07:32:41 PM - Iniciando predição da 4ª instância de validação usando A2C
+[INFO]	26/03/2024 07:32:42 PM - Acurácia da 4ª instância: 80.511%, Verdadeiro Negativo: 80.511%, Verdadeiro Positivo: 0.000% da 4ª instância
+[INFO]	26/03/2024 07:32:42 PM - Precision: 0.000, Recall: 0.000, F1 Score: 0.000 da 4ª instância
+[INFO]	26/03/2024 07:32:42 PM - Iniciando plotagem da 4ª instância de validação
+[INFO]	26/03/2024 07:32:52 PM - Fim da plotagem da 4ª instância de validação
+[INFO]	26/03/2024 07:32:52 PM - Iniciando a plotagem e salvamento das métricas de validação para A2C
+[INFO]	26/03/2024 07:32:52 PM - Fim da plotagem e salvamento das métricas de validação para A2C
+[INFO]	26/03/2024 07:32:52 PM - Acurácia final: 86.988% no conjunto de dados de validação
+[INFO]	26/03/2024 07:32:52 PM - Precision: 0.500, Recall: 0.460, F1 Score: 0.479
+[INFO]	26/03/2024 07:32:52 PM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW

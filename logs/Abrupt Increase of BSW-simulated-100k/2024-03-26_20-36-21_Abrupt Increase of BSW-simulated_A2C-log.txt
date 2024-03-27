@@ -1,0 +1,47 @@
+[INFO]	26/03/2024 08:36:21 PM - Iniciando a execução do algoritmo A2C-simulated para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	26/03/2024 08:36:21 PM - Iniciando treinamento do algoritmo A2C
+[INFO]	26/03/2024 08:36:21 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	26/03/2024 08:37:04 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-simulated\A2C\_A2C
+[INFO]	26/03/2024 08:37:04 PM - Tempo de Treinamento A2C: 43.49s
+[INFO]	26/03/2024 08:37:04 PM - Fim treinamento do algoritmo A2C
+[INFO]	26/03/2024 08:37:04 PM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 08:37:04 PM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-simulated\A2C com 1 episódios.
+[INFO]	26/03/2024 08:37:04 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-simulated\tensorboard_logs'
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:19 PM - 127.0.0.1 - - [26/Mar/2024 20:38:19] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:20 PM - 127.0.0.1 - - [26/Mar/2024 20:38:20] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:20 PM - 127.0.0.1 - - [26/Mar/2024 20:38:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:20 PM - 127.0.0.1 - - [26/Mar/2024 20:38:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:20 PM - 127.0.0.1 - - [26/Mar/2024 20:38:20] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:23 PM - 127.0.0.1 - - [26/Mar/2024 20:38:23] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:24 PM - 127.0.0.1 - - [26/Mar/2024 20:38:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:38:25 PM - 127.0.0.1 - - [26/Mar/2024 20:38:25] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	26/03/2024 08:41:04 PM - Acurácia de 0.77599 no conjunto de dados de teste usando A2C
+[INFO]	26/03/2024 08:41:04 PM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	26/03/2024 08:41:04 PM - Concluído a execução do algoritmo A2C-simulated para o evento Abrupt Increase of BSW

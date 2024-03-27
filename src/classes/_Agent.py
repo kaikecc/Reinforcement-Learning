@@ -434,43 +434,31 @@ class Agent:
 
         return accuracy
     
-    def env3W_dqn_cl(self, model_agent, path_save, dataset_cl, replaydir, n_envs):
+    def env3W_dqn_cl(self, model_agent, path_save, envs, replaydir, total_timesteps = 10000):
         '''
         Continual Learning com DQN        
         '''
-        envs = self.envs_random(dataset_cl, n_envs)
-        # tensorboard --logdir=tensorboard_logs
-
-        
+        #envs = self.envs_random(dataset_cl, n_envs)
+        # tensorboard --logdir=tensorboard_logs        
 
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
 
         final_model_path = os.path.join(path_save, '_DQN-CL')
         # Within env3W_dqn, before starting training
-        top_score = [None]  # Use a list for mutability
+        
         top_score = [None]  # Supondo que top_score é gerenciado globalmente
         tensorboard_callback = TensorboardCallback(model=model_agent, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=0)
-
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
-
-        # Cria o diretório se não existir
-        if not os.path.exists(self.logdir):
-            os.makedirs(self.logdir)
-
-        # Define o caminho para salvar os checkpoints
-        checkpoint_dir = os.path.join(path_save, 'dqn-cl_checkpoints')
-        os.makedirs(checkpoint_dir, exist_ok=True)  # Cria o diretório se não existir       
-        
-        
+               
         model_agent.load_replay_buffer(replaydir)
         model_agent.set_env(envs)
         model_agent._last_obs = None
-        model_agent.learn(total_timesteps=100000, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL", callback=[metrics_callback, tensorboard_callback])
+        model_agent.learn(total_timesteps=total_timesteps, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL", callback=[metrics_callback, tensorboard_callback])
         
         # Salva o modelo final
         model_agent.save(final_model_path)
-        final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
+        final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer-CL')
         model_agent.save_replay_buffer(final_replay_path)  
         logging.info(f"Modelo de Aprendizado Contínuo salvo em {replaydir}")  
 
