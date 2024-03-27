@@ -1,0 +1,12 @@
+[INFO]	27/03/2024 09:48:27 AM - Iniciando o teste do algoritmo DQN (Continual Learning)
+[INFO]	27/03/2024 09:48:28 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	27/03/2024 09:48:28 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	27/03/2024 09:48:32 AM - Acurácia de 0.21285 no conjunto de dados de teste usando DQN
+[INFO]	27/03/2024 09:48:32 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	27/03/2024 09:48:32 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real-CL\tensorboard_logs'
+[INFO]	27/03/2024 09:49:38 AM - Modelo de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-simulated-100k\DQN\replay_buffer\dqn_save_replay_buffer.pkl
+[INFO]	27/03/2024 09:49:38 AM - Iniciando avaliação do algoritmo DQN conjunto de teste (Continual Learning)
+[INFO]	27/03/2024 09:49:38 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	27/03/2024 09:49:42 AM - Acurácia de 0.87196 no conjunto de dados de teste usando DQN (Continual Learning)
+[INFO]	27/03/2024 09:49:42 AM - Fim avaliação  do algoritmo DQN conjunto de teste (Continual Learning)

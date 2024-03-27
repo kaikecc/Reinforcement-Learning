@@ -1,0 +1,25 @@
+[INFO]	27/03/2024 09:19:25 AM - Iniciando o teste do algoritmo DQN (Continual Learning)
+[INFO]	27/03/2024 09:19:26 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	27/03/2024 09:19:26 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-simulated-100k\DQN\_DQN.zip com 1 episódios.
+[INFO]	27/03/2024 09:19:35 AM - Acurácia de 0.21285 no conjunto de dados de teste usando DQN
+[INFO]	27/03/2024 09:19:35 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	27/03/2024 09:19:35 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real-CL\tensorboard_logs'
+[INFO]	27/03/2024 09:22:53 AM - Iniciando carregamento do dataset
+[INFO]	27/03/2024 09:22:53 AM - Total de  1019 instâncias real encontradas.
+[INFO]	27/03/2024 09:22:54 AM - Total de 5 instâncias real carregadas para o evento Abrupt Increase of BSW.
+[INFO]	27/03/2024 09:22:54 AM - Fim carregamento do dataset
+[INFO]	27/03/2024 09:22:54 AM - Iniciando divisão do dataset em treino e teste
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras da classe 0.0: 195376
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras da classe 1.0: 10417
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras da classe 101.0: 95658
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	27/03/2024 09:22:54 AM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	27/03/2024 09:22:54 AM - Número de registros de treino: 241159
+[INFO]	27/03/2024 09:22:54 AM - Número de registros de teste: 30146
+[INFO]	27/03/2024 09:22:54 AM - Número de registros de validação: 30146
+[INFO]	27/03/2024 09:22:54 AM - Fim divisão do dataset em treino e teste

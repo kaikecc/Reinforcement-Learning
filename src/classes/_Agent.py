@@ -146,7 +146,7 @@ class Agent:
             os.makedirs(self.logdir)            
 
         self.port = port  # Store the port
-        self.launch_tensorboard()
+        #self.launch_tensorboard()
     
     def launch_tensorboard(self):
         # Launch TensorBoard, and specify the log directory
@@ -438,27 +438,32 @@ class Agent:
         '''
         Continual Learning com DQN        
         '''
-        #envs = self.envs_random(dataset_cl, n_envs)
+        
         # tensorboard --logdir=tensorboard_logs        
 
         print(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
         logging.info(f"Para visualizar os logs do TensorBoard, execute:\ntensorboard --logdir='{self.logdir}'")
 
-        final_model_path = os.path.join(path_save, '_DQN-CL')
+        final_model_path = os.path.join(path_save.replace("-real", "-real-CL"), '_DQN-CL')
         # Within env3W_dqn, before starting training
         
-        top_score = [None]  # Supondo que top_score é gerenciado globalmente
-        tensorboard_callback = TensorboardCallback(model=model_agent, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=0)
-        metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
+        #top_score = [None]  # Supondo que top_score é gerenciado globalmente
+        #tensorboard_callback = TensorboardCallback(model=model_agent, referencia_top_score=top_score, caminho_salvar_modelo=final_model_path, verbose=0)
+        #metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
                
         model_agent.load_replay_buffer(replaydir)
         model_agent.set_env(envs)
         model_agent._last_obs = None
-        model_agent.learn(total_timesteps=total_timesteps, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL", callback=[metrics_callback, tensorboard_callback])
+        model_agent.learn(total_timesteps=total_timesteps, log_interval = 4, reset_num_timesteps = False, tb_log_name="DQN-CL")
         
+        replaydir_cl = os.path.join(path_save.replace("-real", "-real-CL"), 'replay_buffer-CL')
+
+        if not os.path.exists(replaydir_cl):
+            os.makedirs(replaydir_cl)
+
         # Salva o modelo final
         model_agent.save(final_model_path)
-        final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer-CL')
+        final_replay_path = os.path.join(replaydir_cl, 'dqn_save_replay_buffer-CL')
         model_agent.save_replay_buffer(final_replay_path)  
         logging.info(f"Modelo de Aprendizado Contínuo salvo em {replaydir}")  
 
