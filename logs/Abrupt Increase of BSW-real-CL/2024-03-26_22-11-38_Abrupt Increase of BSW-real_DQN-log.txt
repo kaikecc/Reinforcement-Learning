@@ -1,0 +1,35 @@
+[INFO]	26/03/2024 10:11:38 PM - Iniciando o teste do algoritmo DQN (Continual Learning)
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:11:46 PM - 127.0.0.1 - - [26/Mar/2024 22:11:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:16 PM - 127.0.0.1 - - [26/Mar/2024 22:12:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:12:32 PM - Iniciando carregamento do dataset
+[INFO]	26/03/2024 10:12:32 PM - Total de  1019 instâncias real encontradas.
+[INFO]	26/03/2024 10:12:33 PM - Total de 5 instâncias real carregadas para o evento Abrupt Increase of BSW.
+[INFO]	26/03/2024 10:12:33 PM - Fim carregamento do dataset
+[INFO]	26/03/2024 10:12:33 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras da classe 0.0: 195376
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras da classe 1.0: 10417
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras da classe 101.0: 95658
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	26/03/2024 10:12:33 PM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	26/03/2024 10:12:34 PM - Número de registros de treino: 241159
+[INFO]	26/03/2024 10:12:34 PM - Número de registros de teste: 30146
+[INFO]	26/03/2024 10:12:34 PM - Número de registros de validação: 30146
+[INFO]	26/03/2024 10:12:34 PM - Fim divisão do dataset em treino e teste
+[INFO]	26/03/2024 10:12:34 PM - Server binary (from Python package v0.7.2): None
+[ERROR]	26/03/2024 10:12:34 PM - An error occurred while launching TensorBoard: TensorBoard could not bind to port 6006, it was already in use

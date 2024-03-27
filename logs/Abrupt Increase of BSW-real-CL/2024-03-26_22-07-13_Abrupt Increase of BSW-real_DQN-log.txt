@@ -1,0 +1,83 @@
+[INFO]	26/03/2024 10:07:13 PM - Iniciando o teste do algoritmo DQN (Continual Learning)
+[INFO]	26/03/2024 10:07:15 PM - 127.0.0.1 - - [26/Mar/2024 22:07:15] "GET / HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:15 PM - 127.0.0.1 - - [26/Mar/2024 22:07:15] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:16 PM - 127.0.0.1 - - [26/Mar/2024 22:07:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:17 PM - 127.0.0.1 - - [26/Mar/2024 22:07:17] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:17 PM - 127.0.0.1 - - [26/Mar/2024 22:07:17] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:07:46 PM - 127.0.0.1 - - [26/Mar/2024 22:07:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:16 PM - 127.0.0.1 - - [26/Mar/2024 22:08:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:08:46 PM - 127.0.0.1 - - [26/Mar/2024 22:08:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:16 PM - 127.0.0.1 - - [26/Mar/2024 22:09:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:09:46 PM - 127.0.0.1 - - [26/Mar/2024 22:09:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:16 PM - 127.0.0.1 - - [26/Mar/2024 22:10:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:45 PM - Iniciando carregamento do dataset
+[INFO]	26/03/2024 10:10:45 PM - Total de  1019 instâncias real encontradas.
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - Total de 5 instâncias real carregadas para o evento Abrupt Increase of BSW.
+[INFO]	26/03/2024 10:10:46 PM - Fim carregamento do dataset
+[INFO]	26/03/2024 10:10:46 PM - Iniciando divisão do dataset em treino e teste
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras da classe 0.0: 195376
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de treino da classe 0.0: 156300
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de teste da classe 0.0: 39076
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras da classe 1.0: 10417
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de treino da classe 1.0: 8333
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de teste da classe 1.0: 2084
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras da classe 101.0: 95658
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de treino da classe 101.0: 76526
+[INFO]	26/03/2024 10:10:46 PM - Número de amostras de teste da classe 101.0: 19132
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:46 PM - Número de registros de treino: 241159
+[INFO]	26/03/2024 10:10:46 PM - Número de registros de teste: 30146
+[INFO]	26/03/2024 10:10:46 PM - Número de registros de validação: 30146
+[INFO]	26/03/2024 10:10:46 PM - 127.0.0.1 - - [26/Mar/2024 22:10:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:10:47 PM - Fim divisão do dataset em treino e teste
+[INFO]	26/03/2024 10:10:47 PM - Server binary (from Python package v0.7.2): None
+[ERROR]	26/03/2024 10:10:47 PM - An error occurred while launching TensorBoard: TensorBoard could not bind to port 6006, it was already in use
