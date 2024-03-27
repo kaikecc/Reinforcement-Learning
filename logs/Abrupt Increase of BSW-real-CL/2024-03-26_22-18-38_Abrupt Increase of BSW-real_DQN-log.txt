@@ -1,1 +1,21 @@
 [INFO]	26/03/2024 10:18:38 PM - Iniciando o teste do algoritmo DQN (Continual Learning)
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:46 PM - 127.0.0.1 - - [26/Mar/2024 22:18:46] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:47 PM - 127.0.0.1 - - [26/Mar/2024 22:18:47] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:18:58 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	26/03/2024 10:18:58 PM - Avaliando o modelo ..\models\Abrupt Increase of BSW-simulated-100k\DQN\_DQN.zip com 1 episódios.
+[INFO]	26/03/2024 10:19:07 PM - Acurácia de 0.21285 no conjunto de dados de teste usando DQN
+[INFO]	26/03/2024 10:19:07 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:16 PM - 127.0.0.1 - - [26/Mar/2024 22:19:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:17 PM - 127.0.0.1 - - [26/Mar/2024 22:19:17] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:17 PM - 127.0.0.1 - - [26/Mar/2024 22:19:17] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	26/03/2024 10:19:17 PM - 127.0.0.1 - - [26/Mar/2024 22:19:17] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
