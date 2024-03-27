@@ -68,10 +68,16 @@ class Env3WGym(gym.Env):
 
     def create_env(self, dataset_part):
         return Env3WGym(dataset_part)
-
+    
     def envs_random(self):
+        # Divide o dataset em n partes iguais (ou quase iguais) sem embaralhar
+        split_datasets = np.array_split(self.dataset, self.n_envs)
+        # Cria os ambientes paralelos com cada parte do dataset
+        return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=self.n_envs)
+
+    '''def envs_random(self):
         np.random.seed(42)  # Para reprodutibilidade
         shuffled_indices = np.random.permutation(len(self.dataset))
         dataset_shuffled = self.dataset[shuffled_indices]
         split_datasets = np.array_split(dataset_shuffled, self.n_envs)
-        return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=self.n_envs)
+        return make_vec_env(lambda: self.create_env(split_datasets.pop(0)), n_envs=self.n_envs)'''

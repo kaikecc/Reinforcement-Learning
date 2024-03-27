@@ -5,6 +5,8 @@ import pandas as pd  # Adicionado para melhorar a leitura de arquivos
 import logging
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+
 from sklearn.utils import resample
 class LoadInstances:
 
@@ -166,8 +168,8 @@ class LoadInstances:
         test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5, random_state=42) # , random_state=42
 
         # Embaralhando os índices (opcional, dependendo da necessidade)
-        np.random.shuffle(train_indices)
-        np.random.shuffle(test_indices)
+        #np.random.shuffle(train_indices)
+        #np.random.shuffle(test_indices)
         
 
         # Criando conjuntos de dados de treino e teste
@@ -190,10 +192,16 @@ class LoadInstances:
         X_test = np.delete(X_test, 0, axis=1)
 
         # Escalonando as features
-        scaler = StandardScaler()
+        #scaler = StandardScaler()
+        #X_train_scaled = scaler.fit_transform(X_train)
+        #X_test_scaled = scaler.transform(X_test)
+        #X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:]))) 
+        
+        #Substitua StandardScaler por MinMaxScaler configurado para o intervalo -1 a 1
+        scaler = MinMaxScaler(feature_range=(-1, 1))
         X_train_scaled = scaler.fit_transform(X_train)
         X_test_scaled = scaler.transform(X_test)
-        X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:])))    
+        X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:])))   
     
         #X_train_undersampled, y_train_undersampled = apply_undersampling(X_train_scaled, y_train)
         #X_test_undersampled, y_test_undersampled = apply_undersampling(X_test_scaled, y_test) # Se desejar aplicar no teste também
