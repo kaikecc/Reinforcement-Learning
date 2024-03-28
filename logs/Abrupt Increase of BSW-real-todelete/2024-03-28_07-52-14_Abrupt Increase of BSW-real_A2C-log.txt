@@ -1,0 +1,30 @@
+[INFO]	28/03/2024 07:52:14 AM - Iniciando a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	28/03/2024 07:52:14 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 07:52:14 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:52:15 AM - 127.0.0.1 - - [28/Mar/2024 07:52:15] "GET / HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:15 AM - 127.0.0.1 - - [28/Mar/2024 07:52:15] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:15 AM - 127.0.0.1 - - [28/Mar/2024 07:52:15] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:16 AM - 127.0.0.1 - - [28/Mar/2024 07:52:16] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:17 AM - 127.0.0.1 - - [28/Mar/2024 07:52:17] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:17 AM - 127.0.0.1 - - [28/Mar/2024 07:52:17] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:52:41 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 07:52:41 AM - Tempo de Treinamento A2C: 26.12s
+[INFO]	28/03/2024 07:52:41 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 07:52:41 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 07:52:41 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 07:52:41 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:52:47 AM - Acurácia de 0.75886 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 07:52:47 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 07:52:47 AM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW

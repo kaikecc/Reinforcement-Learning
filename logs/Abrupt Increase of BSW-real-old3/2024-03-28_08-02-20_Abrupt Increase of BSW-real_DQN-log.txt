@@ -1,0 +1,70 @@
+[INFO]	28/03/2024 08:02:20 AM - Iniciando a execução do algoritmo DQN-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	28/03/2024 08:02:20 AM - Iniciando treinamento do algoritmo DQN 1000 timesteps
+[INFO]	28/03/2024 08:02:20 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:02:20 AM - 127.0.0.1 - - [28/Mar/2024 08:02:20] "GET / HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	28/03/2024 08:02:21 AM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	28/03/2024 08:02:21 AM - Tempo de Treinamento DQN: 0.65s
+[INFO]	28/03/2024 08:02:21 AM - Fim treinamento do algoritmo DQN
+[INFO]	28/03/2024 08:02:21 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:02:21 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:21 AM - 127.0.0.1 - - [28/Mar/2024 08:02:21] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:22 AM - 127.0.0.1 - - [28/Mar/2024 08:02:22] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:22 AM - 127.0.0.1 - - [28/Mar/2024 08:02:22] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:02:25 AM - Acurácia de 0.21285 no conjunto de dados de teste usando DQN
+[INFO]	28/03/2024 08:02:25 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:02:25 AM - Iniciando treinamento do algoritmo DQN 10000 timesteps
+[INFO]	28/03/2024 08:02:25 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:02:31 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	28/03/2024 08:02:31 AM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	28/03/2024 08:02:31 AM - Tempo de Treinamento DQN: 6.08s
+[INFO]	28/03/2024 08:02:31 AM - Fim treinamento do algoritmo DQN
+[INFO]	28/03/2024 08:02:31 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:02:31 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	28/03/2024 08:02:36 AM - Acurácia de 0.82620 no conjunto de dados de teste usando DQN
+[INFO]	28/03/2024 08:02:36 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:02:36 AM - Iniciando treinamento do algoritmo DQN 100000 timesteps
+[INFO]	28/03/2024 08:02:36 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:03:47 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	28/03/2024 08:03:47 AM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	28/03/2024 08:03:47 AM - Tempo de Treinamento DQN: 70.66s
+[INFO]	28/03/2024 08:03:47 AM - Fim treinamento do algoritmo DQN
+[INFO]	28/03/2024 08:03:47 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:03:47 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	28/03/2024 08:03:51 AM - Acurácia de 0.93138 no conjunto de dados de teste usando DQN
+[INFO]	28/03/2024 08:03:51 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:03:51 AM - Iniciando treinamento do algoritmo DQN 150000 timesteps
+[INFO]	28/03/2024 08:03:51 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:05:53 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	28/03/2024 08:05:53 AM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	28/03/2024 08:05:53 AM - Tempo de Treinamento DQN: 121.95s
+[INFO]	28/03/2024 08:05:53 AM - Fim treinamento do algoritmo DQN
+[INFO]	28/03/2024 08:05:53 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:05:53 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	28/03/2024 08:05:57 AM - Acurácia de 0.92867 no conjunto de dados de teste usando DQN
+[INFO]	28/03/2024 08:05:57 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:05:57 AM - Iniciando treinamento do algoritmo DQN 300000 timesteps
+[INFO]	28/03/2024 08:05:57 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:11:13 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	28/03/2024 08:11:13 AM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	28/03/2024 08:11:13 AM - Tempo de Treinamento DQN: 315.69s
+[INFO]	28/03/2024 08:11:13 AM - Fim treinamento do algoritmo DQN
+[INFO]	28/03/2024 08:11:13 AM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:11:13 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	28/03/2024 08:11:18 AM - Acurácia de 0.94975 no conjunto de dados de teste usando DQN
+[INFO]	28/03/2024 08:11:18 AM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	28/03/2024 08:11:18 AM - Concluído a execução do algoritmo DQN-real para o evento Abrupt Increase of BSW

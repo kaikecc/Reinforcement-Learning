@@ -1,0 +1,88 @@
+[INFO]	28/03/2024 08:41:03 AM - Iniciando a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW com timesteps 300000
+[INFO]	28/03/2024 08:41:03 AM - Iniciando treinamento do algoritmo PPO 1000 timesteps
+[INFO]	28/03/2024 08:41:03 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:41:04 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 08:41:04 AM - Tempo de Treinamento PPO: 1.51s
+[INFO]	28/03/2024 08:41:04 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 08:41:04 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:41:04 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 08:41:04 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:41:11 AM - Acurácia de 0.50828 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 08:41:11 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:41:11 AM - Iniciando treinamento do algoritmo PPO 10000 timesteps
+[INFO]	28/03/2024 08:41:11 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:41:22 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 08:41:22 AM - Tempo de Treinamento PPO: 11.54s
+[INFO]	28/03/2024 08:41:22 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 08:41:22 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:41:22 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 08:41:22 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:41:29 AM - Acurácia de 0.80014 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 08:41:29 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:41:29 AM - Iniciando treinamento do algoritmo PPO 100000 timesteps
+[INFO]	28/03/2024 08:41:29 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:43:34 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 08:43:34 AM - Tempo de Treinamento PPO: 125.86s
+[INFO]	28/03/2024 08:43:34 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 08:43:34 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:43:34 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 08:43:34 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:43:40 AM - Acurácia de 0.86720 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 08:43:40 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:43:40 AM - Iniciando treinamento do algoritmo PPO 150000 timesteps
+[INFO]	28/03/2024 08:43:40 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /?darkMode=true HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:50 AM - 127.0.0.1 - - [28/Mar/2024 08:44:50] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:51 AM - 127.0.0.1 - - [28/Mar/2024 08:44:51] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:51 AM - 127.0.0.1 - - [28/Mar/2024 08:44:51] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:51 AM - 127.0.0.1 - - [28/Mar/2024 08:44:51] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:51 AM - 127.0.0.1 - - [28/Mar/2024 08:44:51] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:52 AM - 127.0.0.1 - - [28/Mar/2024 08:44:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:52 AM - 127.0.0.1 - - [28/Mar/2024 08:44:52] "GET /font-roboto/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:52 AM - 127.0.0.1 - - [28/Mar/2024 08:44:52] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:54 AM - 127.0.0.1 - - [28/Mar/2024 08:44:54] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:44:58 AM - 127.0.0.1 - - [28/Mar/2024 08:44:58] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 08:47:07 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 08:47:07 AM - Tempo de Treinamento PPO: 206.55s
+[INFO]	28/03/2024 08:47:07 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 08:47:07 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:47:07 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 08:47:07 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:47:13 AM - Acurácia de 0.90412 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 08:47:13 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:47:13 AM - Iniciando treinamento do algoritmo PPO 300000 timesteps
+[INFO]	28/03/2024 08:47:13 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:54:48 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 08:54:48 AM - Tempo de Treinamento PPO: 455.17s
+[INFO]	28/03/2024 08:54:48 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 08:54:48 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:54:48 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 08:54:48 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:54:54 AM - Acurácia de 0.89472 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 08:54:54 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 08:54:54 AM - Concluído a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW

@@ -1,0 +1,14 @@
+[INFO]	28/03/2024 07:41:54 AM - Iniciando a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	28/03/2024 07:41:54 AM - Iniciando treinamento do algoritmo PPO 100000 timesteps
+[INFO]	28/03/2024 07:41:54 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:44:22 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 07:44:22 AM - Tempo de Treinamento PPO: 147.79s
+[INFO]	28/03/2024 07:44:22 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 07:44:22 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 07:44:22 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 07:44:22 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:44:28 AM - Acurácia de 0.83755 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 07:44:28 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 07:44:28 AM - Concluído a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW

@@ -168,8 +168,8 @@ class LoadInstances:
         test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5, random_state=42) # , random_state=42
 
         # Embaralhando os índices (opcional, dependendo da necessidade)
-        #np.random.shuffle(train_indices)
-        #np.random.shuffle(test_indices)
+        np.random.shuffle(train_indices)
+        np.random.shuffle(test_indices)
         
 
         # Criando conjuntos de dados de treino e teste

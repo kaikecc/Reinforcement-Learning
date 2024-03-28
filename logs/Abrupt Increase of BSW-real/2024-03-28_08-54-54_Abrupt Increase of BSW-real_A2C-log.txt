@@ -1,0 +1,62 @@
+[INFO]	28/03/2024 08:54:54 AM - Iniciando a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW com timesteps 300000
+[INFO]	28/03/2024 08:54:54 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:54:54 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:54:54 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 08:54:54 AM - Tempo de Treinamento A2C: 0.12s
+[INFO]	28/03/2024 08:54:54 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:54:54 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:54:54 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 08:54:54 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:55:01 AM - Acurácia de 0.49757 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 08:55:01 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:55:01 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:55:01 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:55:02 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 08:55:02 AM - Tempo de Treinamento A2C: 1.05s
+[INFO]	28/03/2024 08:55:02 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:55:02 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:55:02 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 08:55:02 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:55:08 AM - Acurácia de 0.49757 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 08:55:08 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:55:08 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:55:08 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:55:31 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 08:55:31 AM - Tempo de Treinamento A2C: 23.18s
+[INFO]	28/03/2024 08:55:31 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:55:31 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:55:31 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 08:55:31 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:55:38 AM - Acurácia de 0.77329 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 08:55:38 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:55:38 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:55:38 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:56:24 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 08:56:24 AM - Tempo de Treinamento A2C: 46.18s
+[INFO]	28/03/2024 08:56:24 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:56:24 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:56:24 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 08:56:24 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:56:30 AM - Acurácia de 0.77952 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 08:56:30 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:56:30 AM - Iniciando treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:56:30 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:59:08 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\A2C\_A2C
+[INFO]	28/03/2024 08:59:08 AM - Tempo de Treinamento A2C: 157.37s
+[INFO]	28/03/2024 08:59:08 AM - Fim treinamento do algoritmo A2C
+[INFO]	28/03/2024 08:59:08 AM - Iniciando avaliação do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:59:08 AM - Avaliando o modelo A2C ..\models\Abrupt Increase of BSW-real\A2C com 1 episódios.
+[INFO]	28/03/2024 08:59:08 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 08:59:14 AM - Acurácia de 0.80008 no conjunto de dados de teste usando A2C
+[INFO]	28/03/2024 08:59:14 AM - Fim avaliação  do algoritmo A2C conjunto de teste
+[INFO]	28/03/2024 08:59:14 AM - Concluído a execução do algoritmo A2C-real para o evento Abrupt Increase of BSW

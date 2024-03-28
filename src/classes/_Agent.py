@@ -146,7 +146,7 @@ class Agent:
             os.makedirs(self.logdir)            
 
         self.port = port  # Store the port
-        #self.launch_tensorboard()
+        self.launch_tensorboard()
     
     def launch_tensorboard(self):
         # Launch TensorBoard, and specify the log directory
@@ -207,7 +207,7 @@ class Agent:
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
         
                
-        model.learn(total_timesteps=self.TIMESTEPS, log_interval = 4, reset_num_timesteps=False, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
+        model.learn(total_timesteps=self.TIMESTEPS, log_interval = 4, reset_num_timesteps=True, tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
             
                
         model.save(final_model_path)
@@ -270,7 +270,7 @@ class Agent:
         model = PPO('MlpPolicy', 
                     self.envs_train, verbose=0, 
                     learning_rate=1e-3, 
-                    n_steps=32, 
+                    n_steps=128, 
                     batch_size=32, 
                     n_epochs=10, 
                     gamma=0.99, 
@@ -290,7 +290,7 @@ class Agent:
         # eval_env = self.envs_random(dataset_test_scaled, 1)
         # eval_callback = EvalCallback(eval_env, best_model_save_path=checkpoint_dir, log_path=checkpoint_dir, eval_freq=5000, deterministic=True, render=False)
 
-        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=False, tb_log_name="PPO", callback=[checkpoint_callback, metrics_callback])  # Adicione `eval_callback` à lista de callbacks, se estiver usando
+        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="PPO", callback=[checkpoint_callback, metrics_callback])  # Adicione `eval_callback` à lista de callbacks, se estiver usando
             
         # Salva o modelo final
         final_model_path = os.path.join(path_save, '_PPO')
@@ -363,7 +363,7 @@ class Agent:
 
         model = A2C('MlpPolicy', self.envs_train, verbose=0,
                     learning_rate=1e-3,
-                    n_steps=32, 
+                    n_steps=128, 
                     gamma=0.99,
                     gae_lambda=0.95,
                     ent_coef=0.01,
@@ -373,7 +373,7 @@ class Agent:
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
 
        
-        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=False, tb_log_name="A2C", callback=[metrics_callback])
+        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="A2C", callback=[metrics_callback])
             
         # Salva o modelo final
         model.save(os.path.join(path_save, 'A2C'))

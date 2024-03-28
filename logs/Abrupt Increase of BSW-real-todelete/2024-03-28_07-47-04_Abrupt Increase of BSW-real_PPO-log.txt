@@ -1,0 +1,35 @@
+[INFO]	28/03/2024 07:47:04 AM - Iniciando a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	28/03/2024 07:47:04 AM - Iniciando treinamento do algoritmo PPO 100000 timesteps
+[INFO]	28/03/2024 07:47:04 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:47:04 AM - 127.0.0.1 - - [28/Mar/2024 07:47:04] "GET / HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:04 AM - 127.0.0.1 - - [28/Mar/2024 07:47:04] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:05 AM - 127.0.0.1 - - [28/Mar/2024 07:47:05] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:06 AM - 127.0.0.1 - - [28/Mar/2024 07:47:06] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:06 AM - 127.0.0.1 - - [28/Mar/2024 07:47:06] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:06 AM - 127.0.0.1 - - [28/Mar/2024 07:47:06] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:06 AM - 127.0.0.1 - - [28/Mar/2024 07:47:06] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:06 AM - 127.0.0.1 - - [28/Mar/2024 07:47:06] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:48 AM - 127.0.0.1 - - [28/Mar/2024 07:47:48] "GET /data/plugin/scalars/tags HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:48 AM - 127.0.0.1 - - [28/Mar/2024 07:47:48] "GET /font-roboto/Hgo13k-tfSpn0qi1SFdUfZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:48 AM - 127.0.0.1 - - [28/Mar/2024 07:47:48] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:48 AM - 127.0.0.1 - - [28/Mar/2024 07:47:48] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:47:52 AM - 127.0.0.1 - - [28/Mar/2024 07:47:52] "POST /data/plugin/scalars/scalars_multirun HTTP/1.1" 200 -
+[INFO]	28/03/2024 07:49:18 AM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	28/03/2024 07:49:18 AM - Tempo de Treinamento PPO: 134.64s
+[INFO]	28/03/2024 07:49:18 AM - Fim treinamento do algoritmo PPO
+[INFO]	28/03/2024 07:49:18 AM - Iniciando avaliação do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 07:49:18 AM - Avaliando o modelo ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	28/03/2024 07:49:18 AM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Abrupt Increase of BSW-real\tensorboard_logs'
+[INFO]	28/03/2024 07:49:25 AM - Acurácia de 0.93132 no conjunto de dados de teste usando PPO
+[INFO]	28/03/2024 07:49:25 AM - Fim avaliação  do algoritmo PPO conjunto de teste
+[INFO]	28/03/2024 07:49:25 AM - Concluído a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW
