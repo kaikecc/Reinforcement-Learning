@@ -29,6 +29,12 @@ class exploration():
             **{str(i): 'Estável de Anomalia' for i in range(1, 9)},
             **{str(100 + i): 'Transiente de Anomalia' for i in range(1, 9)}
         }
+
+        title_size = 8
+        axis_label_size = 7
+        tick_label_size = 4
+        legend_title_size = 7
+        legend_label_size = 7
         
         # Aplicar cores com base em legend_class para manter consistência
         class_colors = {cls: base_colors[label] for cls, label in legend_class.items()}
@@ -50,20 +56,7 @@ class exploration():
         filtered_data_near_median = pd.DataFrame(columns=self.dataframe.columns)
 
 
-        # Filtrando outliers para cada sensor e classe
-        '''for var in sensors:
-            for cls in filtered_data['class'].unique():
-                subset = filtered_data[filtered_data['class'] == cls][var]
-                Q1 = subset.quantile(0.25)
-                Q3 = subset.quantile(0.75)
-                IQR = Q3 - Q1
-                lower_bound = Q1 - 1.5 * IQR
-                upper_bound = Q3 + 1.5 * IQR
-                # Filtragem dos dados dentro dos limites para cada var e cls
-                condition = (filtered_data['class'] == cls) & (filtered_data[var] >= lower_bound) & (filtered_data[var] <= upper_bound)
-                filtered_subset = filtered_data[condition]
-                filtered_data_without_outliers = pd.concat([filtered_data_without_outliers, filtered_subset])'''
-        
+        # Filtrando outliers para cada sensor e classe              
         for var in sensors:
             for cls in self.dataframe['class'].unique():
                 subset = self.dataframe[self.dataframe['class'] == cls][var]
@@ -88,21 +81,25 @@ class exploration():
 
         # Definindo o layout dos subplots para ter dois gráficos por linha
         n_vars = len(sensors)
-        ncols = 2
+        ncols = 5
         nrows = int(np.ceil(n_vars / ncols))
 
-        fig, axes = plt.subplots(nrows, ncols, figsize=(12, 6 * nrows), squeeze=False)
+        fig, axes = plt.subplots(nrows, ncols, figsize=(6, 3 * nrows), squeeze=False)
         axes = axes.flatten()
 
         # Iterar sobre cada sensor para criar os gráficos
         for i, var in enumerate(sensors):
             class_palette = {cls: class_colors.get(cls, 'gray') for cls in filtered_data['class'].unique()}
-            sns.boxplot(x='class', y=var, data=filtered_data, ax=axes[i], palette=class_palette, showfliers=False)
-            axes[i].set_title(f'Distribuição de {var} por Classificação')
-            axes[i].set_xlabel('Classificação')
-            axes[i].set_ylabel('Pressão (Pa)' if var in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)')
-            axes[i].tick_params(axis='x', rotation=0)
+            sns.boxplot(x='class', y=var, data=filtered_data, hue='class', palette=class_palette, showfliers=False, ax=axes[i], legend=False)
+            axes[i].set_title(f'{var}', fontsize=title_size)
+            axes[i].set_xlabel('Classificação', fontsize=axis_label_size)
+            axes[i].set_ylabel('Pressão (Pa)' if var in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)', fontsize=axis_label_size)
+            axes[i].tick_params(axis='x', rotation=0, labelsize=tick_label_size)
+            axes[i].tick_params(axis='y', rotation=0, labelsize=tick_label_size)
+            axes[i].xaxis.get_offset_text().set_fontsize(tick_label_size)
+            axes[i].yaxis.get_offset_text().set_fontsize(tick_label_size)
             axes[i].grid(True)
+            
             
 
         # Esconder eixos vazios se o número de sensores não preencher completamente a última linha
@@ -126,7 +123,7 @@ class exploration():
         
 
         plt.tight_layout()
-        plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Rotulagem de Observação')
+        plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Rotulagem de Observação', title_fontsize=legend_title_size, fontsize=legend_label_size)
         plt.subplots_adjust(bottom=0.15, top=0.95)
         
         plt.grid(True)
