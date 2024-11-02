@@ -88,8 +88,10 @@ class LoadInstances:
                 
                 if 'timestamp' in columns:
                     df['timestamp'] = pd.to_datetime(df['timestamp']).dt.strftime("%Y-%m-%d %H:%M:%S")
+                    #df['WELL'] = int(well.split('-')[1])
                     arr = df.to_numpy()
                 else:
+                    #df['WELL'] = int(well.split('-')[1])
                     arr = df.to_numpy(dtype=np.float32)
                     arr[:, -1] = arr[:, -1].astype(np.int16)
                 

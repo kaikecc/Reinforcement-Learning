@@ -1,0 +1,53 @@
+[INFO]	14/07/2024 01:26:41 PM - Iniciando a execução do algoritmo DQN-simulated para o evento Rapid Productivity Loss com timesteps 100000
+[INFO]	14/07/2024 01:26:41 PM - Iniciando treinamento do algoritmo DQN 100000 timesteps
+[INFO]	14/07/2024 01:26:41 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Rapid Productivity Loss-simulated\tensorboard_logs'
+[INFO]	14/07/2024 01:28:02 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-simulated\DQN\_DQN
+[INFO]	14/07/2024 01:28:02 PM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Rapid Productivity Loss-simulated\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	14/07/2024 01:28:02 PM - Tempo de Treinamento DQN: 80.71s
+[INFO]	14/07/2024 01:28:02 PM - Fim treinamento do algoritmo DQN
+[INFO]	14/07/2024 01:28:02 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	14/07/2024 01:28:02 PM - Avaliando o modelo ..\models\Rapid Productivity Loss-simulated\DQN com 1 episódios.
+[INFO]	14/07/2024 01:28:46 PM - Acurácia de 0.90822 no conjunto de dados de teste usando DQN
+[INFO]	14/07/2024 01:28:46 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	14/07/2024 01:28:46 PM - Iniciando a validação do modelo DQN
+[INFO]	14/07/2024 01:28:46 PM - Iniciando a separação dos grupos de dados para validação individual
+[INFO]	14/07/2024 01:28:48 PM - Fim da separação dos grupos de dados para validação com 1 grupos de instâncias
+[INFO]	14/07/2024 01:28:48 PM - Iniciando predição da 1ª instância de validação usando DQN
+[INFO]	14/07/2024 01:29:16 PM - Acurácia da 1ª instância: 95.165%, Verdadeiro Negativo: 0.887%, Verdadeiro Positivo: 94.278% da 1ª instância
+[INFO]	14/07/2024 01:29:16 PM - Precision: 0.992, Recall: 0.959, F1 Score: 0.975 da 1ª instância
+[INFO]	14/07/2024 01:29:16 PM - Iniciando plotagem da 1ª instância de validação
+[INFO]	14/07/2024 01:31:32 PM - 127.0.0.1 - - [14/Jul/2024 13:31:32] "GET /?darkMode=true HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:33 PM - 127.0.0.1 - - [14/Jul/2024 13:31:33] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:34 PM - 127.0.0.1 - - [14/Jul/2024 13:31:34] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:34 PM - 127.0.0.1 - - [14/Jul/2024 13:31:34] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:34 PM - 127.0.0.1 - - [14/Jul/2024 13:31:34] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:34 PM - 127.0.0.1 - - [14/Jul/2024 13:31:34] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:34 PM - 127.0.0.1 - - [14/Jul/2024 13:31:34] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:35 PM - 127.0.0.1 - - [14/Jul/2024 13:31:35] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:31:35 PM - 127.0.0.1 - - [14/Jul/2024 13:31:35] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:24 PM - 127.0.0.1 - - [14/Jul/2024 13:43:24] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:25 PM - 127.0.0.1 - - [14/Jul/2024 13:43:25] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:25 PM - 127.0.0.1 - - [14/Jul/2024 13:43:25] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:25 PM - 127.0.0.1 - - [14/Jul/2024 13:43:25] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:25 PM - 127.0.0.1 - - [14/Jul/2024 13:43:25] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:33 PM - 127.0.0.1 - - [14/Jul/2024 13:43:33] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:43:33 PM - 127.0.0.1 - - [14/Jul/2024 13:43:33] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:49:46 PM - Fim da plotagem da 1ª instância de validação
+[INFO]	14/07/2024 01:49:46 PM - Iniciando a plotagem e salvamento das métricas de validação para DQN
+[INFO]	14/07/2024 01:49:46 PM - Fim da plotagem e salvamento das métricas de validação para DQN
+[INFO]	14/07/2024 01:49:46 PM - Acurácia final: 95.165% no conjunto de dados de validação
+[INFO]	14/07/2024 01:49:46 PM - Precision: 0.992, Recall: 0.959, F1 Score: 0.975
+[INFO]	14/07/2024 01:49:50 PM - Concluído a execução do algoritmo DQN-simulated para o evento Rapid Productivity Loss

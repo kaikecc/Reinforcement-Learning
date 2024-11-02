@@ -1,0 +1,38 @@
+[INFO]	14/07/2024 01:16:17 PM - Iniciando a execução do algoritmo DQN-simulated para o evento Rapid Productivity Loss com timesteps 100000
+[INFO]	14/07/2024 01:16:17 PM - Iniciando treinamento do algoritmo DQN 300000 timesteps
+[INFO]	14/07/2024 01:16:17 PM - Para visualizar os logs do TensorBoard, execute:
+tensorboard --logdir='..\models\Rapid Productivity Loss-simulated\tensorboard_logs'
+[INFO]	14/07/2024 01:16:33 PM - 127.0.0.1 - - [14/Jul/2024 13:16:33] "GET /font-roboto/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /icon_bundle.svg HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /font-roboto/RxZJdnzeo3R5zSexge8UUZBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:34 PM - 127.0.0.1 - - [14/Jul/2024 13:16:34] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:35 PM - 127.0.0.1 - - [14/Jul/2024 13:16:35] "GET /font-roboto/vPcynSL0qHq_6dX7lKVByXYhjbSpvc47ee6xR_80Hnw.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:35 PM - 127.0.0.1 - - [14/Jul/2024 13:16:35] "GET /font-roboto/d-6IYplOFocCacKzxwXSOJBw1xU1rKptJj_0jans920.woff2 HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:35 PM - 127.0.0.1 - - [14/Jul/2024 13:16:35] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:16:35 PM - 127.0.0.1 - - [14/Jul/2024 13:16:35] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /data/plugins_listing HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "POST /experiment/defaultExperimentId/data/plugin/hparams/experiment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /experiment/defaultExperimentId/data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /experiment/defaultExperimentId/data/plugin/timeseries/tags HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "POST /experiment/defaultExperimentId/data/plugin/timeseries/timeSeries HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /data/runs HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "GET /data/environment HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:27 PM - 127.0.0.1 - - [14/Jul/2024 13:22:27] "POST /experiment/defaultExperimentId/data/plugin/hparams/session_groups HTTP/1.1" 200 -
+[INFO]	14/07/2024 01:22:55 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-simulated\DQN\_DQN
+[INFO]	14/07/2024 01:22:55 PM - Replay Buffer de Aprendizado Contínuo salvo em ..\models\Rapid Productivity Loss-simulated\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	14/07/2024 01:22:55 PM - Tempo de Treinamento DQN: 397.76s
+[INFO]	14/07/2024 01:22:55 PM - Fim treinamento do algoritmo DQN
+[INFO]	14/07/2024 01:22:55 PM - Iniciando avaliação do algoritmo DQN conjunto de teste
+[INFO]	14/07/2024 01:22:55 PM - Avaliando o modelo ..\models\Rapid Productivity Loss-simulated\DQN com 1 episódios.
+[INFO]	14/07/2024 01:23:40 PM - Acurácia de 0.91446 no conjunto de dados de teste usando DQN
+[INFO]	14/07/2024 01:23:40 PM - Fim avaliação  do algoritmo DQN conjunto de teste
+[INFO]	14/07/2024 01:23:40 PM - Concluído a execução do algoritmo DQN-simulated para o evento Rapid Productivity Loss
