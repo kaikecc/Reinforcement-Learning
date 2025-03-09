@@ -1,224 +1,233 @@
 from pathlib import Path
 import numpy as np
-from datetime import datetime
-import pandas as pd  # Adicionado para melhorar a leitura de arquivos
+import pandas as pd
 import logging
+from datetime import datetime
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler
-
 from sklearn.utils import resample
-class LoadInstances:
 
-    '''
-    Exemplo de uso:
-    timestamp,P-PDG,P-TPT,T-TPT,P-MON-CKP,T-JUS-CKP,P-JUS-CKGL,T-JUS-CKGL,QGL,class
-    2017-02-01 02:02:07.000000,0.000000e+00,1.009211e+07,1.190944e+02,1.609800e+06,8.459782e+01,1.564147e+06,,0.000000e+00,0
-    2017-02-01 02:02:08.000000,0.000000e+00,1.009200e+07,1.190944e+02,1.618206e+06,8.458997e+01,1.564148e+06,,0.000000e+00,101
-    2017-02-01 02:02:09.000000,0.000000e+00,1.009189e+07,1.190944e+02,1.626612e+06,8.458213e+01,1.564148e+06,,0.000000e+00,4
-    2017-02-01 02:02:10.000000,0.000000e+00,1.009178e+07,1.190944e+02,1.635018e+06,8.457429e+01,1.564148e+06,,0.000000e+00,0
-    '''
-    def __init__(self, data_path):
+
+# Obtém o logger global
+logger = logging.getLogger("global_logger")
+
+
+class LoadInstances:
+    """
+    Classe para carregamento e preparação de dados a partir de arquivos CSV.
+    """
+
+    def __init__(self, data_path: str):
         self.data_path = Path(data_path)
-        
-    def class_and_file_generator(self, real=False, simulated=False, drawn=False):
-        for class_path in self.data_path.iterdir():
-            if class_path.is_dir():
+
+    def class_and_file_generator(self, real: bool = False, simulated: bool = False, drawn: bool = False):
+        """
+        Gera tuplas (class_code, instance_path) para arquivos CSV encontrados
+        nos subdiretórios do caminho fornecido.
+        """
+        valid_prefixes = {
+            'simulated': 'SIMULATED',
+            'drawn': 'DRAWN'
+        }
+        for class_dir in self.data_path.iterdir():
+            if class_dir.is_dir():
                 try:
-                    class_code = int(class_path.stem)
+                    class_code = int(class_dir.stem)
                 except ValueError:
                     continue
 
-                for instance_path in class_path.iterdir():
-                    if instance_path.suffix == '.csv':
-                        prefix = instance_path.stem.split('_')[0]
-                        if ((simulated and prefix == 'SIMULATED') or 
-                            (drawn and prefix == 'DRAWN') or 
-                            (real and prefix not in ['SIMULATED', 'DRAWN'])):
-                            yield class_code, instance_path
-    
-    def load_instance_with_numpy(self, events_names, type_instance='real'):
+                for instance_path in class_dir.glob("*.csv"):
+                    prefix = instance_path.stem.split('_')[0]
+                    if (simulated and prefix == valid_prefixes['simulated']) or \
+                       (drawn and prefix == valid_prefixes['drawn']) or \
+                       (real and prefix not in valid_prefixes.values()):
+                        yield class_code, instance_path
+
+    def load_instance_with_numpy(self, events_names: dict, type_instance: str = 'real'):
+        """
+        Carrega as instâncias dos arquivos CSV e retorna um array final concatenado
+        e uma lista com os arrays individuais.
         
-        event_name = [value for key, value in events_names.items() if key != 0][0]
+        :param events_names: dicionário com códigos e nomes dos eventos.
+                             O nome do evento é extraído do primeiro par (chave != 0).
+        :param type_instance: tipo de instância: 'real', 'simulated' ou 'drawn'
+        :return: tuple (final_array, arrays_list)
+        """
+        event_name = next((value for key, value in events_names.items() if key != 0), None)
 
-        if type_instance == 'real':            
-            well_names = [f'WELL-{i:05d}' for i in range(1, 19)]
+        # Define os "well names" de acordo com o tipo da instância
+        if type_instance == 'real':
+            well_names = {f'WELL-{i:05d}' for i in range(1, 19)}
         elif type_instance == 'simulated':
-            well_names = [f'SIMULATED_{i:05d}' for i in range(1, 120)]
+            well_names = {f'SIMULATED_{i:05d}' for i in range(1, 120)}
         elif type_instance == 'drawn':
-            well_names = [f'DRAWN_{i:05d}' for i in range(1, 19)]
+            well_names = {f'DRAWN_{i:05d}' for i in range(1, 19)}
+        else:
+            raise ValueError("type_instance deve ser 'real', 'simulated' ou 'drawn'")
 
-        type_flags = {
+        flags = {
             'real': {'real': True, 'simulated': False, 'drawn': False},
             'simulated': {'real': False, 'simulated': True, 'drawn': False},
             'drawn': {'real': False, 'simulated': False, 'drawn': True}
-        }
-        
-        flags = type_flags[type_instance]
+        }[type_instance]
 
-        columns = [ 
-            'timestamp',      
-            'P-PDG',
-            'P-TPT',
-            'T-TPT',
-            'P-MON-CKP',
-            'T-JUS-CKP',
-            #'P-JUS-CKGL',
-            #'T-JUS-CKGL',
-            #'QGL',
-            'class'
-        ]
-
+        # Definindo as colunas a serem lidas
+        columns = ['timestamp', 'P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP', 'class']
 
         instances = list(self.class_and_file_generator(**flags))
-        logging.info(f'Total de  {len(instances)} instâncias {type_instance} encontradas.')
+        logger.info(f'Total de {len(instances)} instâncias {type_instance} encontradas.')
+
         arrays_list = []
-
         for class_code, instance_path in instances:
-
+            # Identifica o nome do poço a partir do nome do arquivo
             if type_instance == 'real':
-                well, _ = instance_path.stem.split('_')
+                well, _ = instance_path.stem.split('_', 1)
             else:
-                well =  instance_path.stem
-            
+                well = instance_path.stem
+
             if class_code in events_names and well in well_names:
-                df = pd.read_csv(instance_path, usecols=columns + (['timestamp'] if 'timestamp' in columns else []))
+                try:
+                    df = pd.read_csv(instance_path, usecols=columns)
+                except Exception as e:
+                    logger.error(f"Erro ao ler {instance_path}: {e}")
+                    continue
+
                 df.replace([np.inf, -np.inf], np.nan, inplace=True)
                 df.dropna(inplace=True)
-                
-                if 'timestamp' in columns:
-                    df['timestamp'] = pd.to_datetime(df['timestamp']).dt.strftime("%Y-%m-%d %H:%M:%S")
-                    #df['WELL'] = int(well.split('-')[1])
-                    arr = df.to_numpy()
-                else:
-                    #df['WELL'] = int(well.split('-')[1])
-                    arr = df.to_numpy(dtype=np.float32)
-                    arr[:, -1] = arr[:, -1].astype(np.int16)
-                
-                arrays_list.append(arr)
-        
-        logging.info(f'Total de {len(arrays_list)} instâncias {type_instance} carregadas para o evento {event_name}.')
-        final_array = np.concatenate(arrays_list) if arrays_list else np.array([])
-        
-        return final_array, arrays_list
-    
-    # Função para aplicar undersampling no dataset
-    def apply_undersampling(X, y):
-        logging.info("Iniciando o processo de undersampling.")
-        
-        # Concatenar os arrays de features e target para facilitar o resampling
-        dataset = np.column_stack((X, y))
-        
-        # Separar os datasets por classe
-        datasets_by_class = {label: dataset[dataset[:, -1] == label] for label in np.unique(dataset[:, -1])}
-        
-        # Encontrar o tamanho da menor classe
-        min_class_size = min(len(datasets_by_class[label]) for label in datasets_by_class)
-        logging.info(f"Tamanho da menor classe: {min_class_size}")
-        
-        # Aplicar undersampling em cada classe para igualar ao tamanho da menor classe
-        undersampled_datasets = []
-        for label in datasets_by_class:
-            undersampled_data = resample(datasets_by_class[label], replace=False, n_samples=min_class_size, random_state=42)
-            undersampled_datasets.append(undersampled_data)
-            logging.info(f"Classe {label} foi undersampled para {min_class_size} instâncias.")
-        
-        
-        # Combinar todos os datasets undersampled em um único conjunto
-        undersampled_dataset = np.vstack(undersampled_datasets)
-        
-        # Embaralhar o dataset final para garantir uma distribuição aleatória
-        np.random.shuffle(undersampled_dataset)
-        logging.info("Dataset final undersampled e embaralhado.")
-        
-        # Separar novamente em X e y
-        X_undersampled, y_undersampled = undersampled_dataset[:, :-1], undersampled_dataset[:, -1]
-        
-        return X_undersampled, y_undersampled
-    
-    def data_preparation(self, dataset, train_percentage):
 
-        # Inicializando listas para guardar índices de treino e teste
+                # Adiciona a coluna 'well' com o nome do poço
+                df['well'] = well
+
+                # Processa a coluna timestamp, se presente
+                if 'timestamp' in df.columns:
+                    df['timestamp'] = pd.to_datetime(df['timestamp']).dt.strftime("%Y-%m-%d %H:%M:%S")
+                arr = df.to_numpy()
+                arrays_list.append(arr)
+
+        logger.info(f'Total de {len(arrays_list)} instâncias {type_instance} carregadas para o evento {event_name}.')
+        final_array = np.concatenate(arrays_list) if arrays_list else np.array([])
+
+        return final_array, arrays_list
+
+    @staticmethod
+    def apply_undersampling(X: np.ndarray, y: np.ndarray):
+        """
+        Aplica undersampling para balancear as classes do dataset.
+        """
+        logger.info("Iniciando o processo de undersampling.")
+        dataset = np.column_stack((X, y))
+        classes = np.unique(dataset[:, -1])
+        datasets_by_class = {label: dataset[dataset[:, -1] == label] for label in classes}
+        min_class_size = min(len(data) for data in datasets_by_class.values())
+        logger.info(f"Tamanho da menor classe: {min_class_size}")
+
+        undersampled_datasets = []
+        for label, data in datasets_by_class.items():
+            undersampled_data = resample(data, replace=False, n_samples=min_class_size, random_state=42)
+            undersampled_datasets.append(undersampled_data)
+            logger.info(f"Classe {label} foi undersampled para {min_class_size} instâncias.")
+
+        undersampled_dataset = np.vstack(undersampled_datasets)
+        np.random.shuffle(undersampled_dataset)
+        logger.info("Dataset final undersampled e embaralhado.")
+
+        X_undersampled = undersampled_dataset[:, :-1]
+        y_undersampled = undersampled_dataset[:, -1]
+
+        return X_undersampled, y_undersampled
+
+    def data_preparation(self, dataset: np.ndarray, train_percentage: float):
+        """
+        Divide o dataset em treino, teste e validação, aplicando escalonamento das features.
+        
+        Observação: 
+          - Para treino e teste, a coluna timestamp (primeira coluna) é removida antes do escalonamento.
+          - No dataset de validação, a coluna timestamp é mantida (ou seja, dataset_validation_scaled
+            mantém todas as colunas originais).
+          - A coluna de índice 6 não será escalonada (ajuste conforme a sua necessidade real).
+        
+        :param dataset: array contendo os dados, onde a última coluna é o target.
+        :param train_percentage: percentual (0-1) para divisão de treino por classe.
+        :return: tuple (dataset_train_scaled, dataset_test_scaled, dataset_validation_scaled)
+        """
         train_indices = []
         test_indices = []
 
-        # Processamento genérico para cada classe
+        # Divisão dos índices por classe
         for event in np.unique(dataset[:, -1]):
-            # Selecionando índices para a classe atual        
             class_indices = np.where(dataset[:, -1] == event)[0]
-            
-            # Logando o número de amostras por classe
-            print(f'Número de amostras da classe {event}: {len(class_indices)}')
-            logging.info(f'Número de amostras da classe {event}: {len(class_indices)}')
-            
-            # O parâmetro random_state=42 garante que essa divisão seja feita de maneira reproducível, ou seja, a função produzirá o mesmo resultado cada vez que for executada com o mesmo estado aleatório. 
-            # Dividindo os índices da classe atual em treino e teste
-            class_train_indices, class_test_indices = train_test_split(class_indices, train_size=train_percentage, random_state=42) # , random_state=42
-            
-            # Logando o número de amostras de treino e teste
-            logging.info(f'Número de amostras de treino da classe {event}: {len(class_train_indices)}')
-            logging.info(f'Número de amostras de teste da classe {event}: {len(class_test_indices)}')
-            
-            # Adicionando aos índices gerais de treino e teste
-            train_indices.extend(class_train_indices)
-            test_indices.extend(class_test_indices)
+            logger.info(f'Número de amostras da classe {event}: {len(class_indices)}')
 
-        # Convertendo listas para arrays numpy para futura manipulação
-        train_indices = np.array(train_indices)    
-        test_temp_indices = np.array(test_indices)       
+            class_train_idx, class_test_idx = train_test_split(
+                class_indices, 
+                train_size=train_percentage, 
+                random_state=42
+            )
+            logger.info(f'Número de amostras de treino da classe {event}: {len(class_train_idx)}')
+            logger.info(f'Número de amostras de teste da classe {event}: {len(class_test_idx)}')
 
-        test_indices, validation_indices = train_test_split(test_temp_indices, test_size=0.5, random_state=42) # , random_state=42
+            train_indices.extend(class_train_idx)
+            test_indices.extend(class_test_idx)
 
-        # Embaralhando os índices (opcional, dependendo da necessidade)
-        np.random.shuffle(train_indices)
-        np.random.shuffle(test_indices)
-        
+        train_indices = np.array(train_indices)
+        test_indices = np.array(test_indices)
 
-        # Criando conjuntos de dados de treino e teste
+        # Divide os índices de teste em teste e validação
+        test_indices, validation_indices = train_test_split(
+            test_indices, test_size=0.5, random_state=42
+        )
+
         dataset_train = dataset[train_indices]
         dataset_test = dataset[test_indices]
         dataset_validation = dataset[validation_indices]
 
-        logging.info(f'Número de registros de treino: {len(dataset_train)}')
-        logging.info(f'Número de registros de teste: {len(dataset_test)}')
-        logging.info(f'Número de registros de validação: {len(dataset_validation)}')
-        
+        logger.info(f'Número de registros de treino: {len(dataset_train)}')
+        logger.info(f'Número de registros de teste: {len(dataset_test)}')
+        logger.info(f'Número de registros de validação: {len(dataset_validation)}')
 
-        # Dividindo em features (X) e target (y)
+        # Separa features (X) e target (y)
         X_train, y_train = dataset_train[:, :-1], dataset_train[:, -1]
         X_test, y_test = dataset_test[:, :-1], dataset_test[:, -1]
         X_validation, y_validation = dataset_validation[:, :-1], dataset_validation[:, -1]
 
-        # Delete a primeira coluna (timestamp) das features
-        X_train = np.delete(X_train, 0, axis=1)
-        X_test = np.delete(X_test, 0, axis=1)
+        # Remove a coluna timestamp (primeira) para treino e teste
+        X_train_no_ts = np.delete(X_train, 0, axis=1)
+        X_test_no_ts = np.delete(X_test, 0, axis=1)
 
-        # Escalonando as features
-        #scaler = StandardScaler()
-        #X_train_scaled = scaler.fit_transform(X_train)
-        #X_test_scaled = scaler.transform(X_test)
-        #X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:]))) 
-        
-        #Substitua StandardScaler por MinMaxScaler configurado para o intervalo -1 a 1
+        # Determina quais colunas serão escalonadas.
+        # Exemplo: queremos pular a coluna de índice 5 (a 6ª em zero-based).
+        n_cols = X_train_no_ts.shape[1]  # total de colunas (já sem timestamp)
+        col_to_scale = list(range(n_cols))
+        col_to_scale.remove(5)  # Remova o índice da coluna que não deseja escalar
+
+        # Copiamos os arrays para que possamos inserir os valores escalonados sem sobrescrever o original
+        X_train_scaled = X_train_no_ts.copy()
+        X_test_scaled = X_test_no_ts.copy()
+
+        # Ajuste do scaler somente nas colunas definidas
         scaler = MinMaxScaler(feature_range=(-1, 1))
-        X_train_scaled = scaler.fit_transform(X_train)
-        X_test_scaled = scaler.transform(X_test)
-        X_validation_scaled = np.column_stack((X_validation[:, 0], scaler.transform(X_validation[:, 1:])))   
-    
-        #X_train_undersampled, y_train_undersampled = apply_undersampling(X_train_scaled, y_train)
-        #X_test_undersampled, y_test_undersampled = apply_undersampling(X_test_scaled, y_test) # Se desejar aplicar no teste também
+        scaler.fit(X_train_no_ts[:, col_to_scale])
 
+        X_train_scaled[:, col_to_scale] = scaler.transform(X_train_no_ts[:, col_to_scale])
+        X_test_scaled[:, col_to_scale] = scaler.transform(X_test_no_ts[:, col_to_scale])
 
-        # Se necessário, você pode combinar as features escalonadas e o target para formar os datasets finais
+        # Para validação, mantemos a coluna timestamp
+        X_validation_ts = X_validation[:, 0].reshape(-1, 1)
+        X_validation_numeric = np.delete(X_validation, 0, axis=1)
+        
+        # Escalona somente as colunas escolhidas no conjunto de validação
+        X_validation_numeric_scaled = X_validation_numeric.copy()
+        X_validation_numeric_scaled[:, col_to_scale] = scaler.transform(
+            X_validation_numeric[:, col_to_scale]
+        )
+
+        # Junta a coluna timestamp (não escalada) com as demais colunas escaladas
+        X_validation_scaled = np.hstack((X_validation_ts, X_validation_numeric_scaled))
+
+        # Combina novamente features e alvo
         dataset_train_scaled = np.column_stack((X_train_scaled, y_train))
         dataset_test_scaled = np.column_stack((X_test_scaled, y_test))
-        #dataset_train_scaled = np.column_stack((X_train_undersampled, y_train_undersampled))
-        #dataset_test_scaled = np.column_stack((X_test_undersampled, y_test_undersampled))
         dataset_validation_scaled = np.column_stack((X_validation_scaled, y_validation))
 
-        #logging.info(f'Número de registros de treino undersampling: {len(dataset_train_scaled)}')
-        #logging.info(f'Número de registros de teste undersampling: {len(dataset_test_scaled)}')
-        #logging.info(f'Número de registros de validação: {len(dataset_validation_scaled)}')       
-        logging.info(f'Fim divisão do dataset em treino e teste')
-
+        logger.info('Fim da divisão do dataset em treino e teste (com partial scaling)')
         return dataset_train_scaled, dataset_test_scaled, dataset_validation_scaled

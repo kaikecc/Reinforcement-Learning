@@ -1,346 +1,312 @@
+import os
+import logging
 import seaborn as sns
 import pandas as pd
 import numpy as np
-import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
-import os
+import matplotlib.patches as mpatches
 import matplotlib.dates as mdates
 from collections import OrderedDict
-import logging
 
-class exploration():
+# Obtém o logger global
+logger = logging.getLogger("global_logger")
+
+class Exploration:
     def __init__(self, dataframe):
-        self.dataframe = dataframe
+        # Trabalha com uma cópia para não modificar o DataFrame original
+        self.dataframe = dataframe.copy()
 
-    def quartiles_plot(self, sensors, _title):
-
-        '''directory = os.path.dirname(_title)
-        if not os.path.exists(directory):
-            os.makedirs(directory)'''
-
-        # Garantir que os valores de 'class' estejam no formato correto
-        self.dataframe['class'] = self.dataframe['class'].fillna('-1', inplace=False)
-        self.dataframe['class'] = self.dataframe['class'].astype(float).astype(int).astype(str)
+    def quartiles_plot(self, sensors, title):
+        """
+        Plota boxplots com os quartis para cada sensor, filtrando os valores que estão próximos à mediana.
+        Retorna os dados filtrados como array NumPy.
+        """
+        df = self.dataframe.copy()
+        # Garante que a coluna 'class' esteja preenchida e no formato string
+        df['class'] = df['class'].fillna('-1').astype(float).astype(int).astype(str)
         
-        base_colors = {'Normal': 'lightgreen', 'Estável de Anomalia': 'lightcoral', 'Transiente de Anomalia': 'lightyellow', 'Não Rotulado': 'lightgrey'}
+        base_colors = {
+            'Normal': 'lightgreen',
+            'Estável de Anomalia': 'lightcoral',
+            'Transiente de Anomalia': 'lightyellow',
+            'Não Rotulado': 'lightgrey'
+        }
         legend_class = {
             '0': 'Normal', 
             '-1': 'Não Rotulado',
             **{str(i): 'Estável de Anomalia' for i in range(1, 9)},
             **{str(100 + i): 'Transiente de Anomalia' for i in range(1, 9)}
         }
-
+        
+        # Parâmetros de formatação
         title_size = 8
         axis_label_size = 7
         tick_label_size = 4
         legend_title_size = 7
         legend_label_size = 7
-        
-        # Aplicar cores com base em legend_class para manter consistência
+
+        # Mapeia classes para cores e gera os patches da legenda
         class_colors = {cls: base_colors[label] for cls, label in legend_class.items()}
-        
-        # Gerar patches para a legenda de forma otimizada
         unique_labels = np.unique(list(legend_class.values()))
         patches = [mpatches.Patch(color=base_colors[label], label=label) for label in unique_labels]
+
+        # Filtra para manter apenas as top classes (por frequência)
+        top_classes = df['class'].value_counts().nlargest(100).index
+        filtered_data = df[df['class'].isin(top_classes)]
         
-
-        # Calculando a frequência das classes e identificando as top classes
-        class_counts = self.dataframe['class'].value_counts()
-        top_classes = class_counts.nlargest(100).index
-
-        # Filtrando os dados para incluir apenas as top classes
-        filtered_data = self.dataframe[self.dataframe['class'].isin(top_classes)]
-
-        # Criação de um DataFrame vazio com as mesmas colunas do DataFrame original para armazenar os dados filtrados
-        #filtered_data_without_outliers = pd.DataFrame(columns=self.dataframe.columns)
-        filtered_data_near_median = pd.DataFrame(columns=self.dataframe.columns)
-
-
-        # Filtrando outliers para cada sensor e classe              
-        for var in sensors:
-            for cls in self.dataframe['class'].unique():
-                subset = self.dataframe[self.dataframe['class'] == cls][var]
-                median = subset.median()
-                margin = 0.25 * median
-                lower_bound = median - margin
-                upper_bound = median + margin
-                condition = (self.dataframe['class'] == cls) & \
-                            (self.dataframe[var] >= lower_bound) & \
-                            (self.dataframe[var] <= upper_bound)
-                filtered_subset = self.dataframe.loc[condition]
-                filtered_data_near_median = pd.concat([filtered_data_near_median, filtered_subset], ignore_index=True)
-        
-        
-        # Removendo duplicatas após concatenação
-        #filtered_data_without_outliers.drop_duplicates(inplace=True)
-        filtered_data_near_median.drop_duplicates(inplace=True)
-
-        # Convertendo o DataFrame filtrado para um array NumPy
+        # Otimização: calcula medianas e margens para todos os sensores de forma vetorizada
+        medians = df.groupby('class')[sensors].transform('median')
+        margins = 0.25 * medians
+        lower_bounds = medians - margins
+        upper_bounds = medians + margins
+        # Gera uma máscara que identifica linhas em que pelo menos um sensor está dentro dos limites
+        mask = ((df[sensors] >= lower_bounds) & (df[sensors] <= upper_bounds)).any(axis=1)
+        filtered_data_near_median = df[mask].drop_duplicates()
         filtered_dataset_numpy = filtered_data_near_median.to_numpy()
-        
 
-        # Definindo o layout dos subplots para ter dois gráficos por linha
+        # Configura o layout dos subplots
         n_vars = len(sensors)
         ncols = 5
         nrows = int(np.ceil(n_vars / ncols))
-
-        fig, axes = plt.subplots(nrows, ncols, figsize=(6, 3 * nrows), squeeze=False)
+        fig, axes = plt.subplots(nrows, ncols, figsize=(6, 3 * nrows))
         axes = axes.flatten()
 
-        # Iterar sobre cada sensor para criar os gráficos
+        # Gera os gráficos de boxplot para cada sensor
         for i, var in enumerate(sensors):
             class_palette = {cls: class_colors.get(cls, 'gray') for cls in filtered_data['class'].unique()}
-            sns.boxplot(x='class', y=var, data=filtered_data, hue='class', palette=class_palette, showfliers=False, ax=axes[i], legend=False)
-            axes[i].set_title(f'{var}', fontsize=title_size)
+            sns.boxplot(
+                x='class', y=var, data=filtered_data, hue='class',
+                palette=class_palette, showfliers=False, ax=axes[i], legend=False
+            )
+            axes[i].set_title(var, fontsize=title_size)
             axes[i].set_xlabel('Classificação', fontsize=axis_label_size)
-            axes[i].set_ylabel('Pressão (Pa)' if var in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)', fontsize=axis_label_size)
+            ylabel = 'Pressão (Pa)' if var in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)'
+            axes[i].set_ylabel(ylabel, fontsize=axis_label_size)
             axes[i].tick_params(axis='x', rotation=0, labelsize=tick_label_size)
             axes[i].tick_params(axis='y', rotation=0, labelsize=tick_label_size)
-            axes[i].xaxis.get_offset_text().set_fontsize(tick_label_size)
-            axes[i].yaxis.get_offset_text().set_fontsize(tick_label_size)
             axes[i].grid(True)
-            
-            
 
-        # Esconder eixos vazios se o número de sensores não preencher completamente a última linha
+        # Remove subplots vazios, se houver
         for j in range(i + 1, nrows * ncols):
             fig.delaxes(axes[j])
 
-
-        # Dicionário para armazenar os resultados
+        # Cálculo dos quartis por sensor e classe (operação pouco custosa em comparação ao resto)
         quartiles_results = {}
-
-        logging.info('Quartis para cada sensor e classe:')
-        # Iterar sobre cada sensor
+        logger.info('Quartis para cada sensor e classe:')
         for var in sensors:
             quartiles_results[var] = {}
             for cls in filtered_data['class'].unique():
                 data = filtered_data[filtered_data['class'] == cls][var]
                 quartiles = data.quantile([0.25, 0.5, 0.75]).to_dict()
                 quartiles_results[var][cls] = quartiles
-                logging.info(f'{var} - {legend_class[cls]}: {quartiles}')
-        
-        
+                logger.info(f'{var} - {legend_class.get(cls, cls)}: {quartiles}')
 
         plt.tight_layout()
-        plt.figlegend(handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05), ncol=4, title='Rotulagem de Observação', title_fontsize=legend_title_size, fontsize=legend_label_size)
+        plt.figlegend(
+            handles=patches, loc='upper center', bbox_to_anchor=(0.5, 0.05),
+            ncol=4, title='Rotulagem de Observação', title_fontsize=legend_title_size, fontsize=legend_label_size
+        )
         plt.subplots_adjust(bottom=0.15, top=0.95)
-        
         plt.grid(True)
-        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
-        
-        #plt.show()
+        save_path = os.path.join("..", "..", "img", f"{title}.png")
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
-        return filtered_dataset_numpy
- 
-    def heatmap_corr(self, columns_of_interest, title):
-     
-        #title = 'Mapa de Calor do sensores em Operação Normal'
-        # Selecionando apenas as colunas de interesse
-        #columns_of_interest = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
-        data_selected = self.dataframe[columns_of_interest]
 
-        # Calculando a matriz de correlação
+        return filtered_dataset_numpy
+
+    def heatmap_corr(self, columns_of_interest, title):
+        """
+        Gera e salva um mapa de calor da correlação entre as colunas de interesse.
+        """
+        df = self.dataframe.copy()
+        data_selected = df[columns_of_interest]
         correlation_matrix = data_selected.corr()
 
-        # Criando o mapa de calor
         plt.figure(figsize=(10, 8))
         sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f")
-        #plt.title(title)
-        plt.savefig(f"{title}.png", dpi=300, bbox_inches='tight')
-        #plt.show()
-          
-    def plot_sensor(self, sensor_columns, _title, additional_labels, model):
-        # Substituindo valores de 'class' e convertendo 'timestamp'
-        self.dataframe['timestamp'] = pd.to_datetime(self.dataframe.index)
-        #replace_values = {101: -1, 102: -1, 103: -1, 104: -1, 105: -1, 106: -1, 107: -1, 108: -1, 109: -1}
-        #self.dataframe['class'] = self.dataframe['class'].replace(replace_values)
-        
-        # troque valores faltantes NaN por -1 da coluna 'class'
-        self.dataframe['class'] = self.dataframe['class'].fillna(-1)
-
-
-        # Definindo o eixo X e configurações de plotagem
-        x_hours = self.dataframe['timestamp']
-        #sensor_columns = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']  # Atualizado para incluir 'class'
-        colors = ['blue', 'green', 'red', 'purple', 'orange', 'black']  # Atualizado para corresponder ao número de colunas 
-        class_colors = {0: 'lightgreen', 
-                        1: 'lightcoral', 
-                        2: 'lightcoral',
-                        3: 'lightcoral',
-                        4: 'lightcoral',
-                        5: 'lightcoral',
-                        6: 'lightcoral',
-                        7: 'lightcoral',
-                        8: 'lightcoral',
-                        9: 'lightcoral',
-                        101: 'lightyellow', 
-                        102: 'lightyellow',
-                        103: 'lightyellow',
-                        104: 'lightyellow',
-                        105: 'lightyellow',
-                        106: 'lightyellow',
-                        107: 'lightyellow',
-                        108: 'lightyellow',
-                        109: 'lightyellow',
-                        -1: 'lightgrey'}
-        
-        legend_class = {0: 'Normal', 
-                        101: 'Transiente de Anomalia', 
-                        102: 'Transiente de Anomalia', 
-                        103: 'Transiente de Anomalia', 
-                        104: 'Transiente de Anomalia', 
-                        105: 'Transiente de Anomalia', 
-                        106: 'Transiente de Anomalia', 
-                        107: 'Transiente de Anomalia', 
-                        108: 'Transiente de Anomalia', 
-                        109: 'Transiente de Anomalia', 
-                        1: 'Estável de Anomalia',
-                        2: 'Estável de Anomalia',
-                        3: 'Estável de Anomalia',
-                        4: 'Estável de Anomalia',
-                        5: 'Estável de Anomalia',
-                        6: 'Estável de Anomalia',
-                        7: 'Estável de Anomalia',
-                        8: 'Estável de Anomalia',
-                        9: 'Estável de Anomalia',
-                        -1: 'Não Rotulado'}
-
-        instance_label_dict = {
-            0: 'Operação Normal',
-            1: 'Aumento Abrupto de BSW',
-            2: 'Fechamento Espúrio de DHSV',
-            3: 'Intermitência Severa',
-            4: 'Instabilidade na Vazão',
-            5: 'Perda Rápida de Produtividade',
-            6: 'Restrição Rápida em PCK',
-            7: 'Incrustações em PCK',
-            8: 'Hidrato na Linha de Produção'
-        }
-
-
-        plt.figure(figsize=(6, 12))  # Ajustado para acomodar todos os subplots
-        patches = [mpatches.Patch(color=class_colors[cls], label=label) for cls, label in legend_class.items()]
-
-        for i, column in enumerate(sensor_columns):
-            ax = plt.subplot(len(sensor_columns), 1, i + 1)  # Ajustado para criar um subplot para cada coluna
-            ax.plot(x_hours, self.dataframe[column], color=colors[i]) # comment  label=column)
-            ax.set_title(column)
-            ax.set_xlabel('Tempo (h)')
-            ax.set_ylabel('Pressão (Pa)' if column in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)')
-            ax.grid(True)
-            #ax.legend()
-
-                    
-        # Pintando a área de fundo de acordo com a classe
-            
-            start_idx = 0
-            for j in range(1, len(self.dataframe)):
-                if self.dataframe.iloc[j]['class'] != self.dataframe.iloc[j-1]['class'] or j == len(self.dataframe) - 1 or self.dataframe.iloc[j]['action'] != self.dataframe.iloc[j-1]['action']:
-                    end_idx = j
-                    cls = self.dataframe.iloc[start_idx]['class']
-                    action = self.dataframe.iloc[start_idx]['action']
-                    
-                    # Aplica a cor baseada em 'class' em toda a extensão vertical
-                    class_color = class_colors.get(cls, 'lightgrey')
-                    ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=class_color, alpha=0.5, ymin=0.0, ymax=0.5)
-                    
-                    # Cor baseada em 'action', aplicada apenas à metade superior do gráfico
-                    if action == 1 or action == 0:
-                        action_color = 'magenta' if action == 1 else 'cyan'
-                        ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
-                    else:
-                        action_color = '#807fff'
-                        ax.axvspan(self.dataframe.iloc[start_idx]['timestamp'], self.dataframe.iloc[end_idx]['timestamp'], color=action_color, alpha=0.5, ymin=0.5, ymax=1)
-                    start_idx = j
-
-
-            ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
-            ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
-            
-            # Rotacionando os ticks do eixo X especificamente para este subplot
-            for label in ax.get_xticklabels():
-                label.set_rotation(90)
-
-
-        #plt.suptitle(instance_label_dict[self.dataframe['label'].values[0]], fontsize=16, y=1.02)  # y é ajustado para evitar sobreposição com o topo do subplot superior
-
-
-        plt.tight_layout()
-
-        unique_patches_dict = OrderedDict()
-
-        for patch in patches:  # 'patches' é sua lista original de objetos Patch
-            color = patch.get_facecolor()  # Ou outra função apropriada para obter a cor
-            label = patch.get_label()
-            key = (color, label)
-            
-            if key not in unique_patches_dict:
-                unique_patches_dict[key] = patch
-
-        unique_patches = list(unique_patches_dict.values())
-        
-        # Adicionando legenda de classes ao gráfico com ajuste de posição
-        plt.figlegend(handles=unique_patches, loc='upper right', title='Rotulagem de Observação', bbox_to_anchor=(1.4, 1), bbox_transform=plt.gcf().transFigure)
-
-        # Criação de manipuladores para a segunda legenda
-        action_patches = [mpatches.Patch(color='magenta', label='Detectado'),
-                        mpatches.Patch(color='cyan', label='Não-Detectado')]
-
-        # Adicionando a segunda legenda ao gráfico
-        plt.figlegend(handles=action_patches, loc='upper right', title=f'Identificação de Falha ({model})', bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure)
-
-        # Criação de manipuladores para a terceira legenda sem especificar cores
-        
-        #additional_patches = [mpatches.Patch(color='none', label=label) for label in additional_labels]
-        additional_patches = [mpatches.Patch(color='white', alpha=0, label=label) for label in additional_labels]
-
-        # Adicionando a terceira legenda ao gráfico
-        plt.figlegend(handles=additional_patches, loc='upper right', title='Métricas', bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure)
-        
-
-
-        folder = _title.split(" - ")[1] + " - " + _title.split(" - ")[2]
-        directory = f'..\\..\\img\\{folder}'
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        
-        plt.grid(True)
-        plt.savefig(f"..\\..\\img\\{folder}\\{_title}.png", dpi=300, bbox_inches='tight')        
+        save_path = os.path.join(f"{title}.png")
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
-        #plt.show()
-    
-    def plot_estados(self, _title):
-        # Contagem de valores para cada classe
-        class_counts = self.dataframe['class'].value_counts().sort_index()
-        # soma os valores de 1 a 9 e 101 a 109
+
+    def plot_sensor(self, sensor_columns, title, additional_labels, model, max_points=500):
+        """
+        Plota séries temporais dos sensores com áreas de fundo coloridas de acordo com mudanças nos rótulos e ações.
+        Os dados são agrupados por mês (com base na coluna 'timestamp') e para cada mês é gerado um plot.
+        Se o número de pontos for superior a 'max_points', os dados serão downsampled para acelerar a plotagem.
+
+        Args:
+            sensor_columns (list): Lista de colunas de sensores a serem plotadas.
+            title (str): Título base do gráfico.
+            additional_labels (list): Labels adicionais para exibição no gráfico.
+            model (str): Nome do modelo (usado nos logs e no arquivo salvo).
+            max_points (int, opcional): Número máximo de pontos a serem plotados. Padrão é 500.
+        """
+        logger.info("Starting monthly plot_sensor with base title '%s' for model '%s'.", title, model)
+        df = self.dataframe.copy()
+        
+        # Garantir que a coluna 'timestamp' exista e esteja em formato datetime
+        if 'timestamp' not in df.columns:
+            df['timestamp'] = pd.to_datetime(df.index)
+        else:
+            df['timestamp'] = pd.to_datetime(df['timestamp'])
+        df['class'] = df['class'].fillna(-1)
+        
+        # Agrupa os dados por mês usando pd.Grouper
+        for month, df_month in df.groupby(pd.Grouper(key='timestamp', freq='M')):
+            # Se o grupo estiver vazio, ignora
+            if df_month.empty:
+                continue
+
+            month_str = month.strftime('%Y-%m')
+            logger.info("Processing month %s with %d records.", month_str, len(df_month))
+            
+            # Aplicar downsampling se necessário
+            num_points = len(df_month)
+            if num_points > max_points:
+                indices = np.linspace(0, num_points - 1, max_points, dtype=int)
+                df_plot = df_month.iloc[indices].copy()
+                logger.info("Downsampled sensor data from %d to %d points for month %s.", num_points, len(df_plot), month_str)
+            else:
+                df_plot = df_month.copy()
+                logger.debug("Data size (%d points) for month %s is within threshold (%d); no downsampling applied.", num_points, month_str, max_points)
+            
+            # Prepara a figura para o mês
+            plt.figure(figsize=(6, 12))
+            x_hours = df_plot['timestamp']
+            colors = ['blue', 'green', 'red', 'purple', 'orange', 'black']
+            class_colors = {
+                0: 'lightgreen', 
+                1: 'lightcoral', 2: 'lightcoral', 3: 'lightcoral', 4: 'lightcoral',
+                5: 'lightcoral', 6: 'lightcoral', 7: 'lightcoral', 8: 'lightcoral', 9: 'lightcoral',
+                101: 'lightyellow', 102: 'lightyellow', 103: 'lightyellow', 104: 'lightyellow',
+                105: 'lightyellow', 106: 'lightyellow', 107: 'lightyellow', 108: 'lightyellow',
+                109: 'lightyellow', -1: 'lightgrey'
+            }
+            legend_class = {
+                0: 'Normal', 
+                101: 'Transiente de Anomalia', 102: 'Transiente de Anomalia', 103: 'Transiente de Anomalia',
+                104: 'Transiente de Anomalia', 105: 'Transiente de Anomalia', 106: 'Transiente de Anomalia',
+                107: 'Transiente de Anomalia', 108: 'Transiente de Anomalia', 109: 'Transiente de Anomalia',
+                1: 'Estável de Anomalia', 2: 'Estável de Anomalia', 3: 'Estável de Anomalia',
+                4: 'Estável de Anomalia', 5: 'Estável de Anomalia', 6: 'Estável de Anomalia',
+                7: 'Estável de Anomalia', 8: 'Estável de Anomalia', 9: 'Estável de Anomalia',
+                -1: 'Não Rotulado'
+            }
+            # Cria os patches para a legenda
+            patches = [mpatches.Patch(color=class_colors.get(cls, 'gray'), label=label)
+                    for cls, label in legend_class.items()]
+            
+            # Calcula os segmentos com base nas mudanças em 'class' ou 'action'
+            df_month['segment'] = (df_month['class'].ne(df_month['class'].shift()) | df_month['action'].ne(df_month['action'].shift())).cumsum()
+            segments = df_month.groupby('segment').agg(
+                start=('timestamp', 'first'),
+                end=('timestamp', 'last'),
+                class_val=('class', 'first'),
+                action_val=('action', 'first')
+            ).reset_index()
+            
+            # Plota cada sensor em um subplot
+            for i, column in enumerate(sensor_columns):
+                ax = plt.subplot(len(sensor_columns), 1, i + 1)
+                ax.plot(x_hours, df_plot[column], color=colors[i % len(colors)])
+                ax.set_title(column)
+                ylabel = 'Pressão (Pa)' if column in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)'
+                ax.set_xlabel('Tempo (h)')
+                ax.set_ylabel(ylabel)
+                ax.grid(True)
+
+                # Sobrepõe os intervalos dos segmentos
+                for _, row in segments.iterrows():
+                    cls = row['class_val']
+                    action = row['action_val']
+                    ax.axvspan(row['start'], row['end'], color=class_colors.get(cls, 'lightgrey'),
+                            alpha=0.5, ymin=0.0, ymax=0.5)
+                    action_color = 'cyan' if action == 0 else 'magenta' if action == 1 else '#807fff'
+                    ax.axvspan(row['start'], row['end'], color=action_color,
+                            alpha=0.5, ymin=0.5, ymax=1)
+
+                ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
+                ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+                for label_text in ax.get_xticklabels():
+                    label_text.set_rotation(90)
+            
+            plt.tight_layout()
+            # Legend: garante que as legendas sejam únicas
+            unique_patches_dict = OrderedDict()
+            for patch in patches:
+                key = (patch.get_facecolor(), patch.get_label())
+                if key not in unique_patches_dict:
+                    unique_patches_dict[key] = patch
+            unique_patches = list(unique_patches_dict.values())
+            
+            plt.figlegend(
+                handles=unique_patches, loc='upper right', title='Rotulagem de Observação',
+                bbox_to_anchor=(1.4, 1), bbox_transform=plt.gcf().transFigure
+            )
+            action_patches = [
+                mpatches.Patch(color='magenta', label='Detectado'),
+                mpatches.Patch(color='cyan', label='Não-Detectado')
+            ]
+            plt.figlegend(
+                handles=action_patches, loc='upper right', title=f'Identificação de Falha ({model})',
+                bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure
+            )
+            additional_patches = [mpatches.Patch(color='white', alpha=0, label=lbl) for lbl in additional_labels]
+            plt.figlegend(
+                handles=additional_patches, loc='upper right', title='Métricas',
+                bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure
+            )
+            
+            # Define o diretório de salvamento baseado no título e no mês
+            folder_parts = title.split(" - ")
+            folder = f"{folder_parts[1]} - {folder_parts[2]}" if len(folder_parts) >= 3 else title
+            directory = os.path.join("..", "..", "img", folder)
+            if not os.path.exists(directory):
+                os.makedirs(directory)
+            
+            # Monta o nome do arquivo incluindo o mês
+            save_filename = f"{title} - {month_str}.png"
+            save_path = os.path.join(directory, save_filename)
+            plt.grid(True)
+            plt.savefig(save_path, dpi=300, bbox_inches='tight')
+            plt.close()
+            logger.info("Plot_sensor for month %s saved to %s", month_str, save_path)
+
+
+
+    def plot_estados(self, title):
+        """
+        Plota um gráfico de barras com a contagem de registros por rótulo e salva a figura.
+        """
+        df = self.dataframe.copy()
+        class_counts = df['class'].value_counts().sort_index()
         rare_class_counts_A = class_counts[(class_counts.index > 0) & (class_counts.index < 10)].sum()
         rare_class_counts_B = class_counts[(class_counts.index > 10)].sum()
         rare_class_counts_C = class_counts[(class_counts.index == 0)].sum()
-
-        # Total de amostras
         total = rare_class_counts_A + rare_class_counts_B + rare_class_counts_C
 
-        logging.info(f'Normal: {rare_class_counts_C} - {round(rare_class_counts_C/total*100, 2)}%')
-        logging.info(f'Transiente de anomalia: {rare_class_counts_B} - {round(rare_class_counts_B/total*100, 2)}%')
-        logging.info(f'Estável de anomalia: {rare_class_counts_A} - {round(rare_class_counts_A/total*100, 2)}%')
-        logging.info(f'Total: {rare_class_counts_A + rare_class_counts_B + rare_class_counts_C}')
+        logger.info(f'Normal: {rare_class_counts_C} - {round(rare_class_counts_C / total * 100, 2)}%')
+        logger.info(f'Transiente de anomalia: {rare_class_counts_B} - {round(rare_class_counts_B / total * 100, 2)}%')
+        logger.info(f'Estável de anomalia: {rare_class_counts_A} - {round(rare_class_counts_A / total * 100, 2)}%')
+        logger.info(f'Total: {total}')
 
-        fig, ax = plt.subplots()
-        bars = ax.bar(['Normal', 'Estável de anomalia', 'Transiente de anomalia'], [rare_class_counts_C, rare_class_counts_A, rare_class_counts_B], label=['Normal', 'Estável de anomalia', 'Transiente de anomalia'])
+        plt.figure()
+        bars = plt.bar(
+            ['Normal', 'Estável de anomalia', 'Transiente de anomalia'],
+            [rare_class_counts_C, rare_class_counts_A, rare_class_counts_B]
+        )
+        plt.ylabel('Quantidade')
+        plt.title('Quantidade de registros por rótulos')
+        plt.legend(['Normal', 'Estável de anomalia', 'Transiente de anomalia'])
 
-        ax.set_ylabel('Quantidade')
-        ax.set_title('Quantidade de registros por rótulos')
-        ax.legend()
-
-        # Adiciona o valor acima de cada barra
         for bar in bars:
             height = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width() / 2., 1.05*height,
-                    '%d' % int(height),
-                    ha='center', va='bottom')
+            plt.text(
+                bar.get_x() + bar.get_width() / 2., 1.05 * height,
+                f'{int(height)}', ha='center', va='bottom'
+            )
 
-        # Salva a figura
+        save_path = os.path.join("..", "..", "img", f"{title}.png")
         plt.grid(True)
-        plt.savefig(f"..\\..\\img\\{_title}.png", dpi=300, bbox_inches='tight')
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
