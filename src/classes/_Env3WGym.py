@@ -1,58 +1,50 @@
 import gym
 from gym import spaces
 import numpy as np
-from stable_baselines3.common.vec_env import DummyVecEnv
+from stable_baselines3.common.vec_env import DummyVecEnv, SubprocVecEnv
 
 class Env3WGym(gym.Env):
     """
     Ambiente para detecção de falhas em poços de petróleo.
-    
-    O dataset deve conter os dados de 6 poços com 5 variáveis de entrada e 1 coluna de rótulo.
+
+    O dataset deve conter dados com cinco variáveis de entrada e uma coluna de rótulo, onde:
     Variáveis de entrada (exemplo): ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
     Rótulo [class]:
-      - 0: recompensa 0.01 se ação 0, senão -1.
-      - 1 a 9: recompensa -1 se ação 0, senão 1.
-      - 101 a 109: recompensa -0.1 se ação 0, senão 0.1.
+      - 0: recompensa de 0.01 se ação 0, senão -1;
+      - 1 a 9: recompensa de -1 se ação 0, senão 1;
+      - 101 a 109: recompensa de -0.1 se ação 0, senão 0.1.
     """
     metadata = {'render.modes': ['human']}
-    
-    def __init__(self, dataset: np.ndarray, n_envs: int = 1):
+
+    def __init__(self, dataset: np.ndarray) -> None:
         super().__init__()
-        # Converte para array NumPy, caso não seja
-        self.dataset = np.asarray(dataset)[:, :-1]  # Remove a coluna de rótulo
-        self.n_envs = n_envs
+        self.dataset = np.asarray(dataset)
         self.index = 0
-        
-        num_features = self.dataset.shape[1] - 1  # Última coluna é o rótulo
-        self.action_space = spaces.Discrete(2)  # Ações: 0 ou 1
-        self.observation_space = spaces.Box(low=-np.inf, high=np.inf, shape=(num_features,), dtype=np.float32)
-        
+        self.num_features = self.dataset.shape[1] - 1  # Assume que a última coluna é o rótulo
+
+        self.action_space = spaces.Discrete(2)
+        self.observation_space = spaces.Box(low=-np.inf, high=np.inf, 
+                                             shape=(self.num_features,), dtype=np.float32)
         self.state = self.dataset[self.index, :-1]
-        self.done = False
+        self.episode_ended = False
 
     def step(self, action: int):
         """
-        Executa uma ação e retorna a transição:
-        observation, reward, done, info.
+        Executa uma ação e retorna (observação, recompensa, done, info).
         """
-        if self.done:
-            # Se o episódio terminou, reinicia o ambiente
+        if self.episode_ended:
             return self.reset(), 0.0, True, {}
         
-        # Calcula a recompensa com base no rótulo atual
+        # Calcula a recompensa com base no rótulo da amostra atual
         reward = self.calculate_reward(action, self.dataset[self.index, -1])
         self.index += 1
         
-        # Verifica se chegou ao fim do dataset
         if self.index >= len(self.dataset):
-            self.done = True
-            # Aqui pode-se definir um estado terminal apropriado; neste exemplo, mantemos o último estado
-            observation = self.state.copy()
+            self.episode_ended = True
         else:
             self.state = self.dataset[self.index, :-1]
-            observation = self.state
         
-        return np.array(observation, dtype=np.float32), reward, self.done, {}
+        return np.array(self.state, dtype=np.float32), reward, self.episode_ended, {}
 
     def reset(self):
         """
@@ -60,7 +52,7 @@ class Env3WGym(gym.Env):
         """
         self.index = 0
         self.state = self.dataset[self.index, :-1]
-        self.done = False
+        self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
 
     def calculate_reward(self, action: int, class_value: int) -> float:
@@ -79,36 +71,43 @@ class Env3WGym(gym.Env):
     def render(self, mode='human'):
         """
         Renderiza o estado atual.
-        Neste exemplo, apenas imprime o estado.
         """
         print(f"Estado atual: {self.state}")
 
     def close(self):
         """
-        Método para limpeza de recursos, se necessário.
+        Realiza o fechamento do ambiente, se necessário.
         """
         pass
 
-    def create_env(self, dataset_part: np.ndarray):
-        """
-        Cria uma instância do ambiente para uma parte do dataset.
-        """
-        return Env3WGym(dataset_part, n_envs=self.n_envs)
+def make_custom_vec_env(dataset: np.ndarray, n_envs: int, vec_env_type: str = 'dummy'):
+    """
+    Cria um ambiente vetorizado a partir do dataset, dividindo-o em n_envs partes.
     
-    def envs_random(self):
-        """
-        Cria ambientes paralelos a partir do dataset embaralhado.
-        
-        O dataset é embaralhado para aumentar a variedade dos episódios e
-        dividido em n_envs partes iguais (ou quase iguais).
-        
-        Retorna um ambiente vetorizado usando DummyVecEnv.
-        """
-        np.random.seed(42)  # Para reprodutibilidade
-        shuffled_indices = np.random.permutation(len(self.dataset))
-        dataset_shuffled = self.dataset[shuffled_indices]
-        split_datasets = np.array_split(dataset_shuffled, self.n_envs)
-        
-        # Cria uma lista de funções que retornam ambientes com diferentes partes do dataset
-        env_fns = [lambda ds=ds: Env3WGym(ds, n_envs=1) for ds in split_datasets]
+    :param dataset: Dataset completo para os ambientes.
+    :param n_envs: Número de ambientes paralelos.
+    :param vec_env_type: Tipo de vetor de ambiente: 'dummy' ou 'subproc'.
+    :return: Um ambiente vetorizado (DummyVecEnv ou SubprocVecEnv).
+    """
+    # Embaralha o dataset para distribuir as amostras aleatoriamente entre os ambientes
+    np.random.seed(42)  # Para reprodutibilidade
+    shuffled_indices = np.random.permutation(len(dataset))
+    dataset_shuffled = dataset[shuffled_indices]
+    
+    # Divide o dataset em n_envs partes
+    dataset_splits = np.array_split(dataset_shuffled, n_envs)
+    
+    # Função que cria uma instância do ambiente para cada partição do dataset
+    def make_env(i):
+        def _init():
+            return Env3WGym(dataset_splits[i])
+        return _init
+
+    env_fns = [make_env(i) for i in range(n_envs)]
+    
+    if vec_env_type == 'dummy':
         return DummyVecEnv(env_fns)
+    elif vec_env_type == 'subproc':
+        return SubprocVecEnv(env_fns)
+    else:
+        raise ValueError("vec_env_type inválido. Escolha 'dummy' ou 'subproc'.")

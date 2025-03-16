@@ -11,22 +11,26 @@ from torch.utils.tensorboard import SummaryWriter
 import tensorboard.program
 import webbrowser
 
-from classes._Env3WGym import Env3WGym  # Presumindo que este módulo é utilizado
+from classes._Env3WGym import Env3WGym  # Módulo utilizado para o ambiente
 
 # Configuração do logger global
 logger = logging.getLogger("global_logger")
 
 
+# Constantes usadas na avaliação
+REWARD_THRESHOLDS: List[float] = [0.01, 0.1, 1.0, -1.0, -0.1]
+ATOL: float = 1e-6
+
+
 class TensorboardCallback(BaseCallback):
     """
-    Callback para registrar pontuações no TensorBoard e salvar o modelo
-    quando um novo top score é alcançado.
+    Callback para registrar pontuações no TensorBoard e salvar o modelo quando um novo top score é alcançado.
     """
     def __init__(self, model: Any, referencia_top_score: List[Optional[float]], 
                  caminho_salvar_modelo: str = "./model_DQN", verbose: int = 0):
         super().__init__(verbose)
         self.model = model
-        self.referencia_top_score = referencia_top_score  # Lista contendo o top_score atual
+        self.referencia_top_score = referencia_top_score
         self.caminho_salvar_modelo = caminho_salvar_modelo
 
     def _on_step(self) -> bool:
@@ -62,7 +66,6 @@ class MetricsCSVCallback(BaseCallback):
         self.metrics: List[Dict[str, Any]] = []
 
     def _on_step(self) -> bool:
-        # Registra a taxa de exploração, se o modelo possuir esse atributo
         epsilon = getattr(self.model, 'exploration_rate', None)
         if epsilon is not None:
             self.logger.record('epsilon', epsilon)
@@ -90,7 +93,6 @@ class MetricsCSVCallback(BaseCallback):
         if self.num_timesteps % 1000 == 0:
             self.logger.dump(self.num_timesteps)
             self._save_metrics()
-
         return True
 
     def _save_metrics(self) -> None:
@@ -129,7 +131,12 @@ class Agent:
         self.logdir = os.path.join(self.path_tensorboard, 'tensorboard_logs')
         os.makedirs(self.logdir, exist_ok=True)
         self.port = port
+        self._log_tensorboard_info()
         self.launch_tensorboard()
+
+    def _log_tensorboard_info(self) -> None:
+        msg = f"Para visualizar os logs do TensorBoard, execute: tensorboard --logdir='{self.logdir}'"
+        logger.info(msg)
 
     def launch_tensorboard(self) -> None:
         logging.getLogger('tensorboard').setLevel(logging.ERROR)
@@ -142,23 +149,20 @@ class Agent:
         except Exception as e:
             logger.error(f"Error launching TensorBoard: {e}")
 
-    def _update_confusion_matrix(self, reward: float, thresholds: List[float], atol: float,
-                                 counters: Dict[str, int]) -> None:
-        if np.isclose(reward, thresholds[0], atol=atol):
+    def _update_confusion_matrix(self, reward: float, counters: Dict[str, int]) -> None:
+        if np.isclose(reward, REWARD_THRESHOLDS[0], atol=ATOL):
             counters['TN'] += 1
-        elif np.isclose(reward, thresholds[1], atol=atol) or np.isclose(reward, thresholds[2], atol=atol):
+        elif np.isclose(reward, REWARD_THRESHOLDS[1], atol=ATOL) or np.isclose(reward, REWARD_THRESHOLDS[2], atol=ATOL):
             counters['TP'] += 1
-        elif np.isclose(reward, thresholds[3], atol=atol) or np.isclose(reward, thresholds[4], atol=atol):
+        elif np.isclose(reward, REWARD_THRESHOLDS[3], atol=ATOL) or np.isclose(reward, REWARD_THRESHOLDS[4], atol=ATOL):
             counters['FP'] += 1
             counters['FN'] += 1
 
     def _evaluate_model(self, model: Any, n_eval_episodes: int, alg_name: str) -> float:
         """
-        Método auxiliar para avaliar um modelo em n_eval_episodes episódios.
-        Calcula a acurácia com base em uma matriz de confusão derivada dos rewards.
+        Método auxiliar para avaliar um modelo em n_eval_episodes episódios,
+        calculando a acurácia com base na contagem de TP, TN, FP e FN.
         """
-        thresholds = [0.01, 0.1, 1.0, -1.0, -0.1]
-        atol = 1e-6
         accuracies = []
         eval_logdir = os.path.join(self.logdir, alg_name)
         os.makedirs(eval_logdir, exist_ok=True)
@@ -172,7 +176,7 @@ class Agent:
                 action, _ = model.predict(obs, deterministic=True)
                 obs, rewards, dones, _ = self.envs_eval.step(action)
                 for reward in rewards:
-                    self._update_confusion_matrix(reward, thresholds, atol, counters)
+                    self._update_confusion_matrix(reward, counters)
             total = sum(counters.values())
             accuracy = (counters['TP'] + counters['TN']) / total if total > 0 else 0.0
             writer.add_scalar('Accuracy', accuracy, episode)
@@ -189,8 +193,6 @@ class Agent:
         """
         replaydir = os.path.join(path_save, 'replay_buffer')
         os.makedirs(replaydir, exist_ok=True)
-        logger.info(f"View TensorBoard logs with: tensorboard --logdir='{self.logdir}'")
-
         model = DQN(
             MlpPolicy,
             self.envs_train,
@@ -223,88 +225,63 @@ class Agent:
         model.learn(total_timesteps=self.TIMESTEPS, log_interval=4, reset_num_timesteps=True,
                     tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
         model.save(final_model_path)
-        logger.info(f"Final model saved at {final_model_path}")
+        logger.info(f"Modelo final salvo em {final_model_path}")
         final_replay_path = os.path.join(replaydir, 'dqn_save_replay_buffer')
         model.save_replay_buffer(final_replay_path)
-        logger.info(f"Replay buffer saved at {final_replay_path}")
+        logger.info(f"Replay buffer salvo em {final_replay_path}")
         return model, final_replay_path
 
     def env3W_dqn_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
-        logger.info(f"Evaluating DQN model at {path_save} over {n_eval_episodes} episodes.")
+        logger.info(f"Avaliando o modelo DQN em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "DQN")
 
     def env3W_ppo(self, path_save: str) -> Any:
-        logger.info(f"View TensorBoard logs with: tensorboard --logdir='{self.logdir}'")
         checkpoint_dir = os.path.join(path_save, 'ppo_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)
-
-        model = PPO('MlpPolicy', 
-                    self.envs_train, verbose=0, 
-                    learning_rate=1e-3, 
-                    n_steps=128, 
-                    batch_size=32, 
-                    n_epochs=10, 
-                    gamma=0.99, 
-                    gae_lambda=0.95, 
-                    clip_range=0.2, 
-                    ent_coef=0.0, 
-                    tensorboard_log=self.logdir)
-
+        model = PPO('MlpPolicy', self.envs_train, verbose=0, learning_rate=1e-3, n_steps=128, 
+                    batch_size=32, n_epochs=10, gamma=0.99, gae_lambda=0.95, clip_range=0.2, 
+                    ent_coef=0.0, tensorboard_log=self.logdir)
         checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir, name_prefix='PPO')
         final_model_path = os.path.join(path_save, '_PPO')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
-
         model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="PPO", 
                     callback=[checkpoint_callback, metrics_callback])
         model.save(final_model_path)
-        logger.info(f"Final model saved at {final_model_path}")
+        logger.info(f"Modelo final salvo em {final_model_path}")
         return model
 
     def env3W_ppo_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
-        logger.info(f"Evaluating PPO model at {path_save} over {n_eval_episodes} episodes.")
+        logger.info(f"Avaliando o modelo PPO em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "PPO")
 
     def env3W_a2c(self, path_save: str) -> Any:
-        logger.info(f"View TensorBoard logs with: tensorboard --logdir='{self.logdir}'")
-        model = A2C('MlpPolicy', self.envs_train, verbose=0,
-                    learning_rate=1e-3,
-                    n_steps=128, 
-                    gamma=0.99,
-                    gae_lambda=0.95,
-                    ent_coef=0.01,
-                    tensorboard_log=self.logdir)
+        model = A2C('MlpPolicy', self.envs_train, verbose=0, learning_rate=1e-3, n_steps=128, 
+                    gamma=0.99, gae_lambda=0.95, ent_coef=0.01, tensorboard_log=self.logdir)
         final_model_path = os.path.join(path_save, '_A2C')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
-
         model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="A2C", 
                     callback=[metrics_callback])
         model.save(os.path.join(path_save, 'A2C'))
-        logger.info(f"Final model saved at {os.path.join(path_save, '_A2C')}")
+        logger.info(f"Modelo final salvo em {os.path.join(path_save, '_A2C')}")
         return model
 
     def env3W_a2c_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
-        logger.info(f"Evaluating A2C model at {path_save} over {n_eval_episodes} episodes.")
+        logger.info(f"Avaliando o modelo A2C em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "A2C")
 
     def env3W_dqn_cl(self, model_agent: Any, path_save: str, envs: Any, replaydir: str, 
                       total_timesteps: int = 10000) -> Any:
-        """
-        Treinamento contínuo (Continual Learning) para o agente DQN.
-        """
-        logger.info(f"View TensorBoard logs with: tensorboard --logdir='{self.logdir}'")
+        logger.info(f"Iniciando Continual Learning para DQN com logs em: {self.logdir}")
         final_model_path = os.path.join(path_save.replace("-real", "-real-CL"), '_DQN-CL')
-
         model_agent.load_replay_buffer(replaydir)
         model_agent.set_env(envs)
         model_agent._last_obs = None
         model_agent.learn(total_timesteps=total_timesteps, log_interval=4, reset_num_timesteps=False,
                           tb_log_name="DQN-CL")
-
         replaydir_cl = os.path.join(path_save.replace("-real", "-real-CL"), 'replay_buffer-CL')
         os.makedirs(replaydir_cl, exist_ok=True)
-
         model_agent.save(final_model_path)
         final_replay_path = os.path.join(replaydir_cl, 'dqn_save_replay_buffer-CL')
         model_agent.save_replay_buffer(final_replay_path)
-        logger.info(f"Continual Learning model saved at {final_model_path} and replay buffer at {final_replay_path}")
+        logger.info(f"Modelo CL salvo em {final_model_path} e replay buffer em {final_replay_path}")
         return model_agent

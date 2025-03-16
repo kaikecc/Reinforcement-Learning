@@ -8,7 +8,6 @@ import matplotlib.patches as mpatches
 import matplotlib.dates as mdates
 from collections import OrderedDict
 
-# Obtém o logger global
 logger = logging.getLogger("global_logger")
 
 class Exploration:
@@ -92,14 +91,14 @@ class Exploration:
 
         # Cálculo dos quartis por sensor e classe (operação pouco custosa em comparação ao resto)
         quartiles_results = {}
-        logger.info('Quartis para cada sensor e classe:')
+        logging.info('Quartis para cada sensor e classe:')
         for var in sensors:
             quartiles_results[var] = {}
             for cls in filtered_data['class'].unique():
                 data = filtered_data[filtered_data['class'] == cls][var]
                 quartiles = data.quantile([0.25, 0.5, 0.75]).to_dict()
                 quartiles_results[var][cls] = quartiles
-                logger.info(f'{var} - {legend_class.get(cls, cls)}: {quartiles}')
+                logging.info(f'{var} - {legend_class.get(cls, cls)}: {quartiles}')
 
         plt.tight_layout()
         plt.figlegend(
@@ -128,151 +127,127 @@ class Exploration:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
 
-    def plot_sensor(self, sensor_columns, title, additional_labels, model, max_points=500):
+    def plot_sensor(self, sensor_columns, title, additional_labels, model):
         """
         Plota séries temporais dos sensores com áreas de fundo coloridas de acordo com mudanças nos rótulos e ações.
-        Os dados são agrupados por mês (com base na coluna 'timestamp') e para cada mês é gerado um plot.
-        Se o número de pontos for superior a 'max_points', os dados serão downsampled para acelerar a plotagem.
-
-        Args:
-            sensor_columns (list): Lista de colunas de sensores a serem plotadas.
-            title (str): Título base do gráfico.
-            additional_labels (list): Labels adicionais para exibição no gráfico.
-            model (str): Nome do modelo (usado nos logs e no arquivo salvo).
-            max_points (int, opcional): Número máximo de pontos a serem plotados. Padrão é 500.
         """
-        logger.info("Starting monthly plot_sensor with base title '%s' for model '%s'.", title, model)
         df = self.dataframe.copy()
-        
-        # Garantir que a coluna 'timestamp' exista e esteja em formato datetime
+        # Converte o índice em timestamp se necessário
         if 'timestamp' not in df.columns:
             df['timestamp'] = pd.to_datetime(df.index)
         else:
             df['timestamp'] = pd.to_datetime(df['timestamp'])
         df['class'] = df['class'].fillna(-1)
+
+        x_hours = df['timestamp']
+        colors = ['blue', 'green', 'red', 'purple', 'orange', 'black']
+        class_colors = {
+            0: 'lightgreen', 
+            1: 'lightcoral', 2: 'lightcoral', 3: 'lightcoral', 4: 'lightcoral',
+            5: 'lightcoral', 6: 'lightcoral', 7: 'lightcoral', 8: 'lightcoral', 9: 'lightcoral',
+            101: 'lightyellow', 102: 'lightyellow', 103: 'lightyellow', 104: 'lightyellow',
+            105: 'lightyellow', 106: 'lightyellow', 107: 'lightyellow', 108: 'lightyellow',
+            109: 'lightyellow', -1: 'lightgrey'
+        }
+        legend_class = {
+            0: 'Normal', 
+            101: 'Transiente de Anomalia', 102: 'Transiente de Anomalia', 103: 'Transiente de Anomalia',
+            104: 'Transiente de Anomalia', 105: 'Transiente de Anomalia', 106: 'Transiente de Anomalia',
+            107: 'Transiente de Anomalia', 108: 'Transiente de Anomalia', 109: 'Transiente de Anomalia',
+            1: 'Estável de Anomalia', 2: 'Estável de Anomalia', 3: 'Estável de Anomalia',
+            4: 'Estável de Anomalia', 5: 'Estável de Anomalia', 6: 'Estável de Anomalia',
+            7: 'Estável de Anomalia', 8: 'Estável de Anomalia', 9: 'Estável de Anomalia',
+            -1: 'Não Rotulado'
+        }
         
-        # Agrupa os dados por mês usando pd.Grouper
-        for month, df_month in df.groupby(pd.Grouper(key='timestamp', freq='M')):
-            # Se o grupo estiver vazio, ignora
-            if df_month.empty:
-                continue
+        instance_label_dict = {
+            0: 'Operação Normal',
+            1: 'Aumento Abrupto de BSW',
+            2: 'Fechamento Espúrio de DHSV',
+            3: 'Intermitência Severa',
+            4: 'Instabilidade na Vazão',
+            5: 'Perda Rápida de Produtividade',
+            6: 'Restrição Rápida em PCK',
+            7: 'Incrustações em PCK',
+            8: 'Hidrato na Linha de Produção'
+        }
 
-            month_str = month.strftime('%Y-%m')
-            logger.info("Processing month %s with %d records.", month_str, len(df_month))
-            
-            # Aplicar downsampling se necessário
-            num_points = len(df_month)
-            if num_points > max_points:
-                indices = np.linspace(0, num_points - 1, max_points, dtype=int)
-                df_plot = df_month.iloc[indices].copy()
-                logger.info("Downsampled sensor data from %d to %d points for month %s.", num_points, len(df_plot), month_str)
-            else:
-                df_plot = df_month.copy()
-                logger.debug("Data size (%d points) for month %s is within threshold (%d); no downsampling applied.", num_points, month_str, max_points)
-            
-            # Prepara a figura para o mês
-            plt.figure(figsize=(6, 12))
-            x_hours = df_plot['timestamp']
-            colors = ['blue', 'green', 'red', 'purple', 'orange', 'black']
-            class_colors = {
-                0: 'lightgreen', 
-                1: 'lightcoral', 2: 'lightcoral', 3: 'lightcoral', 4: 'lightcoral',
-                5: 'lightcoral', 6: 'lightcoral', 7: 'lightcoral', 8: 'lightcoral', 9: 'lightcoral',
-                101: 'lightyellow', 102: 'lightyellow', 103: 'lightyellow', 104: 'lightyellow',
-                105: 'lightyellow', 106: 'lightyellow', 107: 'lightyellow', 108: 'lightyellow',
-                109: 'lightyellow', -1: 'lightgrey'
-            }
-            legend_class = {
-                0: 'Normal', 
-                101: 'Transiente de Anomalia', 102: 'Transiente de Anomalia', 103: 'Transiente de Anomalia',
-                104: 'Transiente de Anomalia', 105: 'Transiente de Anomalia', 106: 'Transiente de Anomalia',
-                107: 'Transiente de Anomalia', 108: 'Transiente de Anomalia', 109: 'Transiente de Anomalia',
-                1: 'Estável de Anomalia', 2: 'Estável de Anomalia', 3: 'Estável de Anomalia',
-                4: 'Estável de Anomalia', 5: 'Estável de Anomalia', 6: 'Estável de Anomalia',
-                7: 'Estável de Anomalia', 8: 'Estável de Anomalia', 9: 'Estável de Anomalia',
-                -1: 'Não Rotulado'
-            }
-            # Cria os patches para a legenda
-            patches = [mpatches.Patch(color=class_colors.get(cls, 'gray'), label=label)
-                    for cls, label in legend_class.items()]
-            
-            # Calcula os segmentos com base nas mudanças em 'class' ou 'action'
-            df_month['segment'] = (df_month['class'].ne(df_month['class'].shift()) | df_month['action'].ne(df_month['action'].shift())).cumsum()
-            segments = df_month.groupby('segment').agg(
-                start=('timestamp', 'first'),
-                end=('timestamp', 'last'),
-                class_val=('class', 'first'),
-                action_val=('action', 'first')
-            ).reset_index()
-            
-            # Plota cada sensor em um subplot
-            for i, column in enumerate(sensor_columns):
-                ax = plt.subplot(len(sensor_columns), 1, i + 1)
-                ax.plot(x_hours, df_plot[column], color=colors[i % len(colors)])
-                ax.set_title(column)
-                ylabel = 'Pressão (Pa)' if column in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)'
-                ax.set_xlabel('Tempo (h)')
-                ax.set_ylabel(ylabel)
-                ax.grid(True)
+        plt.figure(figsize=(6, 12))
+        patches = [mpatches.Patch(color=class_colors[cls], label=label) for cls, label in legend_class.items()]
 
-                # Sobrepõe os intervalos dos segmentos
-                for _, row in segments.iterrows():
-                    cls = row['class_val']
-                    action = row['action_val']
-                    ax.axvspan(row['start'], row['end'], color=class_colors.get(cls, 'lightgrey'),
-                            alpha=0.5, ymin=0.0, ymax=0.5)
-                    action_color = 'cyan' if action == 0 else 'magenta' if action == 1 else '#807fff'
-                    ax.axvspan(row['start'], row['end'], color=action_color,
-                            alpha=0.5, ymin=0.5, ymax=1)
+        # Segmenta as mudanças de 'class' ou 'action' de forma vetorizada
+        df['segment'] = (df['class'].ne(df['class'].shift()) | df['action'].ne(df['action'].shift())).cumsum()
+        segments = df.groupby('segment').agg(
+            start=('timestamp', 'first'),
+            end=('timestamp', 'last'),
+            class_val=('class', 'first'),
+            action_val=('action', 'first')
+        ).reset_index()
 
-                ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
-                ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
-                for label_text in ax.get_xticklabels():
-                    label_text.set_rotation(90)
-            
-            plt.tight_layout()
-            # Legend: garante que as legendas sejam únicas
-            unique_patches_dict = OrderedDict()
-            for patch in patches:
-                key = (patch.get_facecolor(), patch.get_label())
-                if key not in unique_patches_dict:
-                    unique_patches_dict[key] = patch
-            unique_patches = list(unique_patches_dict.values())
-            
-            plt.figlegend(
-                handles=unique_patches, loc='upper right', title='Rotulagem de Observação',
-                bbox_to_anchor=(1.4, 1), bbox_transform=plt.gcf().transFigure
-            )
-            action_patches = [
-                mpatches.Patch(color='magenta', label='Detectado'),
-                mpatches.Patch(color='cyan', label='Não-Detectado')
-            ]
-            plt.figlegend(
-                handles=action_patches, loc='upper right', title=f'Identificação de Falha ({model})',
-                bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure
-            )
-            additional_patches = [mpatches.Patch(color='white', alpha=0, label=lbl) for lbl in additional_labels]
-            plt.figlegend(
-                handles=additional_patches, loc='upper right', title='Métricas',
-                bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure
-            )
-            
-            # Define o diretório de salvamento baseado no título e no mês
-            folder_parts = title.split(" - ")
-            folder = f"{folder_parts[1]} - {folder_parts[2]}" if len(folder_parts) >= 3 else title
-            directory = os.path.join("..", "..", "img", folder)
-            if not os.path.exists(directory):
-                os.makedirs(directory)
-            
-            # Monta o nome do arquivo incluindo o mês
-            save_filename = f"{title} - {month_str}.png"
-            save_path = os.path.join(directory, save_filename)
-            plt.grid(True)
-            plt.savefig(save_path, dpi=300, bbox_inches='tight')
-            plt.close()
-            logger.info("Plot_sensor for month %s saved to %s", month_str, save_path)
+        for i, column in enumerate(sensor_columns):
+            ax = plt.subplot(len(sensor_columns), 1, i + 1)
+            ax.plot(x_hours, df[column], color=colors[i % len(colors)])
+            ax.set_title(column)
+            ylabel = 'Pressão (Pa)' if column in ['P-PDG', 'P-TPT', 'P-MON-CKP'] else 'Temperatura (°C)'
+            ax.set_xlabel('Tempo (h)')
+            ax.set_ylabel(ylabel)
+            ax.grid(True)
 
+            # Desenha os intervalos com base nos segmentos
+            for _, row in segments.iterrows():
+                cls = row['class_val']
+                action = row['action_val']
+                ax.axvspan(row['start'], row['end'], color=class_colors.get(cls, 'lightgrey'),
+                           alpha=0.5, ymin=0.0, ymax=0.5)
+                if action in [0, 1]:
+                    action_color = 'cyan' if action == 0 else 'magenta'
+                else:
+                    action_color = '#807fff'
+                ax.axvspan(row['start'], row['end'], color=action_color,
+                           alpha=0.5, ymin=0.5, ymax=1)
 
+            ax.xaxis.set_major_locator(mdates.HourLocator(interval=3))
+            ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
+            for label_text in ax.get_xticklabels():
+                label_text.set_rotation(90)
+
+        plt.tight_layout()
+        # Garante que as legendas sejam únicas
+        unique_patches_dict = OrderedDict()
+        for patch in patches:
+            key = (patch.get_facecolor(), patch.get_label())
+            if key not in unique_patches_dict:
+                unique_patches_dict[key] = patch
+        unique_patches = list(unique_patches_dict.values())
+
+        plt.figlegend(
+            handles=unique_patches, loc='upper right', title='Rotulagem de Observação',
+            bbox_to_anchor=(1.4, 1), bbox_transform=plt.gcf().transFigure
+        )
+        action_patches = [
+            mpatches.Patch(color='magenta', label='Detectado'),
+            mpatches.Patch(color='cyan', label='Não-Detectado')
+        ]
+        plt.figlegend(
+            handles=action_patches, loc='upper right', title=f'Identificação de Falha ({model})',
+            bbox_to_anchor=(1.4, 0.9), bbox_transform=plt.gcf().transFigure
+        )
+        additional_patches = [mpatches.Patch(color='white', alpha=0, label=lbl) for lbl in additional_labels]
+        plt.figlegend(
+            handles=additional_patches, loc='upper right', title='Métricas',
+            bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure
+        )
+        
+        folder_parts = title.split(" - ")
+        folder = f"{folder_parts[1]} - {folder_parts[2]}" if len(folder_parts) >= 3 else title
+        directory = os.path.join("..", "..", "img", folder)
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        
+        save_path = os.path.join(directory, f"{title}.png")
+        plt.grid(True)
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.close()
 
     def plot_estados(self, title):
         """
@@ -285,10 +260,10 @@ class Exploration:
         rare_class_counts_C = class_counts[(class_counts.index == 0)].sum()
         total = rare_class_counts_A + rare_class_counts_B + rare_class_counts_C
 
-        logger.info(f'Normal: {rare_class_counts_C} - {round(rare_class_counts_C / total * 100, 2)}%')
-        logger.info(f'Transiente de anomalia: {rare_class_counts_B} - {round(rare_class_counts_B / total * 100, 2)}%')
-        logger.info(f'Estável de anomalia: {rare_class_counts_A} - {round(rare_class_counts_A / total * 100, 2)}%')
-        logger.info(f'Total: {total}')
+        logging.info(f'Normal: {rare_class_counts_C} - {round(rare_class_counts_C / total * 100, 2)}%')
+        logging.info(f'Transiente de anomalia: {rare_class_counts_B} - {round(rare_class_counts_B / total * 100, 2)}%')
+        logging.info(f'Estável de anomalia: {rare_class_counts_A} - {round(rare_class_counts_A / total * 100, 2)}%')
+        logging.info(f'Total: {total}')
 
         plt.figure()
         bars = plt.bar(
