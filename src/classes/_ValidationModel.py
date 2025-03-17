@@ -312,13 +312,13 @@ class ValidationModel:
                 )
 
                 # Plot dos sensores
-                expl = Exploration(df)
+                '''expl = Exploration(df)
                 expl.plot_sensor(
                     sensor_columns=['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
                     title=f'[{count}] - {self.event_name} - {self.model_name}',
                     additional_labels=additional_labels,
                     model=self.model_name
-                )
+                )'''
 
                 all_dfs.append(df_copy)
 

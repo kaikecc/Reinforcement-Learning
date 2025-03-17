@@ -1,0 +1,13 @@
+[INFO]	16/03/2025 10:48:59 PM - Iniciando execução do algoritmo DQN-simulated para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	16/03/2025 10:48:59 PM - Iniciando treinamento do algoritmo DQN com 100000 timesteps
+[INFO]	16/03/2025 10:50:33 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-simulated\DQN\_DQN
+[INFO]	16/03/2025 10:50:33 PM - Replay buffer salvo em ..\models\Abrupt Increase of BSW-simulated\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	16/03/2025 10:50:33 PM - Tempo de Treinamento DQN: 94.17s
+[INFO]	16/03/2025 10:50:33 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	16/03/2025 10:50:33 PM - Avaliando o modelo DQN em ..\models\Abrupt Increase of BSW-simulated\DQN com 1 episódios.
+[INFO]	16/03/2025 10:53:54 PM - Average accuracy for DQN: 0.7595962051742818
+[INFO]	16/03/2025 10:53:54 PM - Acurácia: 0.75960
+[INFO]	16/03/2025 10:53:54 PM - Iniciando a validação do modelo DQN
+[INFO]	16/03/2025 10:53:54 PM - ValidationModel criado para o modelo 'DQN' e evento 'Abrupt Increase of BSW'.
+[INFO]	16/03/2025 10:53:54 PM - Acurácia=0.760 <= 0.80, insuficiente para validação individual
+[INFO]	16/03/2025 10:53:54 PM - Concluído a execução do algoritmo DQN-simulated para o evento Abrupt Increase of BSW
