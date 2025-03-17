@@ -3,8 +3,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Generator, List, Tuple
 
-
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import pandas as pd
 
@@ -19,7 +19,7 @@ class ValidationModel:
       - separação de datasets com base em um gap de tempo,
       - preprocessamento de observações,
       - predição (tanto para modelo RL quanto RNA),
-      - cálculo de métricas de acurácia, TN, TP, FP, FN,
+      - cálculo de métricas de acurácia (TN, TP, FP, FN),
       - plot e salvamento de resultados.
     """
 
@@ -63,12 +63,16 @@ class ValidationModel:
     def preprocess_observation(self, row: np.ndarray) -> np.ndarray:
         """
         Pré-processa uma linha de observação para float32,
-        removendo a primeira e a última coluna (ex.: timestamp e classe).
+        removendo a primeira e as duas últimas colunas (timestamp e [class, well]).
+
+        Formato esperado de 'row':
+          [timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP, T-JUS-CKP, class, well]
 
         :param row: Uma linha do dataset (np.ndarray).
-        :return: Vetor de floats (obs) para ser usado na predição.
+        :return: Vetor de floats (obs) para ser usado na predição (somente sensores).
         """
-        obs = row[1:-1].astype(np.float32)
+        # row[1:-2] pega do índice 1 até (len - 2), excluindo timestamp (0) e excluindo class e well
+        obs = row[1:-2].astype(np.float32)
         return obs
 
     def create_batches(self, data: np.ndarray, batch_size: int) -> Generator[np.ndarray, None, None]:
@@ -87,7 +91,7 @@ class ValidationModel:
         Realiza a predição das ações para o dataset de teste.
 
         :param model: Modelo de predição (pode ser RL ou RNA).
-        :param dataset_test: Array 2D com as instâncias de teste.
+        :param dataset_test: Array 2D com as instâncias de teste (8 colunas).
         :param batch_size: Tamanho do lote para RNA (se self.model_name == 'RNA').
         :return: Lista com as ações previstas (inteiros).
         """
@@ -97,7 +101,7 @@ class ValidationModel:
         if self.model_name != 'RNA':
             for row in dataset_test:
                 obs = self.preprocess_observation(row)
-                # Supondo que model.predict(obs, deterministic=True) retorne (acao, estado_interno)
+                # model.predict(obs, deterministic=True) -> (acao, estado_interno)
                 action = model.predict(obs, deterministic=True)[0]
                 array_action_pred.append(action)
         else:
@@ -112,26 +116,61 @@ class ValidationModel:
 
     def create_and_filter_df(self, dataset_test: np.ndarray, array_action_pred: List[int]) -> pd.DataFrame:
         """
-        Cria e formata um DataFrame a partir do dataset de teste e das predições geradas.
+        Cria e formata um DataFrame com colunas na ordem:
+        [timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP, T-JUS-CKP, class, action, well].
 
-        :param dataset_test: Array 2D com as colunas:
-               [timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP, T-JUS-CKP, class]
-        :param array_action_pred: Lista com as ações previstas.
-        :return: DataFrame com colunas (timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP,
-                 T-JUS-CKP, class, action).
+        `dataset_test` deve ter 8 colunas:
+        [timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP, T-JUS-CKP, class, well]
+        `array_action_pred` é a ação prevista, adicionada como penúltima coluna (action).
         """
+
+        # 1) dataset_test tem 8 colunas. A última é 'well'.
+        #    Separamos 'well' para reinserir depois.
+        temp_no_well = dataset_test[:, :-1]  # shape Nx7, sem a coluna 'well'
+        well_column = dataset_test[:, -1]    # shape Nx1, que contém 'well'
+
+        # 2) Agora adicionamos array_action_pred como penúltima coluna
+        #    e depois recolocamos 'well' como última coluna:
+        merged_data = np.column_stack((temp_no_well, array_action_pred, well_column))
+        # Assim, merged_data terá 9 colunas:
+        # [0] timestamp
+        # [1] P-PDG
+        # [2] P-TPT
+        # [3] T-TPT
+        # [4] P-MON-CKP
+        # [5] T-JUS-CKP
+        # [6] class
+        # [7] action
+        # [8] well
+
         df = pd.DataFrame(
-            np.column_stack((dataset_test, array_action_pred)),
-            columns=['timestamp', 'P-PDG', 'P-TPT', 'T-TPT',
-                     'P-MON-CKP', 'T-JUS-CKP', 'class', 'action']
+            merged_data,
+            columns=[
+                'timestamp',   # idx 0
+                'P-PDG',       # idx 1
+                'P-TPT',       # idx 2
+                'T-TPT',       # idx 3
+                'P-MON-CKP',   # idx 4
+                'T-JUS-CKP',   # idx 5
+                'class',       # idx 6
+                'action',      # idx 7
+                'well'         # idx 8
+            ]
         )
+
+        # Ajusta o índice para timestamp
         df.set_index('timestamp', inplace=True)
 
-        # Converte colunas para float32 ou int16 conforme necessário
+        # Converte colunas de sensores para float32
         sensor_cols = ['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP']
         df[sensor_cols] = df[sensor_cols].astype('float32')
+
+        # Converte 'class' e 'action' para int16
         df['class'] = df['class'].astype(float).astype('int16')
         df['action'] = df['action'].astype(float).astype('int16')
+
+        # Caso queira converter 'well' para string (se houver tipos mistos):
+        # df['well'] = df['well'].astype(str)
 
         return df
 
@@ -159,7 +198,9 @@ class ValidationModel:
 
         return accuracy, TN_rate, TP_rate, FP_rate, FN_rate
 
-    def calculate_evaluation_metrics(self, TP_rate: float, FP_rate: float, TN_rate: float, FN_rate: float) -> Tuple[float, float, float]:
+    def calculate_evaluation_metrics(
+        self, TP_rate: float, FP_rate: float, TN_rate: float, FN_rate: float
+    ) -> Tuple[float, float, float]:
         """
         Calcula precisão, recall e F1-score a partir das taxas (TP_rate, FP_rate, etc).
 
@@ -169,11 +210,6 @@ class ValidationModel:
         :param FN_rate: Taxa de Falso Negativo (FN / total).
         :return: (precision, recall, f1_score).
         """
-        # Converte taxas para "contagens" proporcionais
-        # mas podemos trabalhar diretamente com as taxas
-        # se considerarmos total = 1, então:
-        #   TP = TP_rate, FP = FP_rate, ...
-        #   precision = TP_rate / (TP_rate + FP_rate) ...
         TP = TP_rate
         FP = FP_rate
         FN = FN_rate
@@ -184,11 +220,13 @@ class ValidationModel:
 
         return precision, recall, f1_score
 
-    def validation_model(self,
-                         accuracy: float,
-                         dataset_validation_scaled: np.ndarray,
-                         model: Any,
-                         type_ml: str = 'Supervised') -> None:
+    def validation_model(
+        self,
+        accuracy: float,
+        dataset_validation_scaled: np.ndarray,
+        model: Any,
+        type_ml: str = 'Supervised'
+    ) -> None:
         """
         Valida o modelo com base na acurácia fornecida e nos dados de validação escalados.
 
@@ -199,11 +237,16 @@ class ValidationModel:
         """
         min_acc_threshold = 0.8
         if accuracy > min_acc_threshold:
-            logger.info("Iniciando validação individual. Acurácia=%.3f > %.2f", accuracy, min_acc_threshold)
-            # Se supervisionado, ordena e separa datasets
+            logger.info(
+                "Iniciando validação individual. Acurácia=%.3f > %.2f",
+                accuracy, min_acc_threshold
+            )
+
             if type_ml == 'Supervised':
+                # Ordena pelo timestamp (coluna 0)
                 sort_indices = np.argsort(dataset_validation_scaled[:, 0])
                 dataset_sorted = dataset_validation_scaled[sort_indices]
+                # Separa por gap de 1 hora
                 datasets = self.separate_datasets(dataset_sorted)
                 logger.info("Separados %d grupos de instâncias para validação.", len(datasets))
             else:
@@ -215,22 +258,37 @@ class ValidationModel:
             accuracy_vals, test_acc_vals, TN_vals, TP_vals = [], [], [], []
             precision_vals, recall_vals, f1_vals = [], [], []
 
+            all_dfs = []
+
             for count, dataset_test in enumerate(datasets, start=1):
-                logger.info("Predição da %dª instância de validação com modelo '%s'.",
-                            count, self.model_name)
+                logger.info(
+                    "Predição da %dª instância de validação com modelo '%s'.",
+                    count, self.model_name
+                )
                 array_action_pred = self.predict_and_evaluate(model, dataset_test)
 
                 df = self.create_and_filter_df(dataset_test, array_action_pred)
+                # Mantém cópia com 'well' para métricas por well
+                df_copy = df.copy()
+
+                # Remove a última coluna (que é 'well') antes de calcular acurácia
+                # para evitar conversão indevida (well = string).
+                df = df.iloc[:, :-1]  # drop da coluna 'well'
+
                 acc, TN_rate, TP_rate, FP_rate, FN_rate = self.calculate_accuracy(df)
                 acc_total.append(acc)
 
-                precision, recall, f1_score = self.calculate_evaluation_metrics(TP_rate, FP_rate, TN_rate, FN_rate)
+                precision, recall, f1_score = self.calculate_evaluation_metrics(
+                    TP_rate, FP_rate, TN_rate, FN_rate
+                )
 
-                logger.info("Instância %d: Acurácia=%.3f%%, TN=%.3f%%, TP=%.3f%%",
-                            count, acc * 100, TN_rate * 100, TP_rate * 100)
+                logger.info(
+                    "Instância %d: Acurácia=%.3f%%, TN=%.3f%%, TP=%.3f%%",
+                    count, acc * 100, TN_rate * 100, TP_rate * 100
+                )
 
                 accuracy_vals.append(acc * 100)
-                test_acc_vals.append(accuracy * 100)  # se deseja plotar a acurácia global junto
+                test_acc_vals.append(accuracy * 100)  # se deseja plotar a acurácia global
                 TN_vals.append(TN_rate * 100)
                 TP_vals.append(TP_rate * 100)
 
@@ -248,35 +306,59 @@ class ValidationModel:
                 recall_vals.append(recall)
                 f1_vals.append(f1_score)
 
-                logger.info("Instância %d: Precision=%.3f, Recall=%.3f, F1=%.3f.",
-                            count, precision, recall, f1_score)
+                logger.info(
+                    "Instância %d: Precision=%.3f, Recall=%.3f, F1=%.3f.",
+                    count, precision, recall, f1_score
+                )
 
                 # Plot dos sensores
                 expl = Exploration(df)
                 expl.plot_sensor(
-                sensor_columns=['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
-                title=f'[{count}] - {self.event_name} - {self.model_name}',
-                additional_labels=additional_labels,
-                model=self.model_name)
+                    sensor_columns=['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
+                    title=f'[{count}] - {self.event_name} - {self.model_name}',
+                    additional_labels=additional_labels,
+                    model=self.model_name
+                )
 
+                all_dfs.append(df_copy)
 
-            self.plot_and_save_metrics(len(datasets), accuracy_vals, test_acc_vals, TN_vals, TP_vals)
+            # Plota métricas gerais
+            self.plot_and_save_metrics(
+                len(datasets), accuracy_vals, test_acc_vals, TN_vals, TP_vals
+            )
 
             final_validation_accuracy = (sum(acc_total) / len(acc_total)) * 100
-            logger.info("Acurácia final: %.3f%% no conjunto de dados de validação", final_validation_accuracy)
-            logger.info("Precision=%.3f, Recall=%.3f, F1=%.3f",
-                        np.mean(precision_vals), np.mean(recall_vals), np.mean(f1_vals))
+            logger.info(
+                "Acurácia final: %.3f%% no conjunto de dados de validação",
+                final_validation_accuracy
+            )
+            logger.info(
+                "Precision=%.3f, Recall=%.3f, F1=%.3f",
+                np.mean(precision_vals), np.mean(recall_vals), np.mean(f1_vals)
+            )
             print(f"Acurácia final: {final_validation_accuracy:.3f}% no conjunto de dados de validação")
+
+            # Concatena todos os dataframes para avaliar métricas por well
+            df_all = pd.concat(all_dfs, axis=0)
+            if 'well' in df_all.columns:
+                well_metrics_df = self.evaluate_metrics_by_well(df_all)
+                self.plot_accuracy_by_well(well_metrics_df)
+
         else:
-            logger.info("Acurácia=%.3f <= %.2f, insuficiente para validação individual", accuracy, min_acc_threshold)
+            logger.info(
+                "Acurácia=%.3f <= %.2f, insuficiente para validação individual",
+                accuracy, min_acc_threshold
+            )
             print("Acurácia insuficiente para validação individual")
 
-    def plot_and_save_metrics(self,
-                              num_datasets: int,
-                              accuracy_values: List[float],
-                              acc_values: List[float],
-                              TN_values: List[float],
-                              TP_values: List[float]) -> None:
+    def plot_and_save_metrics(
+        self,
+        num_datasets: int,
+        accuracy_values: List[float],
+        acc_values: List[float],
+        TN_values: List[float],
+        TP_values: List[float]
+    ) -> None:
         """
         Plota e salva as métricas de acurácia por instância de validação.
 
@@ -322,3 +404,128 @@ class ValidationModel:
                 txt_file.write(f"{count_iterations[i]}, {accuracy_values[i]}, {acc_values[i]}, "
                                f"{TN_values[i]}, {TP_values[i]}\n")
         logger.info("Métricas numéricas salvas em %s", txt_save_path)
+
+    def evaluate_metrics_by_well(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Calcula as métricas de avaliação (acurácia, precisão, recall e F1-score)
+        para cada well presente na coluna 'well' do DataFrame.
+
+        Args:
+            df (pd.DataFrame): DataFrame com os dados e que deve conter a coluna 'well'.
+
+        Returns:
+            pd.DataFrame: DataFrame contendo as métricas calculadas para cada well.
+        """
+        if 'well' not in df.columns:
+            logger.error("Coluna 'well' não encontrada no DataFrame.")
+            return pd.DataFrame()
+        
+        metrics_list = []
+        # Agrupa os dados por well
+        for well, group in df.groupby('well'):
+            # Calcula acurácia no DataFrame do grupo
+            acc, TN_rate, TP_rate, FP_rate, FN_rate = self.calculate_accuracy(group)
+            precision, recall, f1_score = self.calculate_evaluation_metrics(TP_rate, FP_rate, TN_rate, FN_rate)
+
+            metrics_list.append({
+                'well': well,
+                'total': len(group),
+                'accuracy': acc,
+                'precision': precision,
+                'recall': recall,
+                'f1_score': f1_score
+            })
+
+        metrics_df = pd.DataFrame(metrics_list)
+        logger.info("Métricas calculadas para %d wells.", len(metrics_df))
+        return metrics_df
+
+    def plot_accuracy_by_well_old(self, metrics_df: pd.DataFrame) -> None:
+        """
+        Plota um gráfico de barras com a acurácia (em %) de cada well.
+
+        Args:
+            metrics_df (pd.DataFrame): DataFrame contendo as métricas calculadas para cada well.
+        """
+        if metrics_df.empty:
+            logger.error("Nenhum dado de métricas por well para plotar.")
+            return
+
+        plt.figure(figsize=(10, 6))
+        # Multiplica a acurácia por 100 para exibir em porcentagem
+        plt.bar(metrics_df['well'], metrics_df['accuracy'] * 100, color='blue')
+        plt.title(f'Acurácia por Well - {self.event_name} - {self.model_name}')
+        plt.xlabel('Well')
+        plt.ylabel('Acurácia (%)')
+        plt.xticks(rotation=45)
+        plt.grid(True, axis='y')
+
+        images_path = Path('..', '..', 'img', 'metrics')
+        images_path.mkdir(parents=True, exist_ok=True)
+
+        save_path = images_path / f'Acuracia_por_well_{self.event_name}_{self.model_name}.png'
+        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        plt.show()
+        logger.info("Gráfico de acurácia por well salvo em %s", save_path)
+
+    def plot_accuracy_by_well(self, metrics_df: pd.DataFrame) -> None:
+        """
+        Plota um gráfico de barras da acurácia por well, com layout melhorado para uso acadêmico.
+        """
+        if metrics_df.empty:
+            logger.error("Nenhum dado de métricas por well para plotar.")
+            return
+
+        sns.set_theme(style="whitegrid")  # "whitegrid" ou "ticks", a gosto
+
+        fig, ax = plt.subplots(figsize=(6, 4))  # ajuste conforme necessidade
+
+        # Multiplica a acurácia por 100 para exibir em porcentagem
+        accuracies_percent = metrics_df["accuracy"] * 100
+
+        # Plota as barras
+        bars = ax.bar(
+            metrics_df["well"], 
+            accuracies_percent, 
+            color="royalblue",  # escolha de cor mais suave
+            edgecolor="black"   # borda para dar contraste
+        )
+
+        # Título e rótulos
+        ax.set_title(
+            f"Acurácia por Well - {self.event_name} - {self.model_name}",
+            fontsize=13, fontweight="bold"
+        )
+        ax.set_xlabel("Well", fontsize=11)
+        ax.set_ylabel("Acurácia (%)", fontsize=11)
+
+        # Ajusta limite do eixo Y para dar espaço às anotações
+        ax.set_ylim(0, 110)
+
+        # Remove linhas superiores e à direita, para visual mais “clean”
+        sns.despine(ax=ax)
+
+        # Adiciona anotações (valores) no topo de cada barra
+        for bar in bars:
+            height = bar.get_height()
+            ax.annotate(
+                f"{height:.1f}%",              # formatação em porcentagem
+                xy=(bar.get_x() + bar.get_width() / 2, height),
+                xytext=(0, 3),                 # deslocamento vertical
+                textcoords="offset points",
+                ha="center", va="bottom",
+                fontsize=10,
+                color="black"
+            )
+
+        # Ajuste de espaçamento para evitar cortes de labels
+        plt.tight_layout()
+
+        # Usando a mesma convenção de pastas do restante do código
+        images_path = Path('..', '..', 'img', 'metrics')
+        images_path.mkdir(parents=True, exist_ok=True)
+
+        save_path = images_path / f'Acuracia_por_well_{self.event_name}_{self.model_name}.png'
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
+        plt.show()
+        logger.info("Gráfico de acurácia por well salvo em %s", save_path)

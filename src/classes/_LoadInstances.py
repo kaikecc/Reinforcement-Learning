@@ -93,6 +93,9 @@ class LoadInstances:
                 df.replace([np.inf, -np.inf], np.nan, inplace=True)
                 df.dropna(inplace=True)
 
+                 # Adiciona a coluna 'well' com o nome do poço
+                df['well'] = well
+
                 # Processa timestamp
                 if "timestamp" in df.columns:
                     df["timestamp"] = pd.to_datetime(df["timestamp"]).dt.strftime("%Y-%m-%d %H:%M:%S")
@@ -133,21 +136,43 @@ class LoadInstances:
 
     def data_preparation(self, dataset: np.ndarray, train_percentage: float):
         """
-        Divide o dataset em treino, teste e validação (70-15-15, por exemplo, caso train_percentage=0.7),
-        removendo a coluna timestamp (primeira) das features de treino e teste, e aplica MinMaxScaler.
+        Divide o dataset em treino, teste e validação (70-15-15, por exemplo, caso train_percentage=0.7).
+        - A penúltima coluna (índice -2) é 'class' (target).
+        - A última coluna (índice -1) é 'well'.
+        - A primeira coluna (índice 0) é 'timestamp'.
 
-        :param dataset: array com todas as colunas (features + target), sendo a última coluna o target.
-        :param train_percentage: fração (0-1) para treino por classe; o restante é dividido em teste e validação.
-        :return: (dataset_train_scaled, dataset_test_scaled, dataset_validation_scaled)
+        Objetivos:
+        * Treino e teste não possuem 'timestamp' nem 'well'.
+        * Validação mantém 'timestamp' e 'well' no final.
+        * Aplica MinMaxScaler somente nas colunas numéricas (sem 'timestamp' e sem 'well').
+
+        :param dataset: array (2D) com todas as colunas (features + class + well).
+                        As duas últimas colunas são: [-2]=class, [-1]=well.
+        :param train_percentage: fração (0-1) para treino por classe; 
+                                o restante é dividido em teste e validação.
+        :return: (dataset_train_scaled, dataset_test_scaled, dataset_val_scaled)
+                Cada um contendo suas colunas + a coluna target no final.
+                No caso da validação, também com 'timestamp' e 'well'.
         """
+        logger.info("Iniciando data_preparation com 3 splits (treino, teste, validação).")
+
+        # A penúltima coluna é o target
+        y = dataset[:, -2]
+        # A última coluna é well
+        well = dataset[:, -1]
+        # As colunas anteriores às duas últimas são as features
+        X = dataset[:, :-2]  # features (inclui timestamp em X[:,0])
+
+        # Identifica classes únicas a partir do penúltimo índice (target)
+        classes = np.unique(y)
+
         # Seleciona índices de cada classe
         train_indices, test_indices = [], []
-        classes = np.unique(dataset[:, -1])
-
         for event in classes:
-            class_indices = np.where(dataset[:, -1] == event)[0]
+            class_indices = np.where(y == event)[0]
             logger.info(f"Número de amostras da classe {event}: {len(class_indices)}")
 
+            # Split estratificado para cada classe (treino e teste)
             train_idx, test_idx = train_test_split(
                 class_indices, train_size=train_percentage, random_state=42
             )
@@ -159,40 +184,58 @@ class LoadInstances:
         train_indices = np.array(train_indices)
         test_indices = np.array(test_indices)
 
-        # Divide teste em teste e validação (50/50 do 'teste')
+        # Divide o conjunto de teste em teste e validação (50/50 do 'teste')
         test_indices, val_indices = train_test_split(test_indices, test_size=0.5, random_state=42)
 
         # Cria subsets
-        dataset_train = dataset[train_indices]
-        dataset_test = dataset[test_indices]
-        dataset_val = dataset[val_indices]
+        X_train, y_train, well_train = X[train_indices], y[train_indices], well[train_indices]
+        X_test, y_test, well_test   = X[test_indices],  y[test_indices],  well[test_indices]
+        X_val, y_val, well_val      = X[val_indices],   y[val_indices],   well[val_indices]
 
-        logger.info(f"Registros treino: {len(dataset_train)} | teste: {len(dataset_test)} | val: {len(dataset_val)}")
+        logger.info(f"Registros treino: {len(X_train)} | teste: {len(X_test)} | val: {len(X_val)}")
 
-        # Separa X e y
-        X_train, y_train = dataset_train[:, :-1], dataset_train[:, -1]
-        X_test, y_test = dataset_test[:, :-1], dataset_test[:, -1]
-        X_val, y_val = dataset_val[:, :-1], dataset_val[:, -1]
+        # ============ TREINO E TESTE ============
+        # Remove timestamp (índice 0) e não inclui well (pois well está fora de X, era a última do dataset)
+        # No entanto, se a "well" estivesse dentro de X, precisaríamos removê-la explicitamente.
+        # Como well está separada, não há nada a remover de X diretamente para well.
+        # Caso haja outra(s) colunas a remover, faça aqui.
 
-        # Remove timestamp (coluna 0) de treino e teste
+        # Exemplo de colunas que devem ser escalonadas: 
+        # (assumindo que a col 0 é timestamp e não deve ser escalonada)
+        # Então col_to_scale = range(1, X_train.shape[1])
         X_train_no_ts = np.delete(X_train, 0, axis=1)
-        X_test_no_ts = np.delete(X_test, 0, axis=1)
+        X_test_no_ts  = np.delete(X_test, 0, axis=1)
 
-        # Escalona (MinMax no range -1..1)
+        # Aplica MinMaxScaler
         scaler = MinMaxScaler(feature_range=(-1, 1))
         X_train_scaled = scaler.fit_transform(X_train_no_ts)
-        X_test_scaled = scaler.transform(X_test_no_ts)
+        X_test_scaled  = scaler.transform(X_test_no_ts)
 
-        # Validação: mantém timestamp na 1ª coluna
-        X_val_ts = X_val[:, 0].reshape(-1, 1)
-        X_val_no_ts = np.delete(X_val, 0, axis=1)
-        X_val_scaled_only = scaler.transform(X_val_no_ts)
-        X_val_scaled = np.hstack((X_val_ts, X_val_scaled_only))
-
-        # Concatena com o target
+        # Concatena com o target no final (treino e teste NÃO têm 'well' nem 'timestamp')
         dataset_train_scaled = np.column_stack((X_train_scaled, y_train))
-        dataset_test_scaled = np.column_stack((X_test_scaled, y_test))
-        dataset_val_scaled = np.column_stack((X_val_scaled, y_val))
+        dataset_test_scaled  = np.column_stack((X_test_scaled,  y_test))
+
+        # ============ VALIDAÇÃO ============
+        # Mantemos timestamp (coluna 0) e 'well' (fora de X, mas no final)
+        # Precisamos apenas escalar as colunas internas (1..end) de X_val,
+        # exceto a 0 (timestamp) e sem 'well' (porque well está fora de X).
+
+        # 1) Separa timestamp
+        timestamp_val = X_val[:, 0].reshape(-1, 1)
+
+        # 2) Remove timestamp para escalar as colunas restantes
+        X_val_no_ts = np.delete(X_val, 0, axis=1)
+        # Escalona
+        X_val_scaled_temp = scaler.transform(X_val_no_ts)
+
+        # 3) Reconstrói X_val com timestamp (col 0) + colunas escalonadas
+        X_val_scaled = np.hstack((timestamp_val, X_val_scaled_temp))
+
+        # 4) Concatena com target e well (mantendo well no final)
+        #    Formato final: [timestamp, colunas escalonadas, target, well]
+        dataset_val_scaled = np.column_stack((X_val_scaled, y_val, well_val))
 
         logger.info("Fim da preparação do dataset (treino, teste, validação).")
+
         return dataset_train_scaled, dataset_test_scaled, dataset_val_scaled
+

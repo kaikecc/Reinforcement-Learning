@@ -1,0 +1,30 @@
+[INFO]	16/03/2025 08:54:00 PM - Iniciando execução do algoritmo DQN-real para o evento Abrupt Increase of BSW com timesteps 100000
+[INFO]	16/03/2025 08:54:00 PM - Iniciando treinamento do algoritmo DQN com 100000 timesteps
+[INFO]	16/03/2025 08:56:17 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\DQN\_DQN
+[INFO]	16/03/2025 08:56:17 PM - Replay buffer salvo em ..\models\Abrupt Increase of BSW-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	16/03/2025 08:56:17 PM - Tempo de Treinamento DQN: 136.85s
+[INFO]	16/03/2025 08:56:17 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	16/03/2025 08:56:17 PM - Avaliando o modelo DQN em ..\models\Abrupt Increase of BSW-real\DQN com 1 episódios.
+[INFO]	16/03/2025 08:56:26 PM - Average accuracy for DQN: 0.9131207361573854
+[INFO]	16/03/2025 08:56:26 PM - Acurácia: 0.91312
+[INFO]	16/03/2025 08:56:26 PM - Iniciando a validação do modelo DQN
+[INFO]	16/03/2025 08:56:26 PM - ValidationModel criado para o modelo 'DQN' e evento 'Abrupt Increase of BSW'.
+[INFO]	16/03/2025 08:56:26 PM - Iniciando validação individual. Acurácia=0.913 > 0.80
+[INFO]	16/03/2025 08:56:27 PM - Separados 4 grupos de instâncias para validação.
+[INFO]	16/03/2025 08:56:27 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	16/03/2025 08:56:27 PM - Instância 1: Acurácia=96.687%, TN=75.535%, TP=21.153%
+[INFO]	16/03/2025 08:56:27 PM - Instância 1: Precision=1.000, Recall=0.865, F1=0.927.
+[INFO]	16/03/2025 08:56:29 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	16/03/2025 08:56:29 PM - Instância 2: Acurácia=96.949%, TN=33.911%, TP=63.037%
+[INFO]	16/03/2025 08:56:29 PM - Instância 2: Precision=1.000, Recall=0.954, F1=0.976.
+[INFO]	16/03/2025 08:56:31 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	16/03/2025 08:56:34 PM - Instância 3: Acurácia=95.291%, TN=58.901%, TP=36.389%
+[INFO]	16/03/2025 08:56:34 PM - Instância 3: Precision=1.000, Recall=0.885, F1=0.939.
+[INFO]	16/03/2025 08:56:43 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	16/03/2025 08:56:44 PM - Instância 4: Acurácia=94.912%, TN=80.511%, TP=14.401%
+[INFO]	16/03/2025 08:56:44 PM - Instância 4: Precision=1.000, Recall=0.739, F1=0.850.
+[INFO]	16/03/2025 08:56:46 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Abrupt Increase of BSW_DQN.png
+[INFO]	16/03/2025 08:56:46 PM - Métricas numéricas salvas em ..\metrics\Métricas_Abrupt Increase of BSW_DQN.txt
+[INFO]	16/03/2025 08:56:46 PM - Acurácia final: 95.960% no conjunto de dados de validação
+[INFO]	16/03/2025 08:56:46 PM - Precision=1.000, Recall=0.861, F1=0.923
+[INFO]	16/03/2025 08:56:46 PM - Métricas calculadas para 3 wells.
