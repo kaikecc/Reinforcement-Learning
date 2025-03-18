@@ -93,8 +93,9 @@ class LoadInstances:
                 df.replace([np.inf, -np.inf], np.nan, inplace=True)
                 df.dropna(inplace=True)
 
-                 # Adiciona a coluna 'well' com o nome do poço
+                 # Adiciona a coluna 'well' e 'code' com o nome do poço
                 df['well'] = well
+                df['code'] = class_code
 
                 # Processa timestamp
                 if "timestamp" in df.columns:
@@ -102,7 +103,7 @@ class LoadInstances:
 
                 arrays_list.append(df.to_numpy())
 
-        logger.info(f"Total de {len(arrays_list)} instâncias {type_instance} carregadas para o evento {event_name}.")
+        logger.info(f"Total de {len(arrays_list)} instâncias {type_instance} selecionadas.")
 
         # Concatena tudo num único array (caso haja instâncias)
         final_array = np.concatenate(arrays_list) if arrays_list else np.array([])

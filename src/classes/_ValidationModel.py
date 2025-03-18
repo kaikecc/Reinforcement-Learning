@@ -23,13 +23,14 @@ class ValidationModel:
       - plot e salvamento de resultados.
     """
 
-    def __init__(self, model_name: str, event_name: str) -> None:
+    def __init__(self, model_name: str, event_name: str, ts: int) -> None:
         """
         :param model_name: Nome do modelo (e.g. 'DQN', 'RNA', etc.)
         :param event_name: Nome do evento (e.g. 'Abrupt Increase of BSW')
         """
         self.model_name = model_name
         self.event_name = event_name
+        self.timestep = ts
         logger.info("ValidationModel criado para o modelo '%s' e evento '%s'.",
                     self.model_name, self.event_name)
 
@@ -225,7 +226,7 @@ class ValidationModel:
         accuracy: float,
         dataset_validation_scaled: np.ndarray,
         model: Any,
-        type_ml: str = 'Supervised'
+        type_ml: str = 'RNA'
     ) -> None:
         """
         Valida o modelo com base na acurácia fornecida e nos dados de validação escalados.
@@ -233,7 +234,7 @@ class ValidationModel:
         :param accuracy: Acurácia global (fora do escopo, ex. acurácia em outro conjunto).
         :param dataset_validation_scaled: Dados de validação escalados (array 2D).
         :param model: Modelo (RL ou RNA) que possui método .predict().
-        :param type_ml: Tipo de aprendizado, 'Supervised' ou outro.
+        :param type_ml: Tipo de aprendizado, 'RNA' ou outro.
         """
         min_acc_threshold = 0.8
         if accuracy > min_acc_threshold:
@@ -242,7 +243,7 @@ class ValidationModel:
                 accuracy, min_acc_threshold
             )
 
-            if type_ml == 'Supervised':
+            if type_ml == 'RNA':
                 # Ordena pelo timestamp (coluna 0)
                 sort_indices = np.argsort(dataset_validation_scaled[:, 0])
                 dataset_sorted = dataset_validation_scaled[sort_indices]
@@ -312,15 +313,16 @@ class ValidationModel:
                 )
 
                 # Plot dos sensores
-                '''expl = Exploration(df)
+                expl = Exploration(df)
                 expl.plot_sensor(
                     sensor_columns=['P-PDG', 'P-TPT', 'T-TPT', 'P-MON-CKP', 'T-JUS-CKP'],
-                    title=f'[{count}] - {self.event_name} - {self.model_name}',
+                    title=f'[{count}] - {self.event_name} - {self.model_name}_{self.timestep}',
                     additional_labels=additional_labels,
                     model=self.model_name
-                )'''
+                )
 
                 all_dfs.append(df_copy)
+                
 
             # Plota métricas gerais
             self.plot_and_save_metrics(
@@ -340,6 +342,7 @@ class ValidationModel:
 
             # Concatena todos os dataframes para avaliar métricas por well
             df_all = pd.concat(all_dfs, axis=0)
+           # df_all.to_csv('df_all.csv', index=False)
             if 'well' in df_all.columns:
                 well_metrics_df = self.evaluate_metrics_by_well(df_all)
                 self.plot_accuracy_by_well(well_metrics_df)
@@ -439,93 +442,158 @@ class ValidationModel:
         metrics_df = pd.DataFrame(metrics_list)
         logger.info("Métricas calculadas para %d wells.", len(metrics_df))
         return metrics_df
-
+   
     def plot_accuracy_by_well_old(self, metrics_df: pd.DataFrame) -> None:
         """
-        Plota um gráfico de barras com a acurácia (em %) de cada well.
-
-        Args:
-            metrics_df (pd.DataFrame): DataFrame contendo as métricas calculadas para cada well.
+        Plota um gráfico de barras da acurácia por well, com layout melhorado para uso acadêmico.
+        Exibe barras horizontais e anotações (valores) apenas se houver poucas barras.
         """
         if metrics_df.empty:
             logger.error("Nenhum dado de métricas por well para plotar.")
             return
 
-        plt.figure(figsize=(10, 6))
-        # Multiplica a acurácia por 100 para exibir em porcentagem
-        plt.bar(metrics_df['well'], metrics_df['accuracy'] * 100, color='blue')
-        plt.title(f'Acurácia por Well - {self.event_name} - {self.model_name}')
-        plt.xlabel('Well')
-        plt.ylabel('Acurácia (%)')
-        plt.xticks(rotation=45)
-        plt.grid(True, axis='y')
+        # Ordena do maior para o menor
+        metrics_df = metrics_df.sort_values('accuracy', ascending=False)
 
-        images_path = Path('..', '..', 'img', 'metrics')
+        # Configura estilo do Seaborn
+        sns.set_theme(style="whitegrid")
+
+        # Tamanho da figura (largura, altura)
+        fig, ax = plt.subplots(figsize=(8, max(6, 0.3 * len(metrics_df))))
+
+        wells = metrics_df["well"].astype(str)  # garante que seja string
+        accuracies_percent = metrics_df["accuracy"] * 100
+
+        # Cria barras horizontais
+        bars = ax.barh(wells, accuracies_percent, 
+                    color="royalblue", edgecolor="black")
+
+        ax.set_title(
+            f"Acurácia por Well - {self.event_name} - {self.model_name}",
+            fontsize=14, fontweight="bold"
+        )
+        ax.set_xlabel("Acurácia (%)", fontsize=12)
+        ax.set_ylabel("Well", fontsize=12)
+
+        # Inverte eixo Y para que o maior valor apareça no topo
+        ax.invert_yaxis()
+
+        # Se tiver poucos wells, adiciona anotações. Caso contrário, omite para evitar poluição visual
+        max_to_annotate = 30  # limite arbitrário
+        if len(metrics_df) <= max_to_annotate:
+            for i, bar in enumerate(bars):
+                width = bar.get_width()  # valor da barra
+                ax.text(
+                    width + 0.5,    # um pequeno deslocamento à direita da barra
+                    bar.get_y() + bar.get_height()/2,
+                    f"{width:.1f}%", 
+                    ha="left", va="center", 
+                    fontsize=10, color="black"
+                )
+
+        # Ajuste de layout
+        plt.tight_layout()
+
+        # Salvando em arquivo
+        images_path = Path("..", "..", "img", "metrics")
         images_path.mkdir(parents=True, exist_ok=True)
 
-        save_path = images_path / f'Acuracia_por_well_{self.event_name}_{self.model_name}.png'
-        plt.savefig(save_path, dpi=300, bbox_inches='tight')
+        save_path = images_path / f"ACC-WELL_{self.event_name}_{self.model_name}_{self.timestep}.png"
+        plt.savefig(save_path, dpi=300, bbox_inches="tight")
         plt.show()
+
         logger.info("Gráfico de acurácia por well salvo em %s", save_path)
+
 
     def plot_accuracy_by_well(self, metrics_df: pd.DataFrame) -> None:
         """
         Plota um gráfico de barras da acurácia por well, com layout melhorado para uso acadêmico.
+        Exibe barras horizontais e anotações (valores) apenas se houver poucas barras.
+        Em seguida, salva as informações em um arquivo CSV (fazendo append).
         """
         if metrics_df.empty:
             logger.error("Nenhum dado de métricas por well para plotar.")
             return
 
-        sns.set_theme(style="whitegrid")  # "whitegrid" ou "ticks", a gosto
+        # Ordena do maior para o menor
+        metrics_df = metrics_df.sort_values('accuracy', ascending=False)
 
-        fig, ax = plt.subplots(figsize=(6, 4))  # ajuste conforme necessidade
+        # Configura estilo do Seaborn
+        sns.set_theme(style="whitegrid")
 
-        # Multiplica a acurácia por 100 para exibir em porcentagem
+        # Tamanho da figura (largura, altura) - ajusta para melhor visualização
+        fig, ax = plt.subplots(figsize=(8, max(6, 0.3 * len(metrics_df))))
+
+        wells = metrics_df["well"].astype(str)  # garante que seja string
         accuracies_percent = metrics_df["accuracy"] * 100
 
-        # Plota as barras
-        bars = ax.bar(
-            metrics_df["well"], 
-            accuracies_percent, 
-            color="royalblue",  # escolha de cor mais suave
-            edgecolor="black"   # borda para dar contraste
-        )
+        # Cria barras horizontais
+        bars = ax.barh(wells, accuracies_percent,
+                    color="royalblue", edgecolor="black")
 
-        # Título e rótulos
         ax.set_title(
             f"Acurácia por Well - {self.event_name} - {self.model_name}",
-            fontsize=13, fontweight="bold"
+            fontsize=14, fontweight="bold"
         )
-        ax.set_xlabel("Well", fontsize=11)
-        ax.set_ylabel("Acurácia (%)", fontsize=11)
+        ax.set_xlabel("Acurácia (%)", fontsize=12)
+        ax.set_ylabel("Well", fontsize=12)
 
-        # Ajusta limite do eixo Y para dar espaço às anotações
-        ax.set_ylim(0, 110)
+        # Inverte eixo Y para que o maior valor apareça no topo
+        ax.invert_yaxis()
 
-        # Remove linhas superiores e à direita, para visual mais “clean”
-        sns.despine(ax=ax)
+        # Se tiver poucos wells, adiciona anotações (valores)
+        max_to_annotate = 30
+        if len(metrics_df) <= max_to_annotate:
+            for i, bar in enumerate(bars):
+                width = bar.get_width()  # valor da barra
+                ax.text(
+                    width + 0.5,  # deslocamento pequeno à direita
+                    bar.get_y() + bar.get_height() / 2,
+                    f"{width:.1f}%",  # formatação em porcentagem
+                    ha="left", va="center",
+                    fontsize=10, color="black"
+                )
 
-        # Adiciona anotações (valores) no topo de cada barra
-        for bar in bars:
-            height = bar.get_height()
-            ax.annotate(
-                f"{height:.1f}%",              # formatação em porcentagem
-                xy=(bar.get_x() + bar.get_width() / 2, height),
-                xytext=(0, 3),                 # deslocamento vertical
-                textcoords="offset points",
-                ha="center", va="bottom",
-                fontsize=10,
-                color="black"
-            )
-
-        # Ajuste de espaçamento para evitar cortes de labels
         plt.tight_layout()
 
-        # Usando a mesma convenção de pastas do restante do código
-        images_path = Path('..', '..', 'img', 'metrics')
+        # Salvando o gráfico
+        images_path = Path("..", "..", "img", "metrics")
         images_path.mkdir(parents=True, exist_ok=True)
 
-        save_path = images_path / f'Acuracia_por_well_{self.event_name}_{self.model_name}.png'
+        save_path = images_path / f"ACC-WELL_{self.event_name}_{self.model_name}_{self.timestep}.png"
         plt.savefig(save_path, dpi=300, bbox_inches="tight")
         plt.show()
+
         logger.info("Gráfico de acurácia por well salvo em %s", save_path)
+
+        # ------------------------------------------------------------------
+        # Salvar em CSV (fazendo append) as colunas:
+        # ['event_name', 'model_name', 'timestep', 'well', 'accuracy']
+        # ------------------------------------------------------------------
+        # Cria DataFrame com as colunas desejadas
+        # Aqui, assumimos que self.timestamp existe (ou você pode criar).
+        # Caso não exista, pode usar datetime.now() ou outra forma de obter "timestep".
+        df_to_save = pd.DataFrame({
+            'event_name': [self.event_name] * len(metrics_df),
+            'model_name': [self.model_name] * len(metrics_df),
+            'timestep': [self.timestep] * len(metrics_df),
+            'well': metrics_df['well'].values,
+            'accuracy': metrics_df['accuracy'].values
+        })
+
+        # Caminho para o CSV
+        csv_path = Path("..", "..", "metrics", "acc_by_well.csv")
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
+
+        # Verifica se o arquivo já existe
+        file_exists = csv_path.is_file()
+
+        # Salva no modo append
+        df_to_save.to_csv(
+            csv_path,
+            mode='a',           # append
+            index=False,
+            header=not file_exists  # só escreve o cabeçalho se o arquivo não existir
+        )
+
+        logger.info("Métricas (well) salvas/atualizadas em %s", csv_path)

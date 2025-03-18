@@ -238,6 +238,7 @@ class Exploration:
             bbox_to_anchor=(1.45, 0.83), bbox_transform=plt.gcf().transFigure
         )
         
+        # title=f'[{count}] - {self.event_name} - {self.model_name}_{self.timestep}',
         folder_parts = title.split(" - ")
         folder = f"{folder_parts[1]} - {folder_parts[2]}" if len(folder_parts) >= 3 else title
         directory = os.path.join("..", "..", "img", folder)
