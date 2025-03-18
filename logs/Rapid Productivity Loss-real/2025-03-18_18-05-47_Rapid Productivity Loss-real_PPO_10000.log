@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 06:05:47 PM - Iniciando execução do algoritmo PPO-real para o evento Rapid Productivity Loss com 10000 timesteps
+[INFO]	18/03/2025 06:05:47 PM - Iniciando treinamento do algoritmo PPO com 10000 timesteps
+[INFO]	18/03/2025 06:06:04 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-real\PPO\_PPO
+[INFO]	18/03/2025 06:06:04 PM - Tempo de Treinamento PPO: 16.57s
+[INFO]	18/03/2025 06:06:04 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 06:06:04 PM - Avaliando o modelo PPO em ..\models\Rapid Productivity Loss-real\PPO com 1 episódios.
+[INFO]	18/03/2025 06:06:26 PM - Average accuracy for PPO: 0.6878223620945887
+[INFO]	18/03/2025 06:06:26 PM - Acurácia: 0.68782 com 10000 timesteps
+[INFO]	18/03/2025 06:06:26 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 06:06:26 PM - ValidationModel criado para o modelo 'PPO' e evento 'Rapid Productivity Loss'.
+[INFO]	18/03/2025 06:06:26 PM - Acurácia=0.688 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 06:06:26 PM - Concluído a execução do algoritmo PPO-real para o evento Rapid Productivity Loss

@@ -1,0 +1,42 @@
+[INFO]	18/03/2025 05:53:23 PM - Iniciando execução do algoritmo DQN-real para o evento Rapid Productivity Loss com 100000 timesteps
+[INFO]	18/03/2025 05:53:23 PM - Iniciando treinamento do algoritmo DQN com 100000 timesteps
+[INFO]	18/03/2025 05:54:48 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-real\DQN\_DQN
+[INFO]	18/03/2025 05:54:48 PM - Replay buffer salvo em ..\models\Rapid Productivity Loss-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 05:54:48 PM - Tempo de Treinamento DQN: 84.38s
+[INFO]	18/03/2025 05:54:48 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 05:54:48 PM - Avaliando o modelo DQN em ..\models\Rapid Productivity Loss-real\DQN com 1 episódios.
+[INFO]	18/03/2025 05:54:58 PM - Average accuracy for DQN: 0.8569149401171431
+[INFO]	18/03/2025 05:54:58 PM - Acurácia: 0.85691 com 100000 timesteps
+[INFO]	18/03/2025 05:54:58 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 05:54:58 PM - ValidationModel criado para o modelo 'DQN' e evento 'Rapid Productivity Loss'.
+[INFO]	18/03/2025 05:54:58 PM - Iniciando validação individual. Acurácia=0.857 > 0.80
+[INFO]	18/03/2025 05:54:59 PM - Separados 7 grupos de instâncias para validação.
+[INFO]	18/03/2025 05:54:59 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:00 PM - Instância 1: Acurácia=98.909%, TN=2.480%, TP=96.428%
+[INFO]	18/03/2025 05:55:00 PM - Instância 1: Precision=1.000, Recall=0.989, F1=0.994.
+[INFO]	18/03/2025 05:55:03 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:05 PM - Instância 2: Acurácia=86.783%, TN=13.863%, TP=72.919%
+[INFO]	18/03/2025 05:55:05 PM - Instância 2: Precision=0.969, Recall=0.870, F1=0.917.
+[INFO]	18/03/2025 05:55:12 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:13 PM - Instância 3: Acurácia=74.851%, TN=44.278%, TP=30.573%
+[INFO]	18/03/2025 05:55:13 PM - Instância 3: Precision=0.982, Recall=0.554, F1=0.709.
+[INFO]	18/03/2025 05:55:32 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:33 PM - Instância 4: Acurácia=99.210%, TN=83.701%, TP=15.509%
+[INFO]	18/03/2025 05:55:33 PM - Instância 4: Precision=1.000, Recall=0.952, F1=0.975.
+[INFO]	18/03/2025 05:55:35 PM - Predição da 5ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:35 PM - Instância 5: Acurácia=97.361%, TN=48.094%, TP=49.267%
+[INFO]	18/03/2025 05:55:35 PM - Instância 5: Precision=1.000, Recall=0.949, F1=0.974.
+[INFO]	18/03/2025 05:55:36 PM - Predição da 6ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:36 PM - Instância 6: Acurácia=91.648%, TN=18.059%, TP=73.589%
+[INFO]	18/03/2025 05:55:36 PM - Instância 6: Precision=1.000, Recall=0.898, F1=0.946.
+[INFO]	18/03/2025 05:55:38 PM - Predição da 7ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:55:38 PM - Instância 7: Acurácia=98.288%, TN=11.473%, TP=86.815%
+[INFO]	18/03/2025 05:55:38 PM - Instância 7: Precision=1.000, Recall=0.981, F1=0.990.
+[INFO]	18/03/2025 05:55:40 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Rapid Productivity Loss_DQN.png
+[INFO]	18/03/2025 05:55:40 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Rapid Productivity Loss_DQN.txt
+[INFO]	18/03/2025 05:55:40 PM - Acurácia final: 92.436% no conjunto de dados de validação
+[INFO]	18/03/2025 05:55:40 PM - Precision=0.993, Recall=0.885, F1=0.929
+[INFO]	18/03/2025 05:55:40 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 05:55:40 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Rapid Productivity Loss_DQN_100000.png
+[INFO]	18/03/2025 05:55:40 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 05:55:40 PM - Concluído a execução do algoritmo DQN-real para o evento Rapid Productivity Loss

@@ -1,0 +1,42 @@
+[INFO]	18/03/2025 03:59:31 PM - Iniciando execução do algoritmo DQN-real para o evento Severe Slugging com 1000 timesteps
+[INFO]	18/03/2025 03:59:31 PM - Iniciando treinamento do algoritmo DQN com 1000 timesteps
+[INFO]	18/03/2025 03:59:31 PM - Modelo final salvo em ..\models\Severe Slugging-real\DQN\_DQN
+[INFO]	18/03/2025 03:59:31 PM - Replay buffer salvo em ..\models\Severe Slugging-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 03:59:31 PM - Tempo de Treinamento DQN: 0.06s
+[INFO]	18/03/2025 03:59:31 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 03:59:31 PM - Avaliando o modelo DQN em ..\models\Severe Slugging-real\DQN com 1 episódios.
+[INFO]	18/03/2025 03:59:41 PM - Average accuracy for DQN: 0.9510581777879422
+[INFO]	18/03/2025 03:59:41 PM - Acurácia: 0.95106 com 1000 timesteps
+[INFO]	18/03/2025 03:59:41 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 03:59:41 PM - ValidationModel criado para o modelo 'DQN' e evento 'Severe Slugging'.
+[INFO]	18/03/2025 03:59:41 PM - Iniciando validação individual. Acurácia=0.951 > 0.80
+[INFO]	18/03/2025 03:59:42 PM - Separados 7 grupos de instâncias para validação.
+[INFO]	18/03/2025 03:59:42 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:42 PM - Instância 1: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:42 PM - Instância 1: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:43 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:43 PM - Instância 2: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:43 PM - Instância 2: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:44 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:45 PM - Instância 3: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:45 PM - Instância 3: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:46 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:47 PM - Instância 4: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:47 PM - Instância 4: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:48 PM - Predição da 5ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:50 PM - Instância 5: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:50 PM - Instância 5: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:52 PM - Predição da 6ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:53 PM - Instância 6: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:53 PM - Instância 6: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:55 PM - Predição da 7ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 03:59:56 PM - Instância 7: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 03:59:56 PM - Instância 7: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 03:59:57 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Severe Slugging_DQN.png
+[INFO]	18/03/2025 03:59:57 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Severe Slugging_DQN.txt
+[INFO]	18/03/2025 03:59:57 PM - Acurácia final: 100.000% no conjunto de dados de validação
+[INFO]	18/03/2025 03:59:57 PM - Precision=1.000, Recall=1.000, F1=1.000
+[INFO]	18/03/2025 03:59:57 PM - Métricas calculadas para 2 wells.
+[INFO]	18/03/2025 03:59:57 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Severe Slugging_DQN_1000.png
+[INFO]	18/03/2025 03:59:57 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 03:59:57 PM - Concluído a execução do algoritmo DQN-real para o evento Severe Slugging

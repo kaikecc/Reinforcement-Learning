@@ -1,0 +1,33 @@
+[INFO]	18/03/2025 06:31:45 PM - Iniciando execução do algoritmo DQN-real para o evento Quick Restriction in PCK com 100000 timesteps
+[INFO]	18/03/2025 06:31:45 PM - Iniciando treinamento do algoritmo DQN com 100000 timesteps
+[INFO]	18/03/2025 06:33:38 PM - Modelo final salvo em ..\models\Quick Restriction in PCK-real\DQN\_DQN
+[INFO]	18/03/2025 06:33:38 PM - Replay buffer salvo em ..\models\Quick Restriction in PCK-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 06:33:38 PM - Tempo de Treinamento DQN: 113.33s
+[INFO]	18/03/2025 06:33:38 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 06:33:38 PM - Avaliando o modelo DQN em ..\models\Quick Restriction in PCK-real\DQN com 1 episódios.
+[INFO]	18/03/2025 06:33:41 PM - Average accuracy for DQN: 0.8658382856113812
+[INFO]	18/03/2025 06:33:41 PM - Acurácia: 0.86584 com 100000 timesteps
+[INFO]	18/03/2025 06:33:41 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 06:33:41 PM - ValidationModel criado para o modelo 'DQN' e evento 'Quick Restriction in PCK'.
+[INFO]	18/03/2025 06:33:41 PM - Iniciando validação individual. Acurácia=0.866 > 0.80
+[INFO]	18/03/2025 06:33:41 PM - Separados 4 grupos de instâncias para validação.
+[INFO]	18/03/2025 06:33:41 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 06:33:41 PM - Instância 1: Acurácia=94.067%, TN=63.011%, TP=31.056%
+[INFO]	18/03/2025 06:33:41 PM - Instância 1: Precision=1.000, Recall=0.840, F1=0.913.
+[INFO]	18/03/2025 06:33:44 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 06:33:44 PM - Instância 2: Acurácia=97.628%, TN=89.325%, TP=8.303%
+[INFO]	18/03/2025 06:33:44 PM - Instância 2: Precision=1.000, Recall=0.778, F1=0.875.
+[INFO]	18/03/2025 06:33:46 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 06:33:46 PM - Instância 3: Acurácia=92.404%, TN=46.578%, TP=45.826%
+[INFO]	18/03/2025 06:33:46 PM - Instância 3: Precision=1.000, Recall=0.858, F1=0.923.
+[INFO]	18/03/2025 06:33:48 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 06:33:48 PM - Instância 4: Acurácia=72.515%, TN=72.515%, TP=0.000%
+[INFO]	18/03/2025 06:33:48 PM - Instância 4: Precision=0.000, Recall=0.000, F1=0.000.
+[INFO]	18/03/2025 06:33:51 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Quick Restriction in PCK_DQN.png
+[INFO]	18/03/2025 06:33:51 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Quick Restriction in PCK_DQN.txt
+[INFO]	18/03/2025 06:33:51 PM - Acurácia final: 89.154% no conjunto de dados de validação
+[INFO]	18/03/2025 06:33:51 PM - Precision=0.750, Recall=0.619, F1=0.678
+[INFO]	18/03/2025 06:33:51 PM - Métricas calculadas para 2 wells.
+[INFO]	18/03/2025 06:33:52 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Quick Restriction in PCK_DQN_100000.png
+[INFO]	18/03/2025 06:33:52 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 06:33:52 PM - Concluído a execução do algoritmo DQN-real para o evento Quick Restriction in PCK

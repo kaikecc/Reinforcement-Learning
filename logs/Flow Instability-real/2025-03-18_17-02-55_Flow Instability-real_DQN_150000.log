@@ -1,0 +1,99 @@
+[INFO]	18/03/2025 05:02:55 PM - Iniciando execução do algoritmo DQN-real para o evento Flow Instability com 150000 timesteps
+[INFO]	18/03/2025 05:02:55 PM - Iniciando treinamento do algoritmo DQN com 150000 timesteps
+[INFO]	18/03/2025 05:05:08 PM - Modelo final salvo em ..\models\Flow Instability-real\DQN\_DQN
+[INFO]	18/03/2025 05:05:08 PM - Replay buffer salvo em ..\models\Flow Instability-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 05:05:08 PM - Tempo de Treinamento DQN: 132.82s
+[INFO]	18/03/2025 05:05:08 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 05:05:08 PM - Avaliando o modelo DQN em ..\models\Flow Instability-real\DQN com 1 episódios.
+[INFO]	18/03/2025 05:06:07 PM - Average accuracy for DQN: 0.9505582720595707
+[INFO]	18/03/2025 05:06:07 PM - Acurácia: 0.95056 com 150000 timesteps
+[INFO]	18/03/2025 05:06:07 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 05:06:07 PM - ValidationModel criado para o modelo 'DQN' e evento 'Flow Instability'.
+[INFO]	18/03/2025 05:06:07 PM - Iniciando validação individual. Acurácia=0.951 > 0.80
+[INFO]	18/03/2025 05:06:10 PM - Separados 26 grupos de instâncias para validação.
+[INFO]	18/03/2025 05:06:10 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:10 PM - Instância 1: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:10 PM - Instância 1: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:12 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:12 PM - Instância 2: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:12 PM - Instância 2: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:14 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:15 PM - Instância 3: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:15 PM - Instância 3: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:17 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:17 PM - Instância 4: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:17 PM - Instância 4: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:18 PM - Predição da 5ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:19 PM - Instância 5: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:19 PM - Instância 5: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:20 PM - Predição da 6ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:20 PM - Instância 6: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:20 PM - Instância 6: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:21 PM - Predição da 7ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:26 PM - Instância 7: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:26 PM - Instância 7: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:30 PM - Predição da 8ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:32 PM - Instância 8: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:32 PM - Instância 8: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:35 PM - Predição da 9ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:37 PM - Instância 9: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:37 PM - Instância 9: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:40 PM - Predição da 10ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:42 PM - Instância 10: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:42 PM - Instância 10: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:44 PM - Predição da 11ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:46 PM - Instância 11: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:46 PM - Instância 11: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:49 PM - Predição da 12ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:49 PM - Instância 12: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:49 PM - Instância 12: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:50 PM - Predição da 13ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:50 PM - Instância 13: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:50 PM - Instância 13: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:51 PM - Predição da 14ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:52 PM - Instância 14: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:52 PM - Instância 14: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:53 PM - Predição da 15ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:54 PM - Instância 15: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:54 PM - Instância 15: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:56 PM - Predição da 16ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:56 PM - Instância 16: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:56 PM - Instância 16: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:57 PM - Predição da 17ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:06:58 PM - Instância 17: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:06:58 PM - Instância 17: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:06:59 PM - Predição da 18ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:00 PM - Instância 18: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:00 PM - Instância 18: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:02 PM - Predição da 19ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:02 PM - Instância 19: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:02 PM - Instância 19: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:03 PM - Predição da 20ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:06 PM - Instância 20: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:06 PM - Instância 20: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:08 PM - Predição da 21ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:09 PM - Instância 21: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:09 PM - Instância 21: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:10 PM - Predição da 22ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:11 PM - Instância 22: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:11 PM - Instância 22: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:13 PM - Predição da 23ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:13 PM - Instância 23: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:13 PM - Instância 23: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:14 PM - Predição da 24ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:15 PM - Instância 24: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:15 PM - Instância 24: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:16 PM - Predição da 25ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:17 PM - Instância 25: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:17 PM - Instância 25: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:19 PM - Predição da 26ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 05:07:25 PM - Instância 26: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:07:25 PM - Instância 26: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:07:31 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Flow Instability_DQN.png
+[INFO]	18/03/2025 05:07:31 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Flow Instability_DQN.txt
+[INFO]	18/03/2025 05:07:31 PM - Acurácia final: 100.000% no conjunto de dados de validação
+[INFO]	18/03/2025 05:07:31 PM - Precision=1.000, Recall=1.000, F1=1.000
+[INFO]	18/03/2025 05:07:31 PM - Métricas calculadas para 7 wells.
+[INFO]	18/03/2025 05:07:31 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Flow Instability_DQN_150000.png
+[INFO]	18/03/2025 05:07:31 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 05:07:31 PM - Concluído a execução do algoritmo DQN-real para o evento Flow Instability

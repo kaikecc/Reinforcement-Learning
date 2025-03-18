@@ -60,7 +60,7 @@ class Env3WGym(gym.Env):
         Calcula a recompensa com base na ação tomada e no valor do rótulo.
         """
         if class_value == 0:
-            return 0.01 if action == 0 else -1.0
+            return 0.0 if action == 0 else -1.0
         elif 1 <= class_value < 10:
             return -1.0 if action == 0 else 1.0
         elif 101 <= class_value < 110:

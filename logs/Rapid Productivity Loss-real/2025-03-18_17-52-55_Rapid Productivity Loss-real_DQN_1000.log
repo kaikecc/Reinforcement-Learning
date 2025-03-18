@@ -1,0 +1,13 @@
+[INFO]	18/03/2025 05:52:55 PM - Iniciando execução do algoritmo DQN-real para o evento Rapid Productivity Loss com 1000 timesteps
+[INFO]	18/03/2025 05:52:55 PM - Iniciando treinamento do algoritmo DQN com 1000 timesteps
+[INFO]	18/03/2025 05:52:55 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-real\DQN\_DQN
+[INFO]	18/03/2025 05:52:55 PM - Replay buffer salvo em ..\models\Rapid Productivity Loss-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 05:52:55 PM - Tempo de Treinamento DQN: 0.06s
+[INFO]	18/03/2025 05:52:55 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 05:52:55 PM - Avaliando o modelo DQN em ..\models\Rapid Productivity Loss-real\DQN com 1 episódios.
+[INFO]	18/03/2025 05:53:06 PM - Average accuracy for DQN: 0.696236559139785
+[INFO]	18/03/2025 05:53:06 PM - Acurácia: 0.69624 com 1000 timesteps
+[INFO]	18/03/2025 05:53:06 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 05:53:06 PM - ValidationModel criado para o modelo 'DQN' e evento 'Rapid Productivity Loss'.
+[INFO]	18/03/2025 05:53:06 PM - Acurácia=0.696 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 05:53:06 PM - Concluído a execução do algoritmo DQN-real para o evento Rapid Productivity Loss

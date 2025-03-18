@@ -18,7 +18,7 @@ logger = logging.getLogger("global_logger")
 
 
 # Constantes usadas na avaliação
-REWARD_THRESHOLDS: List[float] = [0.01, 0.1, 1.0, -1.0, -0.1]
+REWARD_THRESHOLDS: List[float] = [0.0, 0.1, 1.0, -1.0, -0.1]
 ATOL: float = 1e-6
 
 
@@ -150,12 +150,14 @@ class Agent:
             logger.error(f"Error launching TensorBoard: {e}")
 
     def _update_confusion_matrix(self, reward: float, counters: Dict[str, int]) -> None:
+        """Atualiza a matriz de confusão SEM penalizar FP e FN juntos."""
         if np.isclose(reward, REWARD_THRESHOLDS[0], atol=ATOL):
             counters['TN'] += 1
         elif np.isclose(reward, REWARD_THRESHOLDS[1], atol=ATOL) or np.isclose(reward, REWARD_THRESHOLDS[2], atol=ATOL):
             counters['TP'] += 1
-        elif np.isclose(reward, REWARD_THRESHOLDS[3], atol=ATOL) or np.isclose(reward, REWARD_THRESHOLDS[4], atol=ATOL):
+        elif np.isclose(reward, REWARD_THRESHOLDS[3], atol=ATOL):
             counters['FP'] += 1
+        elif np.isclose(reward, REWARD_THRESHOLDS[4], atol=ATOL):
             counters['FN'] += 1
 
     def _evaluate_model(self, model: Any, n_eval_episodes: int, alg_name: str) -> float:
@@ -173,7 +175,7 @@ class Agent:
             obs = self.envs_eval.reset()
             dones = np.array([False] * self.n_envs_eval)
             while not dones.all():
-                action, _ = model.predict(obs, deterministic=True)
+                action, _ = model.predict(obs, deterministic=False)
                 obs, rewards, dones, _ = self.envs_eval.step(action)
                 for reward in rewards:
                     self._update_confusion_matrix(reward, counters)
@@ -188,38 +190,35 @@ class Agent:
         return avg_accuracy
 
     def env3W_dqn(self, path_save: str) -> Tuple[Any, str]:
-        """
-        Treina um agente DQN.
-        """
         replaydir = os.path.join(path_save, 'replay_buffer')
         os.makedirs(replaydir, exist_ok=True)
         model = DQN(
-            MlpPolicy,
-            self.envs_train,
-            learning_rate=1e-3,
-            buffer_size=10000,
-            learning_starts=1000,
-            batch_size=32,
-            tau=1.0,
-            gamma=0.99,
-            train_freq=1,
-            gradient_steps=1,
-            target_update_interval=1000,
-            exploration_fraction=0.1,
-            exploration_initial_eps=1.0,
-            exploration_final_eps=0.01,
-            max_grad_norm=10,
-            verbose=0,
-            tensorboard_log=self.logdir,
-            device='auto'
-        )
+                MlpPolicy,
+                self.envs_train,
+                learning_rate=1e-3,              # Alterado para igualar o PPO
+                buffer_size=50000,
+                learning_starts=1000,
+                batch_size=32,
+                tau=1.0,
+                gamma=0.99,
+                train_freq=1,
+                gradient_steps=1,
+                target_update_interval=500,
+                exploration_fraction=0.2,
+                exploration_initial_eps=1.0,
+                exploration_final_eps=0.1,
+                max_grad_norm=10,
+                verbose=0,
+                tensorboard_log=self.logdir,
+                device='auto'
+            )
 
         final_model_path = os.path.join(path_save, '_DQN')
         top_score = [None]
         tensorboard_callback = TensorboardCallback(model=model, 
-                                                   referencia_top_score=top_score, 
-                                                   caminho_salvar_modelo=final_model_path, 
-                                                   verbose=0)
+                                                referencia_top_score=top_score, 
+                                                caminho_salvar_modelo=final_model_path, 
+                                                verbose=0)
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
 
         model.learn(total_timesteps=self.TIMESTEPS, log_interval=4, reset_num_timesteps=True,
@@ -238,9 +237,20 @@ class Agent:
     def env3W_ppo(self, path_save: str) -> Any:
         checkpoint_dir = os.path.join(path_save, 'ppo_checkpoints')
         os.makedirs(checkpoint_dir, exist_ok=True)
-        model = PPO('MlpPolicy', self.envs_train, verbose=0, learning_rate=1e-3, n_steps=128, 
-                    batch_size=32, n_epochs=10, gamma=0.99, gae_lambda=0.95, clip_range=0.2, 
-                    ent_coef=0.0, tensorboard_log=self.logdir)
+        model = PPO(
+                'MlpPolicy',
+                self.envs_train,
+                verbose=0,
+                learning_rate=1e-3,              # Mesma taxa de aprendizado do DQN
+                n_steps=128,
+                batch_size=32,                   # Igual ao DQN
+                n_epochs=10,
+                gamma=0.99,                      # Mesmo valor de desconto
+                gae_lambda=0.95,
+                clip_range=0.2,
+                ent_coef=0.0,
+                tensorboard_log=self.logdir
+            )
         checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir, name_prefix='PPO')
         final_model_path = os.path.join(path_save, '_PPO')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)

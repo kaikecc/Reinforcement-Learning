@@ -1,0 +1,41 @@
+[INFO]	18/03/2025 06:10:21 PM - Iniciando execução do algoritmo PPO-real para o evento Rapid Productivity Loss com 150000 timesteps
+[INFO]	18/03/2025 06:10:21 PM - Iniciando treinamento do algoritmo PPO com 150000 timesteps
+[INFO]	18/03/2025 06:15:25 PM - Modelo final salvo em ..\models\Rapid Productivity Loss-real\PPO\_PPO
+[INFO]	18/03/2025 06:15:25 PM - Tempo de Treinamento PPO: 304.34s
+[INFO]	18/03/2025 06:15:25 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 06:15:25 PM - Avaliando o modelo PPO em ..\models\Rapid Productivity Loss-real\PPO com 1 episódios.
+[INFO]	18/03/2025 06:15:47 PM - Average accuracy for PPO: 0.8182096337092403
+[INFO]	18/03/2025 06:15:47 PM - Acurácia: 0.81821 com 150000 timesteps
+[INFO]	18/03/2025 06:15:47 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 06:15:47 PM - ValidationModel criado para o modelo 'PPO' e evento 'Rapid Productivity Loss'.
+[INFO]	18/03/2025 06:15:47 PM - Iniciando validação individual. Acurácia=0.818 > 0.80
+[INFO]	18/03/2025 06:15:48 PM - Separados 7 grupos de instâncias para validação.
+[INFO]	18/03/2025 06:15:48 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:15:51 PM - Instância 1: Acurácia=97.520%, TN=0.000%, TP=97.520%
+[INFO]	18/03/2025 06:15:51 PM - Instância 1: Precision=0.975, Recall=1.000, F1=0.987.
+[INFO]	18/03/2025 06:15:54 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:15:57 PM - Instância 2: Acurácia=74.538%, TN=13.616%, TP=60.922%
+[INFO]	18/03/2025 06:15:57 PM - Instância 2: Precision=0.959, Recall=0.727, F1=0.827.
+[INFO]	18/03/2025 06:16:08 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:16:11 PM - Instância 3: Acurácia=62.631%, TN=44.831%, TP=17.799%
+[INFO]	18/03/2025 06:16:11 PM - Instância 3: Precision=1.000, Recall=0.323, F1=0.488.
+[INFO]	18/03/2025 06:16:29 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:16:30 PM - Instância 4: Acurácia=99.623%, TN=83.450%, TP=16.173%
+[INFO]	18/03/2025 06:16:30 PM - Instância 4: Precision=0.985, Recall=0.992, F1=0.988.
+[INFO]	18/03/2025 06:16:32 PM - Predição da 5ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:16:32 PM - Instância 5: Acurácia=89.736%, TN=48.094%, TP=41.642%
+[INFO]	18/03/2025 06:16:32 PM - Instância 5: Precision=1.000, Recall=0.802, F1=0.890.
+[INFO]	18/03/2025 06:16:34 PM - Predição da 6ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:16:34 PM - Instância 6: Acurácia=83.973%, TN=18.059%, TP=65.914%
+[INFO]	18/03/2025 06:16:34 PM - Instância 6: Precision=1.000, Recall=0.804, F1=0.892.
+[INFO]	18/03/2025 06:16:36 PM - Predição da 7ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:16:36 PM - Instância 7: Acurácia=95.976%, TN=11.473%, TP=84.503%
+[INFO]	18/03/2025 06:16:36 PM - Instância 7: Precision=1.000, Recall=0.955, F1=0.977.
+[INFO]	18/03/2025 06:16:38 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Rapid Productivity Loss_PPO.png
+[INFO]	18/03/2025 06:16:38 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Rapid Productivity Loss_PPO.txt
+[INFO]	18/03/2025 06:16:38 PM - Acurácia final: 86.285% no conjunto de dados de validação
+[INFO]	18/03/2025 06:16:38 PM - Precision=0.988, Recall=0.800, F1=0.864
+[INFO]	18/03/2025 06:16:38 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 06:16:39 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Rapid Productivity Loss_PPO_150000.png
+[INFO]	18/03/2025 06:16:39 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 06:16:39 PM - Concluído a execução do algoritmo PPO-real para o evento Rapid Productivity Loss

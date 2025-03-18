@@ -1,0 +1,13 @@
+[INFO]	18/03/2025 04:55:44 PM - Iniciando execução do algoritmo DQN-real para o evento Flow Instability com 1000 timesteps
+[INFO]	18/03/2025 04:55:44 PM - Iniciando treinamento do algoritmo DQN com 1000 timesteps
+[INFO]	18/03/2025 04:55:44 PM - Modelo final salvo em ..\models\Flow Instability-real\DQN\_DQN
+[INFO]	18/03/2025 04:55:44 PM - Replay buffer salvo em ..\models\Flow Instability-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 04:55:44 PM - Tempo de Treinamento DQN: 0.06s
+[INFO]	18/03/2025 04:55:44 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 04:55:44 PM - Avaliando o modelo DQN em ..\models\Flow Instability-real\DQN com 1 episódios.
+[INFO]	18/03/2025 04:56:46 PM - Average accuracy for DQN: 0.6780353375848992
+[INFO]	18/03/2025 04:56:46 PM - Acurácia: 0.67804 com 1000 timesteps
+[INFO]	18/03/2025 04:56:46 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 04:56:46 PM - ValidationModel criado para o modelo 'DQN' e evento 'Flow Instability'.
+[INFO]	18/03/2025 04:56:46 PM - Acurácia=0.678 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 04:56:46 PM - Concluído a execução do algoritmo DQN-real para o evento Flow Instability

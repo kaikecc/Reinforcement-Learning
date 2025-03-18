@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 03:43:24 PM - Iniciando execução do algoritmo PPO-real para o evento Spurious Closure of DHSV com 1000 timesteps
+[INFO]	18/03/2025 03:43:24 PM - Iniciando treinamento do algoritmo PPO com 1000 timesteps
+[INFO]	18/03/2025 03:43:26 PM - Modelo final salvo em ..\models\Spurious Closure of DHSV-real\PPO\_PPO
+[INFO]	18/03/2025 03:43:26 PM - Tempo de Treinamento PPO: 1.81s
+[INFO]	18/03/2025 03:43:26 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 03:43:26 PM - Avaliando o modelo PPO em ..\models\Spurious Closure of DHSV-real\PPO com 1 episódios.
+[INFO]	18/03/2025 03:43:27 PM - Average accuracy for PPO: 0.6588327457892675
+[INFO]	18/03/2025 03:43:27 PM - Acurácia: 0.65883 com 1000 timesteps
+[INFO]	18/03/2025 03:43:27 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 03:43:27 PM - ValidationModel criado para o modelo 'PPO' e evento 'Spurious Closure of DHSV'.
+[INFO]	18/03/2025 03:43:27 PM - Acurácia=0.659 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 03:43:27 PM - Concluído a execução do algoritmo PPO-real para o evento Spurious Closure of DHSV

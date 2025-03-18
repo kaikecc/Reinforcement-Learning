@@ -1,0 +1,35 @@
+[INFO]	18/03/2025 07:15:14 PM - Iniciando execução do algoritmo PPO-real para o evento Scaling in PCK com 150000 timesteps
+[INFO]	18/03/2025 07:15:14 PM - Iniciando treinamento do algoritmo PPO com 150000 timesteps
+[INFO]	18/03/2025 07:19:17 PM - Modelo final salvo em ..\models\Scaling in PCK-real\PPO\_PPO
+[INFO]	18/03/2025 07:19:17 PM - Tempo de Treinamento PPO: 243.11s
+[INFO]	18/03/2025 07:19:17 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 07:19:17 PM - Avaliando o modelo PPO em ..\models\Scaling in PCK-real\PPO com 1 episódios.
+[INFO]	18/03/2025 07:19:36 PM - Average accuracy for PPO: 0.8292571775786116
+[INFO]	18/03/2025 07:19:36 PM - Acurácia: 0.82926 com 150000 timesteps
+[INFO]	18/03/2025 07:19:36 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 07:19:36 PM - ValidationModel criado para o modelo 'PPO' e evento 'Scaling in PCK'.
+[INFO]	18/03/2025 07:19:36 PM - Iniciando validação individual. Acurácia=0.829 > 0.80
+[INFO]	18/03/2025 07:19:36 PM - Separados 5 grupos de instâncias para validação.
+[INFO]	18/03/2025 07:19:36 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 07:19:38 PM - Instância 1: Acurácia=88.518%, TN=45.872%, TP=42.646%
+[INFO]	18/03/2025 07:19:38 PM - Instância 1: Precision=1.000, Recall=0.788, F1=0.881.
+[INFO]	18/03/2025 07:19:40 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 07:19:41 PM - Instância 2: Acurácia=40.518%, TN=40.518%, TP=0.000%
+[INFO]	18/03/2025 07:19:41 PM - Instância 2: Precision=0.000, Recall=0.000, F1=0.000.
+[INFO]	18/03/2025 07:19:43 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 07:19:46 PM - Instância 3: Acurácia=93.168%, TN=32.375%, TP=60.793%
+[INFO]	18/03/2025 07:19:46 PM - Instância 3: Precision=1.000, Recall=0.899, F1=0.947.
+[INFO]	18/03/2025 07:19:48 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 07:19:51 PM - Instância 4: Acurácia=89.074%, TN=0.000%, TP=89.074%
+[INFO]	18/03/2025 07:19:51 PM - Instância 4: Precision=0.891, Recall=1.000, F1=0.942.
+[INFO]	18/03/2025 07:19:52 PM - Predição da 5ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 07:19:53 PM - Instância 5: Acurácia=60.123%, TN=60.123%, TP=0.000%
+[INFO]	18/03/2025 07:19:53 PM - Instância 5: Precision=0.000, Recall=0.000, F1=0.000.
+[INFO]	18/03/2025 07:19:55 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Scaling in PCK_PPO.png
+[INFO]	18/03/2025 07:19:55 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Scaling in PCK_PPO.txt
+[INFO]	18/03/2025 07:19:55 PM - Acurácia final: 74.280% no conjunto de dados de validação
+[INFO]	18/03/2025 07:19:55 PM - Precision=0.578, Recall=0.537, F1=0.554
+[INFO]	18/03/2025 07:19:55 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 07:19:55 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Scaling in PCK_PPO_150000.png
+[INFO]	18/03/2025 07:19:55 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 07:19:55 PM - Concluído a execução do algoritmo PPO-real para o evento Scaling in PCK

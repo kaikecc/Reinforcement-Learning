@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 04:35:01 PM - Iniciando execução do algoritmo PPO-real para o evento Severe Slugging com 1000 timesteps
+[INFO]	18/03/2025 04:35:01 PM - Iniciando treinamento do algoritmo PPO com 1000 timesteps
+[INFO]	18/03/2025 04:35:02 PM - Modelo final salvo em ..\models\Severe Slugging-real\PPO\_PPO
+[INFO]	18/03/2025 04:35:02 PM - Tempo de Treinamento PPO: 1.85s
+[INFO]	18/03/2025 04:35:02 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 04:35:02 PM - Avaliando o modelo PPO em ..\models\Severe Slugging-real\PPO com 1 episódios.
+[INFO]	18/03/2025 04:35:28 PM - Average accuracy for PPO: 0.6680681878155622
+[INFO]	18/03/2025 04:35:28 PM - Acurácia: 0.66807 com 1000 timesteps
+[INFO]	18/03/2025 04:35:28 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 04:35:28 PM - ValidationModel criado para o modelo 'PPO' e evento 'Severe Slugging'.
+[INFO]	18/03/2025 04:35:28 PM - Acurácia=0.668 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 04:35:28 PM - Concluído a execução do algoritmo PPO-real para o evento Severe Slugging

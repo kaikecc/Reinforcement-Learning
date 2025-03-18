@@ -326,7 +326,7 @@ class ValidationModel:
 
             # Plota métricas gerais
             self.plot_and_save_metrics(
-                len(datasets), accuracy_vals, test_acc_vals, TN_vals, TP_vals
+                len(datasets), accuracy_vals, test_acc_vals, TN_vals, TP_vals, self.timestep
             )
 
             final_validation_accuracy = (sum(acc_total) / len(acc_total)) * 100
@@ -360,7 +360,8 @@ class ValidationModel:
         accuracy_values: List[float],
         acc_values: List[float],
         TN_values: List[float],
-        TP_values: List[float]
+        TP_values: List[float],
+        timestep: int
     ) -> None:
         """
         Plota e salva as métricas de acurácia por instância de validação.
@@ -370,6 +371,7 @@ class ValidationModel:
         :param acc_values: Lista de acurácias "globais" (teste) (em %), se aplicável.
         :param TN_values: Lista de taxas de TN (em %).
         :param TP_values: Lista de taxas de TP (em %).
+        :param timestep: Valor de timestep (int) para registro.
         """
         fig, ax = plt.subplots(figsize=(10, 6))
         count_iterations = list(range(1, num_datasets + 1))
@@ -395,18 +397,33 @@ class ValidationModel:
 
         # Salva figura
         fig_save_path = images_path / f"Métricas_{self.event_name}_{self.model_name}.png"
-        plt.savefig(fig_save_path)
+        plt.savefig(fig_save_path, dpi=300, bbox_inches="tight")
         logger.info("Gráfico de métricas salvo em %s", fig_save_path)
         plt.close()
 
-        # Salva dados num arquivo texto
+        # Salva dados num arquivo texto em modo append
         txt_save_path = metrics_path / f"Métricas_{self.event_name}_{self.model_name}.txt"
-        with open(txt_save_path, 'w') as txt_file:
-            txt_file.write("Count Iteration, Accuracy (%), ACC (%), TN (%), TP (%)\n")
+
+        # Verifica se o arquivo já existe, para não repetir o cabeçalho
+        file_exists = txt_save_path.exists()
+
+        with open(txt_save_path, 'a', encoding='utf-8') as txt_file:
+            # Se não existir, escrevemos o cabeçalho
+            if not file_exists:
+                txt_file.write("Count Iteration, Accuracy (%), ACC (%), TN (%), TP (%), TimeStep\n")
+
             for i in range(len(count_iterations)):
-                txt_file.write(f"{count_iterations[i]}, {accuracy_values[i]}, {acc_values[i]}, "
-                               f"{TN_values[i]}, {TP_values[i]}\n")
-        logger.info("Métricas numéricas salvas em %s", txt_save_path)
+                txt_file.write(
+                    f"{count_iterations[i]}, "
+                    f"{accuracy_values[i]}, "
+                    f"{acc_values[i]}, "
+                    f"{TN_values[i]}, "
+                    f"{TP_values[i]}, "
+                    f"{timestep}\n"
+                )
+
+        logger.info("Métricas numéricas salvas (append) em %s", txt_save_path)
+
 
     def evaluate_metrics_by_well(self, df: pd.DataFrame) -> pd.DataFrame:
         """

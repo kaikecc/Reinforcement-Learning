@@ -1,0 +1,98 @@
+[INFO]	18/03/2025 05:21:20 PM - Iniciando execução do algoritmo PPO-real para o evento Flow Instability com 100000 timesteps
+[INFO]	18/03/2025 05:21:20 PM - Iniciando treinamento do algoritmo PPO com 100000 timesteps
+[INFO]	18/03/2025 05:23:51 PM - Modelo final salvo em ..\models\Flow Instability-real\PPO\_PPO
+[INFO]	18/03/2025 05:23:51 PM - Tempo de Treinamento PPO: 150.68s
+[INFO]	18/03/2025 05:23:51 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 05:23:51 PM - Avaliando o modelo PPO em ..\models\Flow Instability-real\PPO com 1 episódios.
+[INFO]	18/03/2025 05:25:39 PM - Average accuracy for PPO: 1.0
+[INFO]	18/03/2025 05:25:39 PM - Acurácia: 1.00000 com 100000 timesteps
+[INFO]	18/03/2025 05:25:39 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 05:25:39 PM - ValidationModel criado para o modelo 'PPO' e evento 'Flow Instability'.
+[INFO]	18/03/2025 05:25:39 PM - Iniciando validação individual. Acurácia=1.000 > 0.80
+[INFO]	18/03/2025 05:25:41 PM - Separados 26 grupos de instâncias para validação.
+[INFO]	18/03/2025 05:25:41 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:42 PM - Instância 1: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:42 PM - Instância 1: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:44 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:44 PM - Instância 2: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:44 PM - Instância 2: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:46 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:48 PM - Instância 3: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:48 PM - Instância 3: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:50 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:50 PM - Instância 4: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:50 PM - Instância 4: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:51 PM - Predição da 5ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:52 PM - Instância 5: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:52 PM - Instância 5: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:53 PM - Predição da 6ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:25:54 PM - Instância 6: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:25:54 PM - Instância 6: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:25:55 PM - Predição da 7ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:03 PM - Instância 7: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:03 PM - Instância 7: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:07 PM - Predição da 8ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:11 PM - Instância 8: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:11 PM - Instância 8: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:14 PM - Predição da 9ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:18 PM - Instância 9: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:18 PM - Instância 9: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:20 PM - Predição da 10ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:24 PM - Instância 10: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:24 PM - Instância 10: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:26 PM - Predição da 11ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:30 PM - Instância 11: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:30 PM - Instância 11: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:32 PM - Predição da 12ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:33 PM - Instância 12: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:33 PM - Instância 12: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:34 PM - Predição da 13ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:34 PM - Instância 13: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:34 PM - Instância 13: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:36 PM - Predição da 14ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:36 PM - Instância 14: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:36 PM - Instância 14: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:38 PM - Predição da 15ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:39 PM - Instância 15: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:39 PM - Instância 15: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:41 PM - Predição da 16ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:42 PM - Instância 16: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:42 PM - Instância 16: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:43 PM - Predição da 17ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:44 PM - Instância 17: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:44 PM - Instância 17: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:45 PM - Predição da 18ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:46 PM - Instância 18: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:46 PM - Instância 18: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:48 PM - Predição da 19ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:49 PM - Instância 19: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:49 PM - Instância 19: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:50 PM - Predição da 20ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:54 PM - Instância 20: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:54 PM - Instância 20: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:26:57 PM - Predição da 21ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:26:58 PM - Instância 21: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:26:58 PM - Instância 21: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:00 PM - Predição da 22ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:27:02 PM - Instância 22: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:27:02 PM - Instância 22: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:04 PM - Predição da 23ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:27:04 PM - Instância 23: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:27:04 PM - Instância 23: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:06 PM - Predição da 24ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:27:06 PM - Instância 24: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:27:06 PM - Instância 24: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:07 PM - Predição da 25ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:27:09 PM - Instância 25: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:27:09 PM - Instância 25: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:11 PM - Predição da 26ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 05:27:22 PM - Instância 26: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 05:27:22 PM - Instância 26: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 05:27:28 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Flow Instability_PPO.png
+[INFO]	18/03/2025 05:27:28 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Flow Instability_PPO.txt
+[INFO]	18/03/2025 05:27:28 PM - Acurácia final: 100.000% no conjunto de dados de validação
+[INFO]	18/03/2025 05:27:28 PM - Precision=1.000, Recall=1.000, F1=1.000
+[INFO]	18/03/2025 05:27:28 PM - Métricas calculadas para 7 wells.
+[INFO]	18/03/2025 05:27:28 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Flow Instability_PPO_100000.png
+[INFO]	18/03/2025 05:27:28 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 05:27:28 PM - Concluído a execução do algoritmo PPO-real para o evento Flow Instability

@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 07:11:17 PM - Iniciando execução do algoritmo PPO-real para o evento Scaling in PCK com 1000 timesteps
+[INFO]	18/03/2025 07:11:17 PM - Iniciando treinamento do algoritmo PPO com 1000 timesteps
+[INFO]	18/03/2025 07:11:19 PM - Modelo final salvo em ..\models\Scaling in PCK-real\PPO\_PPO
+[INFO]	18/03/2025 07:11:19 PM - Tempo de Treinamento PPO: 2.14s
+[INFO]	18/03/2025 07:11:19 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 07:11:19 PM - Avaliando o modelo PPO em ..\models\Scaling in PCK-real\PPO com 1 episódios.
+[INFO]	18/03/2025 07:11:35 PM - Average accuracy for PPO: 0.5355786549771056
+[INFO]	18/03/2025 07:11:35 PM - Acurácia: 0.53558 com 1000 timesteps
+[INFO]	18/03/2025 07:11:35 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 07:11:35 PM - ValidationModel criado para o modelo 'PPO' e evento 'Scaling in PCK'.
+[INFO]	18/03/2025 07:11:35 PM - Acurácia=0.536 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 07:11:35 PM - Concluído a execução do algoritmo PPO-real para o evento Scaling in PCK

@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 05:15:41 PM - Iniciando execução do algoritmo PPO-real para o evento Flow Instability com 1000 timesteps
+[INFO]	18/03/2025 05:15:41 PM - Iniciando treinamento do algoritmo PPO com 1000 timesteps
+[INFO]	18/03/2025 05:15:43 PM - Modelo final salvo em ..\models\Flow Instability-real\PPO\_PPO
+[INFO]	18/03/2025 05:15:43 PM - Tempo de Treinamento PPO: 1.85s
+[INFO]	18/03/2025 05:15:43 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 05:15:43 PM - Avaliando o modelo PPO em ..\models\Flow Instability-real\PPO com 1 episódios.
+[INFO]	18/03/2025 05:17:33 PM - Average accuracy for PPO: 0.7015530815723477
+[INFO]	18/03/2025 05:17:33 PM - Acurácia: 0.70155 com 1000 timesteps
+[INFO]	18/03/2025 05:17:33 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 05:17:33 PM - ValidationModel criado para o modelo 'PPO' e evento 'Flow Instability'.
+[INFO]	18/03/2025 05:17:33 PM - Acurácia=0.702 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 05:17:33 PM - Concluído a execução do algoritmo PPO-real para o evento Flow Instability

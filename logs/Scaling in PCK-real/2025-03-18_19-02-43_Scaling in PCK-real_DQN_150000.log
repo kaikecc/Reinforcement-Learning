@@ -1,0 +1,36 @@
+[INFO]	18/03/2025 07:02:43 PM - Iniciando execução do algoritmo DQN-real para o evento Scaling in PCK com 150000 timesteps
+[INFO]	18/03/2025 07:02:43 PM - Iniciando treinamento do algoritmo DQN com 150000 timesteps
+[INFO]	18/03/2025 07:05:00 PM - Modelo final salvo em ..\models\Scaling in PCK-real\DQN\_DQN
+[INFO]	18/03/2025 07:05:00 PM - Replay buffer salvo em ..\models\Scaling in PCK-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 07:05:00 PM - Tempo de Treinamento DQN: 136.8s
+[INFO]	18/03/2025 07:05:00 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 07:05:00 PM - Avaliando o modelo DQN em ..\models\Scaling in PCK-real\DQN com 1 episódios.
+[INFO]	18/03/2025 07:05:08 PM - Average accuracy for DQN: 0.839239599835073
+[INFO]	18/03/2025 07:05:08 PM - Acurácia: 0.83924 com 150000 timesteps
+[INFO]	18/03/2025 07:05:08 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 07:05:08 PM - ValidationModel criado para o modelo 'DQN' e evento 'Scaling in PCK'.
+[INFO]	18/03/2025 07:05:08 PM - Iniciando validação individual. Acurácia=0.839 > 0.80
+[INFO]	18/03/2025 07:05:08 PM - Separados 5 grupos de instâncias para validação.
+[INFO]	18/03/2025 07:05:08 PM - Predição da 1ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 07:05:08 PM - Instância 1: Acurácia=92.359%, TN=45.719%, TP=46.641%
+[INFO]	18/03/2025 07:05:08 PM - Instância 1: Precision=0.997, Recall=0.862, F1=0.924.
+[INFO]	18/03/2025 07:05:10 PM - Predição da 2ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 07:05:11 PM - Instância 2: Acurácia=65.559%, TN=39.835%, TP=25.724%
+[INFO]	18/03/2025 07:05:11 PM - Instância 2: Precision=0.974, Recall=0.432, F1=0.599.
+[INFO]	18/03/2025 07:05:12 PM - Predição da 3ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 07:05:14 PM - Instância 3: Acurácia=97.788%, TN=32.375%, TP=65.414%
+[INFO]	18/03/2025 07:05:14 PM - Instância 3: Precision=1.000, Recall=0.967, F1=0.983.
+[INFO]	18/03/2025 07:05:17 PM - Predição da 4ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 07:05:18 PM - Instância 4: Acurácia=86.580%, TN=8.790%, TP=77.790%
+[INFO]	18/03/2025 07:05:18 PM - Instância 4: Precision=0.973, Recall=0.873, F1=0.921.
+[INFO]	18/03/2025 07:05:20 PM - Predição da 5ª instância de validação com modelo 'DQN'.
+[INFO]	18/03/2025 07:05:20 PM - Instância 5: Acurácia=60.123%, TN=60.123%, TP=0.000%
+[INFO]	18/03/2025 07:05:20 PM - Instância 5: Precision=0.000, Recall=0.000, F1=0.000.
+[INFO]	18/03/2025 07:05:22 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Scaling in PCK_DQN.png
+[INFO]	18/03/2025 07:05:22 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Scaling in PCK_DQN.txt
+[INFO]	18/03/2025 07:05:22 PM - Acurácia final: 80.482% no conjunto de dados de validação
+[INFO]	18/03/2025 07:05:22 PM - Precision=0.789, Recall=0.627, F1=0.685
+[INFO]	18/03/2025 07:05:22 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 07:05:22 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Scaling in PCK_DQN_150000.png
+[INFO]	18/03/2025 07:05:22 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 07:05:22 PM - Concluído a execução do algoritmo DQN-real para o evento Scaling in PCK

@@ -1,0 +1,41 @@
+[INFO]	18/03/2025 04:44:57 PM - Iniciando execução do algoritmo PPO-real para o evento Severe Slugging com 300000 timesteps
+[INFO]	18/03/2025 04:44:57 PM - Iniciando treinamento do algoritmo PPO com 300000 timesteps
+[INFO]	18/03/2025 04:54:45 PM - Modelo final salvo em ..\models\Severe Slugging-real\PPO\_PPO
+[INFO]	18/03/2025 04:54:45 PM - Tempo de Treinamento PPO: 587.75s
+[INFO]	18/03/2025 04:54:45 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 04:54:45 PM - Avaliando o modelo PPO em ..\models\Severe Slugging-real\PPO com 1 episódios.
+[INFO]	18/03/2025 04:55:11 PM - Average accuracy for PPO: 1.0
+[INFO]	18/03/2025 04:55:11 PM - Acurácia: 1.00000 com 300000 timesteps
+[INFO]	18/03/2025 04:55:11 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 04:55:11 PM - ValidationModel criado para o modelo 'PPO' e evento 'Severe Slugging'.
+[INFO]	18/03/2025 04:55:11 PM - Iniciando validação individual. Acurácia=1.000 > 0.80
+[INFO]	18/03/2025 04:55:11 PM - Separados 7 grupos de instâncias para validação.
+[INFO]	18/03/2025 04:55:11 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:12 PM - Instância 1: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:12 PM - Instância 1: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:13 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:14 PM - Instância 2: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:14 PM - Instância 2: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:16 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:17 PM - Instância 3: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:17 PM - Instância 3: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:19 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:20 PM - Instância 4: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:20 PM - Instância 4: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:22 PM - Predição da 5ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:26 PM - Instância 5: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:26 PM - Instância 5: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:28 PM - Predição da 6ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:32 PM - Instância 6: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:32 PM - Instância 6: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:34 PM - Predição da 7ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 04:55:35 PM - Instância 7: Acurácia=100.000%, TN=0.000%, TP=100.000%
+[INFO]	18/03/2025 04:55:35 PM - Instância 7: Precision=1.000, Recall=1.000, F1=1.000.
+[INFO]	18/03/2025 04:55:37 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Severe Slugging_PPO.png
+[INFO]	18/03/2025 04:55:37 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Severe Slugging_PPO.txt
+[INFO]	18/03/2025 04:55:37 PM - Acurácia final: 100.000% no conjunto de dados de validação
+[INFO]	18/03/2025 04:55:37 PM - Precision=1.000, Recall=1.000, F1=1.000
+[INFO]	18/03/2025 04:55:37 PM - Métricas calculadas para 2 wells.
+[INFO]	18/03/2025 04:55:38 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Severe Slugging_PPO_300000.png
+[INFO]	18/03/2025 04:55:38 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 04:55:38 PM - Concluído a execução do algoritmo PPO-real para o evento Severe Slugging

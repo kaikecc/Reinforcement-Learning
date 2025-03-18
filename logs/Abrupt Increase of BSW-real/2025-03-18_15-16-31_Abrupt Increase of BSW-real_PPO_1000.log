@@ -1,0 +1,12 @@
+[INFO]	18/03/2025 03:16:31 PM - Iniciando execução do algoritmo PPO-real para o evento Abrupt Increase of BSW com 1000 timesteps
+[INFO]	18/03/2025 03:16:31 PM - Iniciando treinamento do algoritmo PPO com 1000 timesteps
+[INFO]	18/03/2025 03:16:33 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	18/03/2025 03:16:33 PM - Tempo de Treinamento PPO: 2.06s
+[INFO]	18/03/2025 03:16:33 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 03:16:33 PM - Avaliando o modelo PPO em ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	18/03/2025 03:16:42 PM - Average accuracy for PPO: 0.5720493597823924
+[INFO]	18/03/2025 03:16:42 PM - Acurácia: 0.57205 com 1000 timesteps
+[INFO]	18/03/2025 03:16:42 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 03:16:42 PM - ValidationModel criado para o modelo 'PPO' e evento 'Abrupt Increase of BSW'.
+[INFO]	18/03/2025 03:16:42 PM - Acurácia=0.572 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 03:16:42 PM - Concluído a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW

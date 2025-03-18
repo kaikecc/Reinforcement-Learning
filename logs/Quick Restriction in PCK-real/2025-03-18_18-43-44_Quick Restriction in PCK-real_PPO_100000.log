@@ -1,0 +1,32 @@
+[INFO]	18/03/2025 06:43:44 PM - Iniciando execução do algoritmo PPO-real para o evento Quick Restriction in PCK com 100000 timesteps
+[INFO]	18/03/2025 06:43:44 PM - Iniciando treinamento do algoritmo PPO com 100000 timesteps
+[INFO]	18/03/2025 06:46:46 PM - Modelo final salvo em ..\models\Quick Restriction in PCK-real\PPO\_PPO
+[INFO]	18/03/2025 06:46:46 PM - Tempo de Treinamento PPO: 181.09s
+[INFO]	18/03/2025 06:46:46 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 06:46:46 PM - Avaliando o modelo PPO em ..\models\Quick Restriction in PCK-real\PPO com 1 episódios.
+[INFO]	18/03/2025 06:46:47 PM - Average accuracy for PPO: 0.9043760129659644
+[INFO]	18/03/2025 06:46:47 PM - Acurácia: 0.90438 com 100000 timesteps
+[INFO]	18/03/2025 06:46:47 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 06:46:47 PM - ValidationModel criado para o modelo 'PPO' e evento 'Quick Restriction in PCK'.
+[INFO]	18/03/2025 06:46:47 PM - Iniciando validação individual. Acurácia=0.904 > 0.80
+[INFO]	18/03/2025 06:46:47 PM - Separados 4 grupos de instâncias para validação.
+[INFO]	18/03/2025 06:46:47 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:46:48 PM - Instância 1: Acurácia=93.944%, TN=63.011%, TP=30.933%
+[INFO]	18/03/2025 06:46:48 PM - Instância 1: Precision=1.000, Recall=0.836, F1=0.911.
+[INFO]	18/03/2025 06:46:50 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:46:50 PM - Instância 2: Acurácia=97.628%, TN=89.325%, TP=8.303%
+[INFO]	18/03/2025 06:46:50 PM - Instância 2: Precision=1.000, Recall=0.778, F1=0.875.
+[INFO]	18/03/2025 06:46:52 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:46:52 PM - Instância 3: Acurácia=91.653%, TN=46.578%, TP=45.075%
+[INFO]	18/03/2025 06:46:52 PM - Instância 3: Precision=1.000, Recall=0.844, F1=0.915.
+[INFO]	18/03/2025 06:46:54 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 06:46:54 PM - Instância 4: Acurácia=72.515%, TN=72.515%, TP=0.000%
+[INFO]	18/03/2025 06:46:54 PM - Instância 4: Precision=0.000, Recall=0.000, F1=0.000.
+[INFO]	18/03/2025 06:46:56 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Quick Restriction in PCK_PPO.png
+[INFO]	18/03/2025 06:46:56 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Quick Restriction in PCK_PPO.txt
+[INFO]	18/03/2025 06:46:56 PM - Acurácia final: 88.935% no conjunto de dados de validação
+[INFO]	18/03/2025 06:46:56 PM - Precision=0.750, Recall=0.614, F1=0.675
+[INFO]	18/03/2025 06:46:56 PM - Métricas calculadas para 2 wells.
+[INFO]	18/03/2025 06:46:56 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Quick Restriction in PCK_PPO_100000.png
+[INFO]	18/03/2025 06:46:56 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 06:46:56 PM - Concluído a execução do algoritmo PPO-real para o evento Quick Restriction in PCK

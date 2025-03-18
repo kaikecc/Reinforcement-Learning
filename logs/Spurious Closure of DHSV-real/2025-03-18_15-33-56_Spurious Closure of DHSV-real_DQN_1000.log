@@ -1,0 +1,13 @@
+[INFO]	18/03/2025 03:33:56 PM - Iniciando execução do algoritmo DQN-real para o evento Spurious Closure of DHSV com 1000 timesteps
+[INFO]	18/03/2025 03:33:56 PM - Iniciando treinamento do algoritmo DQN com 1000 timesteps
+[INFO]	18/03/2025 03:33:56 PM - Modelo final salvo em ..\models\Spurious Closure of DHSV-real\DQN\_DQN
+[INFO]	18/03/2025 03:33:56 PM - Replay buffer salvo em ..\models\Spurious Closure of DHSV-real\DQN\replay_buffer\dqn_save_replay_buffer
+[INFO]	18/03/2025 03:33:56 PM - Tempo de Treinamento DQN: 0.05s
+[INFO]	18/03/2025 03:33:56 PM - Iniciando avaliação do algoritmo DQN no conjunto de teste
+[INFO]	18/03/2025 03:33:56 PM - Avaliando o modelo DQN em ..\models\Spurious Closure of DHSV-real\DQN com 1 episódios.
+[INFO]	18/03/2025 03:33:56 PM - Average accuracy for DQN: 0.6784175479827653
+[INFO]	18/03/2025 03:33:56 PM - Acurácia: 0.67842 com 1000 timesteps
+[INFO]	18/03/2025 03:33:56 PM - Iniciando a validação do modelo DQN
+[INFO]	18/03/2025 03:33:56 PM - ValidationModel criado para o modelo 'DQN' e evento 'Spurious Closure of DHSV'.
+[INFO]	18/03/2025 03:33:56 PM - Acurácia=0.678 <= 0.80, insuficiente para validação individual
+[INFO]	18/03/2025 03:33:56 PM - Concluído a execução do algoritmo DQN-real para o evento Spurious Closure of DHSV

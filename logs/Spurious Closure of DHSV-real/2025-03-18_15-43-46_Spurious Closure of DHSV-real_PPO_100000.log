@@ -1,0 +1,29 @@
+[INFO]	18/03/2025 03:43:46 PM - Iniciando execução do algoritmo PPO-real para o evento Spurious Closure of DHSV com 100000 timesteps
+[INFO]	18/03/2025 03:43:46 PM - Iniciando treinamento do algoritmo PPO com 100000 timesteps
+[INFO]	18/03/2025 03:46:21 PM - Modelo final salvo em ..\models\Spurious Closure of DHSV-real\PPO\_PPO
+[INFO]	18/03/2025 03:46:21 PM - Tempo de Treinamento PPO: 155.22s
+[INFO]	18/03/2025 03:46:21 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 03:46:21 PM - Avaliando o modelo PPO em ..\models\Spurious Closure of DHSV-real\PPO com 1 episódios.
+[INFO]	18/03/2025 03:46:22 PM - Average accuracy for PPO: 0.982373678025852
+[INFO]	18/03/2025 03:46:22 PM - Acurácia: 0.98237 com 100000 timesteps
+[INFO]	18/03/2025 03:46:22 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 03:46:22 PM - ValidationModel criado para o modelo 'PPO' e evento 'Spurious Closure of DHSV'.
+[INFO]	18/03/2025 03:46:22 PM - Iniciando validação individual. Acurácia=0.982 > 0.80
+[INFO]	18/03/2025 03:46:22 PM - Separados 3 grupos de instâncias para validação.
+[INFO]	18/03/2025 03:46:22 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 03:46:22 PM - Instância 1: Acurácia=98.046%, TN=43.974%, TP=54.072%
+[INFO]	18/03/2025 03:46:22 PM - Instância 1: Precision=1.000, Recall=0.965, F1=0.982.
+[INFO]	18/03/2025 03:46:23 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 03:46:23 PM - Instância 2: Acurácia=97.661%, TN=55.409%, TP=42.251%
+[INFO]	18/03/2025 03:46:23 PM - Instância 2: Precision=1.000, Recall=0.948, F1=0.973.
+[INFO]	18/03/2025 03:46:24 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 03:46:24 PM - Instância 3: Acurácia=99.368%, TN=60.063%, TP=39.305%
+[INFO]	18/03/2025 03:46:24 PM - Instância 3: Precision=1.000, Recall=0.984, F1=0.992.
+[INFO]	18/03/2025 03:46:25 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Spurious Closure of DHSV_PPO.png
+[INFO]	18/03/2025 03:46:25 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Spurious Closure of DHSV_PPO.txt
+[INFO]	18/03/2025 03:46:25 PM - Acurácia final: 98.358% no conjunto de dados de validação
+[INFO]	18/03/2025 03:46:25 PM - Precision=1.000, Recall=0.966, F1=0.982
+[INFO]	18/03/2025 03:46:25 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 03:46:26 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Spurious Closure of DHSV_PPO_100000.png
+[INFO]	18/03/2025 03:46:26 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 03:46:26 PM - Concluído a execução do algoritmo PPO-real para o evento Spurious Closure of DHSV
