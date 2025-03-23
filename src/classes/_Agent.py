@@ -221,7 +221,7 @@ class Agent:
                                                 verbose=0)
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
 
-        model.learn(total_timesteps=self.TIMESTEPS, log_interval=4, reset_num_timesteps=True,
+        model.learn(total_timesteps=self.TIMESTEPS, progress_bar=True, log_interval=4, reset_num_timesteps=True,
                     tb_log_name="DQN", callback=[metrics_callback, tensorboard_callback])
         model.save(final_model_path)
         logger.info(f"Modelo final salvo em {final_model_path}")
@@ -254,7 +254,7 @@ class Agent:
         checkpoint_callback = CheckpointCallback(save_freq=1000, save_path=checkpoint_dir, name_prefix='PPO')
         final_model_path = os.path.join(path_save, '_PPO')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
-        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="PPO", 
+        model.learn(total_timesteps=self.TIMESTEPS, progress_bar=True, reset_num_timesteps=True, tb_log_name="PPO", 
                     callback=[checkpoint_callback, metrics_callback])
         model.save(final_model_path)
         logger.info(f"Modelo final salvo em {final_model_path}")
@@ -269,7 +269,7 @@ class Agent:
                     gamma=0.99, gae_lambda=0.95, ent_coef=0.01, tensorboard_log=self.logdir)
         final_model_path = os.path.join(path_save, '_A2C')
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
-        model.learn(total_timesteps=self.TIMESTEPS, reset_num_timesteps=True, tb_log_name="A2C", 
+        model.learn(total_timesteps=self.TIMESTEPS, progress_bar=True, reset_num_timesteps=True, tb_log_name="A2C", 
                     callback=[metrics_callback])
         model.save(os.path.join(path_save, 'A2C'))
         logger.info(f"Modelo final salvo em {os.path.join(path_save, '_A2C')}")

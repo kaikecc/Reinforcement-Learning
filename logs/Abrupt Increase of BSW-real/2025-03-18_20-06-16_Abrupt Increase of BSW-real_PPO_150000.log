@@ -1,0 +1,32 @@
+[INFO]	18/03/2025 08:06:16 PM - Iniciando execução do algoritmo PPO-real para o evento Abrupt Increase of BSW com 150000 timesteps
+[INFO]	18/03/2025 08:06:16 PM - Iniciando treinamento do algoritmo PPO com 150000 timesteps
+[INFO]	18/03/2025 08:13:56 PM - Modelo final salvo em ..\models\Abrupt Increase of BSW-real\PPO\_PPO
+[INFO]	18/03/2025 08:13:56 PM - Tempo de Treinamento PPO: 459.63s
+[INFO]	18/03/2025 08:13:56 PM - Iniciando avaliação do algoritmo PPO no conjunto de teste
+[INFO]	18/03/2025 08:13:56 PM - Avaliando o modelo PPO em ..\models\Abrupt Increase of BSW-real\PPO com 1 episódios.
+[INFO]	18/03/2025 08:14:15 PM - Average accuracy for PPO: 0.9507065614011809
+[INFO]	18/03/2025 08:14:15 PM - Acurácia: 0.95071 com 150000 timesteps
+[INFO]	18/03/2025 08:14:15 PM - Iniciando a validação do modelo PPO
+[INFO]	18/03/2025 08:14:15 PM - ValidationModel criado para o modelo 'PPO' e evento 'Abrupt Increase of BSW'.
+[INFO]	18/03/2025 08:14:15 PM - Iniciando validação individual. Acurácia=0.951 > 0.80
+[INFO]	18/03/2025 08:14:15 PM - Separados 4 grupos de instâncias para validação.
+[INFO]	18/03/2025 08:14:15 PM - Predição da 1ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 08:14:17 PM - Instância 1: Acurácia=96.377%, TN=75.535%, TP=20.842%
+[INFO]	18/03/2025 08:14:17 PM - Instância 1: Precision=1.000, Recall=0.852, F1=0.920.
+[INFO]	18/03/2025 08:14:19 PM - Predição da 2ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 08:14:20 PM - Instância 2: Acurácia=89.736%, TN=33.911%, TP=55.825%
+[INFO]	18/03/2025 08:14:20 PM - Instância 2: Precision=1.000, Recall=0.845, F1=0.916.
+[INFO]	18/03/2025 08:14:22 PM - Predição da 3ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 08:14:28 PM - Instância 3: Acurácia=96.292%, TN=57.747%, TP=38.545%
+[INFO]	18/03/2025 08:14:28 PM - Instância 3: Precision=0.971, Recall=0.938, F1=0.954.
+[INFO]	18/03/2025 08:14:40 PM - Predição da 4ª instância de validação com modelo 'PPO'.
+[INFO]	18/03/2025 08:14:42 PM - Instância 4: Acurácia=92.114%, TN=80.511%, TP=11.603%
+[INFO]	18/03/2025 08:14:42 PM - Instância 4: Precision=1.000, Recall=0.595, F1=0.746.
+[INFO]	18/03/2025 08:14:45 PM - Gráfico de métricas salvo em ..\..\img\metrics\Métricas_Abrupt Increase of BSW_PPO.png
+[INFO]	18/03/2025 08:14:45 PM - Métricas numéricas salvas (append) em ..\metrics\Métricas_Abrupt Increase of BSW_PPO.txt
+[INFO]	18/03/2025 08:14:45 PM - Acurácia final: 93.630% no conjunto de dados de validação
+[INFO]	18/03/2025 08:14:45 PM - Precision=0.993, Recall=0.807, F1=0.884
+[INFO]	18/03/2025 08:14:45 PM - Métricas calculadas para 3 wells.
+[INFO]	18/03/2025 08:14:46 PM - Gráfico de acurácia por well salvo em ..\..\img\metrics\ACC-WELL_Abrupt Increase of BSW_PPO_150000.png
+[INFO]	18/03/2025 08:14:46 PM - Métricas (well) salvas/atualizadas em ..\..\metrics\acc_by_well.csv
+[INFO]	18/03/2025 08:14:46 PM - Concluído a execução do algoritmo PPO-real para o evento Abrupt Increase of BSW
