@@ -5,7 +5,36 @@ import time
 from datetime import datetime
 from typing import Dict, Any, Optional
 
+from sklearn.ensemble import IsolationForest
+from sklearn.metrics import accuracy_score
+
 import numpy as np
+
+# Proposta de algoritmo alternativo - Isolation Forest
+# 1.1 Princípio: anomalias são pontos raros e facilmente isolados em poucas
+# divisões de árvores binárias. 1.2 Funcionamento: um conjunto de “arbóres de
+# isolamento” é treinado de forma aleatória e a profundidade para isolar uma
+# instância define seu score de anomalia. 1.3 Vantagens: complexidade O(n log n)
+# e independência de rótulos. 1.4 Implementação: utilizamos a classe
+# IsolationForest da biblioteca scikit-learn.
+
+
+class IsolationForestWrapper:
+    """Wrapper para compatibilizar IsolationForest com a interface utilizada na
+    validação do pipeline."""
+
+    def __init__(self, **kwargs: Any) -> None:
+        self.model = IsolationForest(**kwargs)
+
+    def fit(self, X: np.ndarray) -> None:
+        self.model.fit(X)
+
+    def predict(self, obs: np.ndarray, deterministic: bool = True):
+        """Retorna ação equivalente à detecção de anomalia."""
+        obs_2d = np.atleast_2d(obs)
+        pred = self.model.predict(obs_2d)
+        action = np.where(pred == -1, 1, 0)
+        return action[0], None
 
 # Add project root to path so we can import classes
 sys.path.append(os.path.join('..'))
@@ -48,6 +77,8 @@ def train_evaluate_model(
     ts: int,
     logger: logging.Logger,
     supervised: Optional[Supervised] = None,
+    dataset_train: Optional[np.ndarray] = None,
+    dataset_test: Optional[np.ndarray] = None,
 ) -> Optional[Dict[str, Any]]:
     """Train and evaluate a model, returning results as a dictionary."""
 
@@ -65,6 +96,13 @@ def train_evaluate_model(
             model_agent = agente.env3W_a2c(path_save=path_model)
         elif model_type == "RNA" and supervised is not None:
             model_agent = supervised.keras_train()
+        elif model_type == "IF":
+            if dataset_train is None or dataset_test is None:
+                raise ValueError("Dataset necessário para Isolation Forest")
+            model_agent = IsolationForestWrapper(
+                n_estimators=100, contamination=0.05, random_state=42
+            )
+            model_agent.fit(dataset_train[:, :-1])
         else:
             raise ValueError("Modelo não implementado")
 
@@ -87,6 +125,13 @@ def train_evaluate_model(
             accuracy = agente.env3W_a2c_eval(model=model_agent, path_save=path_model)
         elif model_type == "RNA" and supervised is not None:
             accuracy = supervised.keras_evaluate(model_agent)
+        elif model_type == "IF":
+            if dataset_test is None:
+                raise ValueError("Dataset necessário para Isolation Forest")
+            y_true = np.where(dataset_test[:, -1] == 0, 0, 1)
+            preds = model_agent.model.predict(dataset_test[:, :-1])
+            y_pred = np.where(preds == -1, 1, 0)
+            accuracy = accuracy_score(y_true, y_pred)
         else:
             raise ValueError("Modelo não implementado")
 
@@ -126,6 +171,9 @@ def run_event(
         dataset_filtered, train_percentage
     )
 
+    dataset_train_orig = dataset_train.copy()
+    dataset_test_orig = dataset_test.copy()
+
     envs_train = make_custom_vec_env(dataset_train, n_envs=5, vec_env_type="dummy")
     envs_test = make_custom_vec_env(dataset_test, n_envs=1, vec_env_type="dummy")
 
@@ -135,6 +183,8 @@ def run_event(
 
     for model_type in models:
         for ts in timesteps_list:
+            dataset_train = dataset_train_orig.copy()
+            dataset_test = dataset_test_orig.copy()
             log_dir = os.path.join("..", "..", "logs", f"{event}-{type_instance}")
             model_dir = os.path.join("..", "models", f"{event}-{type_instance}", model_type)
             os.makedirs(log_dir, exist_ok=True)
@@ -156,14 +206,24 @@ def run_event(
                 supervised = Supervised(model_dir, dataset_train, dataset_test)
 
             result = train_evaluate_model(
-                agente, model_type, model_dir, ts, logger, supervised
+                agente,
+                model_type,
+                model_dir,
+                ts,
+                logger,
+                supervised,
+                dataset_train if model_type == "IF" else None,
+                dataset_test if model_type == "IF" else None,
             )
             if result:
                 results[f"{model_type}_{ts}"] = result
 
                 logger.info("Iniciando a validação do modelo %s", model_type)
                 validation = ValidationModel(model_type, event, ts)
-                validation.validation_model(result["accuracy"], dataset_val, result["model_agent"])
+                val_type = "IF" if model_type == "IF" else "RNA"
+                validation.validation_model(
+                    result["accuracy"], dataset_val, result["model_agent"], val_type
+                )
                 logger.info(
                     "Concluído a execução do algoritmo %s-%s para o evento %s",
                     model_type,
@@ -180,7 +240,7 @@ def run_event(
 
 def main() -> None:
     events_names = {1: "Abrupt Increase of BSW"}
-    models = ["DQN", "PPO"]
+    models = ["DQN", "PPO", "IF"]
     type_instance = "real"
 
     path_dataset = os.path.join("..", "..", "dataset")
