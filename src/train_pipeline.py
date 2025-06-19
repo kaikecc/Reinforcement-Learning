@@ -183,7 +183,7 @@ def main() -> None:
     models = ["DQN", "PPO"]
     type_instance = "real"
 
-    path_dataset = os.path.join("..", "..", "..", "dataset")
+    path_dataset = os.path.join("..", "..", "dataset")
     instances = LoadInstances(path_dataset)
 
     logging.info("Iniciando carregamento do dataset")
