@@ -1,5 +1,8 @@
 import os
 import json
+import csv
+from pathlib import Path
+
 import logging
 from typing import Any, Dict, List, Optional, Union, Tuple
 
@@ -11,7 +14,6 @@ from torch.utils.tensorboard import SummaryWriter
 import tensorboard.program
 import webbrowser
 
-from classes._Env3WGym import Env3WGym  # Módulo utilizado para o ambiente
 
 # Configuração do logger global
 logger = logging.getLogger("global_logger")
@@ -187,6 +189,18 @@ class Agent:
         writer.close()
         avg_accuracy = sum(accuracies) / len(accuracies) if accuracies else 0.0
         logger.info(f"Average accuracy for {alg_name}: {avg_accuracy}")
+
+        # Adicionando registro em CSV
+        csv_path = Path("..", "..", "metrics", "model_accuracy_log.csv")
+        csv_path.parent.mkdir(parents=True, exist_ok=True)
+        write_header = not os.path.exists(csv_path)
+
+        with open(csv_path, mode='a', newline='') as file:
+            writer = csv.writer(file)
+            if write_header:
+                writer.writerow(["model", "timestep", "avg_accuracy"])
+            writer.writerow([alg_name, self.TIMESTEPS, avg_accuracy])
+
         return avg_accuracy
 
     def env3W_dqn(self, path_save: str) -> Tuple[Any, str]:
