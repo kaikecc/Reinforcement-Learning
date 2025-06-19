@@ -390,7 +390,7 @@ class ValidationModel:
         ax.grid(True)
 
         # Caminhos para salvar
-        images_path = Path('..', '..', 'img', 'metrics')
+        images_path = Path('..', 'img', 'metrics')
         metrics_path = Path('..', 'metrics')
         images_path.mkdir(parents=True, exist_ok=True)
         metrics_path.mkdir(parents=True, exist_ok=True)

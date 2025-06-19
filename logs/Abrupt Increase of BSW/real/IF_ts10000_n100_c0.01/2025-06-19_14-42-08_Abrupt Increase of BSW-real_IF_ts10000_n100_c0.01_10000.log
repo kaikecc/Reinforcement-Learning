@@ -1,0 +1,5 @@
+[INFO]	19/06/2025 02:42:08 PM - IF ts=10000 hiper={'n_estimators': 100, 'contamination': 0.01}
+[INFO]	19/06/2025 02:42:08 PM - Treinando IF com 10000 timesteps
+[INFO]	19/06/2025 02:42:09 PM - Tempo de treino IF: 1.17s
+[INFO]	19/06/2025 02:42:09 PM - Avaliando IF
+[INFO]	19/06/2025 02:42:09 PM - Acurácia IF: 0.65873 (avaliado em 0.11s)

@@ -1,0 +1,7 @@
+[INFO]	19/06/2025 02:35:58 PM - Iniciando execução do algoritmo IF-real para o evento Abrupt Increase of BSW com 1000 timesteps
+[INFO]	19/06/2025 02:35:58 PM - Iniciando treinamento do algoritmo IF com 1000 timesteps
+[INFO]	19/06/2025 02:36:01 PM - Tempo de Treinamento IF: 3.31s
+[INFO]	19/06/2025 02:36:01 PM - Iniciando avaliação do algoritmo IF no conjunto de teste
+[INFO]	19/06/2025 02:36:01 PM - Acurácia: 0.68075 com 1000 timesteps (avaliado em 0.18s)
+[INFO]	19/06/2025 02:36:01 PM - Iniciando a validação do modelo IF
+[INFO]	19/06/2025 02:36:01 PM - Concluído a execução do algoritmo IF-real para o evento Abrupt Increase of BSW
