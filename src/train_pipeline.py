@@ -72,7 +72,8 @@ def train_evaluate_model(
     supervised: Optional[Supervised] = None,
     dataset_train: Optional[np.ndarray] = None,
     dataset_test: Optional[np.ndarray] = None,
-    if_params: Optional[Dict[str, Any]] = None
+    if_params: Optional[Dict[str, Any]] = None,
+    n_eval_episodes: int = 5,
 ) -> Optional[Dict[str, Any]]:
     """Treina e avalia um modelo, retornando dicionário de resultados."""
     agente.TIMESTEPS = ts
@@ -105,11 +106,11 @@ def train_evaluate_model(
     start = time.time()
     try:
         if model_type == "DQN":
-            accuracy = agente.env3W_dqn_eval(model=model_agent, path_save=path_model)
+            accuracy = agente.env3W_dqn_eval(model=model_agent, path_save=path_model, n_eval_episodes=n_eval_episodes)
         elif model_type == "PPO":
-            accuracy = agente.env3W_ppo_eval(model=model_agent, path_save=path_model)
+            accuracy = agente.env3W_ppo_eval(model=model_agent, path_save=path_model, n_eval_episodes=n_eval_episodes)
         elif model_type == "A2C":
-            accuracy = agente.env3W_a2c_eval(model=model_agent, path_save=path_model)
+            accuracy = agente.env3W_a2c_eval(model=model_agent, path_save=path_model, n_eval_episodes=n_eval_episodes)
         elif model_type == "RNA" and supervised is not None:
             accuracy = supervised.keras_evaluate(model_agent)
         elif model_type == "IF":
@@ -226,7 +227,7 @@ def run_event(
 
 def main() -> None:
     events_names = {1: "Abrupt Increase of BSW"}
-    models = ["IF"]
+    models = ["DQN", "PPO", "A2C", "RNA", "IF"]
     type_instance = "real"
 
     # grid de hiperparâmetros para IF
