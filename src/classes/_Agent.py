@@ -244,7 +244,7 @@ class Agent:
         logger.info(f"Replay buffer salvo em {final_replay_path}")
         return model, final_replay_path
 
-    def env3W_dqn_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
+    def env3W_dqn_eval(self, model: Any, path_save: str, n_eval_episodes: int = 5) -> float:
         logger.info(f"Avaliando o modelo DQN em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "DQN")
 
@@ -274,7 +274,7 @@ class Agent:
         logger.info(f"Modelo final salvo em {final_model_path}")
         return model
 
-    def env3W_ppo_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
+    def env3W_ppo_eval(self, model: Any, path_save: str, n_eval_episodes: int = 5) -> float:
         logger.info(f"Avaliando o modelo PPO em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "PPO")
 
@@ -285,11 +285,11 @@ class Agent:
         metrics_callback = MetricsCSVCallback(save_path=final_model_path, verbose=0)
         model.learn(total_timesteps=self.TIMESTEPS, progress_bar=True, reset_num_timesteps=True, tb_log_name="A2C", 
                     callback=[metrics_callback])
-        model.save(os.path.join(path_save, 'A2C'))
-        logger.info(f"Modelo final salvo em {os.path.join(path_save, '_A2C')}")
+        model.save(final_model_path)
+        logger.info(f"Modelo final salvo em {final_model_path}")
         return model
 
-    def env3W_a2c_eval(self, model: Any, path_save: str, n_eval_episodes: int = 1) -> float:
+    def env3W_a2c_eval(self, model: Any, path_save: str, n_eval_episodes: int = 5) -> float:
         logger.info(f"Avaliando o modelo A2C em {path_save} com {n_eval_episodes} episódios.")
         return self._evaluate_model(model, n_eval_episodes, "A2C")
 
