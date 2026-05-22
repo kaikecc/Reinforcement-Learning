@@ -9,14 +9,27 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
+import numpy as np
 import pandas as pd
 from flask import Flask, jsonify, request
 
-from well_simulator import DEFAULT_VARIABLES, OUTPUT_COLUMNS, DigitalTwinWellSimulator, Scenario
+try:
+    from well_simulator import DEFAULT_VARIABLES, OUTPUT_COLUMNS, DigitalTwinWellSimulator, Scenario
+except ModuleNotFoundError:
+    from .well_simulator import DEFAULT_VARIABLES, OUTPUT_COLUMNS, DigitalTwinWellSimulator, Scenario
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATASET = ROOT.parent / "3W" / "dataset"
+DEFAULT_MODEL_PATH = (
+    ROOT
+    / "models"
+    / "Abrupt Increase of BSW"
+    / "realtime_twin"
+    / "DQN"
+    / "150000"
+    / "_DQN.zip"
+)
 
 
 @dataclass
@@ -33,6 +46,8 @@ class RuntimeConfig:
     seed: int = 42
     well_name: str = "TWIN-WELL-REALTIME"
     max_history_rows: int = 50000
+    model_type: str = "DQN"
+    model_path: str = str(DEFAULT_MODEL_PATH)
 
 
 class RealtimeTwinState:
@@ -45,9 +60,52 @@ class RealtimeTwinState:
         self.total_emitted = 0
         self.next_start = pd.Timestamp("2026-01-01 00:00:00")
         self.generated_rows: list[dict[str, Any]] = []
+        self.model_error: str | None = None
+        self.model = self._load_model()
         self.timeline = self._build_timeline()
         self.thread = threading.Thread(target=self._run, daemon=True)
         self.thread.start()
+
+    def _load_model(self) -> Any | None:
+        path = Path(self.config.model_path)
+        if not self.config.model_path or not path.exists():
+            return None
+
+        try:
+            if self.config.model_type == "DQN":
+                from stable_baselines3 import DQN
+
+                return DQN.load(path)
+            if self.config.model_type == "PPO":
+                from stable_baselines3 import PPO
+
+                return PPO.load(path)
+            if self.config.model_type == "A2C":
+                from stable_baselines3 import A2C
+
+                return A2C.load(path)
+        except Exception as exc:
+            self.model_error = str(exc)
+            return None
+
+        self.model_error = f"Unsupported model_type: {self.config.model_type}"
+        return None
+
+    def _predict_row(self, row: dict[str, Any]) -> dict[str, Any]:
+        if self.model is None:
+            row["model_action"] = None
+            row["model_status"] = "sem modelo"
+            row["model_correct"] = None
+            return row
+
+        obs = np.array([row[variable] for variable in DEFAULT_VARIABLES], dtype=np.float32)
+        action = self.model.predict(obs, deterministic=True)[0]
+        action_value = int(np.asarray(action).item())
+        expected_action = 0 if int(row["class"]) == 0 else 1
+        row["model_action"] = action_value
+        row["model_status"] = "normal" if action_value == 0 else "falha"
+        row["model_correct"] = action_value == expected_action
+        return row
 
     def _build_timeline(self) -> pd.DataFrame:
         simulator = DigitalTwinWellSimulator(self.config.dataset_path)
@@ -86,7 +144,8 @@ class RealtimeTwinState:
                     self._start_next_cycle()
                 end = min(self.pointer + self.config.rows_per_tick, len(self.timeline))
                 chunk = self.timeline.iloc[self.pointer:end]
-                self.generated_rows.extend(chunk.to_dict(orient="records"))
+                rows = [self._predict_row(row) for row in chunk.to_dict(orient="records")]
+                self.generated_rows.extend(rows)
                 if len(self.generated_rows) > self.config.max_history_rows:
                     self.generated_rows = self.generated_rows[-self.config.max_history_rows :]
                 self.total_emitted += len(chunk)
@@ -113,6 +172,8 @@ class RealtimeTwinState:
             self.total_emitted = 0
             self.next_start = pd.Timestamp("2026-01-01 00:00:00")
             self.generated_rows = []
+            self.model_error = None
+            self.model = self._load_model()
             self.timeline = self._build_timeline()
 
     def status(self) -> dict[str, Any]:
@@ -123,6 +184,9 @@ class RealtimeTwinState:
                 key = str(row["class"])
                 class_counts[key] = class_counts.get(key, 0) + 1
             current_class = int(latest["class"]) if latest else 0
+            evaluated = [row for row in self.generated_rows if row.get("model_correct") is not None]
+            correct = sum(1 for row in evaluated if row["model_correct"])
+            latest_action = latest.get("model_action") if latest else None
             return {
                 "running": self.running,
                 "pointer": self.pointer,
@@ -133,6 +197,13 @@ class RealtimeTwinState:
                 "cycle_progress": self.pointer / len(self.timeline) if len(self.timeline) else 0,
                 "event_started": current_class != 0,
                 "current_class": current_class,
+                "model_loaded": self.model is not None,
+                "model_error": self.model_error,
+                "model_action": latest_action,
+                "model_status": latest.get("model_status") if latest else None,
+                "model_accuracy": correct / len(evaluated) if evaluated else None,
+                "model_correct": correct,
+                "model_evaluated": len(evaluated),
                 "latest": latest,
                 "class_counts": class_counts,
                 "variables": DEFAULT_VARIABLES,
@@ -253,8 +324,10 @@ DASHBOARD_HTML = """<!doctype html>
       background: #fff;
       color: var(--text);
     }
+    .modelPath { min-width: min(520px, 90vw); }
     .metrics {
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 240px));
+      justify-content: center;
       margin-bottom: 12px;
     }
     .metric, section {
@@ -262,6 +335,7 @@ DASHBOARD_HTML = """<!doctype html>
       border: 1px solid var(--line);
       border-radius: 8px;
       padding: 12px;
+      text-align: center;
     }
     .metric strong { display: block; font-size: 26px; margin-bottom: 3px; }
     .metric span { color: var(--muted); }
@@ -317,12 +391,24 @@ DASHBOARD_HTML = """<!doctype html>
       <label>Ruído
         <input id="noiseStd" type="number" min="0" max="1" step="0.01" value="0">
       </label>
+      <label>Modelo
+        <select id="modelType">
+          <option value="DQN">DQN</option>
+          <option value="PPO">PPO</option>
+          <option value="A2C">A2C</option>
+        </select>
+      </label>
+      <label>Caminho do modelo
+        <input id="modelPath" class="modelPath" type="text" value="">
+      </label>
     </div>
     <div class="metrics">
       <div class="metric"><strong id="rows">0</strong><span>amostras emitidas</span></div>
       <div class="metric"><strong id="progress">0%</strong><span>progresso do ciclo</span></div>
       <div class="metric"><strong id="phase">normal</strong><span>fase operacional</span></div>
       <div class="metric"><strong id="fault">0</strong><span>classe atual</span></div>
+      <div class="metric"><strong id="modelAction">-</strong><span>ação do modelo</span></div>
+      <div class="metric"><strong id="modelAccuracy">-</strong><span>acurácia online</span></div>
       <div class="metric"><strong id="cycle">1</strong><span>ciclo</span></div>
     </div>
     <div class="grid">
@@ -455,7 +541,9 @@ DASHBOARD_HTML = """<!doctype html>
           config: {
             event_code: document.getElementById("eventCode").value,
             source: document.getElementById("source").value,
-            noise_std: document.getElementById("noiseStd").value
+            noise_std: document.getElementById("noiseStd").value,
+            model_type: document.getElementById("modelType").value,
+            model_path: document.getElementById("modelPath").value
           }
         })
       });
@@ -481,7 +569,15 @@ DASHBOARD_HTML = """<!doctype html>
       document.getElementById("progress").textContent = `${Math.round(status.cycle_progress * 100)}%`;
       document.getElementById("phase").textContent = status.event_started ? "falha" : "normal";
       document.getElementById("fault").textContent = status.current_class;
+      document.getElementById("modelAction").textContent = status.model_loaded
+        ? `${status.model_action ?? "-"} (${status.model_status ?? "-"})`
+        : "sem modelo";
+      document.getElementById("modelAccuracy").textContent = status.model_accuracy === null
+        ? "-"
+        : `${Math.round(status.model_accuracy * 100)}%`;
       document.getElementById("cycle").textContent = status.cycle;
+      document.getElementById("modelType").value = status.config.model_type;
+      document.getElementById("modelPath").value = status.config.model_path;
       renderLatest(status.latest);
 
       variables.forEach((variable, idx) => drawVariable(rows, variable, colors[idx % colors.length]));
@@ -511,6 +607,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--noise-std", type=float, default=0.0)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max-history-rows", type=int, default=50000)
+    parser.add_argument("--model-type", choices=["DQN", "PPO", "A2C"], default="DQN")
+    parser.add_argument("--model-path", default=str(DEFAULT_MODEL_PATH))
     return parser.parse_args()
 
 
@@ -528,6 +626,8 @@ def main() -> None:
         noise_std=args.noise_std,
         seed=args.seed,
         max_history_rows=args.max_history_rows,
+        model_type=args.model_type,
+        model_path=args.model_path,
     )
     state = RealtimeTwinState(config)
     app = create_app(state)

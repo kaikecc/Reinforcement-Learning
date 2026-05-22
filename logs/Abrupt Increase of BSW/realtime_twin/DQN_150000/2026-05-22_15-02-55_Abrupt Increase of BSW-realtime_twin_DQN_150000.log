@@ -1,0 +1,5 @@
+[INFO]	22/05/2026 03:02:55 PM - Treinando DQN com 150000 timesteps
+[INFO]	22/05/2026 03:07:22 PM - Tempo de treino DQN: 267.03s
+[INFO]	22/05/2026 03:07:22 PM - Avaliando DQN
+[INFO]	22/05/2026 03:07:23 PM - Acurácia DQN: 1.00000 (avaliado em 0.19s)
+[INFO]	22/05/2026 03:07:23 PM - Validando DQN
