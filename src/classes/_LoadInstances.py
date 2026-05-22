@@ -31,7 +31,7 @@ class LoadInstances:
                 except ValueError:
                     continue
 
-                for instance_path in class_dir.glob("*.csv"):
+                for instance_path in list(class_dir.glob("*.csv")) + list(class_dir.glob("*.parquet")):
                     prefix = instance_path.stem.split("_")[0]
                     if (simulated and prefix == valid_prefixes["simulated"]) \
                        or (drawn and prefix == valid_prefixes["drawn"]) \
@@ -85,7 +85,13 @@ class LoadInstances:
             # Verifica se pertence ao conjunto de wells e classes desejadas
             if class_code in events_names and well in well_names:
                 try:
-                    df = pd.read_csv(instance_path, usecols=columns)
+                    if instance_path.suffix == ".parquet":
+                        df = pd.read_parquet(instance_path)
+                        if "timestamp" not in df.columns:
+                            df = df.reset_index()
+                        df = df[columns]
+                    else:
+                        df = pd.read_csv(instance_path, usecols=columns)
                 except Exception as e:
                     logger.error(f"Erro ao ler {instance_path}: {e}")
                     continue

@@ -1,0 +1,1402 @@
+[
+    {
+        "step": 5,
+        "epsilon": 0.0,
+        "reward_avg": 0.0,
+        "reward_max": 0.10000000149011612,
+        "reward_min": -0.10000000149011612
+    },
+    {
+        "step": 10,
+        "epsilon": 0.9775,
+        "reward_avg": 0.11000000014901161,
+        "reward_max": 1.0,
+        "reward_min": -0.10000000149011612
+    },
+    {
+        "step": 15,
+        "epsilon": 0.955,
+        "reward_avg": 0.07333333343267441,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 20,
+        "epsilon": 0.9324999999999999,
+        "reward_avg": -0.05,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 25,
+        "epsilon": 0.9099999999999999,
+        "reward_avg": -0.1680000001192093,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 30,
+        "epsilon": 0.8875,
+        "reward_avg": -0.20666666676600773,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 35,
+        "epsilon": 0.8649999999999999,
+        "reward_avg": -0.14857142865657808,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 40,
+        "epsilon": 0.8424999999999998,
+        "reward_avg": -0.10750000011175871,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 45,
+        "epsilon": 0.8199999999999998,
+        "reward_avg": -0.12000000013245476,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 50,
+        "epsilon": 0.7974999999999999,
+        "reward_avg": -0.1500000001490116,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 55,
+        "epsilon": 0.7749999999999998,
+        "reward_avg": -0.1527272728356448,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 60,
+        "epsilon": 0.7524999999999997,
+        "reward_avg": -0.1733333334326744,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 65,
+        "epsilon": 0.7299999999999998,
+        "reward_avg": -0.17538461547631484,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 70,
+        "epsilon": 0.7075000000000002,
+        "reward_avg": -0.17571428577814782,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 75,
+        "epsilon": 0.6849999999999997,
+        "reward_avg": -0.19200000007947285,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 80,
+        "epsilon": 0.6625000000000002,
+        "reward_avg": -0.18125000009313225,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 85,
+        "epsilon": 0.6400000000000001,
+        "reward_avg": -0.17294117659330369,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 90,
+        "epsilon": 0.6175000000000002,
+        "reward_avg": -0.1855555556714535,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 95,
+        "epsilon": 0.5950000000000002,
+        "reward_avg": -0.2063157895677968,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 100,
+        "epsilon": 0.5725000000000001,
+        "reward_avg": -0.2050000000745058,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 105,
+        "epsilon": 0.55,
+        "reward_avg": -0.2057142857994352,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 110,
+        "epsilon": 0.5275000000000001,
+        "reward_avg": -0.20272727276791225,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 115,
+        "epsilon": 0.5050000000000001,
+        "reward_avg": -0.2121739130953084,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 120,
+        "epsilon": 0.48250000000000004,
+        "reward_avg": -0.21166666671633722,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 125,
+        "epsilon": 0.4600000000000001,
+        "reward_avg": -0.2032000000476837,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 130,
+        "epsilon": 0.4375,
+        "reward_avg": -0.2053846154648524,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 135,
+        "epsilon": 0.41500000000000004,
+        "reward_avg": -0.1985185186068217,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 140,
+        "epsilon": 0.39249999999999996,
+        "reward_avg": -0.19785714293164866,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 145,
+        "epsilon": 0.3699999999999999,
+        "reward_avg": -0.20413793109614273,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 150,
+        "epsilon": 0.3474999999999999,
+        "reward_avg": -0.2020000000298023,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 155,
+        "epsilon": 0.32499999999999984,
+        "reward_avg": -0.21483870970626032,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 160,
+        "epsilon": 0.3024999999999999,
+        "reward_avg": -0.2337500000372529,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 165,
+        "epsilon": 0.2799999999999998,
+        "reward_avg": -0.24484848488460886,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 170,
+        "epsilon": 0.25749999999999984,
+        "reward_avg": -0.24882352943806088,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 175,
+        "epsilon": 0.23499999999999976,
+        "reward_avg": -0.23485714286565781,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 180,
+        "epsilon": 0.2124999999999998,
+        "reward_avg": -0.23333333333333334,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 185,
+        "epsilon": 0.19000000000000028,
+        "reward_avg": -0.22162162162162163,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 190,
+        "epsilon": 0.16749999999999976,
+        "reward_avg": -0.22105263157894736,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 195,
+        "epsilon": 0.14500000000000024,
+        "reward_avg": -0.2266666666819499,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 200,
+        "epsilon": 0.12249999999999972,
+        "reward_avg": -0.22600000001490117,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 205,
+        "epsilon": 0.1000000000000002,
+        "reward_avg": -0.23609756100468518,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 210,
+        "epsilon": 0.1,
+        "reward_avg": -0.23142857147114618,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 215,
+        "epsilon": 0.1,
+        "reward_avg": -0.23627906982288804,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 220,
+        "epsilon": 0.1,
+        "reward_avg": -0.24454545459964058,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 225,
+        "epsilon": 0.1,
+        "reward_avg": -0.24311111115747028,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 230,
+        "epsilon": 0.1,
+        "reward_avg": -0.2417391304736552,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 235,
+        "epsilon": 0.1,
+        "reward_avg": -0.24936170216570508,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 240,
+        "epsilon": 0.1,
+        "reward_avg": -0.23958333336437743,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 245,
+        "epsilon": 0.1,
+        "reward_avg": -0.23877551023449217,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 250,
+        "epsilon": 0.1,
+        "reward_avg": -0.23800000002980232,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 255,
+        "epsilon": 0.1,
+        "reward_avg": -0.24901960787235522,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 260,
+        "epsilon": 0.1,
+        "reward_avg": -0.2523076923420796,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 265,
+        "epsilon": 0.1,
+        "reward_avg": -0.25018867926215227,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 270,
+        "epsilon": 0.1,
+        "reward_avg": -0.2525925926036305,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 275,
+        "epsilon": 0.1,
+        "reward_avg": -0.24363636363636362,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 280,
+        "epsilon": 0.1,
+        "reward_avg": -0.24249999999467817,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 285,
+        "epsilon": 0.1,
+        "reward_avg": -0.24140350876147287,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 290,
+        "epsilon": 0.1,
+        "reward_avg": -0.2479310344776203,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 295,
+        "epsilon": 0.1,
+        "reward_avg": -0.24983050845942253,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 300,
+        "epsilon": 0.1,
+        "reward_avg": -0.2556666666517655,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 305,
+        "epsilon": 0.1,
+        "reward_avg": -0.24819672129681852,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 310,
+        "epsilon": 0.1,
+        "reward_avg": -0.2535483870775469,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 315,
+        "epsilon": 0.1,
+        "reward_avg": -0.24920634918269657,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 320,
+        "epsilon": 0.1,
+        "reward_avg": -0.24499999997206032,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 325,
+        "epsilon": 0.1,
+        "reward_avg": -0.2409230768909821,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 330,
+        "epsilon": 0.1,
+        "reward_avg": -0.24030303027142177,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 335,
+        "epsilon": 0.1,
+        "reward_avg": -0.24268656713304235,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 340,
+        "epsilon": 0.1,
+        "reward_avg": -0.24235294115017442,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 345,
+        "epsilon": 0.1,
+        "reward_avg": -0.23855072460744692,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 350,
+        "epsilon": 0.1,
+        "reward_avg": -0.2379999999701977,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 355,
+        "epsilon": 0.1,
+        "reward_avg": -0.2343661971495185,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 360,
+        "epsilon": 0.1,
+        "reward_avg": -0.2341666666376922,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 365,
+        "epsilon": 0.1,
+        "reward_avg": -0.23397260271523096,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 370,
+        "epsilon": 0.1,
+        "reward_avg": -0.2364864864663498,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 375,
+        "epsilon": 0.1,
+        "reward_avg": -0.23359999998410544,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 380,
+        "epsilon": 0.1,
+        "reward_avg": -0.2357894736685251,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 385,
+        "epsilon": 0.1,
+        "reward_avg": -0.2405194805039988,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 390,
+        "epsilon": 0.1,
+        "reward_avg": -0.23999999998471674,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 395,
+        "epsilon": 0.1,
+        "reward_avg": -0.2392405063102517,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 400,
+        "epsilon": 0.1,
+        "reward_avg": -0.23874999998137356,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 405,
+        "epsilon": 0.1,
+        "reward_avg": -0.24098765430627045,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 410,
+        "epsilon": 0.1,
+        "reward_avg": -0.2431707316964138,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 415,
+        "epsilon": 0.1,
+        "reward_avg": -0.24795180722532503,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 420,
+        "epsilon": 0.1,
+        "reward_avg": -0.24714285713576134,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 425,
+        "epsilon": 0.1,
+        "reward_avg": -0.2447058823529412,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 430,
+        "epsilon": 0.1,
+        "reward_avg": -0.24395348836862762,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 435,
+        "epsilon": 0.1,
+        "reward_avg": -0.2434482758586434,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 440,
+        "epsilon": 0.1,
+        "reward_avg": -0.24295454545115883,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 445,
+        "epsilon": 0.1,
+        "reward_avg": -0.24247191010901098,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 450,
+        "epsilon": 0.1,
+        "reward_avg": -0.24488888889551164,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 455,
+        "epsilon": 0.1,
+        "reward_avg": -0.25318681319336317,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 460,
+        "epsilon": 0.1,
+        "reward_avg": -0.25891304348150024,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 465,
+        "epsilon": 0.1,
+        "reward_avg": -0.25397849462686045,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 470,
+        "epsilon": 0.1,
+        "reward_avg": -0.2514893617084686,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 475,
+        "epsilon": 0.1,
+        "reward_avg": -0.2532631579041481,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 480,
+        "epsilon": 0.1,
+        "reward_avg": -0.2543750000031044,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 485,
+        "epsilon": 0.1,
+        "reward_avg": -0.25608247423294894,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 490,
+        "epsilon": 0.1,
+        "reward_avg": -0.25734693877855125,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 495,
+        "epsilon": 0.1,
+        "reward_avg": -0.25656565656565655,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 500,
+        "epsilon": 0.1,
+        "reward_avg": -0.256,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 505,
+        "epsilon": 0.1,
+        "reward_avg": -0.2596039603989903,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 510,
+        "epsilon": 0.1,
+        "reward_avg": -0.2609803921597845,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 515,
+        "epsilon": 0.1,
+        "reward_avg": -0.26019417475728157,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 520,
+        "epsilon": 0.1,
+        "reward_avg": -0.2594230769202113,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 525,
+        "epsilon": 0.1,
+        "reward_avg": -0.25771428572280064,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 530,
+        "epsilon": 0.1,
+        "reward_avg": -0.26113207548294426,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 535,
+        "epsilon": 0.1,
+        "reward_avg": -0.2622429906625614,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 540,
+        "epsilon": 0.1,
+        "reward_avg": -0.25981481482309327,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 545,
+        "epsilon": 0.1,
+        "reward_avg": -0.26146788992192765,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 550,
+        "epsilon": 0.1,
+        "reward_avg": -0.26054545455358247,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 555,
+        "epsilon": 0.1,
+        "reward_avg": -0.26018018019091976,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 560,
+        "epsilon": 0.1,
+        "reward_avg": -0.26125000000798276,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 565,
+        "epsilon": 0.1,
+        "reward_avg": -0.2587610619521774,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 570,
+        "epsilon": 0.1,
+        "reward_avg": -0.2564912280754039,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 575,
+        "epsilon": 0.1,
+        "reward_avg": -0.25808695653210517,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 580,
+        "epsilon": 0.1,
+        "reward_avg": -0.26120689656456997,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 585,
+        "epsilon": 0.1,
+        "reward_avg": -0.26068376069649674,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 590,
+        "epsilon": 0.1,
+        "reward_avg": -0.2586440678117639,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 595,
+        "epsilon": 0.1,
+        "reward_avg": -0.25512605044020326,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 600,
+        "epsilon": 0.1,
+        "reward_avg": -0.255833333345751,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 605,
+        "epsilon": 0.1,
+        "reward_avg": -0.25702479340074474,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 610,
+        "epsilon": 0.1,
+        "reward_avg": -0.25524590165644395,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 615,
+        "epsilon": 0.1,
+        "reward_avg": -0.25317073172427773,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 620,
+        "epsilon": 0.1,
+        "reward_avg": -0.253225806475647,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 625,
+        "epsilon": 0.1,
+        "reward_avg": -0.25312000002861024,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 630,
+        "epsilon": 0.1,
+        "reward_avg": -0.25603174606249446,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 635,
+        "epsilon": 0.1,
+        "reward_avg": -0.25732283467852224,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 640,
+        "epsilon": 0.1,
+        "reward_avg": -0.2553125000325963,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 645,
+        "epsilon": 0.1,
+        "reward_avg": -0.2562790697974752,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 650,
+        "epsilon": 0.1,
+        "reward_avg": -0.25615384618823345,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 655,
+        "epsilon": 0.1,
+        "reward_avg": -0.26030534354557516,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 660,
+        "epsilon": 0.1,
+        "reward_avg": -0.2596969697285782,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 665,
+        "epsilon": 0.1,
+        "reward_avg": -0.25609022559303984,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 670,
+        "epsilon": 0.1,
+        "reward_avg": -0.2571641791333903,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 675,
+        "epsilon": 0.1,
+        "reward_avg": -0.25822222225092073,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 680,
+        "epsilon": 0.1,
+        "reward_avg": -0.2560294117888107,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 685,
+        "epsilon": 0.1,
+        "reward_avg": -0.25839416060569514,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 690,
+        "epsilon": 0.1,
+        "reward_avg": -0.2550724637897118,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 695,
+        "epsilon": 0.1,
+        "reward_avg": -0.25194244606675004,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 700,
+        "epsilon": 0.1,
+        "reward_avg": -0.2525714285884585,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 705,
+        "epsilon": 0.1,
+        "reward_avg": -0.2563120567523841,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 710,
+        "epsilon": 0.1,
+        "reward_avg": -0.2545070422682124,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 715,
+        "epsilon": 0.1,
+        "reward_avg": -0.2569230769376655,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 720,
+        "epsilon": 0.1,
+        "reward_avg": -0.2566666666832235,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 725,
+        "epsilon": 0.1,
+        "reward_avg": -0.2544827586309663,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 730,
+        "epsilon": 0.1,
+        "reward_avg": -0.25273972603760353,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 735,
+        "epsilon": 0.1,
+        "reward_avg": -0.25265306123868136,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 740,
+        "epsilon": 0.1,
+        "reward_avg": -0.2521621621742442,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 745,
+        "epsilon": 0.1,
+        "reward_avg": -0.2543624161173833,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 750,
+        "epsilon": 0.1,
+        "reward_avg": -0.25666666667660076,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 755,
+        "epsilon": 0.1,
+        "reward_avg": -0.25721854305030495,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 760,
+        "epsilon": 0.1,
+        "reward_avg": -0.25539473684406594,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 765,
+        "epsilon": 0.1,
+        "reward_avg": -0.25620915032679736,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 770,
+        "epsilon": 0.1,
+        "reward_avg": -0.2584415584415584,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 775,
+        "epsilon": 0.1,
+        "reward_avg": -0.257935483869045,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 780,
+        "epsilon": 0.1,
+        "reward_avg": -0.2587179487141279,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 785,
+        "epsilon": 0.1,
+        "reward_avg": -0.2573248407643312,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 790,
+        "epsilon": 0.1,
+        "reward_avg": -0.2558227848120128,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 795,
+        "epsilon": 0.1,
+        "reward_avg": -0.25433962264525817,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 800,
+        "epsilon": 0.1,
+        "reward_avg": -0.25512500000186267,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 805,
+        "epsilon": 0.1,
+        "reward_avg": -0.2561490683266835,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 810,
+        "epsilon": 0.1,
+        "reward_avg": -0.258395061733914,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 815,
+        "epsilon": 0.1,
+        "reward_avg": -0.26184049080485944,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 820,
+        "epsilon": 0.1,
+        "reward_avg": -0.26268292683653716,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 825,
+        "epsilon": 0.1,
+        "reward_avg": -0.26606060606963705,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 830,
+        "epsilon": 0.1,
+        "reward_avg": -0.26542168675237393,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 835,
+        "epsilon": 0.1,
+        "reward_avg": -0.26251497006344937,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 840,
+        "epsilon": 0.1,
+        "reward_avg": -0.2634523809577028,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 845,
+        "epsilon": 0.1,
+        "reward_avg": -0.2665088757431719,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 850,
+        "epsilon": 0.1,
+        "reward_avg": -0.26705882352941174,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 855,
+        "epsilon": 0.1,
+        "reward_avg": -0.2677192982438712,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 860,
+        "epsilon": 0.1,
+        "reward_avg": -0.267209302322116,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 865,
+        "epsilon": 0.1,
+        "reward_avg": -0.26774566473299366,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 870,
+        "epsilon": 0.1,
+        "reward_avg": -0.2663218390753214,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 875,
+        "epsilon": 0.1,
+        "reward_avg": -0.26571428570577077,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 880,
+        "epsilon": 0.1,
+        "reward_avg": -0.2652272727171128,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 885,
+        "epsilon": 0.1,
+        "reward_avg": -0.2659887005548693,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 890,
+        "epsilon": 0.1,
+        "reward_avg": -0.26696629212813433,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 895,
+        "epsilon": 0.1,
+        "reward_avg": -0.26759776535480384,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 900,
+        "epsilon": 0.1,
+        "reward_avg": -0.2672222222139438,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 905,
+        "epsilon": 0.1,
+        "reward_avg": -0.2668508287210491,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 910,
+        "epsilon": 0.1,
+        "reward_avg": -0.26604395602921865,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 915,
+        "epsilon": 0.1,
+        "reward_avg": -0.26338797812579107,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 920,
+        "epsilon": 0.1,
+        "reward_avg": -0.2644565217277926,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 925,
+        "epsilon": 0.1,
+        "reward_avg": -0.2639999999871125,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 930,
+        "epsilon": 0.1,
+        "reward_avg": -0.2638709677323218,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 935,
+        "epsilon": 0.1,
+        "reward_avg": -0.2621390374188117,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 940,
+        "epsilon": 0.1,
+        "reward_avg": -0.2626595744506476,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 945,
+        "epsilon": 0.1,
+        "reward_avg": -0.2632804232615012,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 950,
+        "epsilon": 0.1,
+        "reward_avg": -0.2608421052443354,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 955,
+        "epsilon": 0.1,
+        "reward_avg": -0.2615706806095483,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 960,
+        "epsilon": 0.1,
+        "reward_avg": -0.2602083333147069,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 965,
+        "epsilon": 0.1,
+        "reward_avg": -0.26062176163486866,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 970,
+        "epsilon": 0.1,
+        "reward_avg": -0.26226804121253416,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 975,
+        "epsilon": 0.1,
+        "reward_avg": -0.26389743587145437,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 980,
+        "epsilon": 0.1,
+        "reward_avg": -0.2638775509991208,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 985,
+        "epsilon": 0.1,
+        "reward_avg": -0.26558375632399833,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 990,
+        "epsilon": 0.1,
+        "reward_avg": -0.26525252523145293,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 995,
+        "epsilon": 0.1,
+        "reward_avg": -0.2640201004830437,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    },
+    {
+        "step": 1000,
+        "epsilon": 0.1,
+        "reward_avg": -0.2626999999806285,
+        "reward_max": 1.0,
+        "reward_min": -1.0
+    }
+]

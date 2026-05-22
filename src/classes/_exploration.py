@@ -9,6 +9,7 @@ import matplotlib.dates as mdates
 from collections import OrderedDict
 
 logger = logging.getLogger("global_logger")
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 
 class Exploration:
     def __init__(self, dataframe):
@@ -107,7 +108,7 @@ class Exploration:
         )
         plt.subplots_adjust(bottom=0.15, top=0.95)
         plt.grid(True)
-        save_path = os.path.join("..", "..", "img", f"{title}.png")
+        save_path = os.path.join(PROJECT_ROOT, "img", f"{title}.png")
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()
 
@@ -241,7 +242,7 @@ class Exploration:
         # title=f'[{count}] - {self.event_name} - {self.model_name}_{self.timestep}',
         folder_parts = title.split(" - ")
         folder = f"{folder_parts[1]} - {folder_parts[2]}" if len(folder_parts) >= 3 else title
-        directory = os.path.join("..", "..", "img", folder)
+        directory = os.path.join(PROJECT_ROOT, "img", folder)
         if not os.path.exists(directory):
             os.makedirs(directory)
         
@@ -282,7 +283,7 @@ class Exploration:
                 f'{int(height)}', ha='center', va='bottom'
             )
 
-        save_path = os.path.join("..", "..", "img", f"{title}.png")
+        save_path = os.path.join(PROJECT_ROOT, "img", f"{title}.png")
         plt.grid(True)
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
         plt.close()

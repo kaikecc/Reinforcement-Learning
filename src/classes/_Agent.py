@@ -17,6 +17,7 @@ import webbrowser
 
 # Configuração do logger global
 logger = logging.getLogger("global_logger")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 # Constantes usadas na avaliação
@@ -191,7 +192,7 @@ class Agent:
         logger.info(f"Average accuracy for {alg_name}: {avg_accuracy}")
 
         # Adicionando registro em CSV
-        csv_path = Path("..", "..", "metrics", "model_accuracy_log.csv")
+        csv_path = PROJECT_ROOT / "metrics" / "model_accuracy_log.csv"
         csv_path.parent.mkdir(parents=True, exist_ok=True)
         write_header = not os.path.exists(csv_path)
 

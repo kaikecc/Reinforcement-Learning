@@ -11,6 +11,7 @@ import pandas as pd
 from classes._exploration import Exploration
 
 logger = logging.getLogger("global_logger")
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
 class ValidationModel:
@@ -236,7 +237,7 @@ class ValidationModel:
         :param model: Modelo (RL ou RNA) que possui método .predict().
         :param type_ml: Tipo de aprendizado, 'RNA' ou outro.
         """
-        min_acc_threshold = 0.8
+        min_acc_threshold = 0.5  # 50% de acurácia mínima para validação individual
         if accuracy > min_acc_threshold:
             logger.info(
                 "Iniciando validação individual. Acurácia=%.3f > %.2f",
@@ -390,8 +391,8 @@ class ValidationModel:
         ax.grid(True)
 
         # Caminhos para salvar
-        images_path = Path('..', 'img', 'metrics')
-        metrics_path = Path('..', 'metrics')
+        images_path = PROJECT_ROOT / 'img' / 'metrics'
+        metrics_path = PROJECT_ROOT / 'metrics'
         images_path.mkdir(parents=True, exist_ok=True)
         metrics_path.mkdir(parents=True, exist_ok=True)
 
@@ -512,12 +513,12 @@ class ValidationModel:
         plt.tight_layout()
 
         # Salvando em arquivo
-        images_path = Path("..", "..", "img", "metrics")
+        images_path = PROJECT_ROOT / "img" / "metrics"
         images_path.mkdir(parents=True, exist_ok=True)
 
         save_path = images_path / f"ACC-WELL_{self.event_name}_{self.model_name}_{self.timestep}.png"
         plt.savefig(save_path, dpi=300, bbox_inches="tight")
-        plt.show()
+        #plt.show()
 
         logger.info("Gráfico de acurácia por well salvo em %s", save_path)
 
@@ -574,12 +575,12 @@ class ValidationModel:
         plt.tight_layout()
 
         # Salvando o gráfico
-        images_path = Path("..", "..", "img", "metrics")
+        images_path = PROJECT_ROOT / "img" / "metrics"
         images_path.mkdir(parents=True, exist_ok=True)
 
         save_path = images_path / f"ACC-WELL_{self.event_name}_{self.model_name}_{self.timestep}.png"
         plt.savefig(save_path, dpi=300, bbox_inches="tight")
-        plt.show()
+        #plt.show()
 
         logger.info("Gráfico de acurácia por well salvo em %s", save_path)
 
@@ -599,7 +600,7 @@ class ValidationModel:
         })
 
         # Caminho para o CSV
-        csv_path = Path("..", "..", "metrics", "acc_by_well.csv")
+        csv_path = PROJECT_ROOT / "metrics" / "acc_by_well.csv"
         csv_path.parent.mkdir(parents=True, exist_ok=True)
 
         # Verifica se o arquivo já existe

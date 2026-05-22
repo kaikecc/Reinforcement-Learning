@@ -10,6 +10,8 @@ import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.metrics import accuracy_score
 
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Add project root to path so we can import classes
 sys.path.append(os.path.join('..'))
 from classes._LoadInstances import LoadInstances
@@ -165,41 +167,52 @@ def run_event(
     # ambientes RL
     envs_train = make_custom_vec_env(d_train, n_envs=5, vec_env_type="dummy")
     envs_test  = make_custom_vec_env(d_test,  n_envs=1, vec_env_type="dummy")
-    tensorboard_dir = os.path.join("..", "models", f"{event}-{type_instance}")
+    tensorboard_dir = os.path.join(PROJECT_ROOT, "models", f"{event}-{type_instance}")
     os.makedirs(tensorboard_dir, exist_ok=True)
     agente = Agent(tensorboard_dir, envs_train, envs_test)
 
     for model_type in models:
+        
+        # caso IF: variação de hiperparâmetros
+        if model_type == "IF":
+            for hp in if_hyperparams:
+                ts = 1
+                key = f"IF_ts{ts}_n{hp['n_estimators']}_c{hp['contamination']}"
+                log_dir = os.path.join(PROJECT_ROOT, "logs", event, type_instance, key)
+                model_dir = os.path.join(PROJECT_ROOT, "models", event, type_instance, key)
+                os.makedirs(log_dir, exist_ok=True)
+                os.makedirs(model_dir, exist_ok=True)
+
+                logger = setup_logger(log_dir, event, type_instance, ts, key)
+                logger.info("IF ts=%s hiper=%s", ts, hp)
+
+                result = train_evaluate_model(
+                    agente, model_type, model_dir, ts, logger,
+                    supervised=None,
+                    dataset_train=d_train_orig,
+                    dataset_test=d_test_orig,
+                    if_params=hp
+                )
+                if result:
+                    results[key] = result
+
+                # Aqui aplicamos o validation_model para IF
+                logger.info("Validando IF")
+                validation = ValidationModel("IF", event, ts)
+                validation.validation_model(
+                    result["accuracy"],
+                    d_val,
+                    result["model_agent"]
+                )
+
+                for h in logger.handlers[:]:
+                    h.close(); logger.removeHandler(h)
+            continue
+
         for ts in timesteps_list:
-            # caso IF: variação de hiperparâmetros
-            if model_type == "IF":
-                for hp in if_hyperparams:
-                    key = f"IF_ts{ts}_n{hp['n_estimators']}_c{hp['contamination']}"
-                    log_dir   = os.path.join("..","logs", event, type_instance, key)
-                    model_dir = os.path.join("..","models",  event, type_instance, key)
-                    os.makedirs(log_dir, exist_ok=True)
-                    os.makedirs(model_dir, exist_ok=True)
-
-                    logger = setup_logger(log_dir, event, type_instance, ts, key)
-                    logger.info("IF ts=%s hiper=%s", ts, hp)
-
-                    result = train_evaluate_model(
-                        agente, model_type, model_dir, ts, logger,
-                        supervised=None,
-                        dataset_train=d_train_orig,
-                        dataset_test=d_test_orig,
-                        if_params=hp
-                    )
-                    if result:
-                        results[key] = result
-
-                    for h in logger.handlers[:]:
-                        h.close(); logger.removeHandler(h)
-                continue
-
             # caso RL/RNA
-            log_dir   = os.path.join("..","logs", event, type_instance, f"{model_type}_{ts}")
-            model_dir = os.path.join("..","models",  event, type_instance, model_type, str(ts))
+            log_dir = os.path.join(PROJECT_ROOT, "logs", event, type_instance, f"{model_type}_{ts}")
+            model_dir = os.path.join(PROJECT_ROOT, "models", event, type_instance, model_type, str(ts))
             os.makedirs(log_dir, exist_ok=True)
             os.makedirs(model_dir, exist_ok=True)
 
@@ -226,8 +239,17 @@ def run_event(
 
 
 def main() -> None:
-    events_names = {1: "Abrupt Increase of BSW"}
-    models = ["DQN", "PPO", "A2C", "RNA", "IF"]
+    events_names = {1: "Abrupt Increase of BSW",
+                    #2: 'Spurious Closure of DHSV',
+                    #3: 'Severe Slugging',
+                    #4: 'Flow Instability',
+                    #5: 'Rapid Productivity Loss',
+                    #6: 'Quick Restriction in PCK',
+                    #7: 'Scaling in PCK',
+                    #8: 'Hydrate in Production Line'
+                    }
+
+    models = ["DQN"] # "DQN", "PPO", "A2C", "RNA", "IF"
     type_instance = "real"
 
     # grid de hiperparâmetros para IF
@@ -236,14 +258,14 @@ def main() -> None:
         for n, c in product([50, 100, 200], [0.01, 0.05, 0.1])
     ]
 
-    path_dataset = os.path.join("..", "..", "dataset")
+    path_dataset = r"C:\\Users\\kaike\\Documents\\UFSC\\3W\\dataset"
     instances = LoadInstances(path_dataset)
     logging.info("Carregando dataset")
     dataset, _ = instances.load_instance_with_numpy(events_names, type_instance=type_instance)
     logging.info("Fim do carregamento")
 
     train_perc = 0.8
-    timesteps_list = [1000, 10000, 100000, 150000, 300000]
+    timesteps_list = [150000] # 1000, 10000, 100000, 150000, 300000
 
     final_results: Dict[tuple[str, str], Dict[str, Any]] = {}
     for code, event in events_names.items():
