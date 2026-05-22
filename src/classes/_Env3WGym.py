@@ -36,7 +36,12 @@ class Env3WGym(gym.Env):
             return self.reset(), 0.0, True, {}
         
         # Calcula a recompensa com base no rótulo da amostra atual
-        reward = self.calculate_reward(action, self.dataset[self.index, -1])
+        class_value = self.dataset[self.index, -1]
+        reward = self.calculate_reward(action, class_value)
+        info = {
+            "class_value": int(class_value),
+            "action": int(action),
+        }
         self.index += 1
         
         if self.index >= len(self.dataset):
@@ -44,7 +49,7 @@ class Env3WGym(gym.Env):
         else:
             self.state = self.dataset[self.index, :-1]
         
-        return np.array(self.state, dtype=np.float32), reward, self.episode_ended, {}
+        return np.array(self.state, dtype=np.float32), reward, self.episode_ended, info
 
     def reset(self):
         """

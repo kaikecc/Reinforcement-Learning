@@ -20,11 +20,6 @@ logger = logging.getLogger("global_logger")
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 
-# Constantes usadas na avaliação
-REWARD_THRESHOLDS: List[float] = [0.0, 0.1, 1.0, -1.0, -0.1]
-ATOL: float = 1e-6
-
-
 class TensorboardCallback(BaseCallback):
     """
     Callback para registrar pontuações no TensorBoard e salvar o modelo quando um novo top score é alcançado.
@@ -129,7 +124,7 @@ class Agent:
         self.envs_train = envs_train
         self.envs_eval = envs_test
         self.TIMESTEPS = int(TIMESTEPS)
-        self.n_envs_eval = 1
+        self.n_envs_eval = getattr(envs_test, "num_envs", 1)
         self.path_tensorboard = path_tensorboard
         self.logdir = os.path.join(self.path_tensorboard, 'tensorboard_logs')
         os.makedirs(self.logdir, exist_ok=True)
@@ -152,23 +147,43 @@ class Agent:
         except Exception as e:
             logger.error(f"Error launching TensorBoard: {e}")
 
-    def _update_confusion_matrix(self, reward: float, counters: Dict[str, int]) -> None:
-        """Atualiza a matriz de confusão SEM penalizar FP e FN juntos."""
-        if np.isclose(reward, REWARD_THRESHOLDS[0], atol=ATOL):
-            counters['TN'] += 1
-        elif np.isclose(reward, REWARD_THRESHOLDS[1], atol=ATOL) or np.isclose(reward, REWARD_THRESHOLDS[2], atol=ATOL):
+    def _update_confusion_matrix(self, class_value: int, action: int, counters: Dict[str, int]) -> None:
+        """Atualiza a matriz de confusão usando o rótulo real e a ação tomada."""
+        y_true = class_value != 0
+        y_pred = action != 0
+
+        if y_true and y_pred:
             counters['TP'] += 1
-        elif np.isclose(reward, REWARD_THRESHOLDS[3], atol=ATOL):
+        elif not y_true and not y_pred:
+            counters['TN'] += 1
+        elif not y_true and y_pred:
             counters['FP'] += 1
-        elif np.isclose(reward, REWARD_THRESHOLDS[4], atol=ATOL):
+        elif y_true and not y_pred:
             counters['FN'] += 1
+
+    def _calculate_classification_metrics(self, counters: Dict[str, int]) -> Dict[str, float]:
+        total = sum(counters.values())
+        accuracy = (counters['TP'] + counters['TN']) / total if total > 0 else 0.0
+        precision_denominator = counters['TP'] + counters['FP']
+        recall_denominator = counters['TP'] + counters['FN']
+        precision = counters['TP'] / precision_denominator if precision_denominator > 0 else 0.0
+        recall = counters['TP'] / recall_denominator if recall_denominator > 0 else 0.0
+        f1_denominator = precision + recall
+        f1_score = 2 * precision * recall / f1_denominator if f1_denominator > 0 else 0.0
+
+        return {
+            'accuracy': accuracy,
+            'precision': precision,
+            'recall': recall,
+            'f1_score': f1_score,
+        }
 
     def _evaluate_model(self, model: Any, n_eval_episodes: int, alg_name: str) -> float:
         """
         Método auxiliar para avaliar um modelo em n_eval_episodes episódios,
         calculando a acurácia com base na contagem de TP, TN, FP e FN.
         """
-        accuracies = []
+        episode_metrics = []
         eval_logdir = os.path.join(self.logdir, alg_name)
         os.makedirs(eval_logdir, exist_ok=True)
         writer = SummaryWriter(eval_logdir)
@@ -178,18 +193,26 @@ class Agent:
             obs = self.envs_eval.reset()
             dones = np.array([False] * self.n_envs_eval)
             while not dones.all():
-                action, _ = model.predict(obs, deterministic=False)
-                obs, rewards, dones, _ = self.envs_eval.step(action)
-                for reward in rewards:
-                    self._update_confusion_matrix(reward, counters)
-            total = sum(counters.values())
-            accuracy = (counters['TP'] + counters['TN']) / total if total > 0 else 0.0
-            writer.add_scalar('Accuracy', accuracy, episode)
-            accuracies.append(accuracy)
+                action, _ = model.predict(obs, deterministic=True)
+                obs, rewards, dones, infos = self.envs_eval.step(action)
+                for info in infos:
+                    if "class_value" in info and "action" in info:
+                        self._update_confusion_matrix(info["class_value"], info["action"], counters)
+
+            metrics = self._calculate_classification_metrics(counters)
+            writer.add_scalar('Accuracy', metrics['accuracy'], episode)
+            writer.add_scalar('Precision', metrics['precision'], episode)
+            writer.add_scalar('Recall', metrics['recall'], episode)
+            writer.add_scalar('F1_Score', metrics['f1_score'], episode)
+            episode_metrics.append(metrics)
 
         writer.close()
-        avg_accuracy = sum(accuracies) / len(accuracies) if accuracies else 0.0
-        logger.info(f"Average accuracy for {alg_name}: {avg_accuracy}")
+        avg_metrics = {
+            metric: sum(values[metric] for values in episode_metrics) / len(episode_metrics)
+            if episode_metrics else 0.0
+            for metric in ['accuracy', 'precision', 'recall', 'f1_score']
+        }
+        logger.info(f"Average metrics for {alg_name}: {avg_metrics}")
 
         # Adicionando registro em CSV
         csv_path = PROJECT_ROOT / "metrics" / "model_accuracy_log.csv"
@@ -199,10 +222,17 @@ class Agent:
         with open(csv_path, mode='a', newline='') as file:
             writer = csv.writer(file)
             if write_header:
-                writer.writerow(["model", "timestep", "avg_accuracy"])
-            writer.writerow([alg_name, self.TIMESTEPS, avg_accuracy])
+                writer.writerow(["model", "timestep", "avg_accuracy", "avg_precision", "avg_recall", "avg_f1_score"])
+            writer.writerow([
+                alg_name,
+                self.TIMESTEPS,
+                avg_metrics['accuracy'],
+                avg_metrics['precision'],
+                avg_metrics['recall'],
+                avg_metrics['f1_score'],
+            ])
 
-        return avg_accuracy
+        return avg_metrics['accuracy']
 
     def env3W_dqn(self, path_save: str) -> Tuple[Any, str]:
         replaydir = os.path.join(path_save, 'replay_buffer')

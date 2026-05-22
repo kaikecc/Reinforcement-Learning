@@ -2,6 +2,9 @@ import logging
 import os
 import sys
 import time
+import argparse
+import json
+import urllib.request
 from datetime import datetime
 from typing import Dict, Any, Optional, List
 from itertools import product
@@ -19,6 +22,13 @@ from classes._Env3WGym import make_custom_vec_env
 from classes._Agent import Agent
 from classes._Supervised import Supervised
 from classes._ValidationModel import ValidationModel
+
+THREE_W_ROOT = r"C:\Users\kaike\Documents\UFSC\CODE\3W"
+DIGITAL_TWIN_ROOT = os.path.join(PROJECT_ROOT, "digital_twin")
+if DIGITAL_TWIN_ROOT not in sys.path:
+    sys.path.append(DIGITAL_TWIN_ROOT)
+
+from well_simulator import DigitalTwinWellSimulator
 
 
 class IsolationForestWrapper:
@@ -238,19 +248,135 @@ def run_event(
     return results
 
 
-def main() -> None:
-    events_names = {1: "Abrupt Increase of BSW",
-                    #2: 'Spurious Closure of DHSV',
-                    #3: 'Severe Slugging',
-                    #4: 'Flow Instability',
-                    #5: 'Rapid Productivity Loss',
-                    #6: 'Quick Restriction in PCK',
-                    #7: 'Scaling in PCK',
-                    #8: 'Hydrate in Production Line'
-                    }
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--use-digital-twin", action="store_true")
+    parser.add_argument("--use-realtime-twin", action="store_true")
+    parser.add_argument("--event-code", type=int, default=1)
+    parser.add_argument("--models", nargs="+", default=["DQN"])
+    parser.add_argument("--type-instance", choices=["real", "simulated", "drawn"], default="real")
+    parser.add_argument("--timesteps", nargs="+", type=int, default=[150000])
+    parser.add_argument("--train-perc", type=float, default=0.8)
+    parser.add_argument("--twin-scenarios", type=int, default=10)
+    parser.add_argument("--twin-normal-rows", type=int, default=3600)
+    parser.add_argument("--twin-event-rows", type=int, default=3600)
+    parser.add_argument("--twin-source", choices=["real", "simulated", "drawn", "any"], default="real")
+    parser.add_argument("--twin-noise-std", type=float, default=0.0)
+    parser.add_argument("--dataset-path", default=os.path.join(THREE_W_ROOT, "dataset"))
+    parser.add_argument("--realtime-url", default="http://127.0.0.1:8787")
+    parser.add_argument("--realtime-min-rows", type=int, default=1000)
+    parser.add_argument("--realtime-poll-seconds", type=float, default=2.0)
+    parser.add_argument("--realtime-timeout", type=float, default=300.0)
+    parser.add_argument("--realtime-iterations", type=int, default=1)
+    return parser.parse_args()
 
-    models = ["DQN"] # "DQN", "PPO", "A2C", "RNA", "IF"
-    type_instance = "real"
+
+def event_names_for(code: int) -> Dict[int, str]:
+    all_events = {
+        1: "Abrupt Increase of BSW",
+        2: "Spurious Closure of DHSV",
+        3: "Severe Slugging",
+        4: "Flow Instability",
+        5: "Rapid Productivity Loss",
+        6: "Quick Restriction in PCK",
+        7: "Scaling in PCK",
+        8: "Hydrate in Production Line",
+        9: "Hydrate in Service Line",
+    }
+    if code not in all_events:
+        raise ValueError(f"Evento nao suportado: {code}")
+    return {code: all_events[code]}
+
+
+def load_training_data(
+    args: argparse.Namespace,
+    events_names: Dict[int, str],
+    instances: LoadInstances,
+) -> tuple[np.ndarray, list[np.ndarray]]:
+    if args.use_realtime_twin:
+        return collect_realtime_training_data(args)
+
+    if not args.use_digital_twin:
+        logging.info("Carregando dataset 3W original")
+        return instances.load_instance_with_numpy(
+            events_names,
+            type_instance=args.type_instance,
+        )
+
+    logging.info("Gerando cenarios pelo gemeo digital")
+    simulator = DigitalTwinWellSimulator(args.dataset_path)
+    frame = simulator.simulate_many(
+        event_code=args.event_code,
+        scenarios=args.twin_scenarios,
+        source=args.twin_source,
+        normal_source="real",
+        normal_rows=args.twin_normal_rows,
+        event_rows=args.twin_event_rows,
+        noise_std=args.twin_noise_std,
+    )
+    dataset = simulator.to_pipeline_numpy(frame)
+    return dataset, [dataset]
+
+
+def realtime_request(url: str, payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    data = None
+    headers = {}
+    if payload is not None:
+        data = json.dumps(payload).encode("utf-8")
+        headers["Content-Type"] = "application/json"
+    request = urllib.request.Request(url, data=data, headers=headers)
+    with urllib.request.urlopen(request, timeout=10) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def collect_realtime_training_data(args: argparse.Namespace) -> tuple[np.ndarray, list[np.ndarray]]:
+    base_url = args.realtime_url.rstrip("/")
+    realtime_request(f"{base_url}/api/control", {"action": "start"})
+    started = time.time()
+    last_count = -1
+
+    while True:
+        payload = realtime_request(f"{base_url}/api/samples")
+        rows = payload["rows"]
+        status = payload["status"]
+        row_count = len(rows)
+        if row_count != last_count:
+            print(
+                f"Simulacao em tempo real: {row_count}/{args.realtime_min_rows} "
+                f"amostras recebidas"
+            )
+            last_count = row_count
+
+        classes = {int(row["class"]) for row in rows} if rows else set()
+        has_normal = 0 in classes
+        has_event = any(value != 0 for value in classes)
+        if row_count >= args.realtime_min_rows and has_normal and has_event:
+            break
+        if not status["running"] and row_count > 0 and status["pointer"] >= status["total_rows"]:
+            break
+        if time.time() - started > args.realtime_timeout:
+            raise TimeoutError(
+                "Tempo esgotado esperando amostras do simulador em tempo real"
+            )
+        time.sleep(args.realtime_poll_seconds)
+
+    import pandas as pd
+
+    frame = pd.DataFrame(rows)
+    frame = frame[["timestamp", "P-PDG", "P-TPT", "T-TPT", "P-MON-CKP", "T-JUS-CKP", "class", "well", "code"]]
+    dataset = frame.to_numpy()
+    return dataset, [dataset]
+
+
+def main() -> None:
+    args = parse_args()
+    events_names = event_names_for(args.event_code)
+
+    models = args.models # "DQN", "PPO", "A2C", "RNA", "IF"
+    if args.use_realtime_twin:
+        type_instance = "realtime_twin"
+    else:
+        type_instance = "digital_twin" if args.use_digital_twin else args.type_instance
 
     # grid de hiperparâmetros para IF
     if_hyperparams = [
@@ -258,27 +384,30 @@ def main() -> None:
         for n, c in product([50, 100, 200], [0.01, 0.05, 0.1])
     ]
 
-    path_dataset = r"C:\\Users\\kaike\\Documents\\UFSC\\3W\\dataset"
-    instances = LoadInstances(path_dataset)
-    logging.info("Carregando dataset")
-    dataset, _ = instances.load_instance_with_numpy(events_names, type_instance=type_instance)
-    logging.info("Fim do carregamento")
-
-    train_perc = 0.8
-    timesteps_list = [150000] # 1000, 10000, 100000, 150000, 300000
+    instances = LoadInstances(args.dataset_path)
+    train_perc = args.train_perc
+    timesteps_list = args.timesteps # 1000, 10000, 100000, 150000, 300000
 
     final_results: Dict[tuple[str, str], Dict[str, Any]] = {}
-    for code, event in events_names.items():
-        if code == 0:
-            continue
-        ev_res = run_event(
-            code, event, dataset, models,
-            type_instance, train_perc,
-            timesteps_list, instances,
-            if_hyperparams
-        )
-        for k, v in ev_res.items():
-            final_results[(k, event)] = v
+    iterations = args.realtime_iterations if args.use_realtime_twin else 1
+    for iteration in range(1, iterations + 1):
+        dataset, _ = load_training_data(args, events_names, instances)
+        logging.info("Fim do carregamento")
+        iteration_type = type_instance
+        if args.use_realtime_twin and iterations > 1:
+            iteration_type = f"{type_instance}_iter{iteration}"
+
+        for code, event in events_names.items():
+            if code == 0:
+                continue
+            ev_res = run_event(
+                code, event, dataset, models,
+                iteration_type, train_perc,
+                timesteps_list, instances,
+                if_hyperparams
+            )
+            for k, v in ev_res.items():
+                final_results[(f"{k}_iter{iteration}", event)] = v
 
     for (model_key, event), res in final_results.items():
         acc = res["accuracy"] * 100
