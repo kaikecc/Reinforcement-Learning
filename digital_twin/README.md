@@ -86,6 +86,25 @@ Abra:
 http://127.0.0.1:8787
 ```
 
+Para validar a operacao com um modelo treinado, informe o tipo e o caminho do
+arquivo salvo pelo Stable-Baselines3. O caminho pode ser passado com ou sem
+`.zip`:
+
+```powershell
+python digital_twin/realtime_simulator.py --port 8787 --event-code 1 --model-type DQN --model-path "models\Abrupt Increase of BSW\realtime_twin\DQN\150000\_DQN.zip"
+```
+
+A cada amostra emitida, o simulador monta `obs` com as variaveis do pipeline e
+executa:
+
+```python
+action = model.predict(obs, deterministic=True)[0]
+```
+
+A interface compara essa acao com a acao esperada pela classe real
+(`0 = normal`, `1 = falha`) e mostra acao do modelo, acao esperada, validacao e
+acuracia online.
+
 A interface mostra um gráfico separado para cada variável usada pelo pipeline:
 `P-PDG`, `P-TPT`, `T-TPT`, `P-MON-CKP` e `T-JUS-CKP`. Em todos eles, o eixo X é
 o tempo e o eixo Y é o valor da variável.
