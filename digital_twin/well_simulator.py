@@ -69,12 +69,20 @@ class DigitalTwinWellSimulator:
             rows=scenario.normal_rows,
             rng=rng,
         )
-        event = self._load_segment(
-            class_code=scenario.event_code,
-            source=scenario.source,
-            rows=scenario.event_rows,
-            rng=rng,
-        )
+        if scenario.event_code == 0:
+            event = self._load_segment(
+                class_code=0,
+                source=scenario.normal_source,
+                rows=scenario.event_rows,
+                rng=rng,
+            )
+        else:
+            event = self._load_segment(
+                class_code=scenario.event_code,
+                source=scenario.source,
+                rows=scenario.event_rows,
+                rng=rng,
+            )
 
         frame = pd.concat([normal, event], ignore_index=True)
         frame["timestamp"] = pd.date_range(

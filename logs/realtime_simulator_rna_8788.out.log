@@ -1,0 +1,7 @@
+Porta 8788 ja esta em uso. Usando porta livre 8789 para evitar dashboard antigo.
+Real-time digital twin: http://127.0.0.1:8789
+Versao da dashboard: realtime-dashboard-layout-v6
+Arquivo servido: C:\Users\kaike\Documents\UFSC\CODE\Reinforcement-Learning\digital_twin\realtime_simulator.py
+PID: 2448
+ * Serving Flask app 'realtime_simulator'
+ * Debug mode: off

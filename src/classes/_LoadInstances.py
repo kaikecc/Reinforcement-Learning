@@ -16,6 +16,7 @@ class LoadInstances:
 
     def __init__(self, data_path: str):
         self.data_path = Path(data_path)
+        self.scaler = None
 
     def class_and_file_generator(self, real: bool = False, simulated: bool = False, drawn: bool = False):
         """
@@ -217,6 +218,7 @@ class LoadInstances:
         scaler = MinMaxScaler(feature_range=(-1, 1))
         X_train_scaled = scaler.fit_transform(X_train_no_ts)
         X_test_scaled  = scaler.transform(X_test_no_ts)
+        self.scaler = scaler
 
         # Concatena com o target no final (treino e teste NÃO têm 'well' nem 'timestamp')
         dataset_train_scaled = np.column_stack((X_train_scaled, y_train))

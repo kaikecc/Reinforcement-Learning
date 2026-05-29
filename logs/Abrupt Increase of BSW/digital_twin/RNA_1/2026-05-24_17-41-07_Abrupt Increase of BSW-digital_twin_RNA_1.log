@@ -1,0 +1,6 @@
+[INFO]	24/05/2026 05:41:07 PM - Treinando RNA com 1 timesteps
+[INFO]	24/05/2026 05:41:12 PM - Tempo de treino RNA: 4.52s
+[INFO]	24/05/2026 05:41:12 PM - Avaliando RNA
+[INFO]	24/05/2026 05:41:12 PM - Acurácia RNA: 1.00000 (avaliado em 0.36s)
+[INFO]	24/05/2026 05:41:12 PM - Scaler de treino salvo em C:\Users\kaike\Documents\UFSC\CODE\Reinforcement-Learning\models\Abrupt Increase of BSW\digital_twin\RNA\1\scaler.joblib
+[INFO]	24/05/2026 05:41:12 PM - Validando RNA

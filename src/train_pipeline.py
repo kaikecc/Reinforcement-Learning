@@ -10,6 +10,7 @@ from typing import Dict, Any, Optional, List
 from itertools import product
 
 import numpy as np
+import joblib
 from sklearn.ensemble import IsolationForest
 from sklearn.metrics import accuracy_score
 
@@ -29,6 +30,25 @@ if DIGITAL_TWIN_ROOT not in sys.path:
     sys.path.append(DIGITAL_TWIN_ROOT)
 
 from well_simulator import DigitalTwinWellSimulator
+
+
+def parse_timesteps_arg(values: List[str]) -> List[int]:
+    """Aceita timesteps separados por espaco e/ou virgula."""
+    timesteps: List[int] = []
+    for value in values:
+        for part in value.split(","):
+            part = part.strip()
+            if not part:
+                continue
+            try:
+                timesteps.append(int(part))
+            except ValueError as exc:
+                raise argparse.ArgumentTypeError(
+                    f"timesteps deve conter inteiros; valor invalido: {part!r}"
+                ) from exc
+    if not timesteps:
+        raise argparse.ArgumentTypeError("informe ao menos um timestep")
+    return timesteps
 
 
 class IsolationForestWrapper:
@@ -73,6 +93,17 @@ def setup_logger(
     logger.addHandler(fh)
     logger.propagate = False
     return logger
+
+
+def save_training_scaler(instances: LoadInstances, model_dir: str, logger: logging.Logger) -> None:
+    scaler = getattr(instances, "scaler", None)
+    if scaler is None:
+        logger.warning("Scaler de treino nao encontrado; simulador precisara usar scaler online")
+        return
+
+    scaler_path = os.path.join(model_dir, "scaler.joblib")
+    joblib.dump(scaler, scaler_path)
+    logger.info("Scaler de treino salvo em %s", scaler_path)
 
 
 def train_evaluate_model(
@@ -185,38 +216,38 @@ def run_event(
         
         # caso IF: variação de hiperparâmetros
         if model_type == "IF":
-            for hp in if_hyperparams:
-                ts = 1
-                key = f"IF_ts{ts}_n{hp['n_estimators']}_c{hp['contamination']}"
-                log_dir = os.path.join(PROJECT_ROOT, "logs", event, type_instance, key)
-                model_dir = os.path.join(PROJECT_ROOT, "models", event, type_instance, key)
-                os.makedirs(log_dir, exist_ok=True)
-                os.makedirs(model_dir, exist_ok=True)
+            for ts in timesteps_list:
+                for hp in if_hyperparams:
+                    key = f"IF_ts{ts}_n{hp['n_estimators']}_c{hp['contamination']}"
+                    log_dir = os.path.join(PROJECT_ROOT, "logs", event, type_instance, key)
+                    model_dir = os.path.join(PROJECT_ROOT, "models", event, type_instance, key)
+                    os.makedirs(log_dir, exist_ok=True)
+                    os.makedirs(model_dir, exist_ok=True)
 
-                logger = setup_logger(log_dir, event, type_instance, ts, key)
-                logger.info("IF ts=%s hiper=%s", ts, hp)
+                    logger = setup_logger(log_dir, event, type_instance, ts, key)
+                    logger.info("IF ts=%s hiper=%s", ts, hp)
 
-                result = train_evaluate_model(
-                    agente, model_type, model_dir, ts, logger,
-                    supervised=None,
-                    dataset_train=d_train_orig,
-                    dataset_test=d_test_orig,
-                    if_params=hp
-                )
-                if result:
-                    results[key] = result
+                    result = train_evaluate_model(
+                        agente, model_type, model_dir, ts, logger,
+                        supervised=None,
+                        dataset_train=d_train_orig,
+                        dataset_test=d_test_orig,
+                        if_params=hp
+                    )
+                    if result:
+                        results[key] = result
 
-                # Aqui aplicamos o validation_model para IF
-                logger.info("Validando IF")
-                validation = ValidationModel("IF", event, ts)
-                validation.validation_model(
-                    result["accuracy"],
-                    d_val,
-                    result["model_agent"]
-                )
+                        # Aqui aplicamos o validation_model para IF
+                        logger.info("Validando IF")
+                        validation = ValidationModel("IF", event, ts)
+                        validation.validation_model(
+                            result["accuracy"],
+                            d_val,
+                            result["model_agent"]
+                        )
 
-                for h in logger.handlers[:]:
-                    h.close(); logger.removeHandler(h)
+                    for h in logger.handlers[:]:
+                        h.close(); logger.removeHandler(h)
             continue
 
         for ts in timesteps_list:
@@ -239,6 +270,8 @@ def run_event(
             )
             if result:
                 results[f"{model_type}_{ts}"] = result
+                if model_type == "RNA":
+                    save_training_scaler(instances, model_dir, logger)
                 logger.info("Validando %s", model_type)
                 validation = ValidationModel(model_type, event, ts)
                 validation.validation_model(result["accuracy"], d_val, result["model_agent"])
@@ -255,7 +288,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--event-code", type=int, default=1)
     parser.add_argument("--models", nargs="+", default=["DQN"])
     parser.add_argument("--type-instance", choices=["real", "simulated", "drawn"], default="real")
-    parser.add_argument("--timesteps", nargs="+", type=int, default=[150000])
+    parser.add_argument("--timesteps", nargs="+", default=["150000"])
     parser.add_argument("--train-perc", type=float, default=0.8)
     parser.add_argument("--twin-scenarios", type=int, default=10)
     parser.add_argument("--twin-normal-rows", type=int, default=3600)
@@ -268,7 +301,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--realtime-poll-seconds", type=float, default=2.0)
     parser.add_argument("--realtime-timeout", type=float, default=300.0)
     parser.add_argument("--realtime-iterations", type=int, default=1)
-    return parser.parse_args()
+    args = parser.parse_args()
+    args.timesteps = parse_timesteps_arg(args.timesteps)
+    return args
 
 
 def event_names_for(code: int) -> Dict[int, str]:

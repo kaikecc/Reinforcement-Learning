@@ -22,7 +22,7 @@ except ModuleNotFoundError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
-APP_VERSION = "realtime-dashboard-layout-v6"
+APP_VERSION = "realtime-dashboard-layout-v10"
 DEFAULT_DATASET = ROOT.parent / "3W" / "dataset"
 DEFAULT_MODEL_PATH = (
     ROOT
@@ -68,6 +68,8 @@ class RealtimeTwinState:
         self.model_error: str | None = None
         self.scaler_error: str | None = None
         self.last_prediction: dict[str, Any] | None = None
+        self.manual_fault_active = False
+        self.manual_fault_class = 1
         self.model = self._load_model()
         self.scaler = self._load_scaler()
         self.timeline = self._build_timeline()
@@ -105,6 +107,17 @@ class RealtimeTwinState:
                 from stable_baselines3 import A2C
 
                 return A2C.load(path)
+            if self.config.model_type == "RNA":
+                from tensorflow.keras.models import load_model
+
+                import sys
+
+                src_path = ROOT / "src"
+                if str(src_path) not in sys.path:
+                    sys.path.append(str(src_path))
+                from classes._F1Score import F1Score
+
+                return load_model(path, custom_objects={"F1Score": F1Score})
         except Exception as exc:
             self.model_error = str(exc)
             return None
@@ -122,7 +135,7 @@ class RealtimeTwinState:
         if path.suffix != ".zip" and zip_path.exists():
             return zip_path
 
-        if path.exists() and path.is_file():
+        if path.exists() and (path.is_file() or path.is_dir()):
             return path
 
         return None
@@ -163,6 +176,14 @@ class RealtimeTwinState:
             obs = self.scaler.transform(obs).astype(np.float32)
         return obs[0]
 
+    def _predict_action(self, obs: np.ndarray) -> int:
+        if self.config.model_type == "RNA":
+            probabilities = self.model.predict(np.atleast_2d(obs), verbose=0)
+            return int(np.argmax(probabilities, axis=1)[0])
+
+        action = self.model.predict(obs, deterministic=True)[0]
+        return int(np.asarray(action).item())
+
     def _predict_row(self, row: dict[str, Any]) -> dict[str, Any]:
         if self.model is None:
             row["model_action"] = None
@@ -183,9 +204,8 @@ class RealtimeTwinState:
         try:
             started = time.perf_counter()
             obs = self._build_observation(row)
-            action = self.model.predict(obs, deterministic=True)[0]
+            action_value = self._predict_action(obs)
             elapsed_ms = (time.perf_counter() - started) * 1000
-            action_value = int(np.asarray(action).item())
             expected_action = 0 if int(row["class"]) == 0 else 1
             correct = action_value == expected_action
             obs_values = [float(value) for value in np.asarray(obs, dtype=np.float32).tolist()]
@@ -227,7 +247,7 @@ class RealtimeTwinState:
                 "model_path": self.config.model_path,
                 "timestamp": row.get("timestamp"),
                 "error": str(exc),
-                "message": "Erro ao executar model.predict(obs, deterministic=True).",
+                "message": "Erro ao executar a predicao do modelo.",
             }
         return row
 
@@ -259,22 +279,52 @@ class RealtimeTwinState:
         self.pointer = 0
         self.timeline = self._build_timeline()
 
+    def _next_timestamp_start(self) -> pd.Timestamp:
+        if self.generated_rows:
+            return pd.Timestamp(self.generated_rows[-1]["timestamp"]) + pd.Timedelta(seconds=1)
+        return pd.Timestamp(self.next_start)
+
+    def _build_manual_fault_chunk(self, rows: int) -> pd.DataFrame:
+        rng = np.random.default_rng(
+            self.config.seed + self.total_emitted + self.manual_fault_class + self.cycle
+        )
+        simulator = DigitalTwinWellSimulator(self.config.dataset_path)
+        frame = simulator._load_segment(
+            class_code=int(self.manual_fault_class),
+            source=self.config.source,
+            rows=rows,
+            rng=rng,
+        )
+        start = self._next_timestamp_start()
+        frame["timestamp"] = pd.date_range(start=start, periods=len(frame), freq="s").strftime(
+            "%Y-%m-%d %H:%M:%S"
+        )
+        frame["class"] = int(self.manual_fault_class)
+        frame["well"] = f"{self.config.well_name}-MANUAL"
+        frame["code"] = int(self.manual_fault_class)
+        return frame[OUTPUT_COLUMNS]
+
     def _run(self) -> None:
         while True:
             time.sleep(self.config.tick_seconds)
             with self.lock:
                 if not self.running:
                     continue
-                if self.pointer >= len(self.timeline):
-                    self._start_next_cycle()
-                end = min(self.pointer + self.config.rows_per_tick, len(self.timeline))
-                chunk = self.timeline.iloc[self.pointer:end]
+                if self.manual_fault_active:
+                    chunk = self._build_manual_fault_chunk(self.config.rows_per_tick)
+                    end = self.pointer
+                else:
+                    if self.pointer >= len(self.timeline):
+                        self._start_next_cycle()
+                    end = min(self.pointer + self.config.rows_per_tick, len(self.timeline))
+                    chunk = self.timeline.iloc[self.pointer:end]
                 rows = [self._predict_row(row) for row in chunk.to_dict(orient="records")]
                 self.generated_rows.extend(rows)
                 if len(self.generated_rows) > self.config.max_history_rows:
                     self.generated_rows = self.generated_rows[-self.config.max_history_rows :]
                 self.total_emitted += len(chunk)
-                self.pointer = end
+                if not self.manual_fault_active:
+                    self.pointer = end
 
     def start(self) -> None:
         with self.lock:
@@ -283,6 +333,18 @@ class RealtimeTwinState:
     def pause(self) -> None:
         with self.lock:
             self.running = False
+
+    def toggle_manual_fault(self, class_code: int | None = None) -> dict[str, Any]:
+        with self.lock:
+            if self.manual_fault_active:
+                self.manual_fault_active = False
+            else:
+                if class_code is None or int(class_code) < 1:
+                    raise ValueError("class_code must be >= 1 for a manual fault")
+                self.manual_fault_class = int(class_code)
+                self.manual_fault_active = True
+                self.running = True
+            return self.status_unlocked()
 
     def reset(self, updates: dict[str, Any] | None = None) -> None:
         with self.lock:
@@ -300,12 +362,13 @@ class RealtimeTwinState:
             self.model_error = None
             self.scaler_error = None
             self.last_prediction = None
+            self.manual_fault_active = False
+            self.manual_fault_class = 1
             self.model = self._load_model()
             self.scaler = self._load_scaler()
             self.timeline = self._build_timeline()
 
-    def status(self) -> dict[str, Any]:
-        with self.lock:
+    def status_unlocked(self) -> dict[str, Any]:
             latest = self.generated_rows[-1] if self.generated_rows else None
             class_counts: dict[str, int] = {}
             for row in self.generated_rows:
@@ -352,6 +415,8 @@ class RealtimeTwinState:
                 "cycle_progress": self.pointer / len(self.timeline) if len(self.timeline) else 0,
                 "event_started": current_class != 0,
                 "current_class": current_class,
+                "manual_fault_active": self.manual_fault_active,
+                "manual_fault_class": self.manual_fault_class,
                 "model_loaded": self.model is not None,
                 "model_error": self.model_error,
                 "model_action": latest_action,
@@ -386,6 +451,10 @@ class RealtimeTwinState:
                 "served_from": str(Path(__file__).resolve()),
                 "served_file": Path(__file__).name,
             }
+
+    def status(self) -> dict[str, Any]:
+        with self.lock:
+            return self.status_unlocked()
 
     def window(self, limit: int) -> list[dict[str, Any]]:
         with self.lock:
@@ -451,6 +520,16 @@ def create_app(state: RealtimeTwinState) -> Flask:
         else:
             return jsonify({"error": "action must be start, pause, or reset"}), 400
         return jsonify(state.status())
+
+    @app.post("/api/manual-fault")
+    def api_manual_fault():
+        payload = request.get_json(silent=True) or {}
+        class_code = payload.get("class_code")
+        try:
+            status = state.toggle_manual_fault(int(class_code) if class_code is not None else None)
+        except Exception as exc:
+            return jsonify({"error": str(exc)}), 400
+        return jsonify({"status": status})
 
     return app
 
@@ -554,6 +633,14 @@ DASHBOARD_HTML = """<!doctype html>
       font-size: 15px;
       text-align: left;
     }
+    .metric-section.ok {
+      background: #f0fbf6;
+      border-color: #78d7ad;
+    }
+    .metric-section.bad {
+      background: #fff1f1;
+      border-color: #f2a8a8;
+    }
     .metric-grid {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
@@ -562,6 +649,18 @@ DASHBOARD_HTML = """<!doctype html>
       min-height: 82px;
       display: grid;
       align-content: center;
+    }
+    .metric.ok {
+      background: #dff8ed;
+      border-color: #78d7ad;
+    }
+    .metric.bad {
+      background: #fde7e7;
+      border-color: #f2a8a8;
+    }
+    .metric.warn {
+      background: #fff4d6;
+      border-color: #f3cf72;
     }
     .metric strong {
       display: block;
@@ -661,6 +760,7 @@ DASHBOARD_HTML = """<!doctype html>
       <button class="danger control-button" onclick="resetSimulation()">Resetar</button>
       <label class="control-medium">Evento
         <select id="eventCode">
+          <option value="0">0 - Normal</option>
           <option value="1">1 - Abrupt Increase of BSW</option>
           <option value="2">2 - Spurious Closure of DHSV</option>
           <option value="3">3 - Severe Slugging</option>
@@ -688,6 +788,7 @@ DASHBOARD_HTML = """<!doctype html>
           <option value="DQN">DQN</option>
           <option value="PPO">PPO</option>
           <option value="A2C">A2C</option>
+          <option value="RNA">RNA</option>
         </select>
       </label>
       <label class="control-path">Caminho do modelo
@@ -702,32 +803,36 @@ DASHBOARD_HTML = """<!doctype html>
           <option value="false">inativo</option>
         </select>
       </label>
+      <label class="control-small">Falha manual
+        <input id="manualFaultCode" type="number" min="1" max="9" step="1" value="1">
+      </label>
+      <button id="manualFaultButton" class="danger control-button" onclick="toggleManualFault()">Testar falha</button>
     </div>
     <div class="dashboard-layout">
-      <section class="metric-section">
+      <section class="metric-section" id="operationSection">
         <h2>Operacao em Tempo Real</h2>
         <div class="metric-grid">
-      <div class="metric"><strong id="rows">0</strong><span>amostras emitidas</span></div>
-      <div class="metric"><strong id="progress">0%</strong><span>progresso do ciclo</span></div>
-      <div class="metric"><strong id="phase">normal</strong><span>fase operacional</span></div>
-      <div class="metric"><strong id="fault">0</strong><span>classe atual</span></div>
-      <div class="metric"><strong id="cycle">1</strong><span>ciclo</span></div>
+      <div class="metric operation-card" id="rowsCard"><strong id="rows">0</strong><span>amostras emitidas</span></div>
+      <div class="metric operation-card" id="progressCard"><strong id="progress">0%</strong><span>progresso do ciclo</span></div>
+      <div class="metric operation-card" id="phaseCard"><strong id="phase">normal</strong><span>fase operacional</span></div>
+      <div class="metric operation-card" id="faultCard"><strong id="fault">0</strong><span>classe atual</span></div>
+      <div class="metric operation-card" id="cycleCard"><strong id="cycle">1</strong><span>ciclo</span></div>
         </div>
       </section>
       <section class="metric-section">
         <h2>Resultado da Predicao</h2>
         <div class="metric-grid">
-      <div class="metric"><strong id="expectedAction">-</strong><span>acao esperada</span></div>
-      <div class="metric"><strong id="modelValidation">-</strong><span>validacao modelo</span></div>
+      <div class="metric prediction-card" id="expectedActionCard"><strong id="expectedAction">-</strong><span>acao esperada</span></div>
+      <div class="metric prediction-card" id="modelValidationCard"><strong id="modelValidation">-</strong><span>validacao modelo</span></div>
       <div class="metric"><strong id="modelAction">-</strong><span>ação do modelo</span></div>
       <div class="metric"><strong id="modelAccuracy">-</strong><span>acurácia online</span></div>
-      <div class="metric"><strong id="modelPrecision">-</strong><span>precisao</span></div>
-      <div class="metric"><strong id="modelRecall">-</strong><span>recall</span></div>
-      <div class="metric"><strong id="modelF1Score">-</strong><span>F1 score</span></div>
-      <div class="metric"><strong id="modelTP">0%</strong><span>TP</span></div>
-      <div class="metric"><strong id="modelTN">0%</strong><span>TN</span></div>
-      <div class="metric"><strong id="modelFP">0%</strong><span>FP</span></div>
-      <div class="metric"><strong id="modelFN">0%</strong><span>FN</span></div>
+      <div class="metric prediction-card" id="modelPrecisionCard"><strong id="modelPrecision">-</strong><span>precisao</span></div>
+      <div class="metric prediction-card" id="modelRecallCard"><strong id="modelRecall">-</strong><span>recall</span></div>
+      <div class="metric prediction-card" id="modelF1ScoreCard"><strong id="modelF1Score">-</strong><span>F1 score</span></div>
+      <div class="metric prediction-card" id="modelTPCard"><strong id="modelTP">0%</strong><span>TP</span></div>
+      <div class="metric prediction-card" id="modelTNCard"><strong id="modelTN">0%</strong><span>TN</span></div>
+      <div class="metric prediction-card" id="modelFPCard"><strong id="modelFP">0%</strong><span>FP</span></div>
+      <div class="metric prediction-card" id="modelFNCard"><strong id="modelFN">0%</strong><span>FN</span></div>
         </div>
       </section>
       <section class="metric-section">
@@ -759,6 +864,7 @@ DASHBOARD_HTML = """<!doctype html>
   <script>
     const variables = ["P-PDG", "P-TPT", "T-TPT", "P-MON-CKP", "T-JUS-CKP"];
     const colors = ["#0f766e", "#1d4ed8", "#b45309", "#7c3aed", "#be123c"];
+    let controlsInitialized = false;
 
     function chartId(variable) {
       return `chart-${variable.replaceAll("-", "_")}`;
@@ -785,8 +891,23 @@ DASHBOARD_HTML = """<!doctype html>
     }
 
     function drawAxes(ctx, width, height, left, right, top, bottom) {
-      ctx.strokeStyle = "#d7dee6";
       ctx.lineWidth = 1;
+      ctx.strokeStyle = "#e7edf3";
+      for (let idx = 1; idx <= 4; idx += 1) {
+        const y = top + (idx / 5) * (height - top - bottom);
+        ctx.beginPath();
+        ctx.moveTo(left, y);
+        ctx.lineTo(width - right, y);
+        ctx.stroke();
+      }
+      for (let idx = 1; idx <= 5; idx += 1) {
+        const x = left + (idx / 6) * (width - left - right);
+        ctx.beginPath();
+        ctx.moveTo(x, top);
+        ctx.lineTo(x, height - bottom);
+        ctx.stroke();
+      }
+      ctx.strokeStyle = "#d7dee6";
       ctx.beginPath();
       ctx.moveTo(left, top);
       ctx.lineTo(left, height - bottom);
@@ -882,6 +1003,19 @@ DASHBOARD_HTML = """<!doctype html>
       });
       await refresh();
     }
+    async function toggleManualFault() {
+      const classCode = Number(document.getElementById("manualFaultCode").value || 1);
+      const response = await fetch("/api/manual-fault", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({class_code: classCode})
+      });
+      if (!response.ok) {
+        const payload = await response.json();
+        alert(payload.error || "Falha manual nao foi injetada.");
+      }
+      await refresh();
+    }
     function renderLatest(row) {
       const table = document.getElementById("latest");
       if (!row) {
@@ -900,6 +1034,56 @@ DASHBOARD_HTML = """<!doctype html>
     }
     function formatPercent(value) {
       return value === null || value === undefined ? "-" : `${Math.round(value * 100)}%`;
+    }
+    function setMetricState(elementId, stateClass) {
+      const card = document.getElementById(elementId)?.closest(".metric");
+      if (!card) return;
+      card.classList.remove("ok", "bad", "warn");
+      if (stateClass) card.classList.add(stateClass);
+    }
+    function stateFromRatio(value, warnBelow = 0.7) {
+      if (value === null || value === undefined) return "";
+      return value >= warnBelow ? "ok" : "bad";
+    }
+    function updatePredictionCards(status) {
+      const predictedFault = Number(status.model_action) !== 0;
+      const expectedFault = Number(status.expected_action) !== 0;
+      const hasPrediction = status.model_action !== null && status.model_action !== undefined;
+      setMetricState("expectedAction", expectedFault ? "bad" : "ok");
+      setMetricState("modelAction", hasPrediction ? (predictedFault ? "bad" : "ok") : "");
+      setMetricState("modelValidation", status.model_validation === "correto" ? "ok" : (status.model_validation ? "bad" : ""));
+      setMetricState("modelAccuracy", stateFromRatio(status.model_accuracy));
+      setMetricState("modelPrecision", stateFromRatio(status.model_precision));
+      setMetricState("modelRecall", stateFromRatio(status.model_recall));
+      setMetricState("modelF1Score", stateFromRatio(status.model_f1_score));
+      setMetricState("modelTP", status.confusion_matrix?.TP > 0 ? "bad" : "");
+      setMetricState("modelTN", status.confusion_matrix?.TN > 0 ? "ok" : "");
+      setMetricState("modelFP", status.confusion_matrix?.FP > 0 ? "bad" : "");
+      setMetricState("modelFN", status.confusion_matrix?.FN > 0 ? "bad" : "");
+    }
+    function updateOperationCards(status) {
+      const faultActive = status.manual_fault_active || status.event_started;
+      const stateClass = faultActive ? "bad" : "ok";
+      const section = document.getElementById("operationSection");
+      section.classList.remove("ok", "bad");
+      section.classList.add(stateClass);
+      setMetricState("rows", status.generated_rows > 0 ? stateClass : "");
+      setMetricState("progress", stateClass);
+      setMetricState("phase", stateClass);
+      setMetricState("fault", stateClass);
+      setMetricState("cycle", stateClass);
+    }
+    function syncControls(status) {
+      if (controlsInitialized) return;
+      document.getElementById("eventCode").value = String(status.config.event_code);
+      document.getElementById("source").value = status.config.source;
+      document.getElementById("noiseStd").value = status.config.noise_std;
+      document.getElementById("modelType").value = status.config.model_type;
+      document.getElementById("modelPath").value = status.config.model_path;
+      document.getElementById("scalerPath").value = status.config.scaler_path;
+      document.getElementById("useOnlineScaler").value = String(status.config.use_online_scaler);
+      document.getElementById("manualFaultCode").value = status.manual_fault_class || 1;
+      controlsInitialized = true;
     }
     function renderPrediction(status) {
       const container = document.getElementById("predictionDetails");
@@ -935,7 +1119,7 @@ DASHBOARD_HTML = """<!doctype html>
       `;
     }
     async function refresh() {
-      const response = await fetch("/api/window?limit=300");
+      const response = await fetch("/api/samples");
       const payload = await response.json();
       const rows = payload.rows;
       const status = payload.status;
@@ -944,8 +1128,12 @@ DASHBOARD_HTML = """<!doctype html>
       document.getElementById("versionLabel").title = status.served_from;
       document.getElementById("rows").textContent = status.generated_rows.toLocaleString("pt-BR");
       document.getElementById("progress").textContent = `${Math.round(status.cycle_progress * 100)}%`;
-      document.getElementById("phase").textContent = status.event_started ? "falha" : "normal";
-      document.getElementById("fault").textContent = status.current_class;
+      document.getElementById("phase").textContent = status.manual_fault_active
+        ? "falha manual"
+        : (status.event_started ? "falha" : "normal");
+      document.getElementById("fault").textContent = status.manual_fault_active
+        ? status.manual_fault_class
+        : status.current_class;
       document.getElementById("modelAction").textContent = status.model_loaded
         ? `${status.model_action ?? "-"} (${status.model_status ?? "-"})`
         : "sem modelo";
@@ -966,10 +1154,13 @@ DASHBOARD_HTML = """<!doctype html>
       document.getElementById("scalerMode").textContent = status.scaler_mode;
       document.getElementById("scalerMode").title = status.scaler_error || "";
       document.getElementById("cycle").textContent = status.cycle;
-      document.getElementById("modelType").value = status.config.model_type;
-      document.getElementById("modelPath").value = status.config.model_path;
-      document.getElementById("scalerPath").value = status.config.scaler_path;
-      document.getElementById("useOnlineScaler").value = String(status.config.use_online_scaler);
+      syncControls(status);
+      document.getElementById("manualFaultButton").textContent = status.manual_fault_active
+        ? "Parar falha"
+        : "Testar falha";
+      document.getElementById("manualFaultCode").disabled = status.manual_fault_active;
+      updateOperationCards(status);
+      updatePredictionCards(status);
       renderPrediction(status);
       renderLatest(status.latest);
 
@@ -1000,7 +1191,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--noise-std", type=float, default=0.0)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max-history-rows", type=int, default=50000)
-    parser.add_argument("--model-type", choices=["DQN", "PPO", "A2C"], default="DQN")
+    parser.add_argument("--model-type", choices=["DQN", "PPO", "A2C", "RNA"], default="DQN")
     parser.add_argument("--model-path", default=str(DEFAULT_MODEL_PATH))
     parser.add_argument("--scaler-path", default="")
     parser.add_argument("--no-online-scaler", action="store_true")
