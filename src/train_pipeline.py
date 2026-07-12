@@ -6,6 +6,7 @@ import argparse
 import json
 import urllib.request
 from datetime import datetime
+from pathlib import Path
 from typing import Dict, Any, Optional, List
 from itertools import product
 
@@ -14,20 +15,23 @@ import joblib
 from sklearn.ensemble import IsolationForest
 from sklearn.metrics import accuracy_score
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT_PATH = Path(__file__).resolve().parents[1]
+PROJECT_ROOT = str(PROJECT_ROOT_PATH)
 
-# Add project root to path so we can import classes
-sys.path.append(os.path.join('..'))
+SRC_ROOT = PROJECT_ROOT_PATH / "src"
+DIGITAL_TWIN_ROOT = PROJECT_ROOT_PATH / "digital_twin"
+for import_path in (SRC_ROOT, DIGITAL_TWIN_ROOT):
+    import_path_str = str(import_path)
+    if import_path_str not in sys.path:
+        sys.path.insert(0, import_path_str)
+
 from classes._LoadInstances import LoadInstances
 from classes._Env3WGym import make_custom_vec_env
 from classes._Agent import Agent
 from classes._Supervised import Supervised
 from classes._ValidationModel import ValidationModel
 
-THREE_W_ROOT = r"C:\Users\kaike\Documents\UFSC\CODE\3W"
-DIGITAL_TWIN_ROOT = os.path.join(PROJECT_ROOT, "digital_twin")
-if DIGITAL_TWIN_ROOT not in sys.path:
-    sys.path.append(DIGITAL_TWIN_ROOT)
+THREE_W_ROOT = Path(os.environ.get("THREE_W_ROOT", PROJECT_ROOT_PATH.parent / "3W"))
 
 from well_simulator import DigitalTwinWellSimulator
 
@@ -189,7 +193,9 @@ def run_event(
     train_perc: float,
     timesteps_list: List[int],
     instances: LoadInstances,
-    if_hyperparams: List[Dict[str, Any]]
+    if_hyperparams: List[Dict[str, Any]],
+    enable_tensorboard: bool = False,
+    tensorboard_port: int = 6006,
 ) -> Dict[str, Dict[str, Any]]:
     results: Dict[str, Dict[str, Any]] = {}
     # filtra pelo código de evento
@@ -210,7 +216,13 @@ def run_event(
     envs_test  = make_custom_vec_env(d_test,  n_envs=1, vec_env_type="dummy")
     tensorboard_dir = os.path.join(PROJECT_ROOT, "models", f"{event}-{type_instance}")
     os.makedirs(tensorboard_dir, exist_ok=True)
-    agente = Agent(tensorboard_dir, envs_train, envs_test)
+    agente = Agent(
+        tensorboard_dir,
+        envs_train,
+        envs_test,
+        launch_tensorboard=enable_tensorboard,
+        port=tensorboard_port,
+    )
 
     for model_type in models:
         
@@ -243,7 +255,8 @@ def run_event(
                         validation.validation_model(
                             result["accuracy"],
                             d_val,
-                            result["model_agent"]
+                            result["model_agent"],
+                            type_ml=model_type,
                         )
 
                     for h in logger.handlers[:]:
@@ -274,7 +287,12 @@ def run_event(
                     save_training_scaler(instances, model_dir, logger)
                 logger.info("Validando %s", model_type)
                 validation = ValidationModel(model_type, event, ts)
-                validation.validation_model(result["accuracy"], d_val, result["model_agent"])
+                validation.validation_model(
+                    result["accuracy"],
+                    d_val,
+                    result["model_agent"],
+                    type_ml=model_type,
+                )
             for h in logger.handlers[:]:
                 h.close(); logger.removeHandler(h)
 
@@ -293,14 +311,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--twin-scenarios", type=int, default=10)
     parser.add_argument("--twin-normal-rows", type=int, default=3600)
     parser.add_argument("--twin-event-rows", type=int, default=3600)
-    parser.add_argument("--twin-source", choices=["real", "simulated", "drawn", "any"], default="real")
+    parser.add_argument("--twin-source", choices=["real", "simulated", "drawn", "any"], default="any")
     parser.add_argument("--twin-noise-std", type=float, default=0.0)
-    parser.add_argument("--dataset-path", default=os.path.join(THREE_W_ROOT, "dataset"))
+    parser.add_argument("--dataset-path", default=str(THREE_W_ROOT / "dataset"))
     parser.add_argument("--realtime-url", default="http://127.0.0.1:8787")
     parser.add_argument("--realtime-min-rows", type=int, default=1000)
     parser.add_argument("--realtime-poll-seconds", type=float, default=2.0)
     parser.add_argument("--realtime-timeout", type=float, default=300.0)
     parser.add_argument("--realtime-iterations", type=int, default=1)
+    parser.add_argument("--tensorboard", action="store_true")
+    parser.add_argument("--tensorboard-port", type=int, default=6006)
     args = parser.parse_args()
     args.timesteps = parse_timesteps_arg(args.timesteps)
     return args
@@ -338,13 +358,13 @@ def load_training_data(
             type_instance=args.type_instance,
         )
 
-    logging.info("Gerando cenarios pelo gemeo digital")
+    logging.info("Gerando cenarios fisicos pelo gemeo digital")
     simulator = DigitalTwinWellSimulator(args.dataset_path)
     frame = simulator.simulate_many(
         event_code=args.event_code,
         scenarios=args.twin_scenarios,
         source=args.twin_source,
-        normal_source="real",
+        normal_source=args.twin_source,
         normal_rows=args.twin_normal_rows,
         event_rows=args.twin_event_rows,
         noise_std=args.twin_noise_std,
@@ -439,7 +459,9 @@ def main() -> None:
                 code, event, dataset, models,
                 iteration_type, train_perc,
                 timesteps_list, instances,
-                if_hyperparams
+                if_hyperparams,
+                enable_tensorboard=args.tensorboard,
+                tensorboard_port=args.tensorboard_port,
             )
             for k, v in ev_res.items():
                 final_results[(f"{k}_iter{iteration}", event)] = v

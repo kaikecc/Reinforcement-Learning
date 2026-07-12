@@ -13,9 +13,10 @@ e painel interativo em HTML a partir de `..\3W\dataset`.
 - `outputs/variable_profiles.csv`: estatísticas globais por variável e classe.
 - `outputs/dashboard.html`: painel interativo com visão por classe, fonte,
   cobertura de variáveis, linha do tempo e séries representativas.
-- `well_simulator.py`: simulador operacional de poço. Ele cria uma linha do
-  tempo com operação normal seguida por uma falha e exporta no mesmo formato
-  usado pelo `train_pipeline.py`.
+- `well_simulator.py`: simulador operacional de poço. Ele cria sinais novos
+  por equações físicas simplificadas, calibradas por estatísticas das
+  instâncias reais, simuladas e desenhadas do 3W. O método de replay segue
+  disponível em `simulate_replay()`, mas não é usado pelo fluxo padrão.
 - `realtime_simulator.py`: simulador em tempo real com interface gráfica em
   navegador e API HTTP para o `train_pipeline.py` consumir janelas vivas da
   simulação.
@@ -42,10 +43,12 @@ Depois abra:
 
 ## Simular um poço com falha
 
-Exemplo com 2 cenários do evento 1, cada um com 1 hora normal e 1 hora de falha:
+Exemplo com 2 cenários do evento 1, cada um com 1 hora normal e 1 hora de falha.
+Por padrão, `--source any` usa perfis combinados de instâncias reais,
+simuladas e desenhadas:
 
 ```powershell
-python digital_twin/well_simulator.py --event-code 1 --source real --scenarios 2 --normal-rows 3600 --event-rows 3600 --output digital_twin/outputs/simulated_well.parquet
+python digital_twin/well_simulator.py --event-code 1 --source any --scenarios 2 --normal-rows 3600 --event-rows 3600 --output digital_twin/outputs/simulated_well.parquet
 ```
 
 O arquivo gerado possui as colunas esperadas pelo pipeline de reinforcement
@@ -60,7 +63,7 @@ timestamp, P-PDG, P-TPT, T-TPT, P-MON-CKP, T-JUS-CKP, class, well, code
 No repositório `Reinforcement-Learning`, rode:
 
 ```powershell
-python src/train_pipeline.py --use-digital-twin --event-code 1 --models DQN --twin-scenarios 10 --twin-normal-rows 3600 --twin-event-rows 3600
+python src/train_pipeline.py --use-digital-twin --event-code 1 --models DQN --twin-source any --twin-scenarios 10 --twin-normal-rows 3600 --twin-event-rows 3600
 ```
 
 Para validar rapidamente sem um treino DQN longo:

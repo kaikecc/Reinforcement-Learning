@@ -6,6 +6,7 @@ import argparse
 import configparser
 import json
 import math
+import os
 from collections import Counter, defaultdict
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -18,7 +19,7 @@ from plotly.io import to_html
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DATASET_ROOT = ROOT.parent / "3W"
+DATASET_ROOT = Path(os.environ.get("THREE_W_ROOT", ROOT.parent / "3W"))
 DATASET_DIR = DATASET_ROOT / "dataset"
 OUTPUT_DIR = Path(__file__).resolve().parent / "outputs"
 CONFIG_PATH = DATASET_DIR / "dataset.ini"

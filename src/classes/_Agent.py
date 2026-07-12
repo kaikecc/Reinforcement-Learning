@@ -119,8 +119,15 @@ class Agent:
     Classe Agent para treinamento e avaliação de modelos de reinforcement learning.
     Suporta DQN, PPO, A2C e Continual Learning para DQN.
     """
-    def __init__(self, path_tensorboard: str, envs_train: Any, envs_test: Any, 
-                 TIMESTEPS: Union[int, str] = 10000, port: int = 6006):
+    def __init__(
+        self,
+        path_tensorboard: str,
+        envs_train: Any,
+        envs_test: Any,
+        TIMESTEPS: Union[int, str] = 10000,
+        port: int = 6006,
+        launch_tensorboard: bool = False,
+    ):
         self.envs_train = envs_train
         self.envs_eval = envs_test
         self.TIMESTEPS = int(TIMESTEPS)
@@ -130,7 +137,8 @@ class Agent:
         os.makedirs(self.logdir, exist_ok=True)
         self.port = port
         self._log_tensorboard_info()
-        self.launch_tensorboard()
+        if launch_tensorboard:
+            self.launch_tensorboard()
 
     def _log_tensorboard_info(self) -> None:
         msg = f"Para visualizar os logs do TensorBoard, execute: tensorboard --logdir='{self.logdir}'"

@@ -19,6 +19,8 @@ class Env3WGym(gym.Env):
     def __init__(self, dataset: np.ndarray) -> None:
         super().__init__()
         self.dataset = np.asarray(dataset)
+        if self.dataset.size == 0 or self.dataset.ndim != 2:
+            raise ValueError("dataset must be a non-empty 2D array")
         self.index = 0
         self.num_features = self.dataset.shape[1] - 1  # Assume que a última coluna é o rótulo
 
@@ -33,14 +35,16 @@ class Env3WGym(gym.Env):
         Executa uma ação e retorna (observação, recompensa, done, info).
         """
         if self.episode_ended:
-            return self.reset(), 0.0, True, {}
+            return np.array(self.state, dtype=np.float32), 0.0, True, {}
+
+        action_value = int(np.asarray(action).item())
         
         # Calcula a recompensa com base no rótulo da amostra atual
         class_value = self.dataset[self.index, -1]
-        reward = self.calculate_reward(action, class_value)
+        reward = self.calculate_reward(action_value, class_value)
         info = {
             "class_value": int(class_value),
-            "action": int(action),
+            "action": action_value,
         }
         self.index += 1
         
@@ -59,6 +63,10 @@ class Env3WGym(gym.Env):
         self.state = self.dataset[self.index, :-1]
         self.episode_ended = False
         return np.array(self.state, dtype=np.float32)
+
+    def seed(self, seed: int | None = None):
+        np.random.seed(seed)
+        return [seed]
 
     def calculate_reward(self, action: int, class_value: int) -> float:
         """

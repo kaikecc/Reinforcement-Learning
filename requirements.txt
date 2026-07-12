@@ -1,0 +1,17 @@
+flask
+gym
+joblib
+matplotlib
+numpy
+pandas
+plotly
+pyarrow
+pytest
+rich
+scikit-learn
+seaborn
+stable-baselines3
+tensorboard
+tensorflow
+torch
+tqdm

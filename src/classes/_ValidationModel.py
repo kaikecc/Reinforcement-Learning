@@ -227,7 +227,7 @@ class ValidationModel:
         accuracy: float,
         dataset_validation_scaled: np.ndarray,
         model: Any,
-        type_ml: str = 'RNA'
+        type_ml: str | None = None
     ) -> None:
         """
         Valida o modelo com base na acurácia fornecida e nos dados de validação escalados.
@@ -237,6 +237,7 @@ class ValidationModel:
         :param model: Modelo (RL ou RNA) que possui método .predict().
         :param type_ml: Tipo de aprendizado, 'RNA' ou outro.
         """
+        validation_type = type_ml or self.model_name
         min_acc_threshold = 0.5  # 50% de acurácia mínima para validação individual
         if accuracy > min_acc_threshold:
             logger.info(
@@ -244,7 +245,7 @@ class ValidationModel:
                 accuracy, min_acc_threshold
             )
 
-            if type_ml == 'RNA':
+            if validation_type == 'RNA':
                 # Ordena pelo timestamp (coluna 0)
                 sort_indices = np.argsort(dataset_validation_scaled[:, 0])
                 dataset_sorted = dataset_validation_scaled[sort_indices]

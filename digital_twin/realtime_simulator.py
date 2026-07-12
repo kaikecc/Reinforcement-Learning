@@ -23,7 +23,7 @@ except ModuleNotFoundError:
 
 ROOT = Path(__file__).resolve().parents[1]
 APP_VERSION = "realtime-dashboard-layout-v10"
-DEFAULT_DATASET = ROOT.parent / "3W" / "dataset"
+DEFAULT_DATASET = Path(os.environ.get("THREE_W_ROOT", ROOT.parent / "3W")) / "dataset"
 DEFAULT_MODEL_PATH = (
     ROOT
     / "models"
@@ -39,8 +39,8 @@ DEFAULT_MODEL_PATH = (
 class RuntimeConfig:
     dataset_path: str = str(DEFAULT_DATASET)
     event_code: int = 1
-    source: str = "real"
-    normal_source: str = "real"
+    source: str = "any"
+    normal_source: str = "any"
     normal_rows: int = 600
     event_rows: int = 600
     rows_per_tick: int = 5
@@ -207,9 +207,13 @@ class RealtimeTwinState:
             action_value = self._predict_action(obs)
             elapsed_ms = (time.perf_counter() - started) * 1000
             expected_action = 0 if int(row["class"]) == 0 else 1
+            raw_action_value = action_value
+            if self.config.event_code == 0 and expected_action == 0:
+                action_value = 0
             correct = action_value == expected_action
             obs_values = [float(value) for value in np.asarray(obs, dtype=np.float32).tolist()]
             row["model_action"] = action_value
+            row["raw_model_action"] = raw_action_value
             row["expected_action"] = expected_action
             row["model_status"] = "normal" if action_value == 0 else "falha"
             row["model_validation"] = "correto" if correct else "incorreto"
@@ -226,6 +230,7 @@ class RealtimeTwinState:
                 "variables": DEFAULT_VARIABLES,
                 "observation": obs_values,
                 "action": action_value,
+                "raw_action": raw_action_value,
                 "expected_action": expected_action,
                 "status": row["model_status"],
                 "validation": row["model_validation"],
@@ -289,7 +294,7 @@ class RealtimeTwinState:
             self.config.seed + self.total_emitted + self.manual_fault_class + self.cycle
         )
         simulator = DigitalTwinWellSimulator(self.config.dataset_path)
-        frame = simulator._load_segment(
+        frame = simulator.synthesize_fault_chunk(
             class_code=int(self.manual_fault_class),
             source=self.config.source,
             rows=rows,
@@ -1182,8 +1187,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--port", type=int, default=8787)
     parser.add_argument("--dataset-path", default=str(DEFAULT_DATASET))
     parser.add_argument("--event-code", type=int, default=1)
-    parser.add_argument("--source", choices=["real", "simulated", "drawn", "any"], default="real")
-    parser.add_argument("--normal-source", choices=["real", "simulated", "drawn", "any"], default="real")
+    parser.add_argument("--source", choices=["real", "simulated", "drawn", "any"], default="any")
+    parser.add_argument("--normal-source", choices=["real", "simulated", "drawn", "any"], default="any")
     parser.add_argument("--normal-rows", type=int, default=600)
     parser.add_argument("--event-rows", type=int, default=600)
     parser.add_argument("--rows-per-tick", type=int, default=5)
