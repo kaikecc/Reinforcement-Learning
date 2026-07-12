@@ -1,6 +1,0 @@
-[INFO]	24/05/2026 04:58:38 PM - IF ts=1 hiper={'n_estimators': 50, 'contamination': 0.01}
-[INFO]	24/05/2026 04:58:38 PM - Treinando IF com 1 timesteps
-[INFO]	24/05/2026 04:58:38 PM - Tempo de treino IF: 0.10s
-[INFO]	24/05/2026 04:58:38 PM - Avaliando IF
-[INFO]	24/05/2026 04:58:38 PM - Acurácia IF: 0.45000 (avaliado em 0.00s)
-[INFO]	24/05/2026 04:58:38 PM - Validando IF
